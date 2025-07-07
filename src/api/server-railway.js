@@ -2,6 +2,31 @@
 import { createSimpleServer } from './server-simple.js'
 import pino from 'pino'
 
+// Background setup function
+async function setupDatabaseAndScrapers() {
+  logger.info('🚀 Starting background database setup and scraping...')
+  
+  try {
+    // Import and run database setup
+    const setupModule = await import('../../scripts/setup-railway-database.js')
+    logger.info('✅ Database setup completed')
+    
+    // Wait a bit, then start scraping
+    setTimeout(async () => {
+      try {
+        logger.info('🕷️ Starting production scrapers...')
+        const scraperModule = await import('../../scripts/run-all-scrapers-production.js')
+        logger.info('✅ Scraping completed - database populated with real services')
+      } catch (error) {
+        logger.error('Scraping failed:', error)
+      }
+    }, 30000) // Wait 30 seconds before starting scrapers
+    
+  } catch (error) {
+    logger.error('Database setup failed:', error)
+  }
+}
+
 const logger = pino({
   level: process.env.LOG_LEVEL || 'info'
 })
@@ -26,6 +51,13 @@ async function startRailwayServer() {
     if (!process.env.JWT_SECRET) {
       logger.warn('JWT_SECRET not set, using default (not secure for production)')
       process.env.JWT_SECRET = 'default_jwt_secret_for_development_only'
+    }
+
+    // Setup database and run scrapers in background (don't block startup)
+    if (process.env.DATABASE_URL) {
+      setupDatabaseAndScrapers().catch(error => {
+        logger.error('Background setup failed:', error)
+      })
     }
 
     // Create server
