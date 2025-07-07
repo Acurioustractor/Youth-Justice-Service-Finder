@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "start": "node src/index.js",
+    "start": "node src/api/server-simple.js",
     "worker": "node src/workers/index.js",
     "migrate": "node-pg-migrate",
     "seed": "node database/seeds/index.js",
