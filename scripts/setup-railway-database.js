@@ -91,72 +91,9 @@ async function setupRailwayDatabase() {
 
     console.log('✅ Taxonomy created');
 
-    // Create demo organization and services
-    console.log('\nCreating demo data...');
-    
-    // Create demo organization
-    const orgResult = await client.query(`
-      INSERT INTO organizations (id, name, description, organization_type, data_source)
-      VALUES (uuid_generate_v4(), 'Queensland Youth Services Demo', 'Demo organization for testing', 'government', 'manual')
-      ON CONFLICT DO NOTHING
-      RETURNING id
-    `);
-
-    if (orgResult.rows.length > 0) {
-      const orgId = orgResult.rows[0].id;
-
-      // Create demo services
-      const services = [
-        {
-          name: 'Youth Legal Aid',
-          description: 'Free legal assistance for young people aged 10-25 facing court proceedings',
-          categories: ['legal_aid', 'court_support', 'advocacy'],
-          keywords: ['legal', 'court', 'lawyer', 'advocacy', 'rights'],
-          min_age: 10,
-          max_age: 25
-        },
-        {
-          name: 'Family Counseling Services',
-          description: 'Counseling and support services for families affected by youth justice issues',
-          categories: ['family_support', 'mental_health'],
-          keywords: ['counseling', 'family', 'therapy', 'support', 'mediation'],
-          min_age: 0,
-          max_age: 25
-        },
-        {
-          name: 'Education and Training Programs',
-          description: 'Alternative education and vocational training for at-risk youth',
-          categories: ['education_training', 'prevention'],
-          keywords: ['education', 'training', 'skills', 'employment', 'school'],
-          min_age: 12,
-          max_age: 24
-        }
-      ];
-
-      for (const service of services) {
-        const serviceResult = await client.query(`
-          INSERT INTO services (id, organization_id, name, description, categories, keywords, minimum_age, maximum_age, youth_specific, data_source)
-          VALUES (uuid_generate_v4(), $1, $2, $3, $4, $5, $6, $7, true, 'manual')
-          RETURNING id
-        `, [orgId, service.name, service.description, service.categories, service.keywords, service.min_age, service.max_age]);
-
-        const serviceId = serviceResult.rows[0].id;
-
-        // Add location for each service
-        await client.query(`
-          INSERT INTO locations (id, service_id, name, address_1, city, postal_code, region, latitude, longitude)
-          VALUES (uuid_generate_v4(), $1, $2, $3, 'Brisbane', '4000', 'brisbane', -27.4698, 153.0251)
-        `, [serviceId, `${service.name} Office`, '123 Demo Street']);
-
-        // Add contact
-        await client.query(`
-          INSERT INTO contacts (id, service_id, name, phone, email)
-          VALUES (uuid_generate_v4(), $1, 'Demo Contact', $2, $3)
-        `, [serviceId, JSON.stringify(['(07) 3000 1234']), 'demo@youthservices.qld.gov.au']);
-      }
-
-      console.log('✅ Demo data created');
-    }
+    // Skip demo data - database is ready for real scraped data
+    console.log('\n✅ Database ready for real Australian youth justice service data');
+    console.log('💡 Run scrapers to populate with actual services from government and organization sources');
 
     await client.end();
 
