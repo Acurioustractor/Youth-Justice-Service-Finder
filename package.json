@@ -15,6 +15,7 @@
     "lint": "eslint src --ext .js,.ts",
     "format": "prettier --write \"src/**/*.{js,ts,json}\"",
     "setup:db": "node scripts/setup-database.js",
+    "setup:railway-db": "node scripts/setup-railway-database.js",
     "scrape:demo": "node scripts/run-demo-scraper.js",
     "scrape:test": "node scripts/test-scraper.js",
     "scrape:all": "node scripts/run-all-scrapers.js",
