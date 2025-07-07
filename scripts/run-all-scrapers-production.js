@@ -2,6 +2,7 @@
 
 import pino from 'pino';
 import db from '../src/config/database.js';
+import ScraperMonitor from '../src/monitoring/scraper-monitor.js';
 
 // Import all scrapers
 import { AskIzzyScraper } from '../src/scrapers/ask-izzy-scraper.js';
@@ -25,6 +26,7 @@ const logger = pino({
 class MasterScraper {
   constructor() {
     this.scrapers = [];
+    this.monitor = new ScraperMonitor();
     this.stats = {
       totalServicesFound: 0,
       totalServicesProcessed: 0,
@@ -134,7 +136,7 @@ class MasterScraper {
       const result = await instance.scrape();
       const duration = Date.now() - startTime;
       
-      this.stats.scraperResults[name] = {
+      const monitoringResult = {
         success: true,
         servicesFound: result.servicesFound || 0,
         servicesProcessed: result.servicesProcessed || 0,
@@ -143,6 +145,10 @@ class MasterScraper {
         details: result
       };
 
+      // Track with monitoring system
+      await this.monitor.trackScraperRun(name, monitoringResult);
+
+      this.stats.scraperResults[name] = monitoringResult;
       this.stats.totalServicesFound += result.servicesFound || 0;
       this.stats.totalServicesProcessed += result.servicesProcessed || 0;
       this.stats.totalErrors += result.errors || 0;
@@ -154,12 +160,19 @@ class MasterScraper {
     } catch (error) {
       const duration = Date.now() - startTime;
       
-      this.stats.scraperResults[name] = {
+      const errorResult = {
         success: false,
         error: error.message,
-        duration: duration
+        duration: duration,
+        servicesFound: 0,
+        servicesProcessed: 0,
+        errors: 1
       };
 
+      // Track error with monitoring system
+      await this.monitor.trackScraperRun(name, errorResult);
+
+      this.stats.scraperResults[name] = errorResult;
       this.stats.totalErrors++;
       
       logger.error({ error: error.message, scraper: name, duration }, `❌ ${name} failed`);

@@ -15,6 +15,7 @@ import searchRoutes from './routes/search.js';
 import simpleSearchRoutes from './routes/simple-search.js';
 import healthRoutes from './routes/health.js';
 import statsRoutes from './routes/stats.js';
+import monitoringRoutes from './routes/monitoring.js';
 import { addSchemas } from './schemas.js';
 
 const logger = pino({
@@ -165,6 +166,7 @@ export async function createSimpleServer(options = {}) {
   // Register routes
   await fastify.register(healthRoutes, { prefix: '/health' });
   await fastify.register(statsRoutes, { prefix: '/stats' });
+  await fastify.register(monitoringRoutes, { prefix: '/monitoring' });
   
   // Use simple search instead of Elasticsearch for free tier
   await fastify.register(simpleSearchRoutes, { prefix: '/search' });
@@ -197,7 +199,8 @@ export async function createSimpleServer(options = {}) {
         simpleSearch: '/search/simple',
         geoSearch: '/search/geo',
         autocomplete: '/search/autocomplete',
-        stats: '/stats'
+        stats: '/stats',
+        monitoring: '/monitoring'
       },
       features: [
         'Basic text search',
