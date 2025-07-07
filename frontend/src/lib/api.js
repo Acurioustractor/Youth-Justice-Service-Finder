@@ -45,10 +45,18 @@ export const apiService = {
     return response.data
   },
 
-  // Enhanced Elasticsearch search
+  // Enhanced Elasticsearch search (fallback to simple search)
   async searchServicesES(params = {}) {
-    const response = await api.get('/search/es/enhanced', { params })
-    return response.data
+    try {
+      // Try Elasticsearch first
+      const response = await api.get('/search/es/enhanced', { params })
+      return response.data
+    } catch (error) {
+      // Fallback to simple search for free hosting
+      console.log('Falling back to simple search')
+      const response = await api.get('/search/simple', { params })
+      return response.data
+    }
   },
 
   // Fuzzy search
@@ -61,18 +69,38 @@ export const apiService = {
 
   // Geographic search
   async nearbyServices(lat, lng, radius = '10km', limit = 20) {
-    const response = await api.get('/search/es/geo', {
-      params: { lat, lng, radius, limit }
-    })
-    return response.data
+    try {
+      // Try Elasticsearch geo search first
+      const response = await api.get('/search/es/geo', {
+        params: { lat, lng, radius, limit }
+      })
+      return response.data
+    } catch (error) {
+      // Fallback to simple geo search for free hosting
+      console.log('Falling back to simple geo search')
+      const response = await api.get('/search/geo', {
+        params: { lat, lng, radius, limit }
+      })
+      return response.data
+    }
   },
 
   // Autocomplete suggestions
   async getAutocomplete(query, type = 'services') {
-    const response = await api.get('/search/es/autocomplete/enhanced', {
-      params: { q: query, type, limit: 10 }
-    })
-    return response.data
+    try {
+      // Try Elasticsearch autocomplete first
+      const response = await api.get('/search/es/autocomplete/enhanced', {
+        params: { q: query, type, limit: 10 }
+      })
+      return response.data
+    } catch (error) {
+      // Fallback to simple autocomplete for free hosting
+      console.log('Falling back to simple autocomplete')
+      const response = await api.get('/search/autocomplete', {
+        params: { q: query, limit: 10 }
+      })
+      return response.data
+    }
   },
 
   // Get all services
