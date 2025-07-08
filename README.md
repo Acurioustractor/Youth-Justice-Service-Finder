@@ -232,4 +232,4 @@ curl http://localhost:9200/_cluster/health
 For issues and questions:
 - Create an issue in the repository
 - Check existing issues for solutions
-- Review the documentation in `/docs`
+- Review the documentation in `/docs`# Force redeploy Tue Jul  8 15:12:59 AEST 2025
