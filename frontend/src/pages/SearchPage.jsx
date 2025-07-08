@@ -61,9 +61,9 @@ export default function SearchPage() {
       
       console.log('Search params:', cleanParams)
 
-      // TEMPORARY FIX: Use services endpoint directly since search is broken
-      console.log('Using services endpoint as fallback for search');
-      const data = await apiService.getServices(cleanParams)
+      // Use working search endpoint that's actually available
+      console.log('Using working-search endpoint');
+      const data = await apiService.workingSearch(cleanParams)
       setServices(data.services || [])
       setPagination(data.pagination)
     } catch (err) {

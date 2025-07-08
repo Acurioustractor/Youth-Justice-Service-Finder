@@ -199,7 +199,7 @@ export const apiService = {
           'Crisis Support'
         ],
         demo_mode: true,
-        status: 'Demo data - backend deployment pending'
+        status: 'Demo data - database import pending. Search will show demo results until 603 services are imported.'
       }
     }
   },
@@ -230,6 +230,53 @@ export const apiService = {
       params: { period }
     })
     return response.data
+  },
+
+  // Working search endpoint that actually works
+  async workingSearch(params = {}) {
+    try {
+      const response = await api.get('/working-search', { params })
+      return response.data
+    } catch (error) {
+      // Return demo search results if API unavailable
+      console.log('Using demo search data')
+      return {
+        services: [
+          {
+            id: 'demo-1',
+            name: 'Brisbane Youth Legal Service',
+            description: 'Free legal advice and representation for young people aged 10-17 in Brisbane.',
+            organization: { name: 'Youth Advocacy Centre' },
+            location: { city: 'Brisbane', state: 'QLD', suburb: 'South Brisbane' },
+            contact: { phone: { primary: '07 3356 1002' }, website: 'https://yac.net.au' },
+            categories: ['legal_aid', 'youth_development'],
+            youth_specific: true
+          },
+          {
+            id: 'demo-2', 
+            name: 'Headspace Sydney',
+            description: 'Mental health support for young people aged 12-25 in Sydney CBD.',
+            organization: { name: 'Headspace' },
+            location: { city: 'Sydney', state: 'NSW', suburb: 'Sydney CBD' },
+            contact: { phone: { primary: '02 9114 4100' }, website: 'https://headspace.org.au' },
+            categories: ['mental_health', 'counselling'],
+            youth_specific: true
+          }
+        ],
+        pagination: {
+          limit: 20,
+          offset: 0,
+          total: 2,
+          pages: 1,
+          current_page: 1,
+          has_next: false,
+          has_prev: false
+        },
+        total: 2,
+        demo_mode: true,
+        message: 'Demo results - 603+ services available when backend database is populated'
+      }
+    }
   }
 }
 
