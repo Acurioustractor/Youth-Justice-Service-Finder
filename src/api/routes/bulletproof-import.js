@@ -52,28 +52,36 @@ export default async function bulletproofImportRoutes(fastify) {
         }
       }
       
-      // Import services with minimal data
+      // Import services with required fields
       let serviceCount = 0;
       
       for (const service of services) {
         try {
-          await request.db('services').insert({
+          const orgId = service.organization?.id || service.organization_id || `org-${service.id}`;
+          
+          const serviceData = {
             id: service.id,
-            name: service.name || 'Unknown Service'
-          }).onConflict('id').ignore();
+            name: service.name || 'Unknown Service',
+            description: service.description || 'No description available',
+            organization_id: orgId,
+            categories: service.categories || ['youth_development'],
+            data_source: service.data_source?.source_name || 'Import',
+            url: service.url || service.contact?.website,
+            email: service.email || service.contact?.email?.primary,
+            status: service.status || 'active',
+            minimum_age: service.age_range?.minimum || service.minimum_age,
+            maximum_age: service.age_range?.maximum || service.maximum_age,
+            youth_specific: service.youth_specific !== undefined ? service.youth_specific : true,
+            indigenous_specific: service.indigenous_specific || false,
+            keywords: service.keywords || [],
+            source_url: service.data_source?.source_url
+          };
+          
+          await request.db('services').insert(serviceData).onConflict('id').ignore();
           serviceCount++;
+          
         } catch (e) {
-          // Try with organization_id
-          try {
-            await request.db('services').insert({
-              id: service.id,
-              name: service.name || 'Unknown Service',
-              organization_id: service.organization?.id
-            }).onConflict('id').ignore();
-            serviceCount++;
-          } catch (e2) {
-            // Skip this service
-          }
+          console.log(`Failed to insert service ${service.name}: ${e.message}`);
         }
       }
       
