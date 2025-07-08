@@ -21,6 +21,7 @@ import createDataRoutes from './routes/create-data.js';
 import quickFixRoutes from './routes/quick-fix.js';
 import workingSearchRoutes from './routes/working-search.js';
 import import603ServicesRoutes from './routes/import-603-services.js';
+import bulletproofImportRoutes from './routes/bulletproof-import.js';
 import { addSchemas } from './schemas.js';
 
 const logger = pino({
@@ -176,6 +177,7 @@ export async function createSimpleServer(options = {}) {
   await fastify.register(createDataRoutes, { prefix: '/create-data' });
   await fastify.register(quickFixRoutes, { prefix: '/quick-fix' });
   await fastify.register(import603ServicesRoutes, { prefix: '/import' });
+  await fastify.register(bulletproofImportRoutes, { prefix: '/bulletproof' });
   
   // WORKING SEARCH - bypass broken search routes
   await fastify.register(workingSearchRoutes, { prefix: '/working-search' });
