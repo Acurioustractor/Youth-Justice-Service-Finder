@@ -28,6 +28,18 @@ api.interceptors.response.use(
   },
   (error) => {
     console.error('API Error:', error.response?.data || error.message)
+    
+    // For demo mode, return mock data instead of failing
+    if (error.code === 'ECONNREFUSED' || error.response?.status === 404) {
+      console.log('API not available, using demo mode')
+      return Promise.resolve({
+        data: {
+          error: 'API_UNAVAILABLE',
+          demo_mode: true
+        }
+      })
+    }
+    
     return Promise.reject(error)
   }
 )
@@ -41,8 +53,40 @@ export const apiService = {
 
   // Search services
   async searchServices(params = {}) {
-    const response = await api.get('/search', { params })
-    return response.data
+    try {
+      const response = await api.get('/search', { params })
+      return response.data
+    } catch (error) {
+      // Return demo search results if API unavailable
+      console.log('Using demo search data')
+      return {
+        services: [
+          {
+            id: 'demo-1',
+            name: 'Brisbane Youth Legal Service',
+            description: 'Free legal advice and representation for young people aged 10-17 in Brisbane.',
+            organization: { name: 'Youth Advocacy Centre' },
+            location: { city: 'Brisbane', state: 'QLD', suburb: 'South Brisbane' },
+            contact: { phone: { primary: '07 3356 1002' }, website: 'https://yac.net.au' },
+            categories: ['legal_aid', 'youth_development'],
+            youth_specific: true
+          },
+          {
+            id: 'demo-2', 
+            name: 'Headspace Sydney',
+            description: 'Mental health support for young people aged 12-25 in Sydney CBD.',
+            organization: { name: 'Headspace' },
+            location: { city: 'Sydney', state: 'NSW', suburb: 'Sydney CBD' },
+            contact: { phone: { primary: '02 9114 4100' }, website: 'https://headspace.org.au' },
+            categories: ['mental_health', 'counselling'],
+            youth_specific: true
+          }
+        ],
+        total: 2,
+        demo_mode: true,
+        message: 'Demo results - 603+ services available when backend is deployed'
+      }
+    }
   },
 
   // Enhanced Elasticsearch search (fallback to simple search)
@@ -129,8 +173,35 @@ export const apiService = {
 
   // Get statistics
   async getStats() {
-    const response = await api.get('/stats')
-    return response.data
+    try {
+      const response = await api.get('/stats')
+      if (response.data && typeof response.data === 'object') {
+        return response.data
+      }
+      throw new Error('Invalid response format')
+    } catch (error) {
+      // Return demo stats if API unavailable
+      console.log('Using demo stats data:', error.message)
+      return {
+        totals: {
+          services: 603,
+          organizations: 400
+        },
+        regions: ['QLD', 'NSW', 'VIC', 'WA', 'SA', 'ACT', 'NT', 'TAS'],
+        categories: [
+          'Youth Development',
+          'Mental Health', 
+          'Legal Aid',
+          'Housing Support',
+          'Family Services',
+          'Education Support',
+          'Health Services',
+          'Crisis Support'
+        ],
+        demo_mode: true,
+        status: 'Demo data - backend deployment pending'
+      }
+    }
   },
 
   // Get demographic stats

@@ -15,6 +15,13 @@ export default function HomePage() {
         setStats(data)
       } catch (error) {
         console.error('Failed to fetch stats:', error)
+        // Set demo stats on error
+        setStats({
+          totals: { services: 603, organizations: 400 },
+          regions: ['QLD', 'NSW', 'VIC', 'WA', 'SA', 'ACT', 'NT', 'TAS'],
+          categories: ['Youth Development', 'Mental Health', 'Legal Aid', 'Housing Support'],
+          demo_mode: true
+        })
       } finally {
         setLoading(false)
       }
@@ -62,6 +69,20 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
+      {/* Demo Mode Banner */}
+      {stats?.demo_mode && (
+        <div className="bg-yellow-50 border-b border-yellow-200 px-4 py-3">
+          <div className="max-w-7xl mx-auto flex items-center justify-center text-sm">
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+              <span className="text-yellow-800 font-medium">
+                Demo Mode: 603+ services ready for deployment - backend connection pending
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+      
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
