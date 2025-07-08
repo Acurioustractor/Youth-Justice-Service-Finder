@@ -61,8 +61,9 @@ export default function SearchPage() {
       
       console.log('Search params:', cleanParams)
 
-      // Use Elasticsearch search for better results
-      const data = await apiService.searchServicesES(cleanParams)
+      // TEMPORARY FIX: Use services endpoint directly since search is broken
+      console.log('Using services endpoint as fallback for search');
+      const data = await apiService.getServices(cleanParams)
       setServices(data.services || [])
       setPagination(data.pagination)
     } catch (err) {
