@@ -96,8 +96,9 @@ export default async function debugRoutes(fastify, options) {
     try {
       fastify.log.info('🧪 Manual scraper trigger requested');
       
-      // Create a simple test organization and service
-      const orgId = 'test-' + Date.now();
+      // Create a simple test organization and service using proper UUIDs
+      const { v4: uuidv4 } = await import('uuid');
+      const orgId = uuidv4();
       
       await request.db('organizations').insert({
         id: orgId,
@@ -107,7 +108,7 @@ export default async function debugRoutes(fastify, options) {
         data_source: 'debug_endpoint'
       });
 
-      const serviceId = 'test-service-' + Date.now();
+      const serviceId = uuidv4();
       
       await request.db('services').insert({
         id: serviceId,
@@ -121,7 +122,7 @@ export default async function debugRoutes(fastify, options) {
       });
 
       await request.db('locations').insert({
-        id: 'test-location-' + Date.now(),
+        id: uuidv4(),
         service_id: serviceId,
         name: 'Test Location',
         address_1: '123 Test Street',
@@ -134,7 +135,7 @@ export default async function debugRoutes(fastify, options) {
 
       // Record the debug job
       await request.db('scraping_jobs').insert({
-        id: 'debug-' + Date.now(),
+        id: uuidv4(),
         source_name: 'debug_endpoint',
         source_url: '/debug/trigger-scraper',
         job_type: 'test',
@@ -176,5 +177,46 @@ export default async function debugRoutes(fastify, options) {
       localLogs: 'Check server console output',
       tip: 'Use Railway CLI: railway logs'
     };
+  });
+
+  // Trigger real scrapers
+  fastify.post('/run-scrapers', {
+    schema: {
+      tags: ['Debug'],
+      description: 'Manually trigger the real production scrapers'
+    }
+  }, async (request, reply) => {
+    try {
+      fastify.log.info('🚀 Manual production scraper trigger requested');
+      
+      // Run scrapers in background
+      setTimeout(async () => {
+        try {
+          fastify.log.info('🕷️ Starting real production scrapers...');
+          const scraperModule = await import('../../../scripts/run-all-scrapers-production.js');
+          const MasterScraper = scraperModule.default;
+          const scraper = new MasterScraper();
+          const result = await scraper.runAllScrapers();
+          fastify.log.info('✅ Production scrapers completed:', result);
+        } catch (error) {
+          fastify.log.error('❌ Production scrapers failed:', error);
+        }
+      }, 1000);
+
+      return {
+        success: true,
+        message: 'Production scrapers started in background',
+        status: 'running',
+        checkProgress: '/debug/scraping-jobs',
+        estimatedTime: '10-15 minutes'
+      };
+      
+    } catch (error) {
+      fastify.log.error('Failed to trigger production scrapers:', error);
+      return {
+        success: false,
+        error: error.message
+      };
+    }
   });
 }
