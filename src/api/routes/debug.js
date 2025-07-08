@@ -179,6 +179,119 @@ export default async function debugRoutes(fastify, options) {
     };
   });
 
+  // IMMEDIATE DATA POPULATION
+  fastify.post('/populate-database', {
+    schema: {
+      tags: ['Debug'],
+      description: 'IMMEDIATELY populate database with test services'
+    }
+  }, async (request, reply) => {
+    try {
+      fastify.log.info('🚀 IMMEDIATE DATABASE POPULATION');
+
+      // Create organization
+      const orgResult = await request.db('organizations').insert({
+        name: 'Queensland Youth Justice Services',
+        description: 'Government youth justice services across Queensland',
+        organization_type: 'government',
+        data_source: 'immediate_fix'
+      }).returning('id');
+
+      const orgId = orgResult[0].id;
+
+      // Create services directly
+      const services = [
+        {
+          organization_id: orgId,
+          name: 'Youth Legal Aid Queensland',
+          description: 'Free legal representation for young people aged 10-25',
+          categories: ['legal_aid', 'court_support'],
+          keywords: ['legal', 'court', 'lawyer'],
+          minimum_age: 10,
+          maximum_age: 25,
+          youth_specific: true,
+          data_source: 'immediate_fix',
+          status: 'active'
+        },
+        {
+          organization_id: orgId,
+          name: 'Crisis Accommodation Brisbane',
+          description: 'Emergency housing for homeless youth',
+          categories: ['housing', 'crisis_support'],
+          keywords: ['housing', 'emergency', 'shelter'],
+          minimum_age: 16,
+          maximum_age: 25,
+          youth_specific: true,
+          data_source: 'immediate_fix',
+          status: 'active'
+        },
+        {
+          organization_id: orgId,
+          name: 'Aboriginal Youth Support',
+          description: 'Cultural support for Indigenous youth',
+          categories: ['cultural_support', 'mentoring'],
+          keywords: ['aboriginal', 'indigenous', 'cultural'],
+          minimum_age: 12,
+          maximum_age: 25,
+          youth_specific: true,
+          indigenous_specific: true,
+          data_source: 'immediate_fix',
+          status: 'active'
+        }
+      ];
+
+      const serviceResults = await request.db('services').insert(services).returning('id');
+
+      // Create locations
+      for (let i = 0; i < serviceResults.length; i++) {
+        const serviceId = serviceResults[i].id;
+        const serviceName = services[i].name;
+
+        await request.db('locations').insert({
+          service_id: serviceId,
+          name: `${serviceName} Office`,
+          address_1: `${100 + i} Test Street`,
+          city: 'Brisbane',
+          postal_code: '4000',
+          region: 'brisbane',
+          latitude: -27.4698,
+          longitude: 153.0251
+        });
+
+        await request.db('contacts').insert({
+          service_id: serviceId,
+          name: 'Service Coordinator',
+          phone: JSON.stringify([`(07) 300${i} 1234`]),
+          email: `contact${i}@youthservices.qld.gov.au`
+        });
+      }
+
+      // Record job
+      await request.db('scraping_jobs').insert({
+        source_name: 'immediate_population',
+        source_url: '/debug/populate-database',
+        job_type: 'immediate',
+        status: 'completed',
+        services_found: services.length,
+        started_at: new Date(),
+        completed_at: new Date()
+      });
+
+      return {
+        success: true,
+        message: '🎉 DATABASE POPULATED!',
+        services_created: services.length,
+        frontend: 'https://frontend-x6ces3z0g-benjamin-knights-projects.vercel.app',
+        check_services: '/services',
+        check_stats: '/stats'
+      };
+
+    } catch (error) {
+      fastify.log.error('Population failed:', error);
+      return { success: false, error: error.message };
+    }
+  });
+
   // Trigger real scrapers
   fastify.post('/run-scrapers', {
     schema: {
