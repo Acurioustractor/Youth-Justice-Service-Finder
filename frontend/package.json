@@ -1,6 +1,7 @@
 {
   "name": "youth-justice-frontend",
   "version": "1.0.0",
+  "type": "module",
   "description": "Youth Justice Service Finder - React Frontend",
   "scripts": {
     "dev": "vite",

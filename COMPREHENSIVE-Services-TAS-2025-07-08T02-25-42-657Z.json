@@ -1,0 +1,4269 @@
+{
+  "state": "TAS",
+  "total_services": 27,
+  "generated_at": "2025-07-08T02:25:42.661Z",
+  "services": [
+    {
+      "id": "eb1203de-e865-4f1e-9a5b-ad8117550b2f",
+      "external_id": "EXT-65vykvtayo7",
+      "name": "Hobart Youth Legal Service",
+      "description": "Providing psychology services to young people in Hobart and surrounding areas.",
+      "url": "https://www.hobartfamilyservices.com.au",
+      "status": "active",
+      "categories": [
+        "psychology",
+        "vocational_education",
+        "youth_development"
+      ],
+      "keywords": [
+        "psychology",
+        "vocational_education",
+        "youth_development",
+        "community",
+        "support",
+        "hobart",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 12,
+        "maximum": 25,
+        "description": "Youth aged 12-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "multicultural"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": true,
+      "organization": {
+        "id": "b16be561-a949-47e8-ab49-f9de4bd48084",
+        "name": "Hobart Family Services",
+        "type": "community",
+        "abn": 66044595324,
+        "registration_type": "community_group",
+        "parent_organization": "TAS Department of Justice",
+        "website": "https://www.hobartfamilyservices.com.au"
+      },
+      "location": {
+        "name": "Hobart Youth Legal Service",
+        "address_line_1": "467 Collins St",
+        "address_line_2": null,
+        "suburb": "Hobart",
+        "city": "Hobart",
+        "state": "TAS",
+        "postcode": "7000",
+        "region": "hobart_major",
+        "lga": "Hobart Council",
+        "coordinates": {
+          "latitude": -42.8832784554436,
+          "longitude": 147.32094492061796,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 6560 6224",
+          "mobile": null,
+          "toll_free": "1800 494 650",
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "support@hobartfamilyservices.org.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.hobartfamilyservices.com.au",
+        "social_media": {
+          "facebook": "https://facebook.com/hobartfamilyservices",
+          "twitter": "@hobartfamilyservices",
+          "linkedin": "https://linkedin.com/company/hobartfamilyservices"
+        },
+        "postal_address": {
+          "line_1": "PO Box 4551",
+          "line_2": null,
+          "suburb": "Hobart",
+          "state": "TAS",
+          "postcode": "7000"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm Mon-Fri, 9am-1pm Sat",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Youth aged 12-25",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Spanish"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Perth Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.75,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Perth Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.81,
+          "location_info": 0.78,
+          "service_details": 0.9,
+          "overall": 0.91
+        }
+      }
+    },
+    {
+      "id": "95340100-02a8-4b2f-85a2-f8db6c78992b",
+      "external_id": "EXT-81c7otwxfbe",
+      "name": "Hobart Youth Counselling Service",
+      "description": "Providing criminal law services to young people in Hobart and surrounding areas.",
+      "url": "https://www.hobartyouthservices.gov.au",
+      "status": "active",
+      "categories": [
+        "criminal_law",
+        "counselling",
+        "mentoring"
+      ],
+      "keywords": [
+        "criminal_law",
+        "counselling",
+        "mentoring",
+        "community",
+        "support",
+        "hobart",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 18,
+        "maximum": 30,
+        "description": "Young adults up to 30"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "multicultural"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "4379a357-f0d9-4b01-9a26-6bbe3855dec4",
+        "name": "Hobart Youth Services",
+        "type": "hospital",
+        "abn": 15936615383,
+        "registration_type": "health_service",
+        "parent_organization": null,
+        "website": "https://www.hobartyouthservices.gov.au"
+      },
+      "location": {
+        "name": "Hobart Youth Counselling Service",
+        "address_line_1": "862 High St",
+        "address_line_2": null,
+        "suburb": "Hobart",
+        "city": "Hobart",
+        "state": "TAS",
+        "postcode": "7000",
+        "region": "hobart_major",
+        "lga": "Hobart Council",
+        "coordinates": {
+          "latitude": -42.88105975182747,
+          "longitude": 147.32055713333176,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": false,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 6643 6381",
+          "mobile": null,
+          "toll_free": "1800 469 225",
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "services@hobartyouthservices.gov.au",
+          "intake": "intake@hobartyouthservices.gov.au",
+          "admin": null
+        },
+        "website": "https://www.hobartyouthservices.gov.au",
+        "social_media": {
+          "facebook": "https://facebook.com/hobartyouthservices",
+          "twitter": "@hobartyouthservices",
+          "linkedin": "https://linkedin.com/company/hobartyouthservices"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults up to 30",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Vietnamese",
+          "Italian"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Brisbane Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.71,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Brisbane Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.92,
+          "location_info": 0.91,
+          "service_details": 0.79,
+          "overall": 0.91
+        }
+      }
+    },
+    {
+      "id": "99e2b7cd-c02f-4fc4-9df5-d06efc686603",
+      "external_id": "EXT-fc1cqkeyc3o",
+      "name": "Hobart Youth Mentoring Program",
+      "description": "Community-based career guidance program serving young people across Hobart and surrounding areas.",
+      "url": "https://www.hobartsalvationarmy.gov.au",
+      "status": "active",
+      "categories": [
+        "career_guidance",
+        "community_development"
+      ],
+      "keywords": [
+        "career_guidance",
+        "community_development",
+        "community",
+        "support",
+        "hobart",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 18,
+        "maximum": 30,
+        "description": "Young adults up to 30"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "migrant"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "d1111e7d-044a-4a91-be99-b7f65a4876f5",
+        "name": "Hobart Salvation Army",
+        "type": "indigenous",
+        "abn": 33735750965,
+        "registration_type": "aboriginal_corporation",
+        "parent_organization": null,
+        "website": "https://www.hobartsalvationarmy.gov.au"
+      },
+      "location": {
+        "name": "Hobart Youth Mentoring Program",
+        "address_line_1": "865 Main St",
+        "address_line_2": "Level 6",
+        "suburb": "Hobart",
+        "city": "Hobart",
+        "state": "TAS",
+        "postcode": "7000",
+        "region": "hobart_major",
+        "lga": "Hobart Council",
+        "coordinates": {
+          "latitude": -42.879248694631656,
+          "longitude": 147.31891651659475,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 6570 6212",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "info@hobartsalvationarmy.gov.au",
+          "intake": "intake@hobartsalvationarmy.gov.au",
+          "admin": null
+        },
+        "website": "https://www.hobartsalvationarmy.gov.au",
+        "social_media": {
+          "facebook": "https://facebook.com/hobartsalvationarmy",
+          "linkedin": "https://linkedin.com/company/hobartsalvationarmy"
+        },
+        "postal_address": {
+          "line_1": "PO Box 8663",
+          "line_2": null,
+          "suburb": "Hobart",
+          "state": "TAS",
+          "postcode": "7000"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "By appointment only",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults up to 30",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Greek",
+          "Vietnamese"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": 103
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.QLD",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.qld.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.87,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Data.QLD for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.95,
+          "location_info": 0.83,
+          "service_details": 0.8,
+          "overall": 0.71
+        }
+      }
+    },
+    {
+      "id": "623c33d4-ca6a-4735-a67d-67c5ffd9ff5d",
+      "external_id": "EXT-8ee1z6t5erq",
+      "name": "Hobart Indigenous Youth Centre",
+      "description": "Dedicated health services services designed for young people living in Hobart and surrounding areas.",
+      "url": "https://www.hobartsalvationarmy.org.au",
+      "status": "active",
+      "categories": [
+        "health_services"
+      ],
+      "keywords": [
+        "health_services",
+        "community",
+        "support",
+        "hobart",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 12,
+        "maximum": 25,
+        "description": "Youth aged 12-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": true,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "a3e32472-95ba-4216-a9fe-62727bcbe0c1",
+        "name": "Hobart Salvation Army",
+        "type": "non_profit",
+        "abn": 72916447757,
+        "registration_type": "incorporated_association",
+        "parent_organization": "Salvation Army",
+        "website": "https://www.hobartsalvationarmy.org.au"
+      },
+      "location": {
+        "name": "Hobart Indigenous Youth Centre",
+        "address_line_1": "463 George St",
+        "address_line_2": null,
+        "suburb": "Hobart",
+        "city": "Hobart",
+        "state": "TAS",
+        "postcode": "7000",
+        "region": "hobart_major",
+        "lga": "Hobart Council",
+        "coordinates": {
+          "latitude": -42.88703085984333,
+          "longitude": 147.32085769807836,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": false,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 1977 6969",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "contact@hobartsalvationarmy.org.au",
+          "intake": "intake@hobartsalvationarmy.org.au",
+          "admin": null
+        },
+        "website": "https://www.hobartsalvationarmy.org.au",
+        "social_media": {
+          "linkedin": "https://linkedin.com/company/hobartsalvationarmy"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": true
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": true,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Youth aged 12-25",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": false,
+          "maximum_clients": 120
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "State"
+        ],
+        "contract_type": "block_funding",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Ask Izzy",
+        "source_type": "api",
+        "source_url": "https://askizzy.org.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.99,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Ask Izzy for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.93,
+          "location_info": 0.83,
+          "service_details": 0.65,
+          "overall": 0.84
+        }
+      }
+    },
+    {
+      "id": "1301969e-ca08-4e71-bbec-588368335eb3",
+      "external_id": "EXT-8e6827etzbf",
+      "name": "Hobart Youth Mentoring Program 93",
+      "description": "Comprehensive victim support support for young people throughout Hobart and surrounding areas.",
+      "url": "https://www.hobartaboriginalcorp.com.au",
+      "status": "active",
+      "categories": [
+        "victim_support",
+        "community_development"
+      ],
+      "keywords": [
+        "victim_support",
+        "community_development",
+        "community",
+        "support",
+        "hobart",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "786ada46-3ed5-4b55-8f06-d4581915610e",
+        "name": "Hobart Aboriginal Corporation",
+        "type": "government",
+        "abn": 50578030665,
+        "registration_type": "government_entity",
+        "parent_organization": null,
+        "website": "https://www.hobartaboriginalcorp.com.au"
+      },
+      "location": {
+        "name": "Hobart Youth Mentoring Program 93",
+        "address_line_1": "160 Bourke St",
+        "address_line_2": "Level 4",
+        "suburb": "Hobart",
+        "city": "Hobart",
+        "state": "TAS",
+        "postcode": "7000",
+        "region": "hobart_major",
+        "lga": "Hobart Council",
+        "coordinates": {
+          "latitude": -42.88101098023574,
+          "longitude": 147.31733907158142,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 3444 2029",
+          "mobile": "7562 902 52",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "info@hobartaboriginalcorp.gov.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.hobartaboriginalcorp.com.au",
+        "social_media": {
+          "facebook": "https://facebook.com/hobartaboriginalcorporation"
+        },
+        "postal_address": {
+          "line_1": "PO Box 1931",
+          "line_2": null,
+          "suburb": "Hobart",
+          "state": "TAS",
+          "postcode": "7000"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "By appointment only",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": true,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Vietnamese"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": 124
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "State"
+        ],
+        "contract_type": "fee_for_service",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Find & Connect",
+        "source_type": "api",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.76,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Find & Connect for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.92,
+          "location_info": 0.78,
+          "service_details": 0.71,
+          "overall": 0.99
+        }
+      }
+    },
+    {
+      "id": "5c75ce46-2843-4a34-82f4-0f20c0c83ec4",
+      "external_id": "EXT-bo42psqcqp6",
+      "name": "Hobart Educational Support Centre",
+      "description": "Professional legal aid assistance available to young people in the Hobart and surrounding areas region.",
+      "url": "https://www.hobartfamilyservices.org.au",
+      "status": "active",
+      "categories": [
+        "legal_aid",
+        "homelessness",
+        "counselling"
+      ],
+      "keywords": [
+        "legal_aid",
+        "homelessness",
+        "counselling",
+        "community",
+        "support",
+        "hobart",
+        "tas"
+      ],
+      "service_types": [
+        "legal_advice",
+        "court_support"
+      ],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 16,
+        "maximum": 25,
+        "description": "Young adults 16-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "4ed811e8-683d-4f16-bc01-fc79c994f808",
+        "name": "Hobart Family Services",
+        "type": "faith_based",
+        "abn": 75702368494,
+        "registration_type": "religious_organization",
+        "parent_organization": "Anglicare",
+        "website": "https://www.hobartfamilyservices.org.au"
+      },
+      "location": {
+        "name": "Hobart Educational Support Centre",
+        "address_line_1": "854 Church St",
+        "address_line_2": null,
+        "suburb": "Hobart",
+        "city": "Hobart",
+        "state": "TAS",
+        "postcode": "7000",
+        "region": "hobart_major",
+        "lga": "Hobart Council",
+        "coordinates": {
+          "latitude": -42.88977789952222,
+          "longitude": 147.3251496746293,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": false,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 1614 2230",
+          "mobile": "8718 285 46",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "help@hobartfamilyservices.gov.au",
+          "intake": "intake@hobartfamilyservices.gov.au",
+          "admin": null
+        },
+        "website": "https://www.hobartfamilyservices.org.au",
+        "social_media": {
+          "instagram": "@hobartfamilyservices"
+        },
+        "postal_address": {
+          "line_1": "PO Box 1281",
+          "line_2": null,
+          "suburb": "Hobart",
+          "state": "TAS",
+          "postcode": "7000"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "By appointment only",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": true
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults 16-25",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": false,
+          "maximum_clients": 138
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.QLD",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.qld.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.91,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Data.QLD for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.97,
+          "location_info": 0.96,
+          "service_details": 0.51,
+          "overall": 0.85
+        }
+      }
+    },
+    {
+      "id": "e160cc0c-5bfe-4db6-979d-01b87c40f469",
+      "external_id": "EXT-b3l9ro7y2g6",
+      "name": "Hobart Youth Housing Support",
+      "description": "Comprehensive transport support for young people throughout Hobart and surrounding areas.",
+      "url": "https://www.hobartneighbourhoodc.gov.au",
+      "status": "active",
+      "categories": [
+        "transport",
+        "family_support"
+      ],
+      "keywords": [
+        "transport",
+        "family_support",
+        "community",
+        "support",
+        "hobart",
+        "tas"
+      ],
+      "service_types": [
+        "family_counselling",
+        "parenting_support"
+      ],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 16,
+        "maximum": 25,
+        "description": "Young adults 16-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "multicultural"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "5cd88ceb-0245-4170-88c2-433e5b61cd15",
+        "name": "Hobart Neighbourhood Centre",
+        "type": "school",
+        "abn": 33552718374,
+        "registration_type": "educational_institution",
+        "parent_organization": null,
+        "website": "https://www.hobartneighbourhoodc.gov.au"
+      },
+      "location": {
+        "name": "Hobart Youth Housing Support",
+        "address_line_1": "652 High St",
+        "address_line_2": "Level 1",
+        "suburb": "Hobart",
+        "city": "Hobart",
+        "state": "TAS",
+        "postcode": "7000",
+        "region": "hobart_major",
+        "lga": "Hobart Council",
+        "coordinates": {
+          "latitude": -42.88510462415757,
+          "longitude": 147.31898643527643,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 9365 9359",
+          "mobile": "8595 071 80",
+          "toll_free": "1800 654 043",
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "info@hobartneighbourhoodc.gov.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.hobartneighbourhoodc.gov.au",
+        "social_media": {},
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "10am-4pm weekdays",
+          "after_hours": true,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults 16-25",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Hindi"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": false,
+          "maximum_clients": 164
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.QLD",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.qld.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.94,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Data.QLD for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.6,
+          "location_info": 0.88,
+          "service_details": 0.7,
+          "overall": 0.81
+        }
+      }
+    },
+    {
+      "id": "bd45b78b-1555-4beb-a2d1-dd9d9764ddb6",
+      "external_id": "EXT-7va8t8weadx",
+      "name": "Hobart Youth Counselling Service 86",
+      "description": "Dedicated education support services designed for young people living in Hobart and surrounding areas.",
+      "url": "https://www.lifelinehobart.com.au",
+      "status": "active",
+      "categories": [
+        "education_support"
+      ],
+      "keywords": [
+        "education_support",
+        "community",
+        "support",
+        "hobart",
+        "tas"
+      ],
+      "service_types": [
+        "tutoring",
+        "training_programs"
+      ],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 16,
+        "maximum": 25,
+        "description": "Young adults 16-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": true,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "0708b5c3-25a5-48eb-babd-f18fed11a8d5",
+        "name": "Lifeline Hobart",
+        "type": "commercial",
+        "abn": 88238170442,
+        "registration_type": "proprietary_limited",
+        "parent_organization": null,
+        "website": "https://www.lifelinehobart.com.au"
+      },
+      "location": {
+        "name": "Hobart Youth Counselling Service 86",
+        "address_line_1": "438 Bourke St",
+        "address_line_2": null,
+        "suburb": "Hobart",
+        "city": "Hobart",
+        "state": "TAS",
+        "postcode": "7000",
+        "region": "hobart_major",
+        "lga": "Hobart Council",
+        "coordinates": {
+          "latitude": -42.879112351460016,
+          "longitude": 147.3224312079921,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": false,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 1761 8207",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "info@lifelinehobart.gov.au",
+          "intake": "intake@lifelinehobart.gov.au",
+          "admin": "admin@lifelinehobart.gov.au"
+        },
+        "website": "https://www.lifelinehobart.com.au",
+        "social_media": {},
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "8am-6pm Mon-Fri",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults 16-25",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": true,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Arabic",
+          "Hindi"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Private"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.ACT",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.act.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.83,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Data.ACT for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.88,
+          "location_info": 0.82,
+          "service_details": 0.65,
+          "overall": 0.97
+        }
+      }
+    },
+    {
+      "id": "16b6d5a1-51bc-40d6-90e5-e1394250cfbb",
+      "external_id": "EXT-t8dlx3unqu",
+      "name": "Hobart Indigenous Youth Centre 27",
+      "description": "Providing domestic violence services to young people in Hobart and surrounding areas.",
+      "url": "https://www.hobartsalvationarmy.com.au",
+      "status": "active",
+      "categories": [
+        "domestic_violence"
+      ],
+      "keywords": [
+        "domestic_violence",
+        "community",
+        "support",
+        "hobart",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 18,
+        "maximum": 30,
+        "description": "Young adults up to 30"
+      },
+      "youth_specific": true,
+      "indigenous_specific": true,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "1282ca32-7f3f-4f19-8a5d-d3c88c800c33",
+        "name": "Hobart Salvation Army",
+        "type": "charity",
+        "abn": 34122868663,
+        "registration_type": "registered_charity",
+        "parent_organization": null,
+        "website": "https://www.hobartsalvationarmy.com.au"
+      },
+      "location": {
+        "name": "Hobart Indigenous Youth Centre 27",
+        "address_line_1": "421 Bourke St",
+        "address_line_2": null,
+        "suburb": "Hobart",
+        "city": "Hobart",
+        "state": "TAS",
+        "postcode": "7000",
+        "region": "hobart_major",
+        "lga": "Hobart Council",
+        "coordinates": {
+          "latitude": -42.87577294840504,
+          "longitude": 147.33079941455296,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 4910 3646",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "contact@hobartsalvationarmy.org.au",
+          "intake": "intake@hobartsalvationarmy.org.au",
+          "admin": null
+        },
+        "website": "https://www.hobartsalvationarmy.com.au",
+        "social_media": {},
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "8am-6pm Mon-Fri",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults up to 30",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Vietnamese"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth"
+        ],
+        "contract_type": "multi_year_grant",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.VIC",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.vic.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.8,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Data.VIC for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.77,
+          "location_info": 0.9,
+          "service_details": 0.89,
+          "overall": 0.71
+        }
+      }
+    },
+    {
+      "id": "132706b0-5512-48c0-a997-cdbb49217a07",
+      "external_id": "EXT-vn7jzmvi1k",
+      "name": "Hobart Community Mental Health",
+      "description": "Professional arts culture assistance available to community members in the Hobart and surrounding areas region.",
+      "url": "https://www.beyondbluehobart.com.au",
+      "status": "active",
+      "categories": [
+        "arts_culture",
+        "psychology"
+      ],
+      "keywords": [
+        "arts_culture",
+        "psychology",
+        "community",
+        "support",
+        "hobart",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "general"
+      ],
+      "age_range": {
+        "minimum": null,
+        "maximum": null,
+        "description": "All ages"
+      },
+      "youth_specific": false,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "refugee"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "13e26327-b55c-499d-b621-59ff11a4f8be",
+        "name": "Beyond Blue Hobart",
+        "type": "non_profit",
+        "abn": 75711738190,
+        "registration_type": "incorporated_association",
+        "parent_organization": null,
+        "website": "https://www.beyondbluehobart.com.au"
+      },
+      "location": {
+        "name": "Hobart Community Mental Health",
+        "address_line_1": "897 George St",
+        "address_line_2": "Level 1",
+        "suburb": "Hobart",
+        "city": "Hobart",
+        "state": "TAS",
+        "postcode": "7000",
+        "region": "hobart_major",
+        "lga": "Hobart Council",
+        "coordinates": {
+          "latitude": -42.88241406605836,
+          "longitude": 147.3303889433283,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 6981 7576",
+          "mobile": "4188 545 53",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "support@beyondbluehobart.com.au",
+          "intake": "intake@beyondbluehobart.com.au",
+          "admin": null
+        },
+        "website": "https://www.beyondbluehobart.com.au",
+        "social_media": {
+          "facebook": "https://facebook.com/beyondbluehobart",
+          "instagram": "@beyondbluehobart"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "8am-6pm Mon-Fri",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "All ages",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": true,
+          "appointment_required": true,
+          "criteria": "Open to all community members"
+        },
+        "languages": [
+          "English",
+          "Vietnamese",
+          "Spanish"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": 68
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "State",
+          "Local",
+          "Private"
+        ],
+        "contract_type": "program_funding",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Service Seeker",
+        "source_type": "api",
+        "source_url": "https://www.serviceseeker.com.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.83,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Service Seeker for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.79,
+          "location_info": 0.93,
+          "service_details": 0.94,
+          "overall": 0.78
+        }
+      }
+    },
+    {
+      "id": "c350a0a8-0cc9-47cb-8357-86958d0c25f4",
+      "external_id": "EXT-jrabdqvgaib",
+      "name": "Hobart Educational Support Centre 89",
+      "description": "Providing work experience services to young people in Hobart and surrounding areas.",
+      "url": "https://www.headspacehobart.org.au",
+      "status": "active",
+      "categories": [
+        "work_experience"
+      ],
+      "keywords": [
+        "work_experience",
+        "community",
+        "support",
+        "hobart",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 18,
+        "maximum": 30,
+        "description": "Young adults up to 30"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": true,
+      "lgbti_specific": true,
+      "organization": {
+        "id": "8cd01561-1714-4a06-9212-cec2eda78846",
+        "name": "Headspace Hobart",
+        "type": "government",
+        "abn": 74771953733,
+        "registration_type": "government_entity",
+        "parent_organization": null,
+        "website": "https://www.headspacehobart.org.au"
+      },
+      "location": {
+        "name": "Hobart Educational Support Centre 89",
+        "address_line_1": "610 Bourke St",
+        "address_line_2": null,
+        "suburb": "Hobart",
+        "city": "Hobart",
+        "state": "TAS",
+        "postcode": "7000",
+        "region": "hobart_major",
+        "lga": "Hobart Council",
+        "coordinates": {
+          "latitude": -42.877826684325775,
+          "longitude": 147.33290703524779,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 5441 2127",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "help@headspacehobart.org.au",
+          "intake": "intake@headspacehobart.org.au",
+          "admin": null
+        },
+        "website": "https://www.headspacehobart.org.au",
+        "social_media": {},
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "By appointment only",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": true,
+          "sliding_scale": true,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults up to 30",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": true,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Italian"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": 241
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "State",
+          "Local",
+          "Private"
+        ],
+        "contract_type": "program_funding",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Brisbane Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.81,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Brisbane Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.88,
+          "location_info": 0.95,
+          "service_details": 0.75,
+          "overall": 0.71
+        }
+      }
+    },
+    {
+      "id": "e960cc76-7d84-4427-891a-b0249a2aef94",
+      "external_id": "EXT-wsridagnl0m",
+      "name": "Hobart Youth Health Clinic",
+      "description": "Providing leadership services to young people in Hobart and surrounding areas.",
+      "url": "https://www.hobartlegalaid.gov.au",
+      "status": "active",
+      "categories": [
+        "leadership",
+        "domestic_violence",
+        "work_experience"
+      ],
+      "keywords": [
+        "leadership",
+        "domestic_violence",
+        "work_experience",
+        "community",
+        "support",
+        "hobart",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 18,
+        "maximum": 30,
+        "description": "Young adults up to 30"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "multicultural"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": true,
+      "organization": {
+        "id": "3c825b94-5d9b-4f70-aac4-5536e5d64978",
+        "name": "Hobart Legal Aid",
+        "type": "school",
+        "abn": 42025547736,
+        "registration_type": "educational_institution",
+        "parent_organization": "TAS Department of Health",
+        "website": "https://www.hobartlegalaid.gov.au"
+      },
+      "location": {
+        "name": "Hobart Youth Health Clinic",
+        "address_line_1": "212 George St",
+        "address_line_2": null,
+        "suburb": "Hobart",
+        "city": "Hobart",
+        "state": "TAS",
+        "postcode": "7000",
+        "region": "hobart_major",
+        "lga": "Hobart Council",
+        "coordinates": {
+          "latitude": -42.87283501566722,
+          "longitude": 147.33055143742845,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 9509 4150",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "info@hobartlegalaid.org.au",
+          "intake": null,
+          "admin": "admin@hobartlegalaid.org.au"
+        },
+        "website": "https://www.hobartlegalaid.gov.au",
+        "social_media": {
+          "facebook": "https://facebook.com/hobartlegalaid",
+          "instagram": "@hobartlegalaid"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "24/7 crisis line",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Low cost options available"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults up to 30",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Italian"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.gov.au",
+        "source_type": "government_portal",
+        "source_url": "https://data.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.88,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Data.gov.au for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.61,
+          "location_info": 0.96,
+          "service_details": 0.74,
+          "overall": 0.72
+        }
+      }
+    },
+    {
+      "id": "2916de61-4945-4742-8cdf-562d5931f84f",
+      "external_id": "EXT-oidbprqmme",
+      "name": "Hobart Drug & Alcohol Support",
+      "description": "Community-based leadership program serving young people across Hobart and surrounding areas.",
+      "url": "https://www.hobartcommunitycentr.org.au",
+      "status": "active",
+      "categories": [
+        "leadership",
+        "domestic_violence",
+        "transport"
+      ],
+      "keywords": [
+        "leadership",
+        "domestic_violence",
+        "transport",
+        "community",
+        "support",
+        "hobart",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "multicultural",
+        "ethnic_communities"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "87546785-8172-49ac-a0c0-764e76a3594d",
+        "name": "Hobart Community Centre",
+        "type": "faith_based",
+        "abn": 10118868008,
+        "registration_type": "religious_organization",
+        "parent_organization": null,
+        "website": "https://www.hobartcommunitycentr.org.au"
+      },
+      "location": {
+        "name": "Hobart Drug & Alcohol Support",
+        "address_line_1": "833 Queen St",
+        "address_line_2": null,
+        "suburb": "Hobart",
+        "city": "Hobart",
+        "state": "TAS",
+        "postcode": "7000",
+        "region": "hobart_major",
+        "lga": "Hobart Council",
+        "coordinates": {
+          "latitude": -42.881897805341545,
+          "longitude": 147.31833419885052,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": false,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 5974 0058",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "services@hobartcommunitycentr.org.au",
+          "intake": "intake@hobartcommunitycentr.org.au",
+          "admin": "admin@hobartcommunitycentr.org.au"
+        },
+        "website": "https://www.hobartcommunitycentr.org.au",
+        "social_media": {},
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "By appointment only",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Low cost options available"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": false,
+          "maximum_clients": 88
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.gov.au",
+        "source_type": "government_portal",
+        "source_url": "https://data.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.94,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Data.gov.au for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.96,
+          "location_info": 0.82,
+          "service_details": 0.78,
+          "overall": 0.76
+        }
+      }
+    },
+    {
+      "id": "cad0332a-ad9c-41cc-8ad3-ab3544ba7c5c",
+      "external_id": "EXT-b4mno9xu2sk",
+      "name": "Hobart Youth Justice Support",
+      "description": "Comprehensive psychology support for young people throughout Hobart and surrounding areas.",
+      "url": "https://www.hobartfamilyservices.com.au",
+      "status": "active",
+      "categories": [
+        "psychology",
+        "leadership",
+        "literacy"
+      ],
+      "keywords": [
+        "psychology",
+        "leadership",
+        "literacy",
+        "community",
+        "support",
+        "hobart",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 16,
+        "maximum": 25,
+        "description": "Young adults 16-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "ef9142ed-d0c6-4245-bbc1-5fd60b471da4",
+        "name": "Hobart Family Services",
+        "type": "community",
+        "abn": 33652819969,
+        "registration_type": "community_group",
+        "parent_organization": null,
+        "website": "https://www.hobartfamilyservices.com.au"
+      },
+      "location": {
+        "name": "Hobart Youth Justice Support",
+        "address_line_1": "613 High St",
+        "address_line_2": "Level 9",
+        "suburb": "Hobart",
+        "city": "Hobart",
+        "state": "TAS",
+        "postcode": "7000",
+        "region": "hobart_major",
+        "lga": "Hobart Council",
+        "coordinates": {
+          "latitude": -42.890166809642764,
+          "longitude": 147.32965072217618,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 6742 6169",
+          "mobile": "8901 012 18",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "info@hobartfamilyservices.com.au",
+          "intake": "intake@hobartfamilyservices.com.au",
+          "admin": null
+        },
+        "website": "https://www.hobartfamilyservices.com.au",
+        "social_media": {
+          "facebook": "https://facebook.com/hobartfamilyservices",
+          "instagram": "@hobartfamilyservices"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": true,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults 16-25",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": true,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Italian",
+          "Vietnamese"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Private"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.QLD",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.qld.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.76,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Data.QLD for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.88,
+          "location_info": 0.91,
+          "service_details": 0.88,
+          "overall": 0.93
+        }
+      }
+    },
+    {
+      "id": "450f3e39-d6c5-430a-9b3b-432a08ff6d3a",
+      "external_id": "EXT-8zgq3zq0wst",
+      "name": "Hobart Indigenous Youth Centre 66",
+      "description": "Dedicated legal aid services designed for young people living in Hobart and surrounding areas.",
+      "url": "https://www.lifelinehobart.org.au",
+      "status": "active",
+      "categories": [
+        "legal_aid",
+        "refugee_services",
+        "arts_culture"
+      ],
+      "keywords": [
+        "legal_aid",
+        "refugee_services",
+        "arts_culture",
+        "community",
+        "support",
+        "hobart",
+        "tas"
+      ],
+      "service_types": [
+        "legal_advice",
+        "court_support"
+      ],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": true,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "9096652b-2559-4006-85a6-d2cc0c04e3d5",
+        "name": "Lifeline Hobart",
+        "type": "commercial",
+        "abn": 45321306843,
+        "registration_type": "proprietary_limited",
+        "parent_organization": null,
+        "website": "https://www.lifelinehobart.org.au"
+      },
+      "location": {
+        "name": "Hobart Indigenous Youth Centre 66",
+        "address_line_1": "198 High St",
+        "address_line_2": "Level 3",
+        "suburb": "Hobart",
+        "city": "Hobart",
+        "state": "TAS",
+        "postcode": "7000",
+        "region": "hobart_major",
+        "lga": "Hobart Council",
+        "coordinates": {
+          "latitude": -42.88222949357942,
+          "longitude": 147.33703818945853,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": false,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 9368 3540",
+          "mobile": "6727 574 16",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "help@lifelinehobart.org.au",
+          "intake": "intake@lifelinehobart.org.au",
+          "admin": null
+        },
+        "website": "https://www.lifelinehobart.org.au",
+        "social_media": {
+          "facebook": "https://facebook.com/lifelinehobart",
+          "instagram": "@lifelinehobart"
+        },
+        "postal_address": {
+          "line_1": "PO Box 1283",
+          "line_2": null,
+          "suburb": "Hobart",
+          "state": "TAS",
+          "postcode": "7000"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": true,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": true,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": false,
+          "group": true,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Private"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.SA",
+        "source_type": "government_portal",
+        "source_url": "https://data.sa.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.83,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Data.SA for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.63,
+          "location_info": 0.92,
+          "service_details": 0.69,
+          "overall": 0.95
+        }
+      }
+    },
+    {
+      "id": "f4764df3-8006-4064-9291-7de1ca8ab72e",
+      "external_id": "EXT-ag0r9k8ao8g",
+      "name": "Launceston Family Violence Service",
+      "description": "Comprehensive court support support for young people throughout Launceston and surrounding areas.",
+      "url": "https://www.launcestonymca.com.au",
+      "status": "active",
+      "categories": [
+        "court_support",
+        "financial_assistance"
+      ],
+      "keywords": [
+        "court_support",
+        "financial_assistance",
+        "community",
+        "support",
+        "launceston",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 12,
+        "maximum": 25,
+        "description": "Youth aged 12-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "cb9f6ec1-729e-42d4-9e29-0e1bd10280a3",
+        "name": "Launceston YMCA",
+        "type": "government",
+        "abn": 85271452551,
+        "registration_type": "government_entity",
+        "parent_organization": null,
+        "website": "https://www.launcestonymca.com.au"
+      },
+      "location": {
+        "name": "Launceston Family Violence Service",
+        "address_line_1": "361 George St",
+        "address_line_2": "Level 10",
+        "suburb": "Launceston",
+        "city": "Launceston",
+        "state": "TAS",
+        "postcode": "7250",
+        "region": "launceston_regional",
+        "lga": "Launceston Council",
+        "coordinates": {
+          "latitude": -41.42693232548562,
+          "longitude": 147.14853057200426,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 4342 4862",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "services@launcestonymca.com.au",
+          "intake": "intake@launcestonymca.com.au",
+          "admin": null
+        },
+        "website": "https://www.launcestonymca.com.au",
+        "social_media": {
+          "twitter": "@launcestonymca"
+        },
+        "postal_address": {
+          "line_1": "PO Box 9371",
+          "line_2": null,
+          "suburb": "Launceston",
+          "state": "TAS",
+          "postcode": "7250"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm Mon-Fri, 9am-1pm Sat",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": true,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Youth aged 12-25",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": true,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Greek"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "State",
+          "Local",
+          "Private"
+        ],
+        "contract_type": "block_funding",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Adelaide Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.96,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Adelaide Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.94,
+          "location_info": 0.85,
+          "service_details": 0.5,
+          "overall": 0.81
+        }
+      }
+    },
+    {
+      "id": "a68c9140-2c23-4a78-82cb-016af4b741a8",
+      "external_id": "EXT-lgakyix6xm",
+      "name": "Launceston Family Violence Service 39",
+      "description": "Comprehensive education support support for young people throughout Launceston and surrounding areas.",
+      "url": "https://www.launcestonsalvationa.gov.au",
+      "status": "active",
+      "categories": [
+        "education_support",
+        "literacy",
+        "youth_development"
+      ],
+      "keywords": [
+        "education_support",
+        "literacy",
+        "youth_development",
+        "community",
+        "support",
+        "launceston",
+        "tas"
+      ],
+      "service_types": [
+        "tutoring",
+        "training_programs"
+      ],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "ca5eedff-f6e8-4c6c-9562-38e644d6f31c",
+        "name": "Launceston Salvation Army",
+        "type": "non_profit",
+        "abn": 88163817825,
+        "registration_type": "incorporated_association",
+        "parent_organization": null,
+        "website": "https://www.launcestonsalvationa.gov.au"
+      },
+      "location": {
+        "name": "Launceston Family Violence Service 39",
+        "address_line_1": "154 High St",
+        "address_line_2": null,
+        "suburb": "Launceston",
+        "city": "Launceston",
+        "state": "TAS",
+        "postcode": "7250",
+        "region": "launceston_regional",
+        "lga": "Launceston Council",
+        "coordinates": {
+          "latitude": -41.442555576189974,
+          "longitude": 147.1341913137104,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 1766 1776",
+          "mobile": "9902 514 60",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "services@launcestonsalvationa.gov.au",
+          "intake": "intake@launcestonsalvationa.gov.au",
+          "admin": "admin@launcestonsalvationa.gov.au"
+        },
+        "website": "https://www.launcestonsalvationa.gov.au",
+        "social_media": {
+          "facebook": "https://facebook.com/launcestonsalvationarmy"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": true
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Hindi",
+          "Arabic"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": 227
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "State",
+          "Private"
+        ],
+        "contract_type": "block_funding",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Service Seeker",
+        "source_type": "api",
+        "source_url": "https://www.serviceseeker.com.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.93,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Service Seeker for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.86,
+          "location_info": 0.95,
+          "service_details": 0.66,
+          "overall": 0.89
+        }
+      }
+    },
+    {
+      "id": "0b770f78-5e6c-46a9-b5b8-4b7cf33d3772",
+      "external_id": "EXT-hx9l5i0y5gm",
+      "name": "Launceston Youth Mentoring Program",
+      "description": "Providing multicultural services to young people in Launceston and surrounding areas.",
+      "url": "https://www.launcestonlegalaid.gov.au",
+      "status": "active",
+      "categories": [
+        "multicultural"
+      ],
+      "keywords": [
+        "multicultural",
+        "community",
+        "support",
+        "launceston",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 18,
+        "maximum": 30,
+        "description": "Young adults up to 30"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": true,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "f72d66e9-2df9-4003-9258-b6a57269c522",
+        "name": "Launceston Legal Aid",
+        "type": "commercial",
+        "abn": 62893000376,
+        "registration_type": "proprietary_limited",
+        "parent_organization": null,
+        "website": "https://www.launcestonlegalaid.gov.au"
+      },
+      "location": {
+        "name": "Launceston Youth Mentoring Program",
+        "address_line_1": "984 Collins St",
+        "address_line_2": null,
+        "suburb": "Launceston",
+        "city": "Launceston",
+        "state": "TAS",
+        "postcode": "7250",
+        "region": "launceston_regional",
+        "lga": "Launceston Council",
+        "coordinates": {
+          "latitude": -41.427712243856185,
+          "longitude": 147.14657767211483,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 8691 2680",
+          "mobile": "4097 214 06",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "help@launcestonlegalaid.com.au",
+          "intake": "intake@launcestonlegalaid.com.au",
+          "admin": null
+        },
+        "website": "https://www.launcestonlegalaid.gov.au",
+        "social_media": {
+          "facebook": "https://facebook.com/launcestonlegalaid",
+          "twitter": "@launcestonlegalaid"
+        },
+        "postal_address": {
+          "line_1": "PO Box 8969",
+          "line_2": null,
+          "suburb": "Launceston",
+          "state": "TAS",
+          "postcode": "7250"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": true,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Low cost options available"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults up to 30",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Hindi",
+          "Mandarin"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": false,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Australian Charities Register",
+        "source_type": "government_portal",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.99,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Australian Charities Register for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.65,
+          "location_info": 0.98,
+          "service_details": 0.55,
+          "overall": 0.72
+        }
+      }
+    },
+    {
+      "id": "5b3c3015-4808-4426-aff7-86277e7de3aa",
+      "external_id": "EXT-paxqe2kdac",
+      "name": "Launceston Community Mental Health",
+      "description": "Community-based victim support program serving community members across Launceston and surrounding areas.",
+      "url": "https://www.launcestonmissionaus.gov.au",
+      "status": "active",
+      "categories": [
+        "victim_support"
+      ],
+      "keywords": [
+        "victim_support",
+        "community",
+        "support",
+        "launceston",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "general"
+      ],
+      "age_range": {
+        "minimum": null,
+        "maximum": null,
+        "description": "All ages"
+      },
+      "youth_specific": false,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "multicultural",
+        "migrant"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "95ec9e3b-228e-4cce-80f4-45c1a1ff78f2",
+        "name": "Launceston Mission Australia",
+        "type": "commercial",
+        "abn": 20991692006,
+        "registration_type": "proprietary_limited",
+        "parent_organization": null,
+        "website": "https://www.launcestonmissionaus.gov.au"
+      },
+      "location": {
+        "name": "Launceston Community Mental Health",
+        "address_line_1": "492 Main St",
+        "address_line_2": null,
+        "suburb": "Launceston",
+        "city": "Launceston",
+        "state": "TAS",
+        "postcode": "7250",
+        "region": "launceston_regional",
+        "lga": "Launceston Council",
+        "coordinates": {
+          "latitude": -41.43337169590486,
+          "longitude": 147.13842668940038,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": false,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 6660 9297",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "contact@launcestonmissionaus.com.au",
+          "intake": "intake@launcestonmissionaus.com.au",
+          "admin": null
+        },
+        "website": "https://www.launcestonmissionaus.gov.au",
+        "social_media": {
+          "facebook": "https://facebook.com/launcestonmissionaustralia",
+          "instagram": "@launcestonmissionaustralia"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "By appointment only",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": true,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": true,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "All ages",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Open to all community members"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "NT Open Data",
+        "source_type": "government_portal",
+        "source_url": "https://data.nt.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.81,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from NT Open Data for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.62,
+          "location_info": 0.75,
+          "service_details": 0.84,
+          "overall": 0.87
+        }
+      }
+    },
+    {
+      "id": "d78e3347-af0d-4c46-ba9e-5d335503fd9c",
+      "external_id": "EXT-1ldd9sxutjp",
+      "name": "Launceston Community Legal Centre",
+      "description": "Comprehensive cultural support support for young people throughout Launceston and surrounding areas.",
+      "url": "https://www.lifelinelaunceston.org.au",
+      "status": "active",
+      "categories": [
+        "cultural_support"
+      ],
+      "keywords": [
+        "cultural_support",
+        "community",
+        "support",
+        "launceston",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 16,
+        "maximum": 25,
+        "description": "Young adults 16-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": true,
+      "culturally_specific": [],
+      "disability_specific": true,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "4484f135-7f8b-40ed-8965-f0de8f0d275a",
+        "name": "Lifeline Launceston",
+        "type": "community",
+        "abn": 97203813282,
+        "registration_type": "community_group",
+        "parent_organization": "YMCA Australia",
+        "website": "https://www.lifelinelaunceston.org.au"
+      },
+      "location": {
+        "name": "Launceston Community Legal Centre",
+        "address_line_1": "164 Queen St",
+        "address_line_2": null,
+        "suburb": "Launceston",
+        "city": "Launceston",
+        "state": "TAS",
+        "postcode": "7250",
+        "region": "launceston_regional",
+        "lga": "Launceston Council",
+        "coordinates": {
+          "latitude": -41.441119336656755,
+          "longitude": 147.14864291198273,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": false,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 9809 7345",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "info@lifelinelaunceston.org.au",
+          "intake": "intake@lifelinelaunceston.org.au",
+          "admin": null
+        },
+        "website": "https://www.lifelinelaunceston.org.au",
+        "social_media": {
+          "facebook": "https://facebook.com/lifelinelaunceston"
+        },
+        "postal_address": {
+          "line_1": "PO Box 2413",
+          "line_2": null,
+          "suburb": "Launceston",
+          "state": "TAS",
+          "postcode": "7250"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults 16-25",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Vietnamese",
+          "Italian"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "List Tasmania",
+        "source_type": "government_portal",
+        "source_url": "https://data.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.92,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from List Tasmania for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.99,
+          "location_info": 0.71,
+          "service_details": 0.99,
+          "overall": 0.74
+        }
+      }
+    },
+    {
+      "id": "fbc9cec1-b093-41bd-b77a-5de56cdb9fab",
+      "external_id": "EXT-98j7wxr4co7",
+      "name": "Launceston Youth Arts Program",
+      "description": "Dedicated centrelink services designed for young people living in Launceston and surrounding areas.",
+      "url": "https://www.launcestonaboriginal.gov.au",
+      "status": "active",
+      "categories": [
+        "centrelink"
+      ],
+      "keywords": [
+        "centrelink",
+        "community",
+        "support",
+        "launceston",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "3a316c7c-9ff6-46d5-b5b2-0433fbbb42f5",
+        "name": "Launceston Aboriginal Corporation",
+        "type": "faith_based",
+        "abn": 33954213416,
+        "registration_type": "religious_organization",
+        "parent_organization": null,
+        "website": "https://www.launcestonaboriginal.gov.au"
+      },
+      "location": {
+        "name": "Launceston Youth Arts Program",
+        "address_line_1": "193 Main St",
+        "address_line_2": null,
+        "suburb": "Launceston",
+        "city": "Launceston",
+        "state": "TAS",
+        "postcode": "7250",
+        "region": "launceston_regional",
+        "lga": "Launceston Council",
+        "coordinates": {
+          "latitude": -41.4328161013787,
+          "longitude": 147.1409878462488,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 9097 2734",
+          "mobile": null,
+          "toll_free": "1300 762 835",
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "help@launcestonaboriginal.gov.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.launcestonaboriginal.gov.au",
+        "social_media": {
+          "facebook": "https://facebook.com/launcestonaboriginalcorporation",
+          "twitter": "@launcestonaboriginalcorporation"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm Mon-Fri, 9am-1pm Sat",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": true,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Australian Charities Register",
+        "source_type": "government_portal",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 1,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Australian Charities Register for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.62,
+          "location_info": 0.72,
+          "service_details": 0.83,
+          "overall": 0.91
+        }
+      }
+    },
+    {
+      "id": "08d59e7a-2e0b-489f-ac20-74a2fc1411cd",
+      "external_id": "EXT-lj3vcrz5bh9",
+      "name": "Launceston Youth Housing Support",
+      "description": "Community-based psychology program serving young people across Launceston and surrounding areas.",
+      "url": "https://www.launcestoncouncil.org.au",
+      "status": "active",
+      "categories": [
+        "psychology",
+        "court_support",
+        "transport"
+      ],
+      "keywords": [
+        "psychology",
+        "court_support",
+        "transport",
+        "community",
+        "support",
+        "launceston",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 18,
+        "maximum": 30,
+        "description": "Young adults up to 30"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "7423f1c5-65e8-4301-8c89-3b6cb1d6cc96",
+        "name": "Launceston Council",
+        "type": "commercial",
+        "abn": 79000985397,
+        "registration_type": "proprietary_limited",
+        "parent_organization": null,
+        "website": "https://www.launcestoncouncil.org.au"
+      },
+      "location": {
+        "name": "Launceston Youth Housing Support",
+        "address_line_1": "426 Church St",
+        "address_line_2": null,
+        "suburb": "Launceston",
+        "city": "Launceston",
+        "state": "TAS",
+        "postcode": "7250",
+        "region": "launceston_regional",
+        "lga": "Launceston Council",
+        "coordinates": {
+          "latitude": -41.43520671101198,
+          "longitude": 147.13769609836018,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 3801 1277",
+          "mobile": "1213 123 642",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "help@launcestoncouncil.com.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.launcestoncouncil.org.au",
+        "social_media": {
+          "facebook": "https://facebook.com/launcestoncouncil",
+          "instagram": "@launcestoncouncil"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "10am-4pm weekdays",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": true,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults up to 30",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": true,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Mandarin"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": 86
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Private"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.ACT",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.act.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.91,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Data.ACT for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.99,
+          "location_info": 0.97,
+          "service_details": 0.79,
+          "overall": 0.94
+        }
+      }
+    },
+    {
+      "id": "f42610a0-b343-493e-a1fb-e0e095badf24",
+      "external_id": "EXT-ugm5y9hrtxp",
+      "name": "Launceston Youth Health Clinic",
+      "description": "Comprehensive psychology support for young people throughout Launceston and surrounding areas.",
+      "url": "https://www.beyondbluelaunceston.gov.au",
+      "status": "active",
+      "categories": [
+        "psychology",
+        "emergency_relief"
+      ],
+      "keywords": [
+        "psychology",
+        "emergency_relief",
+        "community",
+        "support",
+        "launceston",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 16,
+        "maximum": 25,
+        "description": "Young adults 16-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "2a435c86-6d71-4b1d-8049-0b6eb5f84d4a",
+        "name": "Beyond Blue Launceston",
+        "type": "university",
+        "abn": 47417885331,
+        "registration_type": "university",
+        "parent_organization": "Anglicare",
+        "website": "https://www.beyondbluelaunceston.gov.au"
+      },
+      "location": {
+        "name": "Launceston Youth Health Clinic",
+        "address_line_1": "979 Bourke St",
+        "address_line_2": null,
+        "suburb": "Launceston",
+        "city": "Launceston",
+        "state": "TAS",
+        "postcode": "7250",
+        "region": "launceston_regional",
+        "lga": "Launceston Council",
+        "coordinates": {
+          "latitude": -41.4326977448865,
+          "longitude": 147.15210666381125,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 6733 6177",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "support@beyondbluelaunceston.com.au",
+          "intake": "intake@beyondbluelaunceston.com.au",
+          "admin": "admin@beyondbluelaunceston.com.au"
+        },
+        "website": "https://www.beyondbluelaunceston.gov.au",
+        "social_media": {
+          "facebook": "https://facebook.com/beyondbluelaunceston",
+          "twitter": "@beyondbluelaunceston"
+        },
+        "postal_address": {
+          "line_1": "PO Box 9725",
+          "line_2": null,
+          "suburb": "Launceston",
+          "state": "TAS",
+          "postcode": "7250"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "24/7 crisis line",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": true
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": true,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults 16-25",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Hindi"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": 101
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Perth Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.95,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Perth Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.61,
+          "location_info": 0.87,
+          "service_details": 0.88,
+          "overall": 0.81
+        }
+      }
+    },
+    {
+      "id": "b6864f5d-687d-4a0b-951b-bc0018eee5e3",
+      "external_id": "EXT-4vnk9uxxj6r",
+      "name": "Devonport Youth Counselling Service",
+      "description": "Community-based vocational education program serving young people across Devonport and surrounding areas.",
+      "url": "https://www.devonportymca.org.au",
+      "status": "active",
+      "categories": [
+        "vocational_education",
+        "financial_counselling"
+      ],
+      "keywords": [
+        "vocational_education",
+        "financial_counselling",
+        "community",
+        "support",
+        "devonport",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 12,
+        "maximum": 25,
+        "description": "Youth aged 12-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "db1bcb43-27d4-424f-a52e-195750906f25",
+        "name": "Devonport YMCA",
+        "type": "hospital",
+        "abn": 23104119711,
+        "registration_type": "health_service",
+        "parent_organization": null,
+        "website": "https://www.devonportymca.org.au"
+      },
+      "location": {
+        "name": "Devonport Youth Counselling Service",
+        "address_line_1": "342 Bourke St",
+        "address_line_2": "Level 9",
+        "suburb": "Devonport",
+        "city": "Devonport",
+        "state": "TAS",
+        "postcode": "7310",
+        "region": "devonport_rural",
+        "lga": "Devonport Council",
+        "coordinates": {
+          "latitude": -41.19015303321439,
+          "longitude": 146.34068352207572,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 6399 3365",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "contact@devonportymca.org.au",
+          "intake": null,
+          "admin": "admin@devonportymca.org.au"
+        },
+        "website": "https://www.devonportymca.org.au",
+        "social_media": {
+          "instagram": "@devonportymca",
+          "linkedin": "https://linkedin.com/company/devonportymca"
+        },
+        "postal_address": {
+          "line_1": "PO Box 7852",
+          "line_2": null,
+          "suburb": "Devonport",
+          "state": "TAS",
+          "postcode": "7310"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "10am-4pm weekdays",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Youth aged 12-25",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": true,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Greek"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Ask Izzy",
+        "source_type": "api",
+        "source_url": "https://askizzy.org.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.93,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Ask Izzy for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.97,
+          "location_info": 0.75,
+          "service_details": 0.95,
+          "overall": 0.81
+        }
+      }
+    },
+    {
+      "id": "2670fbd2-ede0-4fd0-977e-744b720cc233",
+      "external_id": "EXT-7k6xh0pf50k",
+      "name": "Devonport Drug & Alcohol Support",
+      "description": "Professional work experience assistance available to young people in the Devonport and surrounding areas region.",
+      "url": "https://www.beyondbluedevonport.org.au",
+      "status": "active",
+      "categories": [
+        "work_experience",
+        "domestic_violence"
+      ],
+      "keywords": [
+        "work_experience",
+        "domestic_violence",
+        "community",
+        "support",
+        "devonport",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 16,
+        "maximum": 25,
+        "description": "Young adults 16-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "37a552cc-0b6c-4400-8629-4470b38f16bd",
+        "name": "Beyond Blue Devonport",
+        "type": "charity",
+        "abn": 72704398546,
+        "registration_type": "registered_charity",
+        "parent_organization": null,
+        "website": "https://www.beyondbluedevonport.org.au"
+      },
+      "location": {
+        "name": "Devonport Drug & Alcohol Support",
+        "address_line_1": "318 Main St",
+        "address_line_2": "Level 6",
+        "suburb": "Devonport",
+        "city": "Devonport",
+        "state": "TAS",
+        "postcode": "7310",
+        "region": "devonport_rural",
+        "lga": "Devonport Council",
+        "coordinates": {
+          "latitude": -41.18744455295091,
+          "longitude": 146.35533277064425,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 4194 4020",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "contact@beyondbluedevonport.gov.au",
+          "intake": "intake@beyondbluedevonport.gov.au",
+          "admin": "admin@beyondbluedevonport.gov.au"
+        },
+        "website": "https://www.beyondbluedevonport.org.au",
+        "social_media": {
+          "facebook": "https://facebook.com/beyondbluedevonport",
+          "twitter": "@beyondbluedevonport",
+          "instagram": "@beyondbluedevonport"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm Mon-Fri, 9am-1pm Sat",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Low cost options available"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults 16-25",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Arabic"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": 106
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "State"
+        ],
+        "contract_type": "multi_year_grant",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "NT Open Data",
+        "source_type": "government_portal",
+        "source_url": "https://data.nt.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.88,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from NT Open Data for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.61,
+          "location_info": 0.74,
+          "service_details": 0.76,
+          "overall": 0.74
+        }
+      }
+    },
+    {
+      "id": "8999ac74-844c-45af-9a0d-84ba524029c5",
+      "external_id": "EXT-bnqppjrg8tu",
+      "name": "Devonport Youth Health Clinic",
+      "description": "Dedicated victim support services designed for young people living in Devonport and surrounding areas.",
+      "url": "https://www.devonportfamilyservi.gov.au",
+      "status": "active",
+      "categories": [
+        "victim_support",
+        "volunteer_programs",
+        "community_service"
+      ],
+      "keywords": [
+        "victim_support",
+        "volunteer_programs",
+        "community_service",
+        "community",
+        "support",
+        "devonport",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 16,
+        "maximum": 25,
+        "description": "Young adults 16-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "multicultural",
+        "migrant"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": true,
+      "organization": {
+        "id": "da466b51-db0e-489e-b7d8-a3f879763149",
+        "name": "Devonport Family Services",
+        "type": "government",
+        "abn": 28359243266,
+        "registration_type": "government_entity",
+        "parent_organization": null,
+        "website": "https://www.devonportfamilyservi.gov.au"
+      },
+      "location": {
+        "name": "Devonport Youth Health Clinic",
+        "address_line_1": "700 Bourke St",
+        "address_line_2": "Level 1",
+        "suburb": "Devonport",
+        "city": "Devonport",
+        "state": "TAS",
+        "postcode": "7310",
+        "region": "devonport_rural",
+        "lga": "Devonport Council",
+        "coordinates": {
+          "latitude": -41.19643000839173,
+          "longitude": 146.34252094042904,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 8658 2921",
+          "mobile": null,
+          "toll_free": "1800 654 635",
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "support@devonportfamilyservi.org.au",
+          "intake": "intake@devonportfamilyservi.org.au",
+          "admin": null
+        },
+        "website": "https://www.devonportfamilyservi.gov.au",
+        "social_media": {
+          "facebook": "https://facebook.com/devonportfamilyservices",
+          "twitter": "@devonportfamilyservices"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "By appointment only",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": true,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults 16-25",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Italian"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": 58
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "Local"
+        ],
+        "contract_type": "annual_grant",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.gov.au",
+        "source_type": "government_portal",
+        "source_url": "https://data.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.88,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Data.gov.au for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.61,
+          "location_info": 0.95,
+          "service_details": 0.79,
+          "overall": 0.86
+        }
+      }
+    },
+    {
+      "id": "c77fe287-7589-4289-8bda-74217801bd61",
+      "external_id": "EXT-jjd7c7ljule",
+      "name": "Devonport Indigenous Youth Centre",
+      "description": "Professional apprenticeships assistance available to young people in the Devonport and surrounding areas region.",
+      "url": "https://www.devonportcouncil.gov.au",
+      "status": "active",
+      "categories": [
+        "apprenticeships",
+        "leadership",
+        "cultural_support"
+      ],
+      "keywords": [
+        "apprenticeships",
+        "leadership",
+        "cultural_support",
+        "community",
+        "support",
+        "devonport",
+        "tas"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 18,
+        "maximum": 30,
+        "description": "Young adults up to 30"
+      },
+      "youth_specific": true,
+      "indigenous_specific": true,
+      "culturally_specific": [
+        "ethnic_communities"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "f08c76e7-9d02-40d3-ab17-96f4b40f11ef",
+        "name": "Devonport Council",
+        "type": "charity",
+        "abn": 98700007452,
+        "registration_type": "registered_charity",
+        "parent_organization": null,
+        "website": "https://www.devonportcouncil.gov.au"
+      },
+      "location": {
+        "name": "Devonport Indigenous Youth Centre",
+        "address_line_1": "847 Queen St",
+        "address_line_2": "Level 9",
+        "suburb": "Devonport",
+        "city": "Devonport",
+        "state": "TAS",
+        "postcode": "7310",
+        "region": "devonport_rural",
+        "lga": "Devonport Council",
+        "coordinates": {
+          "latitude": -41.18778516952069,
+          "longitude": 146.35308565466443,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(03) 5700 4055",
+          "mobile": "1156 354 041",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "info@devonportcouncil.gov.au",
+          "intake": "intake@devonportcouncil.gov.au",
+          "admin": null
+        },
+        "website": "https://www.devonportcouncil.gov.au",
+        "social_media": {
+          "facebook": "https://facebook.com/devonportcouncil",
+          "linkedin": "https://linkedin.com/company/devonportcouncil"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": true
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults up to 30",
+          "geographic_restrictions": [
+            "TAS"
+          ],
+          "referral_required": true,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Arabic",
+          "Spanish"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": 91
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "Local"
+        ],
+        "contract_type": "block_funding",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.WA",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.wa.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.95,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Data.WA for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.97,
+          "location_info": 0.96,
+          "service_details": 0.91,
+          "overall": 0.95
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,3617 @@
+{
+  "state": "SA",
+  "total_services": 23,
+  "generated_at": "2025-07-08T02:25:42.659Z",
+  "services": [
+    {
+      "id": "c6dabe9c-bef6-4ce9-953a-62176dce64c2",
+      "external_id": "EXT-58tzuqjxhmu",
+      "name": "Adelaide Community Legal Centre",
+      "description": "Dedicated cultural support services designed for community members living in Adelaide and surrounding areas.",
+      "url": "https://www.adelaidesalvationarm.gov.au",
+      "status": "active",
+      "categories": [
+        "cultural_support"
+      ],
+      "keywords": [
+        "cultural_support",
+        "community",
+        "support",
+        "adelaide",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "general"
+      ],
+      "age_range": {
+        "minimum": null,
+        "maximum": null,
+        "description": "All ages"
+      },
+      "youth_specific": false,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "dfb04179-7e1d-4aa2-aa6f-b3d651bb8dd7",
+        "name": "Adelaide Salvation Army",
+        "type": "community",
+        "abn": 58333174239,
+        "registration_type": "community_group",
+        "parent_organization": null,
+        "website": "https://www.adelaidesalvationarm.gov.au"
+      },
+      "location": {
+        "name": "Adelaide Community Legal Centre",
+        "address_line_1": "895 Bourke St",
+        "address_line_2": "Level 7",
+        "suburb": "Adelaide",
+        "city": "Adelaide",
+        "state": "SA",
+        "postcode": "5000",
+        "region": "adelaide_major",
+        "lga": "Adelaide Council",
+        "coordinates": {
+          "latitude": -34.93282406453716,
+          "longitude": 138.60865552022375,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 1105 6254",
+          "mobile": null,
+          "toll_free": "1300 539 165",
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "contact@adelaidesalvationarm.gov.au",
+          "intake": "intake@adelaidesalvationarm.gov.au",
+          "admin": null
+        },
+        "website": "https://www.adelaidesalvationarm.gov.au",
+        "social_media": {
+          "facebook": "https://facebook.com/adelaidesalvationarmy",
+          "twitter": "@adelaidesalvationarmy"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": true,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": true,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "All ages",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Open to all community members"
+        },
+        "languages": [
+          "English",
+          "Italian"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": 246
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.VIC",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.vic.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.648Z",
+        "data_quality_score": 0.82,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.648Z",
+        "updated_at": "2025-07-08T02:25:42.648Z",
+        "last_scraped": "2025-07-08T02:25:42.648Z",
+        "scraping_notes": "Generated from Data.VIC for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.87,
+          "location_info": 0.73,
+          "service_details": 0.51,
+          "overall": 0.85
+        }
+      }
+    },
+    {
+      "id": "55eaa758-fe49-4bea-a994-45c1b7805654",
+      "external_id": "EXT-adgw0f8hbp",
+      "name": "Adelaide Crisis Support Service",
+      "description": "Community-based legal aid program serving community members across Adelaide and surrounding areas.",
+      "url": "https://www.adelaidelegalaid.com.au",
+      "status": "active",
+      "categories": [
+        "legal_aid",
+        "multicultural",
+        "transport"
+      ],
+      "keywords": [
+        "legal_aid",
+        "multicultural",
+        "transport",
+        "community",
+        "support",
+        "adelaide",
+        "sa"
+      ],
+      "service_types": [
+        "legal_advice",
+        "court_support"
+      ],
+      "target_demographics": [
+        "general"
+      ],
+      "age_range": {
+        "minimum": null,
+        "maximum": null,
+        "description": "All ages"
+      },
+      "youth_specific": false,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "773c3101-5d67-4418-ab60-62e6ea3df8d7",
+        "name": "Adelaide Legal Aid",
+        "type": "non_profit",
+        "abn": 25990270493,
+        "registration_type": "incorporated_association",
+        "parent_organization": null,
+        "website": "https://www.adelaidelegalaid.com.au"
+      },
+      "location": {
+        "name": "Adelaide Crisis Support Service",
+        "address_line_1": "411 King St",
+        "address_line_2": null,
+        "suburb": "Adelaide",
+        "city": "Adelaide",
+        "state": "SA",
+        "postcode": "5000",
+        "region": "adelaide_major",
+        "lga": "Adelaide Council",
+        "coordinates": {
+          "latitude": -34.93236725284114,
+          "longitude": 138.60112375423805,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 6311 3524",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "support@adelaidelegalaid.gov.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.adelaidelegalaid.com.au",
+        "social_media": {
+          "facebook": "https://facebook.com/adelaidelegalaid",
+          "twitter": "@adelaidelegalaid"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": true,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "All ages",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Open to all community members"
+        },
+        "languages": [
+          "English",
+          "Vietnamese"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "State"
+        ],
+        "contract_type": "annual_grant",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Adelaide Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.648Z",
+        "data_quality_score": 0.8,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.648Z",
+        "updated_at": "2025-07-08T02:25:42.648Z",
+        "last_scraped": "2025-07-08T02:25:42.648Z",
+        "scraping_notes": "Generated from Adelaide Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.91,
+          "location_info": 0.88,
+          "service_details": 0.95,
+          "overall": 0.89
+        }
+      }
+    },
+    {
+      "id": "b3d2a862-066c-4a44-bfab-60cd48fe4787",
+      "external_id": "EXT-vwgaolu608",
+      "name": "Adelaide Educational Support Centre",
+      "description": "Providing legal aid services to community members in Adelaide and surrounding areas.",
+      "url": "https://www.headspaceadelaide.com.au",
+      "status": "active",
+      "categories": [
+        "legal_aid",
+        "homelessness",
+        "training"
+      ],
+      "keywords": [
+        "legal_aid",
+        "homelessness",
+        "training",
+        "community",
+        "support",
+        "adelaide",
+        "sa"
+      ],
+      "service_types": [
+        "legal_advice",
+        "court_support"
+      ],
+      "target_demographics": [
+        "general"
+      ],
+      "age_range": {
+        "minimum": null,
+        "maximum": null,
+        "description": "All ages"
+      },
+      "youth_specific": false,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "multicultural"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "6037f4ad-92b3-4681-9301-4cff1f035bad",
+        "name": "Headspace Adelaide",
+        "type": "community",
+        "abn": 75660118096,
+        "registration_type": "community_group",
+        "parent_organization": null,
+        "website": "https://www.headspaceadelaide.com.au"
+      },
+      "location": {
+        "name": "Adelaide Educational Support Centre",
+        "address_line_1": "635 High St",
+        "address_line_2": null,
+        "suburb": "Adelaide",
+        "city": "Adelaide",
+        "state": "SA",
+        "postcode": "5000",
+        "region": "adelaide_major",
+        "lga": "Adelaide Council",
+        "coordinates": {
+          "latitude": -34.93389489857872,
+          "longitude": 138.60190928146375,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": false,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 3732 7152",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "help@headspaceadelaide.org.au",
+          "intake": "intake@headspaceadelaide.org.au",
+          "admin": "admin@headspaceadelaide.org.au"
+        },
+        "website": "https://www.headspaceadelaide.com.au",
+        "social_media": {
+          "twitter": "@headspaceadelaide"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "8am-6pm Mon-Fri",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": true,
+          "cost_description": "Low cost options available"
+        },
+        "eligibility": {
+          "age_requirements": "All ages",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": true,
+          "appointment_required": true,
+          "criteria": "Open to all community members"
+        },
+        "languages": [
+          "English",
+          "Hindi",
+          "Greek"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": false,
+          "maximum_clients": 136
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.ACT",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.act.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.648Z",
+        "data_quality_score": 0.82,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.648Z",
+        "updated_at": "2025-07-08T02:25:42.648Z",
+        "last_scraped": "2025-07-08T02:25:42.648Z",
+        "scraping_notes": "Generated from Data.ACT for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.72,
+          "location_info": 0.79,
+          "service_details": 0.62,
+          "overall": 0.97
+        }
+      }
+    },
+    {
+      "id": "15840394-a3e0-4a18-ae02-522f16b89377",
+      "external_id": "EXT-9a5fswe3kvs",
+      "name": "Adelaide Youth Development Program",
+      "description": "Providing court support services to young people in Adelaide and surrounding areas.",
+      "url": "https://www.headspaceadelaide.org.au",
+      "status": "active",
+      "categories": [
+        "court_support",
+        "training"
+      ],
+      "keywords": [
+        "court_support",
+        "training",
+        "community",
+        "support",
+        "adelaide",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 18,
+        "maximum": 30,
+        "description": "Young adults up to 30"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "migrant"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": true,
+      "organization": {
+        "id": "03ed51cb-c50a-4a1f-b19d-de643c72fb2a",
+        "name": "Headspace Adelaide",
+        "type": "non_profit",
+        "abn": 93787808341,
+        "registration_type": "incorporated_association",
+        "parent_organization": null,
+        "website": "https://www.headspaceadelaide.org.au"
+      },
+      "location": {
+        "name": "Adelaide Youth Development Program",
+        "address_line_1": "183 George St",
+        "address_line_2": null,
+        "suburb": "Adelaide",
+        "city": "Adelaide",
+        "state": "SA",
+        "postcode": "5000",
+        "region": "adelaide_major",
+        "lga": "Adelaide Council",
+        "coordinates": {
+          "latitude": -34.92531417116382,
+          "longitude": 138.60092350212545,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 8205 9943",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "support@headspaceadelaide.org.au",
+          "intake": "intake@headspaceadelaide.org.au",
+          "admin": null
+        },
+        "website": "https://www.headspaceadelaide.org.au",
+        "social_media": {
+          "linkedin": "https://linkedin.com/company/headspaceadelaide"
+        },
+        "postal_address": {
+          "line_1": "PO Box 5377",
+          "line_2": null,
+          "suburb": "Adelaide",
+          "state": "SA",
+          "postcode": "5000"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "24/7 crisis line",
+          "after_hours": true,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults up to 30",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": true,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Italian",
+          "Greek"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": false,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "Local"
+        ],
+        "contract_type": "multi_year_grant",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Brisbane Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.648Z",
+        "data_quality_score": 0.84,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.648Z",
+        "updated_at": "2025-07-08T02:25:42.648Z",
+        "last_scraped": "2025-07-08T02:25:42.648Z",
+        "scraping_notes": "Generated from Brisbane Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.67,
+          "location_info": 0.85,
+          "service_details": 0.55,
+          "overall": 0.76
+        }
+      }
+    },
+    {
+      "id": "6d9d11fd-1b6d-4b5f-9b19-d46bca3d9332",
+      "external_id": "EXT-mtey5mtq23g",
+      "name": "Adelaide Community Legal Centre 43",
+      "description": "Dedicated leadership services designed for young people living in Adelaide and surrounding areas.",
+      "url": "https://www.adelaideyouthservice.com.au",
+      "status": "active",
+      "categories": [
+        "leadership"
+      ],
+      "keywords": [
+        "leadership",
+        "community",
+        "support",
+        "adelaide",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 12,
+        "maximum": 25,
+        "description": "Youth aged 12-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": true,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "f41b068e-e618-488a-9ed3-cf4d7fe0e2f3",
+        "name": "Adelaide Youth Services",
+        "type": "government",
+        "abn": 50539485529,
+        "registration_type": "government_entity",
+        "parent_organization": null,
+        "website": "https://www.adelaideyouthservice.com.au"
+      },
+      "location": {
+        "name": "Adelaide Community Legal Centre 43",
+        "address_line_1": "255 Collins St",
+        "address_line_2": null,
+        "suburb": "Adelaide",
+        "city": "Adelaide",
+        "state": "SA",
+        "postcode": "5000",
+        "region": "adelaide_major",
+        "lga": "Adelaide Council",
+        "coordinates": {
+          "latitude": -34.93157824178226,
+          "longitude": 138.6048815924853,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": false,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 3142 7482",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "info@adelaideyouthservice.com.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.adelaideyouthservice.com.au",
+        "social_media": {
+          "facebook": "https://facebook.com/adelaideyouthservices",
+          "twitter": "@adelaideyouthservices",
+          "instagram": "@adelaideyouthservices"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": true
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": true,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Youth aged 12-25",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Spanish"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "State",
+          "Local"
+        ],
+        "contract_type": "block_funding",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Brisbane Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.648Z",
+        "data_quality_score": 0.75,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.648Z",
+        "updated_at": "2025-07-08T02:25:42.648Z",
+        "last_scraped": "2025-07-08T02:25:42.648Z",
+        "scraping_notes": "Generated from Brisbane Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.69,
+          "location_info": 0.77,
+          "service_details": 0.55,
+          "overall": 0.72
+        }
+      }
+    },
+    {
+      "id": "5ca3d9bd-f02c-4e41-baa4-615a02cab17a",
+      "external_id": "EXT-pa78rggihrr",
+      "name": "Adelaide Employment Training Hub",
+      "description": "Comprehensive literacy support for young people throughout Adelaide and surrounding areas.",
+      "url": "https://www.adelaideymca.gov.au",
+      "status": "active",
+      "categories": [
+        "literacy",
+        "apprenticeships"
+      ],
+      "keywords": [
+        "literacy",
+        "apprenticeships",
+        "community",
+        "support",
+        "adelaide",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "refugee"
+      ],
+      "disability_specific": true,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "05b234b1-003d-40f4-8948-3580cbe66f9a",
+        "name": "Adelaide YMCA",
+        "type": "hospital",
+        "abn": 79713342065,
+        "registration_type": "health_service",
+        "parent_organization": "SA Department of Communities",
+        "website": "https://www.adelaideymca.gov.au"
+      },
+      "location": {
+        "name": "Adelaide Employment Training Hub",
+        "address_line_1": "452 King St",
+        "address_line_2": null,
+        "suburb": "Adelaide",
+        "city": "Adelaide",
+        "state": "SA",
+        "postcode": "5000",
+        "region": "adelaide_major",
+        "lga": "Adelaide Council",
+        "coordinates": {
+          "latitude": -34.925408213728566,
+          "longitude": 138.61022323180964,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 3287 8094",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "services@adelaideymca.org.au",
+          "intake": "intake@adelaideymca.org.au",
+          "admin": "admin@adelaideymca.org.au"
+        },
+        "website": "https://www.adelaideymca.gov.au",
+        "social_media": {},
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm Mon-Fri, 9am-1pm Sat",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Italian",
+          "Arabic"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "List Tasmania",
+        "source_type": "government_portal",
+        "source_url": "https://data.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.648Z",
+        "data_quality_score": 0.86,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.648Z",
+        "updated_at": "2025-07-08T02:25:42.648Z",
+        "last_scraped": "2025-07-08T02:25:42.648Z",
+        "scraping_notes": "Generated from List Tasmania for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.75,
+          "location_info": 0.71,
+          "service_details": 0.74,
+          "overall": 0.92
+        }
+      }
+    },
+    {
+      "id": "81538354-1d38-4958-a2f5-27e5d9fb4d33",
+      "external_id": "EXT-r49kkgtqjup",
+      "name": "Adelaide Community Legal Centre 1",
+      "description": "Dedicated transport services designed for community members living in Adelaide and surrounding areas.",
+      "url": "https://www.adelaidefamilyservic.gov.au",
+      "status": "active",
+      "categories": [
+        "transport"
+      ],
+      "keywords": [
+        "transport",
+        "community",
+        "support",
+        "adelaide",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "general"
+      ],
+      "age_range": {
+        "minimum": null,
+        "maximum": null,
+        "description": "All ages"
+      },
+      "youth_specific": false,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "migrant"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": true,
+      "organization": {
+        "id": "9b2f24bc-195c-40c9-8d76-2d38f5841ff5",
+        "name": "Adelaide Family Services",
+        "type": "school",
+        "abn": 62823340033,
+        "registration_type": "educational_institution",
+        "parent_organization": "Salvation Army",
+        "website": "https://www.adelaidefamilyservic.gov.au"
+      },
+      "location": {
+        "name": "Adelaide Community Legal Centre 1",
+        "address_line_1": "478 George St",
+        "address_line_2": null,
+        "suburb": "Adelaide",
+        "city": "Adelaide",
+        "state": "SA",
+        "postcode": "5000",
+        "region": "adelaide_major",
+        "lga": "Adelaide Council",
+        "coordinates": {
+          "latitude": -34.92306280186288,
+          "longitude": 138.60168139325057,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 1341 7751",
+          "mobile": "5127 623 44",
+          "toll_free": "1300 369 397",
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "contact@adelaidefamilyservic.org.au",
+          "intake": "intake@adelaidefamilyservic.org.au",
+          "admin": null
+        },
+        "website": "https://www.adelaidefamilyservic.gov.au",
+        "social_media": {
+          "facebook": "https://facebook.com/adelaidefamilyservices"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "24/7 crisis line",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": true,
+          "cost_description": "Low cost options available"
+        },
+        "eligibility": {
+          "age_requirements": "All ages",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Open to all community members"
+        },
+        "languages": [
+          "English",
+          "Arabic",
+          "Mandarin"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "List Tasmania",
+        "source_type": "government_portal",
+        "source_url": "https://data.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.648Z",
+        "data_quality_score": 0.73,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.648Z",
+        "updated_at": "2025-07-08T02:25:42.648Z",
+        "last_scraped": "2025-07-08T02:25:42.648Z",
+        "scraping_notes": "Generated from List Tasmania for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.89,
+          "location_info": 0.7,
+          "service_details": 0.89,
+          "overall": 0.93
+        }
+      }
+    },
+    {
+      "id": "4bf4c939-f4e0-4371-b254-101863e27e24",
+      "external_id": "EXT-xiwmspomj8q",
+      "name": "Adelaide Youth Development Program 53",
+      "description": "Providing family law services to young people in Adelaide and surrounding areas.",
+      "url": "https://www.adelaidemissionaustr.gov.au",
+      "status": "active",
+      "categories": [
+        "family_law"
+      ],
+      "keywords": [
+        "family_law",
+        "community",
+        "support",
+        "adelaide",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 18,
+        "maximum": 30,
+        "description": "Young adults up to 30"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": true,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "a8f52bc7-5398-4c2c-87b7-cef48299f081",
+        "name": "Adelaide Mission Australia",
+        "type": "hospital",
+        "abn": 39705655276,
+        "registration_type": "health_service",
+        "parent_organization": null,
+        "website": "https://www.adelaidemissionaustr.gov.au"
+      },
+      "location": {
+        "name": "Adelaide Youth Development Program 53",
+        "address_line_1": "29 Main St",
+        "address_line_2": "Level 9",
+        "suburb": "Adelaide",
+        "city": "Adelaide",
+        "state": "SA",
+        "postcode": "5000",
+        "region": "adelaide_major",
+        "lga": "Adelaide Council",
+        "coordinates": {
+          "latitude": -34.91859600837914,
+          "longitude": 138.60214635805465,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 7563 4047",
+          "mobile": "1151 604 627",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "help@adelaidemissionaustr.org.au",
+          "intake": "intake@adelaidemissionaustr.org.au",
+          "admin": null
+        },
+        "website": "https://www.adelaidemissionaustr.gov.au",
+        "social_media": {
+          "facebook": "https://facebook.com/adelaidemissionaustralia"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "10am-4pm weekdays",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults up to 30",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": true,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Arabic",
+          "Hindi"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": false,
+          "maximum_clients": 248
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Ask Izzy",
+        "source_type": "api",
+        "source_url": "https://askizzy.org.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.648Z",
+        "data_quality_score": 0.99,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.648Z",
+        "updated_at": "2025-07-08T02:25:42.648Z",
+        "last_scraped": "2025-07-08T02:25:42.648Z",
+        "scraping_notes": "Generated from Ask Izzy for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.8,
+          "location_info": 0.85,
+          "service_details": 0.52,
+          "overall": 0.77
+        }
+      }
+    },
+    {
+      "id": "3e684cc4-5682-42f9-b429-29c43c6f2a1e",
+      "external_id": "EXT-72zlsm20m4o",
+      "name": "Adelaide Community Legal Centre 10",
+      "description": "Professional family support assistance available to community members in the Adelaide and surrounding areas region.",
+      "url": "https://www.adelaidefamilyservic.gov.au",
+      "status": "active",
+      "categories": [
+        "family_support",
+        "psychology"
+      ],
+      "keywords": [
+        "family_support",
+        "psychology",
+        "community",
+        "support",
+        "adelaide",
+        "sa"
+      ],
+      "service_types": [
+        "family_counselling",
+        "parenting_support"
+      ],
+      "target_demographics": [
+        "general"
+      ],
+      "age_range": {
+        "minimum": null,
+        "maximum": null,
+        "description": "All ages"
+      },
+      "youth_specific": false,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "a0069bfb-b14e-4849-a308-7eaecfeb086a",
+        "name": "Adelaide Family Services",
+        "type": "hospital",
+        "abn": 56071743978,
+        "registration_type": "health_service",
+        "parent_organization": null,
+        "website": "https://www.adelaidefamilyservic.gov.au"
+      },
+      "location": {
+        "name": "Adelaide Community Legal Centre 10",
+        "address_line_1": "162 Bourke St",
+        "address_line_2": null,
+        "suburb": "Adelaide",
+        "city": "Adelaide",
+        "state": "SA",
+        "postcode": "5000",
+        "region": "adelaide_major",
+        "lga": "Adelaide Council",
+        "coordinates": {
+          "latitude": -34.93022532426525,
+          "longitude": 138.6094450605057,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 5505 4416",
+          "mobile": "6611 370 61",
+          "toll_free": "1800 478 930",
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "help@adelaidefamilyservic.com.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.adelaidefamilyservic.gov.au",
+        "social_media": {},
+        "postal_address": {
+          "line_1": "PO Box 7518",
+          "line_2": null,
+          "suburb": "Adelaide",
+          "state": "SA",
+          "postcode": "5000"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "10am-4pm weekdays",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "All ages",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Open to all community members"
+        },
+        "languages": [
+          "English",
+          "Greek"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": 197
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Private"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Melbourne Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.648Z",
+        "data_quality_score": 0.76,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.648Z",
+        "updated_at": "2025-07-08T02:25:42.648Z",
+        "last_scraped": "2025-07-08T02:25:42.648Z",
+        "scraping_notes": "Generated from Melbourne Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.84,
+          "location_info": 0.96,
+          "service_details": 0.54,
+          "overall": 0.79
+        }
+      }
+    },
+    {
+      "id": "1c22e866-53bc-40c1-a426-6d484c7f047c",
+      "external_id": "EXT-gw4ubinqh45",
+      "name": "Adelaide Youth Health Clinic",
+      "description": "Comprehensive domestic violence support for young people throughout Adelaide and surrounding areas.",
+      "url": "https://www.adelaidehealthservic.org.au",
+      "status": "active",
+      "categories": [
+        "domestic_violence"
+      ],
+      "keywords": [
+        "domestic_violence",
+        "community",
+        "support",
+        "adelaide",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 18,
+        "maximum": 30,
+        "description": "Young adults up to 30"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": true,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "8d2aec03-f38c-4139-8c67-900a16778911",
+        "name": "Adelaide Health Service",
+        "type": "school",
+        "abn": 54466113963,
+        "registration_type": "educational_institution",
+        "parent_organization": null,
+        "website": "https://www.adelaidehealthservic.org.au"
+      },
+      "location": {
+        "name": "Adelaide Youth Health Clinic",
+        "address_line_1": "76 George St",
+        "address_line_2": null,
+        "suburb": "Adelaide",
+        "city": "Adelaide",
+        "state": "SA",
+        "postcode": "5000",
+        "region": "adelaide_major",
+        "lga": "Adelaide Council",
+        "coordinates": {
+          "latitude": -34.93338012277053,
+          "longitude": 138.60460086050188,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 5850 8902",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "contact@adelaidehealthservic.com.au",
+          "intake": null,
+          "admin": "admin@adelaidehealthservic.com.au"
+        },
+        "website": "https://www.adelaidehealthservic.org.au",
+        "social_media": {
+          "instagram": "@adelaidehealthservice"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm Mon-Fri, 9am-1pm Sat",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults up to 30",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": 139
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Service Seeker",
+        "source_type": "api",
+        "source_url": "https://www.serviceseeker.com.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.648Z",
+        "data_quality_score": 0.77,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.648Z",
+        "updated_at": "2025-07-08T02:25:42.648Z",
+        "last_scraped": "2025-07-08T02:25:42.648Z",
+        "scraping_notes": "Generated from Service Seeker for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.81,
+          "location_info": 1,
+          "service_details": 0.77,
+          "overall": 0.82
+        }
+      }
+    },
+    {
+      "id": "481ce068-dd86-4755-8a0d-47d2c235b415",
+      "external_id": "EXT-km2r26w47w9",
+      "name": "Adelaide Multicultural Youth Services",
+      "description": "Professional criminal law assistance available to young people in the Adelaide and surrounding areas region.",
+      "url": "https://www.headspaceadelaide.org.au",
+      "status": "active",
+      "categories": [
+        "criminal_law"
+      ],
+      "keywords": [
+        "criminal_law",
+        "community",
+        "support",
+        "adelaide",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 16,
+        "maximum": 25,
+        "description": "Young adults 16-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": true,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "32fc2009-25e6-4d68-b4f5-d6549d2a108d",
+        "name": "Headspace Adelaide",
+        "type": "indigenous",
+        "abn": 58254131765,
+        "registration_type": "aboriginal_corporation",
+        "parent_organization": null,
+        "website": "https://www.headspaceadelaide.org.au"
+      },
+      "location": {
+        "name": "Adelaide Multicultural Youth Services",
+        "address_line_1": "377 Bourke St",
+        "address_line_2": null,
+        "suburb": "Adelaide",
+        "city": "Adelaide",
+        "state": "SA",
+        "postcode": "5000",
+        "region": "adelaide_major",
+        "lga": "Adelaide Council",
+        "coordinates": {
+          "latitude": -34.93377782518155,
+          "longitude": 138.5932983761669,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 4317 9534",
+          "mobile": "8562 446 35",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "support@headspaceadelaide.gov.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.headspaceadelaide.org.au",
+        "social_media": {
+          "twitter": "@headspaceadelaide",
+          "linkedin": "https://linkedin.com/company/headspaceadelaide"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "10am-4pm weekdays",
+          "after_hours": true,
+          "weekends": true,
+          "public_holidays": true,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults 16-25",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": 188
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Sydney Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.648Z",
+        "data_quality_score": 0.8,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.648Z",
+        "updated_at": "2025-07-08T02:25:42.648Z",
+        "last_scraped": "2025-07-08T02:25:42.648Z",
+        "scraping_notes": "Generated from Sydney Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.63,
+          "location_info": 0.84,
+          "service_details": 0.68,
+          "overall": 0.94
+        }
+      }
+    },
+    {
+      "id": "1870a98e-5128-4f47-b934-1a9801428b4b",
+      "external_id": "EXT-8b3n8x01esd",
+      "name": "Adelaide Youth Counselling Service",
+      "description": "Providing emergency relief services to young people in Adelaide and surrounding areas.",
+      "url": "https://www.adelaidefamilyservic.com.au",
+      "status": "active",
+      "categories": [
+        "emergency_relief"
+      ],
+      "keywords": [
+        "emergency_relief",
+        "community",
+        "support",
+        "adelaide",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 12,
+        "maximum": 25,
+        "description": "Youth aged 12-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "2c1b5cfa-c0d5-47b7-b226-af015a57ddbf",
+        "name": "Adelaide Family Services",
+        "type": "school",
+        "abn": 81777475890,
+        "registration_type": "educational_institution",
+        "parent_organization": null,
+        "website": "https://www.adelaidefamilyservic.com.au"
+      },
+      "location": {
+        "name": "Adelaide Youth Counselling Service",
+        "address_line_1": "685 Main St",
+        "address_line_2": null,
+        "suburb": "Adelaide",
+        "city": "Adelaide",
+        "state": "SA",
+        "postcode": "5000",
+        "region": "adelaide_major",
+        "lga": "Adelaide Council",
+        "coordinates": {
+          "latitude": -34.927446363851686,
+          "longitude": 138.5911394242927,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": false,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 9839 0639",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "support@adelaidefamilyservic.com.au",
+          "intake": "intake@adelaidefamilyservic.com.au",
+          "admin": null
+        },
+        "website": "https://www.adelaidefamilyservic.com.au",
+        "social_media": {
+          "facebook": "https://facebook.com/adelaidefamilyservices"
+        },
+        "postal_address": {
+          "line_1": "PO Box 5787",
+          "line_2": null,
+          "suburb": "Adelaide",
+          "state": "SA",
+          "postcode": "5000"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm Mon-Fri, 9am-1pm Sat",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": true,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Low cost options available"
+        },
+        "eligibility": {
+          "age_requirements": "Youth aged 12-25",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": true,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Adelaide Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.648Z",
+        "data_quality_score": 0.92,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.648Z",
+        "updated_at": "2025-07-08T02:25:42.648Z",
+        "last_scraped": "2025-07-08T02:25:42.648Z",
+        "scraping_notes": "Generated from Adelaide Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.98,
+          "location_info": 0.96,
+          "service_details": 0.75,
+          "overall": 0.8
+        }
+      }
+    },
+    {
+      "id": "953f202d-3f00-4555-882a-f1b8b6015ac3",
+      "external_id": "EXT-kldrde8yomo",
+      "name": "Adelaide Youth Counselling Service 62",
+      "description": "Comprehensive emergency relief support for young people throughout Adelaide and surrounding areas.",
+      "url": "https://www.adelaidehealthservic.org.au",
+      "status": "active",
+      "categories": [
+        "emergency_relief",
+        "mentoring",
+        "cultural_support"
+      ],
+      "keywords": [
+        "emergency_relief",
+        "mentoring",
+        "cultural_support",
+        "community",
+        "support",
+        "adelaide",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "b1358105-8fbd-4140-a934-09a1ea2b410d",
+        "name": "Adelaide Health Service",
+        "type": "school",
+        "abn": 94886770193,
+        "registration_type": "educational_institution",
+        "parent_organization": null,
+        "website": "https://www.adelaidehealthservic.org.au"
+      },
+      "location": {
+        "name": "Adelaide Youth Counselling Service 62",
+        "address_line_1": "83 King St",
+        "address_line_2": null,
+        "suburb": "Adelaide",
+        "city": "Adelaide",
+        "state": "SA",
+        "postcode": "5000",
+        "region": "adelaide_major",
+        "lga": "Adelaide Council",
+        "coordinates": {
+          "latitude": -34.93154455310326,
+          "longitude": 138.6072508922659,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 9089 0029",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "services@adelaidehealthservic.org.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.adelaidehealthservic.org.au",
+        "social_media": {
+          "facebook": "https://facebook.com/adelaidehealthservice",
+          "twitter": "@adelaidehealthservice",
+          "instagram": "@adelaidehealthservice"
+        },
+        "postal_address": {
+          "line_1": "PO Box 6596",
+          "line_2": null,
+          "suburb": "Adelaide",
+          "state": "SA",
+          "postcode": "5000"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm Mon-Fri, 9am-1pm Sat",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Private"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Australian Charities Register",
+        "source_type": "government_portal",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.648Z",
+        "data_quality_score": 0.84,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.648Z",
+        "updated_at": "2025-07-08T02:25:42.648Z",
+        "last_scraped": "2025-07-08T02:25:42.648Z",
+        "scraping_notes": "Generated from Australian Charities Register for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.91,
+          "location_info": 0.94,
+          "service_details": 0.85,
+          "overall": 0.75
+        }
+      }
+    },
+    {
+      "id": "5cbfa883-f433-4a5e-9490-ec92c2f790e4",
+      "external_id": "EXT-rwylox47zm",
+      "name": "Adelaide Drug & Alcohol Support",
+      "description": "Community-based legal aid program serving young people across Adelaide and surrounding areas.",
+      "url": "https://www.adelaidehealthservic.com.au",
+      "status": "active",
+      "categories": [
+        "legal_aid",
+        "emergency_relief",
+        "training"
+      ],
+      "keywords": [
+        "legal_aid",
+        "emergency_relief",
+        "training",
+        "community",
+        "support",
+        "adelaide",
+        "sa"
+      ],
+      "service_types": [
+        "legal_advice",
+        "court_support"
+      ],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "multicultural"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "8ca0a98e-7cf8-4499-8433-d398d2c53094",
+        "name": "Adelaide Health Service",
+        "type": "charity",
+        "abn": 73857923045,
+        "registration_type": "registered_charity",
+        "parent_organization": null,
+        "website": "https://www.adelaidehealthservic.com.au"
+      },
+      "location": {
+        "name": "Adelaide Drug & Alcohol Support",
+        "address_line_1": "326 Collins St",
+        "address_line_2": null,
+        "suburb": "Adelaide",
+        "city": "Adelaide",
+        "state": "SA",
+        "postcode": "5000",
+        "region": "adelaide_major",
+        "lga": "Adelaide Council",
+        "coordinates": {
+          "latitude": -34.93129152549371,
+          "longitude": 138.59844581605614,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 8772 0554",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "help@adelaidehealthservic.gov.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.adelaidehealthservic.com.au",
+        "social_media": {
+          "twitter": "@adelaidehealthservice",
+          "instagram": "@adelaidehealthservice"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": true,
+          "cost_description": "Low cost options available"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": true,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "State"
+        ],
+        "contract_type": "block_funding",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.QLD",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.qld.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.648Z",
+        "data_quality_score": 0.71,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.648Z",
+        "updated_at": "2025-07-08T02:25:42.648Z",
+        "last_scraped": "2025-07-08T02:25:42.648Z",
+        "scraping_notes": "Generated from Data.QLD for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.83,
+          "location_info": 0.77,
+          "service_details": 0.59,
+          "overall": 0.9
+        }
+      }
+    },
+    {
+      "id": "b8a02ff6-90ac-42cf-a12a-542481fa98d6",
+      "external_id": "EXT-cvh08otxov",
+      "name": "Adelaide Emergency Relief Centre",
+      "description": "Community-based work experience program serving young people across Adelaide and surrounding areas.",
+      "url": "https://www.lifelineadelaide.com.au",
+      "status": "active",
+      "categories": [
+        "work_experience"
+      ],
+      "keywords": [
+        "work_experience",
+        "community",
+        "support",
+        "adelaide",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "multicultural"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "6275dfb0-7101-451c-9eba-72f1b780126c",
+        "name": "Lifeline Adelaide",
+        "type": "university",
+        "abn": 83622253038,
+        "registration_type": "university",
+        "parent_organization": "SA Department of Communities",
+        "website": "https://www.lifelineadelaide.com.au"
+      },
+      "location": {
+        "name": "Adelaide Emergency Relief Centre",
+        "address_line_1": "11 Bourke St",
+        "address_line_2": null,
+        "suburb": "Adelaide",
+        "city": "Adelaide",
+        "state": "SA",
+        "postcode": "5000",
+        "region": "adelaide_major",
+        "lga": "Adelaide Council",
+        "coordinates": {
+          "latitude": -34.92708117713337,
+          "longitude": 138.60566094453443,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": false,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 3034 8715",
+          "mobile": "5358 083 72",
+          "toll_free": "1300 121 229",
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "contact@lifelineadelaide.org.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.lifelineadelaide.com.au",
+        "social_media": {
+          "facebook": "https://facebook.com/lifelineadelaide",
+          "twitter": "@lifelineadelaide"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "By appointment only",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": true
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": true,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Greek",
+          "Spanish"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": 216
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Brisbane Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.648Z",
+        "data_quality_score": 0.85,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.648Z",
+        "updated_at": "2025-07-08T02:25:42.648Z",
+        "last_scraped": "2025-07-08T02:25:42.648Z",
+        "scraping_notes": "Generated from Brisbane Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.85,
+          "location_info": 0.72,
+          "service_details": 0.84,
+          "overall": 0.71
+        }
+      }
+    },
+    {
+      "id": "147189f5-3182-4d25-a416-ff2ae488c75b",
+      "external_id": "EXT-flbgy8rzcmm",
+      "name": "Mount Gambier Youth Health Clinic",
+      "description": "Community-based career guidance program serving young people across Mount Gambier and surrounding areas.",
+      "url": "https://www.mountgambierlegalaid.gov.au",
+      "status": "active",
+      "categories": [
+        "career_guidance",
+        "education_support"
+      ],
+      "keywords": [
+        "career_guidance",
+        "education_support",
+        "community",
+        "support",
+        "mount gambier",
+        "sa"
+      ],
+      "service_types": [
+        "tutoring",
+        "training_programs"
+      ],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "multicultural"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "ac84af8a-32fc-4ea2-b364-a4895006464c",
+        "name": "Mount Gambier Legal Aid",
+        "type": "community",
+        "abn": 23093813545,
+        "registration_type": "community_group",
+        "parent_organization": null,
+        "website": "https://www.mountgambierlegalaid.gov.au"
+      },
+      "location": {
+        "name": "Mount Gambier Youth Health Clinic",
+        "address_line_1": "615 Collins St",
+        "address_line_2": null,
+        "suburb": "Mount Gambier",
+        "city": "Mount Gambier",
+        "state": "SA",
+        "postcode": "5290",
+        "region": "mount gambier_rural",
+        "lga": "Mount Gambier Council",
+        "coordinates": {
+          "latitude": -37.82654901182443,
+          "longitude": 140.77865775798747,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 3382 1813",
+          "mobile": "7100 309 75",
+          "toll_free": "1300 330 333",
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "help@mountgambierlegalaid.org.au",
+          "intake": "intake@mountgambierlegalaid.org.au",
+          "admin": "admin@mountgambierlegalaid.org.au"
+        },
+        "website": "https://www.mountgambierlegalaid.gov.au",
+        "social_media": {
+          "facebook": "https://facebook.com/mountgambierlegalaid",
+          "twitter": "@mountgambierlegalaid",
+          "instagram": "@mountgambierlegalaid"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "10am-4pm weekdays",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Spanish"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Private"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.VIC",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.vic.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.7,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Data.VIC for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.82,
+          "location_info": 0.77,
+          "service_details": 0.58,
+          "overall": 0.77
+        }
+      }
+    },
+    {
+      "id": "ae057510-ab93-46e3-99a9-f727c95bddfa",
+      "external_id": "EXT-naew6td4hrf",
+      "name": "Mount Gambier Educational Support Centre",
+      "description": "Providing work experience services to young people in Mount Gambier and surrounding areas.",
+      "url": "https://www.mountgambiermissiona.gov.au",
+      "status": "active",
+      "categories": [
+        "work_experience"
+      ],
+      "keywords": [
+        "work_experience",
+        "community",
+        "support",
+        "mount gambier",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 18,
+        "maximum": 30,
+        "description": "Young adults up to 30"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "multicultural",
+        "refugee"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": true,
+      "organization": {
+        "id": "ad13b24a-2724-4568-b01f-058c0e8365c0",
+        "name": "Mount Gambier Mission Australia",
+        "type": "non_profit",
+        "abn": 43958698458,
+        "registration_type": "incorporated_association",
+        "parent_organization": "Salvation Army",
+        "website": "https://www.mountgambiermissiona.gov.au"
+      },
+      "location": {
+        "name": "Mount Gambier Educational Support Centre",
+        "address_line_1": "404 High St",
+        "address_line_2": null,
+        "suburb": "Mount Gambier",
+        "city": "Mount Gambier",
+        "state": "SA",
+        "postcode": "5290",
+        "region": "mount gambier_rural",
+        "lga": "Mount Gambier Council",
+        "coordinates": {
+          "latitude": -37.83609737081862,
+          "longitude": 140.78403455749088,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 7999 1103",
+          "mobile": "4070 535 63",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "contact@mountgambiermissiona.gov.au",
+          "intake": "intake@mountgambiermissiona.gov.au",
+          "admin": "admin@mountgambiermissiona.gov.au"
+        },
+        "website": "https://www.mountgambiermissiona.gov.au",
+        "social_media": {
+          "twitter": "@mountgambiermissionaustralia"
+        },
+        "postal_address": {
+          "line_1": "PO Box 7251",
+          "line_2": null,
+          "suburb": "Mount Gambier",
+          "state": "SA",
+          "postcode": "5290"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm Mon-Fri, 9am-1pm Sat",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults up to 30",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": true,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": 201
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "State"
+        ],
+        "contract_type": "program_funding",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Sydney Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.77,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Sydney Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.8,
+          "location_info": 0.75,
+          "service_details": 0.6,
+          "overall": 0.74
+        }
+      }
+    },
+    {
+      "id": "a7ba2f18-69ed-4ac6-84c8-4966ed14ecda",
+      "external_id": "EXT-bqcptll4sz",
+      "name": "Mount Gambier Youth Counselling Service",
+      "description": "Professional emergency relief assistance available to young people in the Mount Gambier and surrounding areas region.",
+      "url": "https://www.mountgambiercouncil.gov.au",
+      "status": "active",
+      "categories": [
+        "emergency_relief",
+        "community_development",
+        "psychology"
+      ],
+      "keywords": [
+        "emergency_relief",
+        "community_development",
+        "psychology",
+        "community",
+        "support",
+        "mount gambier",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 16,
+        "maximum": 25,
+        "description": "Young adults 16-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "d7e8813a-b652-4170-9aa1-dbf5ac7840a5",
+        "name": "Mount Gambier Council",
+        "type": "indigenous",
+        "abn": 82707416467,
+        "registration_type": "aboriginal_corporation",
+        "parent_organization": null,
+        "website": "https://www.mountgambiercouncil.gov.au"
+      },
+      "location": {
+        "name": "Mount Gambier Youth Counselling Service",
+        "address_line_1": "992 High St",
+        "address_line_2": "Level 10",
+        "suburb": "Mount Gambier",
+        "city": "Mount Gambier",
+        "state": "SA",
+        "postcode": "5290",
+        "region": "mount gambier_rural",
+        "lga": "Mount Gambier Council",
+        "coordinates": {
+          "latitude": -37.83465371796614,
+          "longitude": 140.78985993435762,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": false,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 4075 9815",
+          "mobile": null,
+          "toll_free": "1300 272 315",
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "support@mountgambiercouncil.gov.au",
+          "intake": "intake@mountgambiercouncil.gov.au",
+          "admin": "admin@mountgambiercouncil.gov.au"
+        },
+        "website": "https://www.mountgambiercouncil.gov.au",
+        "social_media": {
+          "instagram": "@mountgambiercouncil"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Low cost options available"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults 16-25",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": true,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Italian"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": 63
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Brisbane Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.97,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Brisbane Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.94,
+          "location_info": 0.75,
+          "service_details": 0.93,
+          "overall": 0.75
+        }
+      }
+    },
+    {
+      "id": "54f4a66e-c4ee-439a-bc47-4a0f2cca770c",
+      "external_id": "EXT-6htwkedzpb",
+      "name": "Mount Gambier Multicultural Youth Services",
+      "description": "Providing multicultural services to young people in Mount Gambier and surrounding areas.",
+      "url": "https://www.beyondbluemountgambi.com.au",
+      "status": "active",
+      "categories": [
+        "multicultural"
+      ],
+      "keywords": [
+        "multicultural",
+        "community",
+        "support",
+        "mount gambier",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 18,
+        "maximum": 30,
+        "description": "Young adults up to 30"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "9523747c-1867-4b0f-afd0-cc82e94acf91",
+        "name": "Beyond Blue Mount Gambier",
+        "type": "indigenous",
+        "abn": 47652008043,
+        "registration_type": "aboriginal_corporation",
+        "parent_organization": null,
+        "website": "https://www.beyondbluemountgambi.com.au"
+      },
+      "location": {
+        "name": "Mount Gambier Multicultural Youth Services",
+        "address_line_1": "490 Main St",
+        "address_line_2": "Level 2",
+        "suburb": "Mount Gambier",
+        "city": "Mount Gambier",
+        "state": "SA",
+        "postcode": "5290",
+        "region": "mount gambier_rural",
+        "lga": "Mount Gambier Council",
+        "coordinates": {
+          "latitude": -37.83303982793692,
+          "longitude": 140.78863010376836,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 9876 4728",
+          "mobile": "1256 214 945",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "support@beyondbluemountgambi.com.au",
+          "intake": "intake@beyondbluemountgambi.com.au",
+          "admin": null
+        },
+        "website": "https://www.beyondbluemountgambi.com.au",
+        "social_media": {
+          "facebook": "https://facebook.com/beyondbluemountgambier",
+          "twitter": "@beyondbluemountgambier",
+          "instagram": "@beyondbluemountgambier"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "8am-6pm Mon-Fri",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": true,
+          "cost_description": "Low cost options available"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults up to 30",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": true,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": false,
+          "group": true,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.QLD",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.qld.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.82,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Data.QLD for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.79,
+          "location_info": 0.75,
+          "service_details": 0.51,
+          "overall": 0.85
+        }
+      }
+    },
+    {
+      "id": "b978b003-e380-447e-8b5b-7d4ada2ec521",
+      "external_id": "EXT-0wcg7420oyu",
+      "name": "Whyalla Educational Support Centre",
+      "description": "Professional cultural support assistance available to young people in the Whyalla and surrounding areas region.",
+      "url": "https://www.whyallayouthservices.com.au",
+      "status": "active",
+      "categories": [
+        "cultural_support",
+        "vocational_education",
+        "medical"
+      ],
+      "keywords": [
+        "cultural_support",
+        "vocational_education",
+        "medical",
+        "community",
+        "support",
+        "whyalla",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 12,
+        "maximum": 25,
+        "description": "Youth aged 12-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "migrant"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "15fde743-925f-406c-97ec-8dcaa6d85352",
+        "name": "Whyalla Youth Services",
+        "type": "community",
+        "abn": 53350895579,
+        "registration_type": "community_group",
+        "parent_organization": null,
+        "website": "https://www.whyallayouthservices.com.au"
+      },
+      "location": {
+        "name": "Whyalla Educational Support Centre",
+        "address_line_1": "53 King St",
+        "address_line_2": null,
+        "suburb": "Whyalla",
+        "city": "Whyalla",
+        "state": "SA",
+        "postcode": "5600",
+        "region": "whyalla_rural",
+        "lga": "Whyalla Council",
+        "coordinates": {
+          "latitude": -33.019485716960645,
+          "longitude": 137.5919526572628,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 8063 5317",
+          "mobile": null,
+          "toll_free": "1300 342 531",
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "contact@whyallayouthservices.org.au",
+          "intake": null,
+          "admin": "admin@whyallayouthservices.org.au"
+        },
+        "website": "https://www.whyallayouthservices.com.au",
+        "social_media": {
+          "facebook": "https://facebook.com/whyallayouthservices",
+          "instagram": "@whyallayouthservices"
+        },
+        "postal_address": {
+          "line_1": "PO Box 7110",
+          "line_2": null,
+          "suburb": "Whyalla",
+          "state": "SA",
+          "postcode": "5600"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "10am-4pm weekdays",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": true
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Youth aged 12-25",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Mandarin",
+          "Arabic"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Ask Izzy",
+        "source_type": "api",
+        "source_url": "https://askizzy.org.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.97,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Ask Izzy for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.69,
+          "location_info": 0.92,
+          "service_details": 0.88,
+          "overall": 0.81
+        }
+      }
+    },
+    {
+      "id": "b48eaaaa-674f-42df-a5f6-ce6f97426ede",
+      "external_id": "EXT-1kzoei5dxv3",
+      "name": "Whyalla Employment Training Hub",
+      "description": "Providing cultural support services to community members in Whyalla and surrounding areas.",
+      "url": "https://www.whyallahealthservice.com.au",
+      "status": "active",
+      "categories": [
+        "cultural_support"
+      ],
+      "keywords": [
+        "cultural_support",
+        "community",
+        "support",
+        "whyalla",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "general"
+      ],
+      "age_range": {
+        "minimum": null,
+        "maximum": null,
+        "description": "All ages"
+      },
+      "youth_specific": false,
+      "indigenous_specific": true,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "56c8d9fc-6791-416c-89b4-e194c26a68c1",
+        "name": "Whyalla Health Service",
+        "type": "university",
+        "abn": 36855503573,
+        "registration_type": "university",
+        "parent_organization": null,
+        "website": "https://www.whyallahealthservice.com.au"
+      },
+      "location": {
+        "name": "Whyalla Employment Training Hub",
+        "address_line_1": "84 King St",
+        "address_line_2": null,
+        "suburb": "Whyalla",
+        "city": "Whyalla",
+        "state": "SA",
+        "postcode": "5600",
+        "region": "whyalla_rural",
+        "lga": "Whyalla Council",
+        "coordinates": {
+          "latitude": -33.035826237641345,
+          "longitude": 137.5814354930646,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 3179 0617",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "support@whyallahealthservice.gov.au",
+          "intake": "intake@whyallahealthservice.gov.au",
+          "admin": "admin@whyallahealthservice.gov.au"
+        },
+        "website": "https://www.whyallahealthservice.com.au",
+        "social_media": {
+          "facebook": "https://facebook.com/whyallahealthservice"
+        },
+        "postal_address": {
+          "line_1": "PO Box 1100",
+          "line_2": null,
+          "suburb": "Whyalla",
+          "state": "SA",
+          "postcode": "5600"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "By appointment only",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Low cost options available"
+        },
+        "eligibility": {
+          "age_requirements": "All ages",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": true,
+          "appointment_required": true,
+          "criteria": "Open to all community members"
+        },
+        "languages": [
+          "English",
+          "Spanish",
+          "Arabic"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": 187
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Service Seeker",
+        "source_type": "api",
+        "source_url": "https://www.serviceseeker.com.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.86,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Service Seeker for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.74,
+          "location_info": 0.77,
+          "service_details": 0.53,
+          "overall": 0.88
+        }
+      }
+    },
+    {
+      "id": "2882e239-36c0-4a7e-a1a7-92380644eb02",
+      "external_id": "EXT-i7bkzd9g54",
+      "name": "Whyalla Multicultural Youth Services",
+      "description": "Dedicated parenting services designed for young people living in Whyalla and surrounding areas.",
+      "url": "https://www.whyallacommunitycent.gov.au",
+      "status": "active",
+      "categories": [
+        "parenting"
+      ],
+      "keywords": [
+        "parenting",
+        "community",
+        "support",
+        "whyalla",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 12,
+        "maximum": 25,
+        "description": "Youth aged 12-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "multicultural"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "54c3f643-894f-408f-bad1-56a3d316d6ac",
+        "name": "Whyalla Community Centre",
+        "type": "government",
+        "abn": 82505744119,
+        "registration_type": "government_entity",
+        "parent_organization": null,
+        "website": "https://www.whyallacommunitycent.gov.au"
+      },
+      "location": {
+        "name": "Whyalla Multicultural Youth Services",
+        "address_line_1": "433 High St",
+        "address_line_2": "Level 6",
+        "suburb": "Whyalla",
+        "city": "Whyalla",
+        "state": "SA",
+        "postcode": "5600",
+        "region": "whyalla_rural",
+        "lga": "Whyalla Council",
+        "coordinates": {
+          "latitude": -33.02850540287757,
+          "longitude": 137.57673704208275,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 9484 4107",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "services@whyallacommunitycent.com.au",
+          "intake": "intake@whyallacommunitycent.com.au",
+          "admin": "admin@whyallacommunitycent.com.au"
+        },
+        "website": "https://www.whyallacommunitycent.gov.au",
+        "social_media": {
+          "linkedin": "https://linkedin.com/company/whyallacommunitycentre"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "8am-6pm Mon-Fri",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": true,
+          "sliding_scale": true,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Youth aged 12-25",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Arabic"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "State",
+          "Local"
+        ],
+        "contract_type": "multi_year_grant",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.QLD",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.qld.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 1,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Data.QLD for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.7,
+          "location_info": 0.93,
+          "service_details": 0.65,
+          "overall": 0.87
+        }
+      }
+    },
+    {
+      "id": "3a56b049-79f0-4fb6-bfda-077a5b819a61",
+      "external_id": "EXT-5ppe6ssi5q6",
+      "name": "Whyalla Youth Legal Service",
+      "description": "Providing job placement services to young people in Whyalla and surrounding areas.",
+      "url": "https://www.whyallacommunitycent.org.au",
+      "status": "active",
+      "categories": [
+        "job_placement",
+        "volunteer_programs",
+        "drug_alcohol"
+      ],
+      "keywords": [
+        "job_placement",
+        "volunteer_programs",
+        "drug_alcohol",
+        "community",
+        "support",
+        "whyalla",
+        "sa"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "e316c490-c51f-4f8c-80e9-166f699b0c3e",
+        "name": "Whyalla Community Centre",
+        "type": "charity",
+        "abn": 56992016063,
+        "registration_type": "registered_charity",
+        "parent_organization": "SA Department of Communities",
+        "website": "https://www.whyallacommunitycent.org.au"
+      },
+      "location": {
+        "name": "Whyalla Youth Legal Service",
+        "address_line_1": "552 Bourke St",
+        "address_line_2": "Level 6",
+        "suburb": "Whyalla",
+        "city": "Whyalla",
+        "state": "SA",
+        "postcode": "5600",
+        "region": "whyalla_rural",
+        "lga": "Whyalla Council",
+        "coordinates": {
+          "latitude": -33.02767038988647,
+          "longitude": 137.58593920929758,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 1764 6120",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "help@whyallacommunitycent.org.au",
+          "intake": "intake@whyallacommunitycent.org.au",
+          "admin": null
+        },
+        "website": "https://www.whyallacommunitycent.org.au",
+        "social_media": {
+          "facebook": "https://facebook.com/whyallacommunitycentre",
+          "twitter": "@whyallacommunitycentre",
+          "linkedin": "https://linkedin.com/company/whyallacommunitycentre"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "SA"
+          ],
+          "referral_required": true,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": false,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "State",
+          "Local",
+          "Private"
+        ],
+        "contract_type": "annual_grant",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Adelaide Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.651Z",
+        "data_quality_score": 0.91,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.651Z",
+        "updated_at": "2025-07-08T02:25:42.651Z",
+        "last_scraped": "2025-07-08T02:25:42.651Z",
+        "scraping_notes": "Generated from Adelaide Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.9,
+          "location_info": 0.71,
+          "service_details": 0.67,
+          "overall": 0.96
+        }
+      }
+    }
+  ]
+}

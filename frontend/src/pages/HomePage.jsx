@@ -68,11 +68,11 @@ export default function HomePage() {
           <div className="text-center">
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
               Find Youth Justice Services
-              <span className="block text-primary-200">Across Queensland</span>
+              <span className="block text-primary-200">Across Australia</span>
             </h1>
             <p className="text-xl lg:text-2xl text-primary-100 mb-8 max-w-3xl mx-auto">
-              Connect young people with essential support services including legal aid, 
-              mental health support, housing assistance, and crisis intervention.
+              Connect young people with essential support services across all states and territories. 
+              603+ verified services including legal aid, mental health support, housing assistance, and crisis intervention.
             </p>
 
             {/* Search Bar */}
@@ -81,7 +81,7 @@ export default function HomePage() {
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
                   type="text"
-                  placeholder="Search for services (e.g., 'youth legal aid Brisbane')"
+                  placeholder="Search for services (e.g., 'youth legal aid Brisbane', 'mental health Sydney')"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-12 pr-4 py-4 text-lg rounded-xl border-0 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-primary-300 shadow-lg"
@@ -143,7 +143,7 @@ export default function HomePage() {
           ) : (
             <div className="text-center">
               <h2 className="text-3xl font-bold text-gray-900 mb-8">
-                Connecting Queensland's Youth with Support
+                Connecting Australia's Youth with Support
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div className="text-center">

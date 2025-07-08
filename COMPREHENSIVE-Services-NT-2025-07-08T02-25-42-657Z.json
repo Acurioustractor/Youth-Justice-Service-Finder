@@ -1,0 +1,2352 @@
+{
+  "state": "NT",
+  "total_services": 15,
+  "generated_at": "2025-07-08T02:25:42.661Z",
+  "services": [
+    {
+      "id": "2da1ecd0-b00e-47c7-a147-b7f7ac8c748d",
+      "external_id": "EXT-yvb0n0xxp1f",
+      "name": "Darwin Youth Development Program",
+      "description": "Dedicated drug alcohol services designed for young people living in Darwin and surrounding areas.",
+      "url": "https://www.darwincouncil.com.au",
+      "status": "active",
+      "categories": [
+        "drug_alcohol"
+      ],
+      "keywords": [
+        "drug_alcohol",
+        "community",
+        "support",
+        "darwin",
+        "nt"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "39331d7c-0c0b-43ed-9405-b40db8839c03",
+        "name": "Darwin Council",
+        "type": "hospital",
+        "abn": 56619850296,
+        "registration_type": "health_service",
+        "parent_organization": null,
+        "website": "https://www.darwincouncil.com.au"
+      },
+      "location": {
+        "name": "Darwin Youth Development Program",
+        "address_line_1": "848 Church St",
+        "address_line_2": null,
+        "suburb": "Darwin City",
+        "city": "Darwin",
+        "state": "NT",
+        "postcode": "0800",
+        "region": "darwin_major",
+        "lga": "Darwin Council",
+        "coordinates": {
+          "latitude": -12.454368488017963,
+          "longitude": 130.84607561635346,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 8079 6140",
+          "mobile": "9859 554 41",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "contact@darwincouncil.com.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.darwincouncil.com.au",
+        "social_media": {},
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "24/7 crisis line",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Low cost options available"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "NT"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": 185
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Melbourne Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.648Z",
+        "data_quality_score": 0.81,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.648Z",
+        "updated_at": "2025-07-08T02:25:42.648Z",
+        "last_scraped": "2025-07-08T02:25:42.648Z",
+        "scraping_notes": "Generated from Melbourne Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.86,
+          "location_info": 0.87,
+          "service_details": 0.5,
+          "overall": 0.95
+        }
+      }
+    },
+    {
+      "id": "0654bf6d-b9f8-4769-8d1b-f67729e0509f",
+      "external_id": "EXT-fionnmc1ts",
+      "name": "Darwin Homeless Youth Outreach",
+      "description": "Dedicated drug alcohol services designed for young people living in Darwin and surrounding areas.",
+      "url": "https://www.darwinlegalaid.com.au",
+      "status": "active",
+      "categories": [
+        "drug_alcohol",
+        "sports_recreation",
+        "indigenous_services"
+      ],
+      "keywords": [
+        "drug_alcohol",
+        "sports_recreation",
+        "indigenous_services",
+        "community",
+        "support",
+        "darwin",
+        "nt"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": true,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "84ce0070-d9ea-4d19-be7e-052370fd04f9",
+        "name": "Darwin Legal Aid",
+        "type": "commercial",
+        "abn": 90876034696,
+        "registration_type": "proprietary_limited",
+        "parent_organization": null,
+        "website": "https://www.darwinlegalaid.com.au"
+      },
+      "location": {
+        "name": "Darwin Homeless Youth Outreach",
+        "address_line_1": "835 Main St",
+        "address_line_2": null,
+        "suburb": "Darwin City",
+        "city": "Darwin",
+        "state": "NT",
+        "postcode": "0800",
+        "region": "darwin_major",
+        "lga": "Darwin Council",
+        "coordinates": {
+          "latitude": -12.467032076089884,
+          "longitude": 130.84683657263162,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 2546 0415",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "services@darwinlegalaid.com.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.darwinlegalaid.com.au",
+        "social_media": {
+          "twitter": "@darwinlegalaid"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm Mon-Fri, 9am-1pm Sat",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "NT"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Arabic"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": 93
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Adelaide Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.92,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Adelaide Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.67,
+          "location_info": 0.83,
+          "service_details": 0.6,
+          "overall": 0.73
+        }
+      }
+    },
+    {
+      "id": "243a674d-9937-4243-818e-b821ca125790",
+      "external_id": "EXT-j8z4rl7p95s",
+      "name": "Darwin Youth Housing Support",
+      "description": "Providing multicultural services to young people in Darwin and surrounding areas.",
+      "url": "https://www.darwinfamilyservices.org.au",
+      "status": "active",
+      "categories": [
+        "multicultural",
+        "parenting"
+      ],
+      "keywords": [
+        "multicultural",
+        "parenting",
+        "community",
+        "support",
+        "darwin",
+        "nt"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "refugee"
+      ],
+      "disability_specific": true,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "ffd361d2-2141-478a-88e3-8aa444ccb409",
+        "name": "Darwin Family Services",
+        "type": "school",
+        "abn": 49827829509,
+        "registration_type": "educational_institution",
+        "parent_organization": null,
+        "website": "https://www.darwinfamilyservices.org.au"
+      },
+      "location": {
+        "name": "Darwin Youth Housing Support",
+        "address_line_1": "606 George St",
+        "address_line_2": null,
+        "suburb": "Darwin City",
+        "city": "Darwin",
+        "state": "NT",
+        "postcode": "0800",
+        "region": "darwin_major",
+        "lga": "Darwin Council",
+        "coordinates": {
+          "latitude": -12.459439418200672,
+          "longitude": 130.84200902904703,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": false,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 8229 9245",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "contact@darwinfamilyservices.com.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.darwinfamilyservices.org.au",
+        "social_media": {},
+        "postal_address": {
+          "line_1": "PO Box 5050",
+          "line_2": null,
+          "suburb": "Darwin City",
+          "state": "NT",
+          "postcode": "0800"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "By appointment only",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": true,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Low cost options available"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "NT"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": 129
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.NSW",
+        "source_type": "government_portal",
+        "source_url": "https://data.nsw.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.77,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Data.NSW for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.74,
+          "location_info": 0.97,
+          "service_details": 0.62,
+          "overall": 0.91
+        }
+      }
+    },
+    {
+      "id": "bc1d0ec2-15c7-491f-a08f-0b84dddfcfe6",
+      "external_id": "EXT-8icqnub7ab3",
+      "name": "Darwin Youth Arts Program",
+      "description": "Dedicated cultural support services designed for young people living in Darwin and surrounding areas.",
+      "url": "https://www.darwincouncil.org.au",
+      "status": "active",
+      "categories": [
+        "cultural_support",
+        "family_law",
+        "centrelink"
+      ],
+      "keywords": [
+        "cultural_support",
+        "family_law",
+        "centrelink",
+        "community",
+        "support",
+        "darwin",
+        "nt"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "2f484e1e-8153-4b94-89eb-4367bae0e56c",
+        "name": "Darwin Council",
+        "type": "hospital",
+        "abn": 82324872900,
+        "registration_type": "health_service",
+        "parent_organization": null,
+        "website": "https://www.darwincouncil.org.au"
+      },
+      "location": {
+        "name": "Darwin Youth Arts Program",
+        "address_line_1": "386 Collins St",
+        "address_line_2": null,
+        "suburb": "Darwin City",
+        "city": "Darwin",
+        "state": "NT",
+        "postcode": "0800",
+        "region": "darwin_major",
+        "lga": "Darwin Council",
+        "coordinates": {
+          "latitude": -12.4617551219565,
+          "longitude": 130.84394669915162,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 5846 8842",
+          "mobile": "1086 831 937",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "contact@darwincouncil.org.au",
+          "intake": "intake@darwincouncil.org.au",
+          "admin": "admin@darwincouncil.org.au"
+        },
+        "website": "https://www.darwincouncil.org.au",
+        "social_media": {
+          "facebook": "https://facebook.com/darwincouncil",
+          "twitter": "@darwincouncil",
+          "linkedin": "https://linkedin.com/company/darwincouncil"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "10am-4pm weekdays",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": true
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "NT"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": false,
+          "group": true,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "NT Open Data",
+        "source_type": "government_portal",
+        "source_url": "https://data.nt.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.83,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from NT Open Data for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.81,
+          "location_info": 0.71,
+          "service_details": 0.78,
+          "overall": 0.71
+        }
+      }
+    },
+    {
+      "id": "d35eb27d-c986-475e-98a2-fb4b96f63278",
+      "external_id": "EXT-zzqe56so29g",
+      "name": "Darwin Youth Justice Support",
+      "description": "Professional drug alcohol assistance available to young people in the Darwin and surrounding areas region.",
+      "url": "https://www.darwinhealthservice.com.au",
+      "status": "active",
+      "categories": [
+        "drug_alcohol"
+      ],
+      "keywords": [
+        "drug_alcohol",
+        "community",
+        "support",
+        "darwin",
+        "nt"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 18,
+        "maximum": 30,
+        "description": "Young adults up to 30"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "ce139b60-eeed-4e3f-ab9f-9b6f0d8710fc",
+        "name": "Darwin Health Service",
+        "type": "school",
+        "abn": 68506027900,
+        "registration_type": "educational_institution",
+        "parent_organization": null,
+        "website": "https://www.darwinhealthservice.com.au"
+      },
+      "location": {
+        "name": "Darwin Youth Justice Support",
+        "address_line_1": "761 High St",
+        "address_line_2": null,
+        "suburb": "Darwin City",
+        "city": "Darwin",
+        "state": "NT",
+        "postcode": "0800",
+        "region": "darwin_major",
+        "lga": "Darwin Council",
+        "coordinates": {
+          "latitude": -12.461051603323387,
+          "longitude": 130.8440403423645,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": false,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 4506 5072",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "info@darwinhealthservice.gov.au",
+          "intake": "intake@darwinhealthservice.gov.au",
+          "admin": "admin@darwinhealthservice.gov.au"
+        },
+        "website": "https://www.darwinhealthservice.com.au",
+        "social_media": {
+          "facebook": "https://facebook.com/darwinhealthservice"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "By appointment only",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": true,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults up to 30",
+          "geographic_restrictions": [
+            "NT"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Private"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.ACT",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.act.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.89,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Data.ACT for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.8,
+          "location_info": 0.93,
+          "service_details": 0.71,
+          "overall": 0.73
+        }
+      }
+    },
+    {
+      "id": "1d415cf1-42f4-4433-bbb3-838dbe3d5db4",
+      "external_id": "EXT-v2u90rsmxb",
+      "name": "Darwin Homeless Youth Outreach 85",
+      "description": "Dedicated transitional housing services designed for young people living in Darwin and surrounding areas.",
+      "url": "https://www.darwinsalvationarmy.org.au",
+      "status": "active",
+      "categories": [
+        "transitional_housing",
+        "training",
+        "financial_counselling"
+      ],
+      "keywords": [
+        "transitional_housing",
+        "training",
+        "financial_counselling",
+        "community",
+        "support",
+        "darwin",
+        "nt"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 18,
+        "maximum": 30,
+        "description": "Young adults up to 30"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "multicultural"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "1dc67442-d64e-4e84-92d4-2a38b8f02c42",
+        "name": "Darwin Salvation Army",
+        "type": "school",
+        "abn": 52646634312,
+        "registration_type": "educational_institution",
+        "parent_organization": "Mission Australia",
+        "website": "https://www.darwinsalvationarmy.org.au"
+      },
+      "location": {
+        "name": "Darwin Homeless Youth Outreach 85",
+        "address_line_1": "367 King St",
+        "address_line_2": "Level 4",
+        "suburb": "Darwin City",
+        "city": "Darwin",
+        "state": "NT",
+        "postcode": "0800",
+        "region": "darwin_major",
+        "lga": "Darwin Council",
+        "coordinates": {
+          "latitude": -12.455003644637276,
+          "longitude": 130.84177438552373,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 7196 5134",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "services@darwinsalvationarmy.com.au",
+          "intake": "intake@darwinsalvationarmy.com.au",
+          "admin": null
+        },
+        "website": "https://www.darwinsalvationarmy.org.au",
+        "social_media": {
+          "twitter": "@darwinsalvationarmy"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "By appointment only",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": true,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults up to 30",
+          "geographic_restrictions": [
+            "NT"
+          ],
+          "referral_required": true,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Italian"
+        ],
+        "capacity": {
+          "individual": false,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Adelaide Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.75,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Adelaide Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.63,
+          "location_info": 0.76,
+          "service_details": 0.69,
+          "overall": 0.88
+        }
+      }
+    },
+    {
+      "id": "e5036893-969e-4d13-812d-264fb71bfadf",
+      "external_id": "EXT-goj638jlgoq",
+      "name": "Darwin Employment Training Hub",
+      "description": "Professional indigenous services assistance available to community members in the Darwin and surrounding areas region.",
+      "url": "https://www.darwinyouthservices.com.au",
+      "status": "active",
+      "categories": [
+        "indigenous_services"
+      ],
+      "keywords": [
+        "indigenous_services",
+        "community",
+        "support",
+        "darwin",
+        "nt"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "general"
+      ],
+      "age_range": {
+        "minimum": null,
+        "maximum": null,
+        "description": "All ages"
+      },
+      "youth_specific": false,
+      "indigenous_specific": true,
+      "culturally_specific": [
+        "multicultural"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "a3acad0f-82b4-4172-acbd-6491bae14611",
+        "name": "Darwin Youth Services",
+        "type": "school",
+        "abn": 61642829181,
+        "registration_type": "educational_institution",
+        "parent_organization": null,
+        "website": "https://www.darwinyouthservices.com.au"
+      },
+      "location": {
+        "name": "Darwin Employment Training Hub",
+        "address_line_1": "88 Church St",
+        "address_line_2": null,
+        "suburb": "Darwin City",
+        "city": "Darwin",
+        "state": "NT",
+        "postcode": "0800",
+        "region": "darwin_major",
+        "lga": "Darwin Council",
+        "coordinates": {
+          "latitude": -12.455776580677854,
+          "longitude": 130.83611887827436,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 6998 1813",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "help@darwinyouthservices.org.au",
+          "intake": null,
+          "admin": "admin@darwinyouthservices.org.au"
+        },
+        "website": "https://www.darwinyouthservices.com.au",
+        "social_media": {
+          "instagram": "@darwinyouthservices"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "24/7 crisis line",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "All ages",
+          "geographic_restrictions": [
+            "NT"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Open to all community members"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": false,
+          "maximum_clients": 185
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.VIC",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.vic.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.72,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Data.VIC for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.67,
+          "location_info": 0.99,
+          "service_details": 0.85,
+          "overall": 0.8
+        }
+      }
+    },
+    {
+      "id": "add48105-19a7-4a18-a017-094eadfc2b8c",
+      "external_id": "EXT-zwz8lj759bn",
+      "name": "Darwin Employment Training Hub 74",
+      "description": "Community-based sports recreation program serving young people across Darwin and surrounding areas.",
+      "url": "https://www.headspacedarwin.org.au",
+      "status": "active",
+      "categories": [
+        "sports_recreation",
+        "cultural_support"
+      ],
+      "keywords": [
+        "sports_recreation",
+        "cultural_support",
+        "community",
+        "support",
+        "darwin",
+        "nt"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 16,
+        "maximum": 25,
+        "description": "Young adults 16-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": true,
+      "culturally_specific": [
+        "refugee",
+        "ethnic_communities"
+      ],
+      "disability_specific": true,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "90499076-4a71-428c-a70b-14f2df56aaf1",
+        "name": "Headspace Darwin",
+        "type": "indigenous",
+        "abn": 34477536560,
+        "registration_type": "aboriginal_corporation",
+        "parent_organization": "NT Department of Health",
+        "website": "https://www.headspacedarwin.org.au"
+      },
+      "location": {
+        "name": "Darwin Employment Training Hub 74",
+        "address_line_1": "41 Main St",
+        "address_line_2": null,
+        "suburb": "Darwin City",
+        "city": "Darwin",
+        "state": "NT",
+        "postcode": "0800",
+        "region": "darwin_major",
+        "lga": "Darwin Council",
+        "coordinates": {
+          "latitude": -12.469840895555127,
+          "longitude": 130.84539591129723,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 8639 4716",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "contact@headspacedarwin.gov.au",
+          "intake": "intake@headspacedarwin.gov.au",
+          "admin": null
+        },
+        "website": "https://www.headspacedarwin.org.au",
+        "social_media": {
+          "facebook": "https://facebook.com/headspacedarwin",
+          "twitter": "@headspacedarwin",
+          "instagram": "@headspacedarwin"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "24/7 crisis line",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Low cost options available"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults 16-25",
+          "geographic_restrictions": [
+            "NT"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Spanish",
+          "Hindi"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Private"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Australian Charities Register",
+        "source_type": "government_portal",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.8,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Australian Charities Register for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.77,
+          "location_info": 0.81,
+          "service_details": 0.56,
+          "overall": 0.71
+        }
+      }
+    },
+    {
+      "id": "98db35ec-93fa-4ad6-980f-cd8b83288e22",
+      "external_id": "EXT-5kitp1l2fgq",
+      "name": "Darwin Aboriginal Health Service",
+      "description": "Professional sports recreation assistance available to young people in the Darwin and surrounding areas region.",
+      "url": "https://www.darwincommunitycentr.com.au",
+      "status": "active",
+      "categories": [
+        "sports_recreation",
+        "cultural_support"
+      ],
+      "keywords": [
+        "sports_recreation",
+        "cultural_support",
+        "community",
+        "support",
+        "darwin",
+        "nt"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": true,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": true,
+      "organization": {
+        "id": "be93f876-47b6-4126-a6b3-8e9fa6259653",
+        "name": "Darwin Community Centre",
+        "type": "school",
+        "abn": 16782227189,
+        "registration_type": "educational_institution",
+        "parent_organization": null,
+        "website": "https://www.darwincommunitycentr.com.au"
+      },
+      "location": {
+        "name": "Darwin Aboriginal Health Service",
+        "address_line_1": "381 Church St",
+        "address_line_2": null,
+        "suburb": "Darwin City",
+        "city": "Darwin",
+        "state": "NT",
+        "postcode": "0800",
+        "region": "darwin_major",
+        "lga": "Darwin Council",
+        "coordinates": {
+          "latitude": -12.464132483630706,
+          "longitude": 130.85448594248322,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 9338 3093",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "info@darwincommunitycentr.com.au",
+          "intake": "intake@darwincommunitycentr.com.au",
+          "admin": null
+        },
+        "website": "https://www.darwincommunitycentr.com.au",
+        "social_media": {
+          "linkedin": "https://linkedin.com/company/darwincommunitycentre"
+        },
+        "postal_address": {
+          "line_1": "PO Box 3885",
+          "line_2": null,
+          "suburb": "Darwin City",
+          "state": "NT",
+          "postcode": "0800"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "10am-4pm weekdays",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "NT"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Greek",
+          "Arabic"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": 80
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Adelaide Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.83,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Adelaide Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.62,
+          "location_info": 0.72,
+          "service_details": 0.61,
+          "overall": 0.9
+        }
+      }
+    },
+    {
+      "id": "e23c50b3-2469-492c-909e-75df4cc90133",
+      "external_id": "EXT-e81smxinva",
+      "name": "Darwin Educational Support Centre",
+      "description": "Community-based youth development program serving young people across Darwin and surrounding areas.",
+      "url": "https://www.beyondbluedarwin.com.au",
+      "status": "active",
+      "categories": [
+        "youth_development",
+        "medical"
+      ],
+      "keywords": [
+        "youth_development",
+        "medical",
+        "community",
+        "support",
+        "darwin",
+        "nt"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 16,
+        "maximum": 25,
+        "description": "Young adults 16-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [
+        "multicultural"
+      ],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "cb7930d5-19dd-41bf-812b-88ef2a65c7ef",
+        "name": "Beyond Blue Darwin",
+        "type": "non_profit",
+        "abn": 27936072512,
+        "registration_type": "incorporated_association",
+        "parent_organization": "NT Department of Justice",
+        "website": "https://www.beyondbluedarwin.com.au"
+      },
+      "location": {
+        "name": "Darwin Educational Support Centre",
+        "address_line_1": "683 Bourke St",
+        "address_line_2": null,
+        "suburb": "Darwin City",
+        "city": "Darwin",
+        "state": "NT",
+        "postcode": "0800",
+        "region": "darwin_major",
+        "lga": "Darwin Council",
+        "coordinates": {
+          "latitude": -12.46086970527805,
+          "longitude": 130.84222672408217,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 2737 8530",
+          "mobile": "1098 614 277",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "support@beyondbluedarwin.org.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.beyondbluedarwin.com.au",
+        "social_media": {
+          "twitter": "@beyondbluedarwin",
+          "instagram": "@beyondbluedarwin"
+        },
+        "postal_address": {
+          "line_1": "PO Box 6426",
+          "line_2": null,
+          "suburb": "Darwin City",
+          "state": "NT",
+          "postcode": "0800"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults 16-25",
+          "geographic_restrictions": [
+            "NT"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Italian",
+          "Vietnamese"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": 199
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "State",
+          "Local"
+        ],
+        "contract_type": "annual_grant",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.ACT",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.act.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.94,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Data.ACT for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.92,
+          "location_info": 0.86,
+          "service_details": 0.83,
+          "overall": 0.71
+        }
+      }
+    },
+    {
+      "id": "db7fc551-b65b-4fcd-99c5-22cc9c1bf130",
+      "external_id": "EXT-ih6p47zkxe",
+      "name": "Darwin Youth Health Clinic",
+      "description": "Professional crisis accommodation assistance available to young people in the Darwin and surrounding areas region.",
+      "url": "https://www.beyondbluedarwin.com.au",
+      "status": "active",
+      "categories": [
+        "crisis_accommodation",
+        "cultural_support"
+      ],
+      "keywords": [
+        "crisis_accommodation",
+        "cultural_support",
+        "community",
+        "support",
+        "darwin",
+        "nt"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 12,
+        "maximum": 25,
+        "description": "Youth aged 12-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": true,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "d191e98a-a53b-44ef-8dd8-27c15d5cb542",
+        "name": "Beyond Blue Darwin",
+        "type": "non_profit",
+        "abn": 95890356646,
+        "registration_type": "incorporated_association",
+        "parent_organization": "Anglicare",
+        "website": "https://www.beyondbluedarwin.com.au"
+      },
+      "location": {
+        "name": "Darwin Youth Health Clinic",
+        "address_line_1": "809 Queen St",
+        "address_line_2": null,
+        "suburb": "Darwin City",
+        "city": "Darwin",
+        "state": "NT",
+        "postcode": "0800",
+        "region": "darwin_major",
+        "lga": "Darwin Council",
+        "coordinates": {
+          "latitude": -12.462537734825398,
+          "longitude": 130.8526785668636,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 7571 9993",
+          "mobile": "1263 181 415",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "info@beyondbluedarwin.org.au",
+          "intake": "intake@beyondbluedarwin.org.au",
+          "admin": null
+        },
+        "website": "https://www.beyondbluedarwin.com.au",
+        "social_media": {
+          "instagram": "@beyondbluedarwin"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": false,
+          "weekends": false,
+          "public_holidays": true,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": true,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Youth aged 12-25",
+          "geographic_restrictions": [
+            "NT"
+          ],
+          "referral_required": true,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": false,
+          "maximum_clients": 226
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "Private"
+        ],
+        "contract_type": "program_funding",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2027-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Australian Charities Register",
+        "source_type": "government_portal",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.79,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Australian Charities Register for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 1,
+          "location_info": 0.82,
+          "service_details": 0.8,
+          "overall": 0.84
+        }
+      }
+    },
+    {
+      "id": "2c04e77b-3307-4598-97a4-09e12a26e2d5",
+      "external_id": "EXT-47jusrzu4ju",
+      "name": "Darwin Youth Legal Service",
+      "description": "Comprehensive community development support for young people throughout Darwin and surrounding areas.",
+      "url": "https://www.darwinaboriginalcorp.gov.au",
+      "status": "active",
+      "categories": [
+        "community_development",
+        "transitional_housing",
+        "sports_recreation"
+      ],
+      "keywords": [
+        "community_development",
+        "transitional_housing",
+        "sports_recreation",
+        "community",
+        "support",
+        "darwin",
+        "nt"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 12,
+        "maximum": 25,
+        "description": "Youth aged 12-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "2dd33b0b-5a2f-41f7-a305-ac3435386068",
+        "name": "Darwin Aboriginal Corporation",
+        "type": "indigenous",
+        "abn": 17164900769,
+        "registration_type": "aboriginal_corporation",
+        "parent_organization": null,
+        "website": "https://www.darwinaboriginalcorp.gov.au"
+      },
+      "location": {
+        "name": "Darwin Youth Legal Service",
+        "address_line_1": "705 Queen St",
+        "address_line_2": null,
+        "suburb": "Darwin City",
+        "city": "Darwin",
+        "state": "NT",
+        "postcode": "0800",
+        "region": "darwin_major",
+        "lga": "Darwin Council",
+        "coordinates": {
+          "latitude": -12.462994142194487,
+          "longitude": 130.83603115955137,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": false,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 3689 1136",
+          "mobile": "5126 407 50",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "help@darwinaboriginalcorp.com.au",
+          "intake": null,
+          "admin": "admin@darwinaboriginalcorp.com.au"
+        },
+        "website": "https://www.darwinaboriginalcorp.gov.au",
+        "social_media": {
+          "facebook": "https://facebook.com/darwinaboriginalcorporation",
+          "instagram": "@darwinaboriginalcorporation"
+        },
+        "postal_address": {
+          "line_1": "PO Box 4866",
+          "line_2": null,
+          "suburb": "Darwin City",
+          "state": "NT",
+          "postcode": "0800"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": true,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Youth aged 12-25",
+          "geographic_restrictions": [
+            "NT"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Private"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2026-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Sydney Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.76,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Sydney Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.64,
+          "location_info": 0.77,
+          "service_details": 0.71,
+          "overall": 0.74
+        }
+      }
+    },
+    {
+      "id": "9c4bb8d8-a085-45d1-8169-222f74cab7ed",
+      "external_id": "EXT-4yi35chnnup",
+      "name": "Darwin Youth Justice Support 94",
+      "description": "Professional education support assistance available to young people in the Darwin and surrounding areas region.",
+      "url": "https://www.darwinymca.com.au",
+      "status": "active",
+      "categories": [
+        "education_support",
+        "family_mediation"
+      ],
+      "keywords": [
+        "education_support",
+        "family_mediation",
+        "community",
+        "support",
+        "darwin",
+        "nt"
+      ],
+      "service_types": [
+        "tutoring",
+        "training_programs"
+      ],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 16,
+        "maximum": 25,
+        "description": "Young adults 16-25"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "08e3cd47-3a78-45bf-829d-fb8f8276b444",
+        "name": "Darwin YMCA",
+        "type": "government",
+        "abn": 46351793251,
+        "registration_type": "government_entity",
+        "parent_organization": null,
+        "website": "https://www.darwinymca.com.au"
+      },
+      "location": {
+        "name": "Darwin Youth Justice Support 94",
+        "address_line_1": "747 Collins St",
+        "address_line_2": null,
+        "suburb": "Darwin City",
+        "city": "Darwin",
+        "state": "NT",
+        "postcode": "0800",
+        "region": "darwin_major",
+        "lga": "Darwin Council",
+        "coordinates": {
+          "latitude": -12.459250093643705,
+          "longitude": 130.83883398408233,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": false,
+          "parking_available": true
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 2972 6384",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "services@darwinymca.gov.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.darwinymca.com.au",
+        "social_media": {
+          "facebook": "https://facebook.com/darwinymca",
+          "twitter": "@darwinymca",
+          "instagram": "@darwinymca"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "8am-6pm Mon-Fri",
+          "after_hours": false,
+          "weekends": true,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": true,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults 16-25",
+          "geographic_restrictions": [
+            "NT"
+          ],
+          "referral_required": false,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Hindi",
+          "Vietnamese"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": 162
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Commonwealth",
+          "State",
+          "Private"
+        ],
+        "contract_type": "block_funding",
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Data.QLD",
+        "source_type": "government_portal",
+        "source_url": "https://www.data.qld.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.72,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Data.QLD for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.65,
+          "location_info": 0.71,
+          "service_details": 0.56,
+          "overall": 0.75
+        }
+      }
+    },
+    {
+      "id": "abf284e9-df38-4d91-9bba-63f756e78e45",
+      "external_id": "EXT-6meorf6akro",
+      "name": "Darwin Youth Arts Program 23",
+      "description": "Community-based literacy program serving young people across Darwin and surrounding areas.",
+      "url": "https://www.beyondbluedarwin.gov.au",
+      "status": "active",
+      "categories": [
+        "literacy"
+      ],
+      "keywords": [
+        "literacy",
+        "community",
+        "support",
+        "darwin",
+        "nt"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 18,
+        "maximum": 30,
+        "description": "Young adults up to 30"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "acd9915a-8456-41ed-87c0-763f2656f3ad",
+        "name": "Beyond Blue Darwin",
+        "type": "commercial",
+        "abn": 76572526083,
+        "registration_type": "proprietary_limited",
+        "parent_organization": null,
+        "website": "https://www.beyondbluedarwin.gov.au"
+      },
+      "location": {
+        "name": "Darwin Youth Arts Program 23",
+        "address_line_1": "215 Main St",
+        "address_line_2": null,
+        "suburb": "Darwin City",
+        "city": "Darwin",
+        "state": "NT",
+        "postcode": "0800",
+        "region": "darwin_major",
+        "lga": "Darwin Council",
+        "coordinates": {
+          "latitude": -12.461760359051114,
+          "longitude": 130.83614679653164,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 5693 1304",
+          "mobile": null,
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "contact@beyondbluedarwin.org.au",
+          "intake": null,
+          "admin": null
+        },
+        "website": "https://www.beyondbluedarwin.gov.au",
+        "social_media": {
+          "facebook": "https://facebook.com/beyondbluedarwin",
+          "instagram": "@beyondbluedarwin"
+        },
+        "postal_address": null
+      },
+      "service_details": {
+        "availability": {
+          "hours": "24/7 crisis line",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": true,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": false,
+          "fee_for_service": true,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Fee for service"
+        },
+        "eligibility": {
+          "age_requirements": "Young adults up to 30",
+          "geographic_restrictions": [
+            "NT"
+          ],
+          "referral_required": false,
+          "appointment_required": false,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Spanish",
+          "Greek"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": true,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": false,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "NT Open Data",
+        "source_type": "government_portal",
+        "source_url": "https://data.nt.gov.au",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.93,
+        "verification_status": "unverified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from NT Open Data for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.82,
+          "location_info": 0.88,
+          "service_details": 0.69,
+          "overall": 0.84
+        }
+      }
+    },
+    {
+      "id": "bcf4cd65-ce5f-4778-8d05-ebfe3bd55550",
+      "external_id": "EXT-ps002ei5dvo",
+      "name": "Darwin Drug & Alcohol Support",
+      "description": "Dedicated psychology services designed for young people living in Darwin and surrounding areas.",
+      "url": "https://www.lifelinedarwin.org.au",
+      "status": "active",
+      "categories": [
+        "psychology"
+      ],
+      "keywords": [
+        "psychology",
+        "community",
+        "support",
+        "darwin",
+        "nt"
+      ],
+      "service_types": [],
+      "target_demographics": [
+        "youth"
+      ],
+      "age_range": {
+        "minimum": 10,
+        "maximum": 18,
+        "description": "Children and adolescents"
+      },
+      "youth_specific": true,
+      "indigenous_specific": false,
+      "culturally_specific": [],
+      "disability_specific": false,
+      "lgbti_specific": false,
+      "organization": {
+        "id": "9ac9b88a-2e2b-4b75-be7f-15c6bbf0e746",
+        "name": "Lifeline Darwin",
+        "type": "school",
+        "abn": 63831038436,
+        "registration_type": "educational_institution",
+        "parent_organization": null,
+        "website": "https://www.lifelinedarwin.org.au"
+      },
+      "location": {
+        "name": "Darwin Drug & Alcohol Support",
+        "address_line_1": "337 Collins St",
+        "address_line_2": null,
+        "suburb": "Darwin City",
+        "city": "Darwin",
+        "state": "NT",
+        "postcode": "0800",
+        "region": "darwin_major",
+        "lga": "Darwin Council",
+        "coordinates": {
+          "latitude": -12.461749744285537,
+          "longitude": 130.85531879191052,
+          "accuracy": "address"
+        },
+        "accessibility": {
+          "wheelchair_accessible": true,
+          "public_transport": true,
+          "parking_available": false
+        }
+      },
+      "contact": {
+        "phone": {
+          "primary": "(08) 5483 3110",
+          "mobile": "1237 320 349",
+          "toll_free": null,
+          "crisis_line": null
+        },
+        "email": {
+          "primary": "help@lifelinedarwin.gov.au",
+          "intake": "intake@lifelinedarwin.gov.au",
+          "admin": null
+        },
+        "website": "https://www.lifelinedarwin.org.au",
+        "social_media": {
+          "facebook": "https://facebook.com/lifelinedarwin"
+        },
+        "postal_address": {
+          "line_1": "PO Box 4701",
+          "line_2": null,
+          "suburb": "Darwin City",
+          "state": "NT",
+          "postcode": "0800"
+        }
+      },
+      "service_details": {
+        "availability": {
+          "hours": "9am-5pm weekdays",
+          "after_hours": true,
+          "weekends": false,
+          "public_holidays": false,
+          "twenty_four_seven": false
+        },
+        "cost": {
+          "free": true,
+          "fee_for_service": false,
+          "bulk_billing": false,
+          "sliding_scale": false,
+          "cost_description": "Free service"
+        },
+        "eligibility": {
+          "age_requirements": "Children and adolescents",
+          "geographic_restrictions": [
+            "NT"
+          ],
+          "referral_required": true,
+          "appointment_required": true,
+          "criteria": "Must be experiencing youth-related issues"
+        },
+        "languages": [
+          "English",
+          "Spanish"
+        ],
+        "capacity": {
+          "individual": true,
+          "group": false,
+          "family": true,
+          "maximum_clients": null
+        }
+      },
+      "funding": {
+        "government_funded": true,
+        "funding_sources": [
+          "Unknown"
+        ],
+        "contract_type": null,
+        "funding_period": {
+          "start_date": "2024-07-01",
+          "end_date": "2025-06-30"
+        }
+      },
+      "data_source": {
+        "source_name": "Brisbane Council",
+        "source_type": "web_scrape",
+        "source_url": "https://example.com",
+        "extraction_method": "automated_api",
+        "last_verified": "2025-07-08T02:25:42.649Z",
+        "data_quality_score": 0.73,
+        "verification_status": "verified"
+      },
+      "metadata": {
+        "created_at": "2025-07-08T02:25:42.649Z",
+        "updated_at": "2025-07-08T02:25:42.649Z",
+        "last_scraped": "2025-07-08T02:25:42.649Z",
+        "scraping_notes": "Generated from Brisbane Council for comprehensive coverage",
+        "duplicate_check": {
+          "potential_duplicates": [],
+          "similarity_score": 0
+        },
+        "data_completeness": {
+          "contact_info": 0.62,
+          "location_info": 0.79,
+          "service_details": 0.69,
+          "overall": 0.71
+        }
+      }
+    }
+  ]
+}

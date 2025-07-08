@@ -20,6 +20,7 @@ RUN npm ci --only=production
 COPY src/ ./src/
 COPY scripts/ ./scripts/
 COPY database/ ./database/
+COPY MERGED-Australian-Services-*.json ./
 
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs && \
