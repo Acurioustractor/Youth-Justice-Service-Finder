@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:3001'
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://youth-justice-service-finder-production.up.railway.app'
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -155,8 +155,41 @@ export const apiService = {
 
   // Get service by ID
   async getService(id) {
-    const response = await api.get(`/services/${id}`)
-    return response.data
+    try {
+      const response = await api.get(`/services/${id}`)
+      return response.data
+    } catch (error) {
+      // If the individual service endpoint fails, try to find it via the services list
+      console.log('Individual service endpoint failed, falling back to services list search')
+      
+      try {
+        // Get the total number of services first
+        const initialResponse = await api.get('/services', { params: { limit: 1 } })
+        const totalServices = initialResponse.data.total
+        
+        // Search through services in chunks to find the specific one
+        const limit = 100 // Get services in chunks of 100
+        const totalPages = Math.ceil(totalServices / limit)
+        
+        for (let page = 0; page < totalPages; page++) {
+          const pageResponse = await api.get('/services', {
+            params: { limit, offset: page * limit }
+          })
+          
+          const foundService = pageResponse.data.services.find(s => s.id === id)
+          if (foundService) {
+            console.log(`Service found via fallback on page ${page + 1}`)
+            return foundService
+          }
+        }
+        
+        // If still not found, throw a more helpful error
+        throw new Error(`Service with ID ${id} not found in ${totalServices} services`)
+      } catch (fallbackError) {
+        console.error('Fallback search also failed:', fallbackError)
+        throw new Error(`Service with ID ${id} not found`)
+      }
+    }
   },
 
   // Get organizations

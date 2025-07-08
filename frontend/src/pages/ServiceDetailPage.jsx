@@ -12,11 +12,13 @@ export default function ServiceDetailPage() {
   useEffect(() => {
     const fetchService = async () => {
       try {
+        console.log('Fetching service with ID:', id)
         const data = await apiService.getService(id)
+        console.log('Service data received:', data)
         setService(data)
       } catch (err) {
         console.error('Failed to fetch service:', err)
-        setError('Failed to load service details. Please try again.')
+        setError(`Failed to load service details: ${err.message}. Please try again.`)
       } finally {
         setLoading(false)
       }

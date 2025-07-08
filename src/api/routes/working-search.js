@@ -4,7 +4,17 @@ export default async function workingSearchRoutes(fastify, options) {
   // Simple working search
   fastify.get('/', async (request, reply) => {
     try {
-      const { q = '', limit = 20, offset = 0 } = request.query;
+      const { 
+        q = '', 
+        limit = 20, 
+        offset = 0,
+        category,
+        region,
+        youth_specific,
+        indigenous_specific,
+        minimum_age,
+        maximum_age
+      } = request.query;
       
       let query = request.db('services as s')
         .leftJoin('organizations as o', 's.organization_id', 'o.id')
@@ -47,8 +57,89 @@ export default async function workingSearchRoutes(fastify, options) {
         });
       }
 
+      // Add category filter
+      if (category) {
+        query = query.whereRaw('? = ANY(s.categories)', [category]);
+      }
+
+      // Add region filter  
+      if (region) {
+        query = query.where('l.region', region);
+      }
+
+      // Add youth_specific filter
+      if (youth_specific === 'true') {
+        query = query.where('s.youth_specific', true);
+      }
+
+      // Add indigenous_specific filter
+      if (indigenous_specific === 'true') {
+        query = query.where('s.indigenous_specific', true);
+      }
+
+      // Add age range filters
+      if (minimum_age) {
+        query = query.where(function() {
+          this.whereNull('s.minimum_age')
+              .orWhere('s.minimum_age', '<=', parseInt(minimum_age));
+        });
+      }
+
+      if (maximum_age) {
+        query = query.where(function() {
+          this.whereNull('s.maximum_age')
+              .orWhere('s.maximum_age', '>=', parseInt(maximum_age));
+        });
+      }
+
       const services = await query;
-      const total = await request.db('services').where('status', 'active').count('* as count').first();
+      
+      // Get filtered total count (same filters without limit/offset)
+      let countQuery = request.db('services as s')
+        .leftJoin('organizations as o', 's.organization_id', 'o.id')
+        .leftJoin('locations as l', 's.id', 'l.service_id')
+        .where('s.status', 'active');
+
+      // Apply same filters for count
+      if (q && q.trim()) {
+        countQuery = countQuery.where(function() {
+          this.where('s.name', 'ilike', `%${q}%`)
+              .orWhere('s.description', 'ilike', `%${q}%`)
+              .orWhere('o.name', 'ilike', `%${q}%`);
+        });
+      }
+
+      if (category) {
+        countQuery = countQuery.whereRaw('? = ANY(s.categories)', [category]);
+      }
+
+      if (region) {
+        countQuery = countQuery.where('l.region', region);
+      }
+
+      if (youth_specific === 'true') {
+        countQuery = countQuery.where('s.youth_specific', true);
+      }
+
+      if (indigenous_specific === 'true') {
+        countQuery = countQuery.where('s.indigenous_specific', true);
+      }
+
+      if (minimum_age) {
+        countQuery = countQuery.where(function() {
+          this.whereNull('s.minimum_age')
+              .orWhere('s.minimum_age', '<=', parseInt(minimum_age));
+        });
+      }
+
+      if (maximum_age) {
+        countQuery = countQuery.where(function() {
+          this.whereNull('s.maximum_age')
+              .orWhere('s.maximum_age', '>=', parseInt(maximum_age));
+        });
+      }
+
+      const total = await countQuery.count('s.id as count').first();
 
       // Format response to match frontend expectations
       const formattedServices = services.map(service => ({

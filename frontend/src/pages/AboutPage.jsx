@@ -50,9 +50,9 @@ export default function AboutPage() {
   ]
 
   const stats = [
-    { number: '79+', label: 'Services Available' },
-    { number: '12+', label: 'Partner Organizations' },
-    { number: '10+', label: 'Regions Covered' },
+    { number: '605+', label: 'Services Available' },
+    { number: '500+', label: 'Partner Organizations' },
+    { number: '8', label: 'States & Territories' },
     { number: '24/7', label: 'Crisis Support Access' }
   ]
 
@@ -65,7 +65,7 @@ export default function AboutPage() {
             About Youth Justice Service Finder
           </h1>
           <p className="text-xl text-primary-100 leading-relaxed">
-            A comprehensive platform connecting young people in Queensland with essential 
+            A comprehensive platform connecting young people in Australia with essential 
             support services including legal aid, mental health support, housing assistance, 
             and crisis intervention.
           </p>
@@ -80,7 +80,7 @@ export default function AboutPage() {
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               To create an accessible, comprehensive platform that empowers young people 
               in the justice system to find and connect with appropriate support services 
-              across Queensland, breaking down barriers to essential care and advocacy.
+              across Australia, breaking down barriers to essential care and advocacy.
             </p>
           </div>
 
@@ -196,7 +196,7 @@ export default function AboutPage() {
                   <p className="text-sm text-gray-600">Explore our comprehensive API documentation</p>
                 </div>
                 <a
-                  href="http://127.0.0.1:3001/docs"
+                  href="https://youth-justice-service-finder-production.up.railway.app/docs"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary flex items-center space-x-2"
@@ -261,7 +261,7 @@ export default function AboutPage() {
                 Search Services
               </Link>
               <a
-                href="http://127.0.0.1:3001/docs"
+                href="https://youth-justice-service-finder-production.up.railway.app/docs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-primary-500 hover:bg-primary-400 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center justify-center space-x-2"

@@ -36,7 +36,7 @@ export default function Layout({ children }) {
                   <h1 className="text-lg font-semibold text-gray-900">
                     Youth Justice Service Finder
                   </h1>
-                  <p className="text-xs text-gray-500">Queensland</p>
+                  <p className="text-xs text-gray-500">Australia</p>
                 </div>
               </Link>
             </div>
@@ -123,7 +123,7 @@ export default function Layout({ children }) {
                 <h3 className="font-semibold text-gray-900">Youth Justice Service Finder</h3>
               </div>
               <p className="text-sm text-gray-600">
-                Connecting young people with essential support services across Queensland.
+                Connecting young people with essential support services across Australia.
                 Find legal aid, mental health support, housing assistance, and more.
               </p>
             </div>
@@ -133,7 +133,7 @@ export default function Layout({ children }) {
               <ul className="space-y-2 text-sm text-gray-600">
                 <li><Link to="/search" className="hover:text-gray-900">Search Services</Link></li>
                 <li><Link to="/about" className="hover:text-gray-900">About</Link></li>
-                <li><a href="http://127.0.0.1:3001/docs" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900">API Documentation</a></li>
+                <li><a href="https://youth-justice-service-finder-production.up.railway.app/docs" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900">API Documentation</a></li>
               </ul>
             </div>
 
@@ -143,13 +143,13 @@ export default function Layout({ children }) {
                 <li><strong>Emergency:</strong> 000</li>
                 <li><strong>Kids Helpline:</strong> 1800 55 1800</li>
                 <li><strong>Lifeline:</strong> 13 11 14</li>
-                <li><strong>Legal Aid QLD:</strong> 1300 651 188</li>
+                <li><strong>Legal Aid Australia:</strong> 1300 651 188</li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-gray-200 mt-8 pt-6 text-center text-sm text-gray-500">
-            <p>© 2025 Youth Justice Service Finder. Built for Queensland's youth justice ecosystem.</p>
+            <p>© 2025 Youth Justice Service Finder. Built for Australia's youth justice ecosystem.</p>
           </div>
         </div>
       </footer>

@@ -9,7 +9,7 @@ console.log('🚀 NUCLEAR 603 IMPORT - BYPASSING RAILWAY API');
 async function nuclearImport() {
   // Try to get Railway connection from environment
   const DATABASE_URL = process.env.DATABASE_URL || 
-                      'postgresql://postgres:password@roundhouse.proxy.rlwy.net:12345/railway';
+                      'postgresql://postgres:********@trolley.proxy.rlwy.net:52530/railway';
 
   console.log('🔗 Connecting to Railway database...');
   
