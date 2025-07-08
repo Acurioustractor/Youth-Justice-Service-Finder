@@ -1,4 +1,88 @@
+import fs from 'fs';
+
 export default async function createDataRoutes(fastify, options) {
+  
+  // Import the 603-service dataset immediately
+  fastify.post('/load-603-services', async (request, reply) => {
+    try {
+      // Load the merged dataset
+      const mergedFile = 'MERGED-Australian-Services-2025-07-08T02-38-49-673Z.json';
+      
+      if (!fs.existsSync(mergedFile)) {
+        return reply.code(404).send({ 
+          error: 'Dataset file not found on server' 
+        });
+      }
+
+      const data = JSON.parse(fs.readFileSync(mergedFile, 'utf8'));
+      const services = data.services || [];
+
+      // Clear existing data
+      await request.db.query('DELETE FROM services');
+      await request.db.query('DELETE FROM organizations');
+      
+      // Import organizations
+      const organizations = new Map();
+      for (const service of services) {
+        if (service.organization && !organizations.has(service.organization.id)) {
+          organizations.set(service.organization.id, service.organization);
+        }
+      }
+      
+      for (const [id, org] of organizations) {
+        await request.db.query(`
+          INSERT INTO organizations (id, name, type, created_at, updated_at) 
+          VALUES ($1, $2, $3, NOW(), NOW()) ON CONFLICT (id) DO NOTHING
+        `, [org.id, org.name || 'Unknown', org.type || 'community']);
+      }
+      
+      // Import services in batches
+      let imported = 0;
+      for (const service of services) {
+        try {
+          await request.db.query(`
+            INSERT INTO services (
+              id, name, description, organization_id, organization_name,
+              suburb, city, state, postcode, phone_primary, email_primary,
+              website, youth_specific, data_source_name, created_at, updated_at
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, NOW(), NOW())
+            ON CONFLICT (id) DO NOTHING
+          `, [
+            service.id,
+            service.name || 'Unknown Service',
+            service.description,
+            service.organization?.id,
+            service.organization?.name,
+            service.location?.suburb,
+            service.location?.city,
+            service.location?.state || 'QLD',
+            service.location?.postcode,
+            service.contact?.phone?.primary,
+            service.contact?.email?.primary,
+            service.contact?.website,
+            service.youth_specific || false,
+            service.data_source?.source_name || 'Merged Dataset'
+          ]);
+          imported++;
+        } catch (error) {
+          // Continue on individual errors
+        }
+      }
+      
+      const { rows: stats } = await request.db.query('SELECT COUNT(*) as total FROM services');
+      
+      return {
+        success: true,
+        imported: imported,
+        total_services: parseInt(stats[0].total),
+        organizations: organizations.size,
+        message: `${imported} services imported successfully!`
+      };
+      
+    } catch (error) {
+      return reply.code(500).send({ error: error.message });
+    }
+  });
   
   // Create comprehensive test data
   fastify.post('/create-test-data', {
