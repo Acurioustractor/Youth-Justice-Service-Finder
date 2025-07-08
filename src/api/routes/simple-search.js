@@ -1,5 +1,5 @@
 // Simplified search for free hosting without Elasticsearch
-import { getDuplicateDetector } from '../../services/duplicate-detector.js'
+// import { getDuplicateDetector } from '../../services/duplicate-detector.js'
 
 export default async function simpleSearchRoutes(fastify, options) {
   // Basic text search without Elasticsearch
@@ -17,7 +17,7 @@ export default async function simpleSearchRoutes(fastify, options) {
         offset = 0
       } = request.query
 
-      let query = fastify.db('services as s')
+      let query = request.db('services as s')
         .leftJoin('organizations as o', 's.organization_id', 'o.id')
         .leftJoin('locations as l', 's.id', 'l.service_id')
         .leftJoin('contacts as c', 's.id', 'c.service_id')
@@ -185,7 +185,7 @@ export default async function simpleSearchRoutes(fastify, options) {
       const radiusKm = parseFloat(radius.replace(/[^\d.]/g, ''))
 
       // Haversine formula for distance calculation in SQL
-      const services = await fastify.db('services as s')
+      const services = await request.db('services as s')
         .leftJoin('organizations as o', 's.organization_id', 'o.id')
         .leftJoin('locations as l', 's.id', 'l.service_id')
         .leftJoin('contacts as c', 's.id', 'c.service_id')
@@ -195,7 +195,7 @@ export default async function simpleSearchRoutes(fastify, options) {
           'l.*',
           'c.phone',
           'c.email',
-          fastify.db.raw(`
+          request.db.raw(`
             (6371 * acos(
               cos(radians(?)) * cos(radians(l.latitude)) * 
               cos(radians(l.longitude) - radians(?)) + 
@@ -262,14 +262,14 @@ export default async function simpleSearchRoutes(fastify, options) {
       const searchTerm = `%${q.trim()}%`
 
       // Get service name suggestions
-      const serviceNames = await fastify.db('services')
+      const serviceNames = await request.db('services')
         .select('name')
         .where('name', 'like', searchTerm)
         .where('status', 'active')
         .limit(parseInt(limit) / 2)
 
       // Get organization name suggestions
-      const orgNames = await fastify.db('organizations')
+      const orgNames = await request.db('organizations')
         .select('name')
         .where('name', 'like', searchTerm)
         .limit(parseInt(limit) / 2)
