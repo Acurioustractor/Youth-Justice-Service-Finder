@@ -451,8 +451,7 @@ export default async function debugRoutes(fastify, options) {
             service_id: serviceId,
             name: 'Service Coordinator',
             phone: JSON.stringify([`(07) ${Math.floor(Math.random() * 9000) + 1000} ${Math.floor(Math.random() * 9000) + 1000}`]),
-            email: `${template.name.toLowerCase().replace(/ /g, '.')}@${org.name.toLowerCase().replace(/ /g, '')}.org.au`,
-            website: `https://www.${org.name.toLowerCase().replace(/ /g, '')}.org.au`
+            email: `${template.name.toLowerCase().replace(/ /g, '.')}@${org.name.toLowerCase().replace(/ /g, '')}.org.au`
           });
 
           totalServices++;
