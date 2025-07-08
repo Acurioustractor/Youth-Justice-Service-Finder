@@ -170,8 +170,8 @@ export default async function workingSearchRoutes(fastify, options) {
           postcode: service.postal_code || '',
           region: service.region || '',
           coordinates: {
-            lat: service.latitude || null,
-            lng: service.longitude || null
+            lat: service.latitude ? parseFloat(service.latitude) : null,
+            lng: service.longitude ? parseFloat(service.longitude) : null
           }
         },
         contact: {
