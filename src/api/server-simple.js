@@ -18,6 +18,7 @@ import statsRoutes from './routes/stats.js';
 import monitoringRoutes from './routes/monitoring.js';
 import debugRoutes from './routes/debug.js';
 import createDataRoutes from './routes/create-data.js';
+import quickFixRoutes from './routes/quick-fix.js';
 import { addSchemas } from './schemas.js';
 
 const logger = pino({
@@ -171,6 +172,7 @@ export async function createSimpleServer(options = {}) {
   await fastify.register(monitoringRoutes, { prefix: '/monitoring' });
   await fastify.register(debugRoutes, { prefix: '/debug' });
   await fastify.register(createDataRoutes, { prefix: '/create-data' });
+  await fastify.register(quickFixRoutes, { prefix: '/quick-fix' });
   
   // Use simple search instead of Elasticsearch for free tier
   await fastify.register(simpleSearchRoutes, { prefix: '/search' });
