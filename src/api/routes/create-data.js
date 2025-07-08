@@ -33,6 +33,7 @@ export default async function createDataRoutes(fastify, options) {
         await request.db('organizations').insert({
           id: org.id,
           name: org.name || 'Unknown',
+          data_source: 'Merged Dataset',
           created_at: new Date(),
           updated_at: new Date()
         }).onConflict('id').ignore();
