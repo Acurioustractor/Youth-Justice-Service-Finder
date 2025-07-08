@@ -33,7 +33,6 @@ export default async function createDataRoutes(fastify, options) {
         await request.db('organizations').insert({
           id: org.id,
           name: org.name || 'Unknown',
-          type: org.type || 'community',
           created_at: new Date(),
           updated_at: new Date()
         }).onConflict('id').ignore();
@@ -48,22 +47,12 @@ export default async function createDataRoutes(fastify, options) {
             name: service.name || 'Unknown Service',
             description: service.description,
             organization_id: service.organization?.id,
-            organization_name: service.organization?.name,
-            suburb: service.location?.suburb,
-            city: service.location?.city,
-            state: service.location?.state || 'QLD',
-            postcode: service.location?.postcode,
-            phone_primary: service.contact?.phone?.primary,
-            email_primary: service.contact?.email?.primary,
-            website: service.contact?.website,
-            youth_specific: service.youth_specific || false,
-            data_source_name: service.data_source?.source_name || 'Merged Dataset',
             created_at: new Date(),
             updated_at: new Date()
           }).onConflict('id').ignore();
           imported++;
         } catch (error) {
-          // Continue on individual errors
+          // Continue on individual errors - just count and move on
         }
       }
       
