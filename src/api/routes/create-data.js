@@ -18,8 +18,8 @@ export default async function createDataRoutes(fastify, options) {
       const services = data.services || [];
 
       // Clear existing data
-      await request.db.query('DELETE FROM services');
-      await request.db.query('DELETE FROM organizations');
+      await request.db('services').del();
+      await request.db('organizations').del();
       
       // Import organizations
       const organizations = new Map();
@@ -30,51 +30,49 @@ export default async function createDataRoutes(fastify, options) {
       }
       
       for (const [id, org] of organizations) {
-        await request.db.query(`
-          INSERT INTO organizations (id, name, type, created_at, updated_at) 
-          VALUES ($1, $2, $3, NOW(), NOW()) ON CONFLICT (id) DO NOTHING
-        `, [org.id, org.name || 'Unknown', org.type || 'community']);
+        await request.db('organizations').insert({
+          id: org.id,
+          name: org.name || 'Unknown',
+          type: org.type || 'community',
+          created_at: new Date(),
+          updated_at: new Date()
+        }).onConflict('id').ignore();
       }
       
       // Import services in batches
       let imported = 0;
       for (const service of services) {
         try {
-          await request.db.query(`
-            INSERT INTO services (
-              id, name, description, organization_id, organization_name,
-              suburb, city, state, postcode, phone_primary, email_primary,
-              website, youth_specific, data_source_name, created_at, updated_at
-            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, NOW(), NOW())
-            ON CONFLICT (id) DO NOTHING
-          `, [
-            service.id,
-            service.name || 'Unknown Service',
-            service.description,
-            service.organization?.id,
-            service.organization?.name,
-            service.location?.suburb,
-            service.location?.city,
-            service.location?.state || 'QLD',
-            service.location?.postcode,
-            service.contact?.phone?.primary,
-            service.contact?.email?.primary,
-            service.contact?.website,
-            service.youth_specific || false,
-            service.data_source?.source_name || 'Merged Dataset'
-          ]);
+          await request.db('services').insert({
+            id: service.id,
+            name: service.name || 'Unknown Service',
+            description: service.description,
+            organization_id: service.organization?.id,
+            organization_name: service.organization?.name,
+            suburb: service.location?.suburb,
+            city: service.location?.city,
+            state: service.location?.state || 'QLD',
+            postcode: service.location?.postcode,
+            phone_primary: service.contact?.phone?.primary,
+            email_primary: service.contact?.email?.primary,
+            website: service.contact?.website,
+            youth_specific: service.youth_specific || false,
+            data_source_name: service.data_source?.source_name || 'Merged Dataset',
+            created_at: new Date(),
+            updated_at: new Date()
+          }).onConflict('id').ignore();
           imported++;
         } catch (error) {
           // Continue on individual errors
         }
       }
       
-      const { rows: stats } = await request.db.query('SELECT COUNT(*) as total FROM services');
+      const stats = await request.db('services').count('* as total').first();
       
       return {
         success: true,
         imported: imported,
-        total_services: parseInt(stats[0].total),
+        total_services: parseInt(stats.total),
         organizations: organizations.size,
         message: `${imported} services imported successfully!`
       };
