@@ -19,6 +19,7 @@ import monitoringRoutes from './routes/monitoring.js';
 import debugRoutes from './routes/debug.js';
 import createDataRoutes from './routes/create-data.js';
 import quickFixRoutes from './routes/quick-fix.js';
+import workingSearchRoutes from './routes/working-search.js';
 import { addSchemas } from './schemas.js';
 
 const logger = pino({
@@ -174,11 +175,14 @@ export async function createSimpleServer(options = {}) {
   await fastify.register(createDataRoutes, { prefix: '/create-data' });
   await fastify.register(quickFixRoutes, { prefix: '/quick-fix' });
   
-  // Register main search routes (handles '/' endpoint)
-  await fastify.register(searchRoutes, { prefix: '/search' });
+  // WORKING SEARCH - bypass broken search routes
+  await fastify.register(workingSearchRoutes, { prefix: '/working-search' });
   
-  // Register additional simple search routes ('/simple', '/geo', etc)
-  await fastify.register(simpleSearchRoutes, { prefix: '/search' });
+  // Register main search routes (handles '/' endpoint) - BROKEN
+  // await fastify.register(searchRoutes, { prefix: '/search' });
+  
+  // Register additional simple search routes ('/simple', '/geo', etc) - BROKEN
+  // await fastify.register(simpleSearchRoutes, { prefix: '/search' });
   
   // Keep original search routes but make them optional
   try {
@@ -204,10 +208,9 @@ export async function createSimpleServer(options = {}) {
       endpoints: {
         services: '/services',
         organizations: '/organizations',
-        search: '/search',
-        simpleSearch: '/search/simple',
-        geoSearch: '/search/geo',
-        autocomplete: '/search/autocomplete',
+        search: '/working-search',
+        simpleSearch: '/working-search/simple',
+        workingSearch: '/working-search',
         stats: '/stats',
         monitoring: '/monitoring',
         debug: '/debug'
