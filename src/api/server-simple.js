@@ -174,7 +174,10 @@ export async function createSimpleServer(options = {}) {
   await fastify.register(createDataRoutes, { prefix: '/create-data' });
   await fastify.register(quickFixRoutes, { prefix: '/quick-fix' });
   
-  // Use simple search instead of Elasticsearch for free tier
+  // Register main search routes (handles '/' endpoint)
+  await fastify.register(searchRoutes, { prefix: '/search' });
+  
+  // Register additional simple search routes ('/simple', '/geo', etc)
   await fastify.register(simpleSearchRoutes, { prefix: '/search' });
   
   // Keep original search routes but make them optional
