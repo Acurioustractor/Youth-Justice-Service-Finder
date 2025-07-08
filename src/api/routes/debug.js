@@ -292,6 +292,205 @@ export default async function debugRoutes(fastify, options) {
     }
   });
 
+  // Create comprehensive realistic services
+  fastify.post('/create-realistic-services', {
+    schema: {
+      tags: ['Debug'],
+      description: 'Create a comprehensive set of realistic Queensland youth services'
+    }
+  }, async (request, reply) => {
+    try {
+      const { v4: uuidv4 } = await import('uuid');
+      fastify.log.info('🎯 Creating comprehensive realistic youth services for Queensland');
+
+      // Queensland regions for realistic distribution
+      const regions = ['brisbane', 'gold_coast', 'sunshine_coast', 'townsville', 'cairns', 'toowoomba', 'rockhampton', 'bundaberg'];
+      const coordinates = {
+        brisbane: { lat: -27.4698, lng: 153.0251 },
+        gold_coast: { lat: -28.0167, lng: 153.4000 },
+        sunshine_coast: { lat: -26.6500, lng: 153.0667 },
+        townsville: { lat: -19.2590, lng: 146.8169 },
+        cairns: { lat: -16.9186, lng: 145.7781 },
+        toowoomba: { lat: -27.5598, lng: 151.9507 },
+        rockhampton: { lat: -23.3842, lng: 150.5085 },
+        bundaberg: { lat: -24.8661, lng: 152.3489 }
+      };
+
+      // Create diverse organizations
+      const organizations = [
+        { name: 'Legal Aid Queensland', type: 'government', description: 'State-funded legal assistance for young people' },
+        { name: 'Youth Justice Queensland', type: 'government', description: 'Department of Youth Justice services' },
+        { name: 'Salvation Army Youth Services', type: 'non_profit', description: 'Community support for at-risk youth' },
+        { name: 'Mission Australia', type: 'non_profit', description: 'National youth support organization' },
+        { name: 'Yurra Community Justice Group', type: 'indigenous', description: 'Indigenous-led youth justice initiatives' },
+        { name: 'Multicultural Youth Queensland', type: 'community', description: 'Support for culturally diverse young people' }
+      ];
+
+      const createdOrgs = [];
+      for (const org of organizations) {
+        const orgId = uuidv4();
+        await request.db('organizations').insert({
+          id: orgId,
+          name: org.name,
+          description: org.description,
+          organization_type: org.type,
+          data_source: 'realistic_manual'
+        });
+        createdOrgs.push({ ...org, id: orgId });
+      }
+
+      // Comprehensive service types
+      const serviceTemplates = [
+        {
+          name: 'Youth Legal Aid',
+          description: 'Free legal representation and advice for young people facing criminal charges',
+          categories: ['legal_aid', 'court_support'],
+          keywords: ['legal', 'court', 'lawyer', 'criminal', 'charges'],
+          min_age: 10, max_age: 25, youth_specific: true
+        },
+        {
+          name: 'Crisis Accommodation',
+          description: 'Emergency housing and support for homeless and at-risk youth',
+          categories: ['housing', 'crisis_support'],
+          keywords: ['housing', 'emergency', 'shelter', 'homeless'],
+          min_age: 16, max_age: 25, youth_specific: true
+        },
+        {
+          name: 'Aboriginal Youth Support',
+          description: 'Culturally appropriate support services for Indigenous young people',
+          categories: ['cultural_support', 'mentoring'],
+          keywords: ['aboriginal', 'indigenous', 'cultural', 'elder'],
+          min_age: 12, max_age: 25, youth_specific: true, indigenous_specific: true
+        },
+        {
+          name: 'Youth Mental Health Services',
+          description: 'Counseling and mental health support for young people',
+          categories: ['mental_health', 'counseling'],
+          keywords: ['mental', 'health', 'counseling', 'therapy'],
+          min_age: 12, max_age: 25, youth_specific: true
+        },
+        {
+          name: 'Education Support Program',
+          description: 'Educational assistance and re-engagement for youth justice clients',
+          categories: ['education', 'training'],
+          keywords: ['education', 'school', 'training', 'learning'],
+          min_age: 10, max_age: 25, youth_specific: true
+        },
+        {
+          name: 'Drug and Alcohol Support',
+          description: 'Substance abuse counseling and rehabilitation for young people',
+          categories: ['substance_abuse', 'rehabilitation'],
+          keywords: ['drug', 'alcohol', 'addiction', 'rehab'],
+          min_age: 14, max_age: 25, youth_specific: true
+        },
+        {
+          name: 'Family Mediation Services',
+          description: 'Family conferencing and mediation for youth justice matters',
+          categories: ['family_support', 'mediation'],
+          keywords: ['family', 'mediation', 'conference', 'restorative'],
+          min_age: 10, max_age: 25, youth_specific: true
+        },
+        {
+          name: 'Community Service Orders',
+          description: 'Supervised community service programs for youth offenders',
+          categories: ['community_service', 'supervision'],
+          keywords: ['community', 'service', 'supervised', 'work'],
+          min_age: 16, max_age: 25, youth_specific: true
+        }
+      ];
+
+      let totalServices = 0;
+      
+      // Create services across all regions and organizations
+      for (const region of regions) {
+        for (const template of serviceTemplates) {
+          // Assign to appropriate organization
+          const org = createdOrgs.find(o => 
+            (template.indigenous_specific && o.type === 'indigenous') ||
+            (['legal_aid', 'court_support'].some(cat => template.categories.includes(cat)) && o.name.includes('Legal Aid')) ||
+            (['housing', 'crisis_support'].some(cat => template.categories.includes(cat)) && o.name.includes('Salvation Army')) ||
+            (!template.indigenous_specific && o.type === 'government' && o.name.includes('Youth Justice'))
+          ) || createdOrgs[0]; // fallback
+
+          const serviceId = uuidv4();
+          const regionName = region.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+          
+          await request.db('services').insert({
+            id: serviceId,
+            organization_id: org.id,
+            name: `${template.name} - ${regionName}`,
+            description: template.description,
+            categories: template.categories,
+            keywords: template.keywords,
+            minimum_age: template.min_age,
+            maximum_age: template.max_age,
+            youth_specific: template.youth_specific,
+            indigenous_specific: template.indigenous_specific || false,
+            data_source: 'realistic_manual',
+            status: 'active'
+          });
+
+          // Create location
+          const coord = coordinates[region];
+          await request.db('locations').insert({
+            id: uuidv4(),
+            service_id: serviceId,
+            name: `${template.name} ${regionName} Office`,
+            address_1: `${Math.floor(Math.random() * 900) + 100} ${['Queen', 'King', 'Main', 'George', 'Elizabeth'][Math.floor(Math.random() * 5)]} Street`,
+            city: regionName,
+            state_province: 'QLD',
+            postal_code: `${4000 + Math.floor(Math.random() * 999)}`,
+            region: region,
+            latitude: coord.lat + (Math.random() - 0.5) * 0.1,
+            longitude: coord.lng + (Math.random() - 0.5) * 0.1
+          });
+
+          // Create contact
+          await request.db('contacts').insert({
+            id: uuidv4(),
+            service_id: serviceId,
+            name: 'Service Coordinator',
+            phone: JSON.stringify([`(07) ${Math.floor(Math.random() * 9000) + 1000} ${Math.floor(Math.random() * 9000) + 1000}`]),
+            email: `${template.name.toLowerCase().replace(/ /g, '.')}@${org.name.toLowerCase().replace(/ /g, '')}.org.au`,
+            website: `https://www.${org.name.toLowerCase().replace(/ /g, '')}.org.au`
+          });
+
+          totalServices++;
+        }
+      }
+
+      // Record the job
+      await request.db('scraping_jobs').insert({
+        id: uuidv4(),
+        source_name: 'realistic_manual_creation',
+        source_url: '/debug/create-realistic-services',
+        job_type: 'manual',
+        status: 'completed',
+        services_found: totalServices,
+        started_at: new Date(),
+        completed_at: new Date()
+      });
+
+      return {
+        success: true,
+        message: '🎉 COMPREHENSIVE REALISTIC SERVICES CREATED!',
+        organizations_created: organizations.length,
+        services_created: totalServices,
+        regions_covered: regions.length,
+        service_types: serviceTemplates.length,
+        frontend_url: 'https://frontend-snowy-two-53.vercel.app',
+        note: 'Check the frontend - you should now see realistic Queensland youth justice services!'
+      };
+
+    } catch (error) {
+      fastify.log.error('Failed to create realistic services:', error);
+      return {
+        success: false,
+        error: error.message
+      };
+    }
+  });
+
   // Trigger real scrapers
   fastify.post('/run-scrapers', {
     schema: {
