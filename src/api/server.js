@@ -14,6 +14,7 @@ import searchRoutes from './routes/search.js';
 import elasticsearchSearchRoutes from './routes/elasticsearch-search.js';
 import healthRoutes from './routes/health.js';
 import statsRoutes from './routes/stats.js';
+import dataDownloadRoutes from './routes/data-download.js';
 import { addSchemas } from './schemas.js';
 
 const logger = pino({
@@ -97,7 +98,8 @@ export async function createServer(options = {}) {
         { name: 'Organizations', description: 'Service provider operations' },
         { name: 'Search', description: 'Advanced search operations' },
         { name: 'Health', description: 'API health and monitoring' },
-        { name: 'Stats', description: 'Database statistics' }
+        { name: 'Stats', description: 'Database statistics' },
+        { name: 'Data', description: 'Data download operations' }
       ]
     }
   });
@@ -168,6 +170,7 @@ export async function createServer(options = {}) {
   await fastify.register(elasticsearchSearchRoutes, { prefix: '/search/es' });
   await fastify.register(servicesRoutes, { prefix: '/services' });
   await fastify.register(organizationsRoutes, { prefix: '/organizations' });
+  await fastify.register(dataDownloadRoutes, { prefix: '/data' });
 
   // Root endpoint
   fastify.get('/', async (request, reply) => {
@@ -181,7 +184,8 @@ export async function createServer(options = {}) {
         services: '/services',
         organizations: '/organizations',
         search: '/search',
-        stats: '/stats'
+        stats: '/stats',
+        data: '/data'
       }
     };
   });

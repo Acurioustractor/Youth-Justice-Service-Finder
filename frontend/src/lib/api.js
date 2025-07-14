@@ -45,6 +45,7 @@ api.interceptors.response.use(
 )
 
 export const apiService = {
+  baseURL: API_BASE_URL,
   // Health check
   async healthCheck() {
     const response = await api.get('/health')
@@ -163,24 +164,25 @@ export const apiService = {
       console.log('Individual service endpoint failed, falling back to services list search')
       
       try {
-        // Get the total number of services first
-        const initialResponse = await api.get('/services', { params: { limit: 1 } })
-        const totalServices = initialResponse.data.total
-        
-        // Search through services in chunks to find the specific one
+        // Use working-search endpoint which has all services
         const limit = 100 // Get services in chunks of 100
-        const totalPages = Math.ceil(totalServices / limit)
+        let offset = 0
+        let totalServices = 605 // We know we have 605 services
         
-        for (let page = 0; page < totalPages; page++) {
-          const pageResponse = await api.get('/services', {
-            params: { limit, offset: page * limit }
+        while (offset < totalServices) {
+          const pageResponse = await api.get('/working-search', {
+            params: { limit, offset }
           })
           
           const foundService = pageResponse.data.services.find(s => s.id === id)
           if (foundService) {
-            console.log(`Service found via fallback on page ${page + 1}`)
+            console.log(`Service found via working-search fallback at offset ${offset}`)
             return foundService
           }
+          
+          // Update total from response
+          totalServices = pageResponse.data.total
+          offset += limit
         }
         
         // If still not found, throw a more helpful error
@@ -310,7 +312,80 @@ export const apiService = {
         message: 'Demo results - 603+ services available when backend database is populated'
       }
     }
+  },
+
+  // Data download functionality
+  async getDataDownloadInfo() {
+    try {
+      const response = await api.get('/data/dyjvs-payments/info')
+      return response.data
+    } catch (error) {
+      console.log('Data download info not available, using demo data')
+      const today = new Date().toISOString().split('T')[0]
+      return {
+        source_url: 'https://www.families.qld.gov.au/_media/documents/open-data/dyjvs-ontimepayments-2024-25.csv',
+        description: 'Department of Youth Justice, Victoria and Sport - On-time payments data for 2024-25',
+        last_checked: new Date().toISOString(),
+        filename_format: `dyjvs_ontimepayments_${today}.csv`,
+        demo_mode: true
+      }
+    }
+  },
+
+  // Analysis functionality
+  async getAnalysisData() {
+    try {
+      const response = await api.get('/analysis/analyze')
+      return response.data
+    } catch (error) {
+      console.log('Analysis data not available, using demo data')
+      return {
+        summary: {
+          totalRecords: 2847,
+          totalAmount: 45623891.50,
+          avgAmount: 16021.45,
+          dateRange: '2024-25 Financial Year',
+          uniqueSuppliers: 324
+        },
+        categories: {
+          'Detention Services': { count: 1200, total: 18500000, avg: 15416.67 },
+          'Community Services': { count: 850, total: 12800000, avg: 15058.82 },
+          'Support Services': { count: 420, total: 6900000, avg: 16428.57 },
+          'Legal Services': { count: 180, total: 3200000, avg: 17777.78 },
+          'Education Services': { count: 120, total: 2400000, avg: 20000.00 },
+          'Health Services': { count: 77, total: 1723891.50, avg: 22387.55 }
+        },
+        suppliers: [
+          { name: 'Youth Justice Centre Brisbane', count: 45, total: 2840000, avg: 63111.11 },
+          { name: 'Community Corrections QLD', count: 78, total: 2100000, avg: 26923.08 },
+          { name: 'Mental Health Support Services', count: 32, total: 1850000, avg: 57812.50 }
+        ],
+        demo_mode: true
+      }
+    }
+  },
+
+  async getCategoryAnalysis() {
+    try {
+      const response = await api.get('/analysis/categories')
+      return response.data
+    } catch (error) {
+      console.log('Category analysis not available')
+      return { categories: {}, totalAmount: 0 }
+    }
+  },
+
+  async getSupplierAnalysis() {
+    try {
+      const response = await api.get('/analysis/suppliers')
+      return response.data
+    } catch (error) {
+      console.log('Supplier analysis not available')
+      return { suppliers: [], totalSuppliers: 0 }
+    }
   }
 }
 
+// Export both named and default exports
+export { API_BASE_URL }
 export default api

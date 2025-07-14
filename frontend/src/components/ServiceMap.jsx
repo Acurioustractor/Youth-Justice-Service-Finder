@@ -122,7 +122,16 @@ export default function ServiceMap({ services = [], onServiceSelect, className =
 
   const validServices = services.filter(service => 
     service.location?.coordinates?.lat && service.location?.coordinates?.lng
-  )
+  ).map(service => ({
+    ...service,
+    location: {
+      ...service.location,
+      coordinates: {
+        lat: parseFloat(service.location.coordinates.lat),
+        lng: parseFloat(service.location.coordinates.lng)
+      }
+    }
+  }))
 
   return (
     <div className={`relative ${className}`}>
