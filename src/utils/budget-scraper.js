@@ -39,29 +39,70 @@ class QueenslandBudgetTracker {
       for (const csvUrl of csvUrls) {
         try {
           console.log(`Fetching contracts from: ${csvUrl}`);
-          const response = await axios.get(csvUrl, { timeout: 30000 });
+          const response = await axios.get(csvUrl, { 
+            timeout: 30000,
+            responseType: 'text' // Get as text to handle encoding
+          });
+          
+          // Clean the CSV data - remove BOM if present
+          let csvData = response.data;
+          if (csvData.charCodeAt(0) === 0xFEFF) {
+            csvData = csvData.slice(1);
+          }
           
           const contracts = [];
+          let rowCount = 0;
           
           await new Promise((resolve, reject) => {
             const { Readable } = require('stream');
-            const readable = Readable.from([response.data]);
+            const readable = Readable.from([csvData]);
             
             readable
               .pipe(csvParser())
               .on('data', (row) => {
-                console.log('CSV row keys:', Object.keys(row));
-                console.log('Sample row:', row);
-                // Handle different CSV column formats
-                const description = row['Contract description/name'] || row['Contract Description'] || row['Description'] || '';
-                const supplierName = row['Supplier name'] || row['Supplier Name'] || row['Supplier'] || '';
-                const contractValue = row['Contract value'] || row['Contract Value'] || row['Value'] || '0';
-                const awardDate = row['Award contract date'] || row['Award Date'] || row['Date'] || '';
-                const contractRef = row['Contract reference number'] || row['Contract Reference'] || row['Reference'] || '';
-                const supplierAddress = row['Supplier Address'] || row['Address'] || '';
+                rowCount++;
                 
-                if (description && supplierName) {
-                  contracts.push({
+                // Log first few rows for debugging
+                if (rowCount <= 3) {
+                  console.log(`Row ${rowCount} keys:`, Object.keys(row));
+                  console.log(`Row ${rowCount} data:`, row);
+                }
+                
+                // Handle different CSV column formats - check all possible variations
+                const description = row['Contract description/name'] || 
+                                  row['Contract Description'] || 
+                                  row['Description'] || 
+                                  row['Contract description'] ||
+                                  '';
+                                  
+                const supplierName = row['Supplier name'] || 
+                                   row['Supplier Name'] || 
+                                   row['Supplier'] || 
+                                   '';
+                                   
+                const contractValue = row['Contract value'] || 
+                                    row['Contract Value'] || 
+                                    row['Value'] || 
+                                    '0';
+                                    
+                const awardDate = row['Award contract date'] || 
+                                row['Award Date'] || 
+                                row['Date'] || 
+                                '';
+                                
+                const contractRef = row['Contract reference number'] || 
+                                  row['Contract Reference'] || 
+                                  row['Reference'] || 
+                                  '';
+                                  
+                const supplierAddress = row['Supplier Address'] || 
+                                      row['Address'] || 
+                                      '';
+
+                console.log(`Processing contract: "${description}" by "${supplierName}" for ${contractValue}`);
+                
+                if (description && supplierName && description.trim() && supplierName.trim()) {
+                  const contract = {
                     contractNumber: contractRef,
                     description: description.trim(),
                     supplier: supplierName.trim(),
@@ -70,14 +111,20 @@ class QueenslandBudgetTracker {
                     category: this.categorizeContract(description),
                     region: this.extractRegion(supplierAddress),
                     rawData: row
-                  });
+                  };
+                  
+                  contracts.push(contract);
+                  console.log(`Added contract ${contracts.length}: ${contract.description} - $${contract.value}`);
                 }
               })
               .on('end', () => {
-                console.log(`Processed ${contracts.length} contracts from ${csvUrl}`);
+                console.log(`Processed ${rowCount} rows, created ${contracts.length} contracts from ${csvUrl}`);
                 resolve();
               })
-              .on('error', reject);
+              .on('error', (error) => {
+                console.error(`CSV parsing error for ${csvUrl}:`, error);
+                reject(error);
+              });
           });
           
           allContracts.push(...contracts);
