@@ -745,6 +745,27 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
     }
   });
 
+  // Test endpoint for enhanced data
+  fastify.get('/test-enhanced', {
+    schema: {
+      tags: ['Budget Intelligence'],
+      description: 'Test enhanced budget data with infrastructure'
+    }
+  }, async (request, reply) => {
+    try {
+      const enhancedData = await getEnhancedRealBudgetData()
+      return {
+        totalSpent: enhancedData.summary.totalSpent,
+        contractCount: enhancedData.summary.contractCount,
+        sampleContracts: enhancedData.recentContracts.slice(0, 3),
+        spendingByCategory: enhancedData.spendingByCategory,
+        dataSource: enhancedData.summary.dataSource
+      }
+    } catch (error) {
+      return reply.status(500).send({ error: error.message })
+    }
+  })
+
   // Test endpoint for contract fetching
   fastify.get('/test-contracts', {
     schema: {
