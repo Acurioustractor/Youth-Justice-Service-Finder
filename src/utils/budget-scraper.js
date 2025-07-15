@@ -44,14 +44,14 @@ class QueenslandBudgetTracker {
           const contracts = [];
           
           await new Promise((resolve, reject) => {
-            const stream = require('stream');
-            const readable = new stream.Readable();
-            readable.push(response.data);
-            readable.push(null);
+            const { Readable } = require('stream');
+            const readable = Readable.from([response.data]);
             
             readable
               .pipe(csvParser())
               .on('data', (row) => {
+                console.log('CSV row keys:', Object.keys(row));
+                console.log('Sample row:', row);
                 // Handle different CSV column formats
                 const description = row['Contract description/name'] || row['Contract Description'] || row['Description'] || '';
                 const supplierName = row['Supplier name'] || row['Supplier Name'] || row['Supplier'] || '';
