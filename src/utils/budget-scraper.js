@@ -23,118 +23,131 @@ class QueenslandBudgetTracker {
     };
   }
 
-  // Fetch the latest contract disclosure CSV
+  // Simple manual CSV parsing approach  
+  parseCSVLine(line, headers) {
+    const result = {};
+    const values = [];
+    let current = '';
+    let inQuotes = false;
+    
+    for (let i = 0; i < line.length; i++) {
+      const char = line[i];
+      
+      if (char === '"') {
+        inQuotes = !inQuotes;
+      } else if (char === ',' && !inQuotes) {
+        values.push(current.trim());
+        current = '';
+      } else {
+        current += char;
+      }
+    }
+    values.push(current.trim());
+    
+    headers.forEach((header, index) => {
+      result[header] = values[index] || '';
+    });
+    
+    return result;
+  }
+
+  // Fetch the latest contract disclosure CSV - simplified approach
   async fetchContractData() {
     try {
       console.log('Fetching latest contract disclosure data...');
       
-      // Get both CSV files
-      const csvUrls = [
-        'https://www.families.qld.gov.au/_media/documents/open-data/dyj_contract_disclosure_oct_2024.csv',
-        'https://www.families.qld.gov.au/_media/documents/open-data/dyj-contract-disclosure-may-july-2024.csv'
-      ];
+      // Start with just one CSV to test
+      const csvUrl = 'https://www.families.qld.gov.au/_media/documents/open-data/dyj_contract_disclosure_oct_2024.csv';
       
-      const allContracts = [];
+      console.log(`Fetching contracts from: ${csvUrl}`);
+      const response = await axios.get(csvUrl, { 
+        timeout: 30000,
+        responseType: 'text'
+      });
       
-      for (const csvUrl of csvUrls) {
+      // Clean the CSV data
+      let csvData = response.data;
+      if (csvData.charCodeAt(0) === 0xFEFF) {
+        csvData = csvData.slice(1);
+      }
+      
+      console.log('CSV data length:', csvData.length);
+      console.log('First 500 chars:', csvData.substring(0, 500));
+      
+      const lines = csvData.split('\n').filter(line => line.trim());
+      console.log('Total lines:', lines.length);
+      
+      if (lines.length === 0) {
+        console.log('No lines found in CSV');
+        return [];
+      }
+      
+      // Parse header
+      const headerLine = lines[0];
+      console.log('Header line:', headerLine);
+      
+      const headers = headerLine.split(',').map(h => h.trim().replace(/"/g, ''));
+      console.log('Headers:', headers);
+      
+      const contracts = [];
+      
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i];
+        if (!line.trim()) continue;
+        
         try {
-          console.log(`Fetching contracts from: ${csvUrl}`);
-          const response = await axios.get(csvUrl, { 
-            timeout: 30000,
-            responseType: 'text' // Get as text to handle encoding
-          });
+          const row = this.parseCSVLine(line, headers);
           
-          // Clean the CSV data - remove BOM if present
-          let csvData = response.data;
-          if (csvData.charCodeAt(0) === 0xFEFF) {
-            csvData = csvData.slice(1);
+          if (i <= 3) {
+            console.log(`Row ${i}:`, row);
           }
           
-          const contracts = [];
-          let rowCount = 0;
+          // Extract contract data with multiple possible column names
+          const description = row['Contract description/name'] || 
+                            row['Contract description'] || 
+                            row['Description'] || '';
+                            
+          const supplierName = row['Supplier name'] || 
+                             row['Supplier Name'] || 
+                             row['Supplier'] || '';
+                             
+          const contractValue = row['Contract value'] || 
+                              row['Value'] || '0';
+                              
+          const awardDate = row['Award contract date'] || 
+                          row['Award Date'] || '';
+                          
+          const contractRef = row['Contract reference number'] || 
+                            row['Reference'] || '';
+                            
+          const supplierAddress = row['Supplier Address'] || 
+                                row['Address'] || '';
           
-          await new Promise((resolve, reject) => {
-            const { Readable } = require('stream');
-            const readable = Readable.from([csvData]);
+          if (description && supplierName && description.trim() && supplierName.trim()) {
+            const contract = {
+              contractNumber: contractRef,
+              description: description.trim(),
+              supplier: supplierName.trim(),
+              value: this.parseContractValue(contractValue),
+              awardDate: this.parseDate(awardDate),
+              category: this.categorizeContract(description),
+              region: this.extractRegion(supplierAddress)
+            };
             
-            readable
-              .pipe(csvParser())
-              .on('data', (row) => {
-                rowCount++;
-                
-                // Log first few rows for debugging
-                if (rowCount <= 3) {
-                  console.log(`Row ${rowCount} keys:`, Object.keys(row));
-                  console.log(`Row ${rowCount} data:`, row);
-                }
-                
-                // Handle different CSV column formats - check all possible variations
-                const description = row['Contract description/name'] || 
-                                  row['Contract Description'] || 
-                                  row['Description'] || 
-                                  row['Contract description'] ||
-                                  '';
-                                  
-                const supplierName = row['Supplier name'] || 
-                                   row['Supplier Name'] || 
-                                   row['Supplier'] || 
-                                   '';
-                                   
-                const contractValue = row['Contract value'] || 
-                                    row['Contract Value'] || 
-                                    row['Value'] || 
-                                    '0';
-                                    
-                const awardDate = row['Award contract date'] || 
-                                row['Award Date'] || 
-                                row['Date'] || 
-                                '';
-                                
-                const contractRef = row['Contract reference number'] || 
-                                  row['Contract Reference'] || 
-                                  row['Reference'] || 
-                                  '';
-                                  
-                const supplierAddress = row['Supplier Address'] || 
-                                      row['Address'] || 
-                                      '';
-
-                console.log(`Processing contract: "${description}" by "${supplierName}" for ${contractValue}`);
-                
-                if (description && supplierName && description.trim() && supplierName.trim()) {
-                  const contract = {
-                    contractNumber: contractRef,
-                    description: description.trim(),
-                    supplier: supplierName.trim(),
-                    value: this.parseContractValue(contractValue),
-                    awardDate: this.parseDate(awardDate),
-                    category: this.categorizeContract(description),
-                    region: this.extractRegion(supplierAddress),
-                    rawData: row
-                  };
-                  
-                  contracts.push(contract);
-                  console.log(`Added contract ${contracts.length}: ${contract.description} - $${contract.value}`);
-                }
-              })
-              .on('end', () => {
-                console.log(`Processed ${rowCount} rows, created ${contracts.length} contracts from ${csvUrl}`);
-                resolve();
-              })
-              .on('error', (error) => {
-                console.error(`CSV parsing error for ${csvUrl}:`, error);
-                reject(error);
-              });
-          });
-          
-          allContracts.push(...contracts);
-        } catch (error) {
-          console.error(`Error fetching from ${csvUrl}:`, error.message);
+            contracts.push(contract);
+            
+            if (contracts.length <= 5) {
+              console.log(`Added contract ${contracts.length}:`, contract.description, '-', contract.value);
+            }
+          }
+        } catch (rowError) {
+          console.error(`Error parsing row ${i}:`, rowError.message);
         }
       }
       
-      console.log(`Total contracts processed: ${allContracts.length}`);
-      return allContracts;
+      console.log(`Total contracts processed: ${contracts.length}`);
+      return contracts;
+      
     } catch (error) {
       console.error('Error fetching contract data:', error);
       return [];
