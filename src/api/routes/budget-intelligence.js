@@ -14,43 +14,10 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
     ttl: 5 * 60 * 1000 // 5 minutes for testing
   }
   
-  // Get real Queensland budget data
+  // Get real Queensland budget data - DEPRECATED: Use getEnhancedRealBudgetData instead
   const getRealBudgetData = async () => {
-    // Check cache first
-    if (dataCache.data && 
-        dataCache.lastUpdated && 
-        (Date.now() - dataCache.lastUpdated) < dataCache.ttl) {
-      return dataCache.data
-    }
-    
-    try {
-      console.log('Fetching real Queensland budget data...')
-      
-      // Try to fetch contract data directly first
-      const contracts = await budgetTracker.fetchContractData()
-      console.log(`Fetched ${contracts.length} contracts`)
-      
-      if (contracts.length === 0) {
-        console.log('No contracts found, using fallback data')
-        throw new Error('No contract data available')
-      }
-      
-      const report = await budgetTracker.generateIntelligenceReport()
-      
-      if (!report) {
-        throw new Error('Failed to generate budget report')
-      }
-      
-      // Cache the real data
-      dataCache.data = report
-      dataCache.lastUpdated = Date.now()
-      
-      console.log(`Real data cached: ${report.summary?.contractsAnalyzed || 0} contracts`)
-      return report
-    } catch (error) {
-      console.error('Failed to fetch real budget data, using fallback:', error.message)
-      return getFallbackBudgetData()
-    }
+    console.log('WARNING: Using deprecated getRealBudgetData - switching to enhanced data')
+    return await getEnhancedRealBudgetData()
   }
   
   // Enhanced real data combining contracts with major infrastructure spending
