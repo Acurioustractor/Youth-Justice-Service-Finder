@@ -183,8 +183,21 @@ export default function BudgetDashboard() {
                 Queensland Youth Justice Budget Intelligence
               </h1>
               <p className="text-gray-600 mt-2">
-                Real-time tracking of $770.9M youth justice investment
+                Real-time tracking of $2.256B youth justice investment using Queensland government contract disclosure data
               </p>
+              {dashboardData?.summary?.dataSource && (
+                <div className="mt-3">
+                  <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    <ExternalLink className="h-3 w-3 mr-1" />
+                    {dashboardData.summary.dataSource}
+                    {dashboardData.summary.lastUpdated && (
+                      <span className="ml-2">
+                        • Updated: {new Date(dashboardData.summary.lastUpdated).toLocaleDateString('en-AU')}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
             <div className="flex items-center space-x-4">
               <select
@@ -382,7 +395,7 @@ export default function BudgetDashboard() {
                         {formatLargeCurrency(contract.value)}
                       </span>
                       <span className="text-xs text-gray-500">
-                        {new Date(contract.awardDate).toLocaleDateString('en-AU')}
+                        {contract.awardDate ? new Date(contract.awardDate).toLocaleDateString('en-AU') : 'N/A'}
                       </span>
                     </div>
                   </div>
@@ -403,7 +416,7 @@ export default function BudgetDashboard() {
                       </span>
                       <div className="flex items-center text-sm text-gray-500">
                         <Clock className="h-4 w-4 mr-1" />
-                        Closes {new Date(opportunity.closingDate).toLocaleDateString('en-AU')}
+                        Closes {opportunity.closingDate ? new Date(opportunity.closingDate).toLocaleDateString('en-AU') : 'N/A'}
                       </div>
                     </div>
                   </div>
