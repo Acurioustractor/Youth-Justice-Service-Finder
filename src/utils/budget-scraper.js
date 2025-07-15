@@ -28,41 +28,66 @@ class QueenslandBudgetTracker {
     try {
       console.log('Fetching latest contract disclosure data...');
       
-      // Get the latest CSV from families.qld.gov.au
-      const csvUrl = 'https://www.families.qld.gov.au/_media/documents/open-data/dyj_contract_disclosure_oct_2024.csv';
-      const response = await axios.get(csvUrl);
+      // Get both CSV files
+      const csvUrls = [
+        'https://www.families.qld.gov.au/_media/documents/open-data/dyj_contract_disclosure_oct_2024.csv',
+        'https://www.families.qld.gov.au/_media/documents/open-data/dyj-contract-disclosure-may-july-2024.csv'
+      ];
       
-      const contracts = [];
+      const allContracts = [];
       
-      return new Promise((resolve, reject) => {
-        const stream = require('stream');
-        const readable = new stream.Readable();
-        readable.push(response.data);
-        readable.push(null);
-        
-        readable
-          .pipe(csvParser())
-          .on('data', (row) => {
-            contracts.push({
-              contractNumber: row['Contract Number'] || '',
-              description: row['Contract Description'] || '',
-              supplier: row['Supplier Name'] || '',
-              value: this.parseContractValue(row['Contract Value'] || '0'),
-              startDate: this.parseDate(row['Contract Start Date']),
-              endDate: this.parseDate(row['Contract End Date']),
-              awardDate: this.parseDate(row['Contract Award Date']),
-              procurementMethod: row['Procurement Method'] || '',
-              category: this.categorizeContract(row['Contract Description'] || ''),
-              region: this.extractRegion(row['Supplier Address'] || ''),
-              rawData: row
-            });
-          })
-          .on('end', () => {
-            console.log(`Processed ${contracts.length} contracts`);
-            resolve(contracts);
-          })
-          .on('error', reject);
-      });
+      for (const csvUrl of csvUrls) {
+        try {
+          console.log(`Fetching contracts from: ${csvUrl}`);
+          const response = await axios.get(csvUrl, { timeout: 30000 });
+          
+          const contracts = [];
+          
+          await new Promise((resolve, reject) => {
+            const stream = require('stream');
+            const readable = new stream.Readable();
+            readable.push(response.data);
+            readable.push(null);
+            
+            readable
+              .pipe(csvParser())
+              .on('data', (row) => {
+                // Handle different CSV column formats
+                const description = row['Contract description/name'] || row['Contract Description'] || row['Description'] || '';
+                const supplierName = row['Supplier name'] || row['Supplier Name'] || row['Supplier'] || '';
+                const contractValue = row['Contract value'] || row['Contract Value'] || row['Value'] || '0';
+                const awardDate = row['Award contract date'] || row['Award Date'] || row['Date'] || '';
+                const contractRef = row['Contract reference number'] || row['Contract Reference'] || row['Reference'] || '';
+                const supplierAddress = row['Supplier Address'] || row['Address'] || '';
+                
+                if (description && supplierName) {
+                  contracts.push({
+                    contractNumber: contractRef,
+                    description: description.trim(),
+                    supplier: supplierName.trim(),
+                    value: this.parseContractValue(contractValue),
+                    awardDate: this.parseDate(awardDate),
+                    category: this.categorizeContract(description),
+                    region: this.extractRegion(supplierAddress),
+                    rawData: row
+                  });
+                }
+              })
+              .on('end', () => {
+                console.log(`Processed ${contracts.length} contracts from ${csvUrl}`);
+                resolve();
+              })
+              .on('error', reject);
+          });
+          
+          allContracts.push(...contracts);
+        } catch (error) {
+          console.error(`Error fetching from ${csvUrl}:`, error.message);
+        }
+      }
+      
+      console.log(`Total contracts processed: ${allContracts.length}`);
+      return allContracts;
     } catch (error) {
       console.error('Error fetching contract data:', error);
       return [];
@@ -87,28 +112,43 @@ class QueenslandBudgetTracker {
 
   // Parse dates in various formats
   parseDate(dateString) {
-    if (!dateString) return null;
+    if (!dateString) return new Date();
     
     try {
+      // Handle DD/MM/YYYY format (Australian format)
+      if (dateString.includes('/')) {
+        const parts = dateString.split('/');
+        if (parts.length === 3) {
+          // DD/MM/YYYY -> YYYY-MM-DD
+          const day = parts[0].padStart(2, '0');
+          const month = parts[1].padStart(2, '0');
+          const year = parts[2];
+          return new Date(`${year}-${month}-${day}`);
+        }
+      }
+      
       return new Date(dateString);
     } catch (error) {
-      return null;
+      console.warn('Failed to parse date:', dateString);
+      return new Date();
     }
   }
 
   // Categorize contracts based on description
   categorizeContract(description) {
     const categories = {
-      'Detention Services': ['detention', 'custody', 'secure', 'watch house'],
-      'Community Programs': ['community', 'diversion', 'outreach', 'support'],
-      'Education Services': ['education', 'school', 'training', 'learning'],
-      'Health Services': ['health', 'medical', 'mental health', 'counselling'],
-      'Cultural Services': ['cultural', 'indigenous', 'aboriginal', 'torres strait'],
-      'Family Support': ['family', 'parenting', 'domestic'],
-      'Legal Services': ['legal', 'court', 'magistrate', 'justice'],
-      'Infrastructure': ['construction', 'building', 'facility', 'maintenance'],
-      'Technology': ['IT', 'software', 'hardware', 'system', 'technology'],
-      'Administration': ['administration', 'management', 'consulting', 'advisory']
+      'Travel & Transportation': ['travel', 'accommodation', 'meals', 'transport', 'vehicle', 'flight', 'charter'],
+      'Technology Services': ['ICT', 'hardware', 'software', 'laptop', 'monitor', 'computer', 'system', 'technology'],
+      'Infrastructure & Facilities': ['fit out', 'office', 'construction', 'building', 'facility', 'maintenance', 'infrastructure'],
+      'Professional Services': ['professional services', 'consulting', 'advisory', 'management', 'recruitment'],
+      'Food Services': ['food', 'meal', 'catering', 'provisions', 'meat', 'kitchen'],
+      'Security & Safety': ['security', 'protective', 'safety', 'equipment', 'uniform', 'duress'],
+      'Health Services': ['health', 'medical', 'mental health', 'counselling', 'wellbeing'],
+      'Education & Training': ['education', 'school', 'training', 'learning', 'educational'],
+      'Legal Services': ['legal', 'court', 'magistrate', 'justice', 'advocacy'],
+      'Community Programs': ['community', 'diversion', 'outreach', 'support', 'cultural', 'indigenous'],
+      'Cleaning & Maintenance': ['cleaning', 'maintenance', 'janitorial', 'grounds'],
+      'Administration': ['administration', 'office supplies', 'stationery', 'communication']
     };
 
     const desc = description.toLowerCase();
@@ -119,7 +159,7 @@ class QueenslandBudgetTracker {
       }
     }
     
-    return 'Other';
+    return 'Other Services';
   }
 
   // Extract region from supplier address
