@@ -382,7 +382,7 @@ export default function BudgetDashboard() {
                         {formatLargeCurrency(contract.value)}
                       </span>
                       <span className="text-xs text-gray-500">
-                        {contract.awardDate.toLocaleDateString('en-AU')}
+                        {new Date(contract.awardDate).toLocaleDateString('en-AU')}
                       </span>
                     </div>
                   </div>
@@ -403,7 +403,7 @@ export default function BudgetDashboard() {
                       </span>
                       <div className="flex items-center text-sm text-gray-500">
                         <Clock className="h-4 w-4 mr-1" />
-                        Closes {opportunity.closingDate.toLocaleDateString('en-AU')}
+                        Closes {new Date(opportunity.closingDate).toLocaleDateString('en-AU')}
                       </div>
                     </div>
                   </div>
