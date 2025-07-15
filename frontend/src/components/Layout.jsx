@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Search, MapPin, Info, Menu, X, Download, BarChart3, DollarSign } from 'lucide-react'
+import { Search, MapPin, Info, Menu, X, Download, BarChart3, DollarSign, TrendingUp } from 'lucide-react'
 import { useState } from 'react'
 
 export default function Layout({ children }) {
@@ -10,6 +10,7 @@ export default function Layout({ children }) {
   const navigation = [
     { name: 'Home', href: '/', icon: MapPin },
     { name: 'Search Services', href: '/search', icon: Search },
+    { name: 'Budget Intelligence', href: '/budget', icon: TrendingUp },
     { name: 'Spending Analysis', href: '/spending', icon: DollarSign },
     { name: 'Data Downloads', href: '/data', icon: Download },
     { name: 'About', href: '/about', icon: Info },

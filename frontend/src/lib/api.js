@@ -383,6 +383,78 @@ export const apiService = {
       console.log('Supplier analysis not available')
       return { suppliers: [], totalSuppliers: 0 }
     }
+  },
+
+  // Budget Intelligence API Methods
+  async getBudgetDashboard() {
+    try {
+      const response = await api.get('/budget-intelligence/dashboard')
+      return response.data
+    } catch (error) {
+      console.log('Budget dashboard not available, using demo data')
+      throw error // Let the component handle the error and show demo data
+    }
+  },
+
+  async getBudgetReport() {
+    try {
+      const response = await api.get('/budget-intelligence/report')
+      return response.data
+    } catch (error) {
+      console.log('Budget report not available')
+      throw error
+    }
+  },
+
+  async getBudgetContracts(params = {}) {
+    try {
+      const response = await api.get('/budget-intelligence/contracts', { params })
+      return response.data
+    } catch (error) {
+      console.log('Budget contracts not available')
+      throw error
+    }
+  },
+
+  async getBudgetAllocations(year = null) {
+    try {
+      const params = year ? { year } : {}
+      const response = await api.get('/budget-intelligence/allocations', { params })
+      return response.data
+    } catch (error) {
+      console.log('Budget allocations not available')
+      throw error
+    }
+  },
+
+  async getBudgetTrends(params = {}) {
+    try {
+      const response = await api.get('/budget-intelligence/trends', { params })
+      return response.data
+    } catch (error) {
+      console.log('Budget trends not available')
+      throw error
+    }
+  },
+
+  async getFundingOpportunities(params = {}) {
+    try {
+      const response = await api.get('/budget-intelligence/opportunities', { params })
+      return response.data
+    } catch (error) {
+      console.log('Funding opportunities not available')
+      throw error
+    }
+  },
+
+  async getBudgetAlerts(params = {}) {
+    try {
+      const response = await api.get('/budget-intelligence/alerts', { params })
+      return response.data
+    } catch (error) {
+      console.log('Budget alerts not available')
+      throw error
+    }
   }
 }
 

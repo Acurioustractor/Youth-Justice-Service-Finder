@@ -15,6 +15,7 @@ import elasticsearchSearchRoutes from './routes/elasticsearch-search.js';
 import healthRoutes from './routes/health.js';
 import statsRoutes from './routes/stats.js';
 import dataDownloadRoutes from './routes/data-download.js';
+import budgetIntelligenceRoutes from './routes/budget-intelligence.js';
 import { addSchemas } from './schemas.js';
 
 const logger = pino({
@@ -99,7 +100,8 @@ export async function createServer(options = {}) {
         { name: 'Search', description: 'Advanced search operations' },
         { name: 'Health', description: 'API health and monitoring' },
         { name: 'Stats', description: 'Database statistics' },
-        { name: 'Data', description: 'Data download operations' }
+        { name: 'Data', description: 'Data download operations' },
+        { name: 'Budget Intelligence', description: 'Queensland budget tracking and analysis' }
       ]
     }
   });
@@ -171,6 +173,7 @@ export async function createServer(options = {}) {
   await fastify.register(servicesRoutes, { prefix: '/services' });
   await fastify.register(organizationsRoutes, { prefix: '/organizations' });
   await fastify.register(dataDownloadRoutes, { prefix: '/data' });
+  await fastify.register(budgetIntelligenceRoutes, { prefix: '/budget-intelligence' });
 
   // Root endpoint
   fastify.get('/', async (request, reply) => {
@@ -185,7 +188,8 @@ export async function createServer(options = {}) {
         organizations: '/organizations',
         search: '/search',
         stats: '/stats',
-        data: '/data'
+        data: '/data',
+        budgetIntelligence: '/budget-intelligence'
       }
     };
   });

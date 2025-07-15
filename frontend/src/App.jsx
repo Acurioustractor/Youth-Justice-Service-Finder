@@ -7,6 +7,7 @@ import ServiceDetailPage from './pages/ServiceDetailPage'
 import AboutPage from './pages/AboutPage'
 import DataDownloadPage from './pages/DataDownloadPage'
 import SpendingAnalysisPage from './pages/SpendingAnalysisPage'
+import BudgetDashboard from './pages/BudgetDashboard'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/data" element={<DataDownloadPage />} />
         <Route path="/spending" element={<SpendingAnalysisPage />} />
+        <Route path="/budget" element={<BudgetDashboard />} />
       </Routes>
     </Layout>
   )
