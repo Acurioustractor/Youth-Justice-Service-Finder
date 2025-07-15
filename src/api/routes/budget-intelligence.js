@@ -25,6 +25,16 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
     
     try {
       console.log('Fetching real Queensland budget data...')
+      
+      // Try to fetch contract data directly first
+      const contracts = await budgetTracker.fetchContractData()
+      console.log(`Fetched ${contracts.length} contracts`)
+      
+      if (contracts.length === 0) {
+        console.log('No contracts found, using fallback data')
+        throw new Error('No contract data available')
+      }
+      
       const report = await budgetTracker.generateIntelligenceReport()
       
       if (!report) {
@@ -35,9 +45,10 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
       dataCache.data = report
       dataCache.lastUpdated = Date.now()
       
+      console.log(`Real data cached: ${report.summary?.contractsAnalyzed || 0} contracts`)
       return report
     } catch (error) {
-      console.error('Failed to fetch real budget data, using fallback:', error)
+      console.error('Failed to fetch real budget data, using fallback:', error.message)
       return getFallbackBudgetData()
     }
   }
@@ -549,6 +560,31 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
       });
     }
   });
+
+  // Test endpoint for contract fetching
+  fastify.get('/test-contracts', {
+    schema: {
+      tags: ['Budget Intelligence'],
+      description: 'Test contract data fetching'
+    }
+  }, async (request, reply) => {
+    try {
+      console.log('Testing contract data fetch...')
+      const contracts = await budgetTracker.fetchContractData()
+      
+      return {
+        contractCount: contracts.length,
+        sampleContracts: contracts.slice(0, 3),
+        status: 'success'
+      }
+    } catch (error) {
+      console.error('Contract test failed:', error)
+      return reply.status(500).send({
+        error: error.message,
+        status: 'failed'
+      })
+    }
+  })
 
   // Get summary dashboard data
   fastify.get('/dashboard', {
