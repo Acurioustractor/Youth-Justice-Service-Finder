@@ -106,38 +106,48 @@ export default function SearchPage() {
         }
       })
       
-      // Apply funding filters
-      let filteredServices = enhancedServices
-      
-      if (searchFilters.funded_only) {
-        filteredServices = filteredServices.filter(service => service.fundingInfo)
+      // If no funding filters are applied, use backend pagination directly
+      if (!searchFilters.funded_only && !searchFilters.funding_level) {
+        setServices(enhancedServices)
+        setPagination(data.pagination || {
+          total: data.total || enhancedServices.length,
+          offset: searchFilters.offset || 0,
+          limit: searchFilters.limit || 20,
+          pages: Math.ceil((data.total || enhancedServices.length) / (searchFilters.limit || 20))
+        })
+      } else {
+        // Apply funding filters and client-side pagination
+        let filteredServices = enhancedServices
+        
+        if (searchFilters.funded_only) {
+          filteredServices = filteredServices.filter(service => service.fundingInfo)
+        }
+        
+        if (searchFilters.funding_level) {
+          filteredServices = filteredServices.filter(service => 
+            service.fundingInfo && service.fundingInfo.level === searchFilters.funding_level
+          )
+        }
+        
+        // Apply client-side pagination to filtered results
+        const totalFiltered = filteredServices.length
+        const currentOffset = searchFilters.offset || 0
+        const currentLimit = searchFilters.limit || 20
+        
+        // Slice the filtered results for current page
+        const paginatedServices = filteredServices.slice(currentOffset, currentOffset + currentLimit)
+        
+        setServices(paginatedServices)
+        
+        // Update pagination to reflect filtered results
+        const updatedPagination = {
+          total: totalFiltered,
+          offset: currentOffset,
+          limit: currentLimit,
+          pages: Math.ceil(totalFiltered / currentLimit)
+        }
+        setPagination(updatedPagination)
       }
-      
-      if (searchFilters.funding_level) {
-        filteredServices = filteredServices.filter(service => 
-          service.fundingInfo && service.fundingInfo.level === searchFilters.funding_level
-        )
-      }
-      
-      // Apply client-side pagination to filtered results
-      const totalFiltered = filteredServices.length
-      const currentOffset = searchFilters.offset || 0
-      const currentLimit = searchFilters.limit || 20
-      
-      // Slice the filtered results for current page
-      const paginatedServices = filteredServices.slice(currentOffset, currentOffset + currentLimit)
-      
-      setServices(paginatedServices)
-      
-      // Update pagination to reflect filtered results
-      const updatedPagination = {
-        total: totalFiltered,
-        offset: currentOffset,
-        limit: currentLimit,
-        pages: Math.ceil(totalFiltered / currentLimit)
-      }
-      
-      setPagination(updatedPagination)
     } catch (err) {
       console.error('Search failed:', err)
       setError('Failed to search services. Please try again.')

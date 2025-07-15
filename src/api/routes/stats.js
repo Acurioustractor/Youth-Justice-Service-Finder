@@ -12,19 +12,59 @@ export default async function statsRoutes(fastify, options) {
       // Try database first
       let dbStats = null;
       try {
-        const services = await request.db('services').count('* as count').first();
-        const organizations = await request.db('organizations').count('* as count').first();
+        const [services, organizations, locations] = await Promise.all([
+          request.db('services').count('* as count').first(),
+          request.db('organizations').count('* as count').first(),
+          request.db('locations').count('* as count').first()
+        ]);
         
         if (parseInt(services?.count || 0) > 0) {
+          // Get unique regions from locations
+          const regions = await request.db('locations')
+            .distinct('region')
+            .whereNotNull('region')
+            .where('region', '!=', '')
+            .where('region', '!=', 'unknown');
+
+          // Get unique categories from services
+          const categoryRows = await request.db('services')
+            .select('categories')
+            .whereNotNull('categories');
+
+          // Extract unique categories from the arrays
+          const uniqueCategories = new Set();
+          categoryRows.forEach(row => {
+            if (row.categories && Array.isArray(row.categories)) {
+              row.categories.forEach(cat => {
+                if (cat && cat.trim()) {
+                  uniqueCategories.add(cat);
+                }
+              });
+            }
+          });
+
+          // Get unique states from locations
+          const states = await request.db('locations')
+            .distinct('state_province as state')
+            .whereNotNull('state_province')
+            .where('state_province', '!=', '')
+            .where('state_province', '!=', 'Unknown');
+
           dbStats = {
             totals: {
               services: parseInt(services?.count || 0),
-              organizations: parseInt(organizations?.count || 0)
-            }
+              organizations: parseInt(organizations?.count || 0),
+              locations: parseInt(locations?.count || 0)
+            },
+            regions: regions.map(r => r.region).filter(Boolean),
+            categories: Array.from(uniqueCategories),
+            states: states.map(s => s.state).filter(Boolean),
+            demo_mode: false,
+            status: 'Live data from database'
           };
         }
       } catch (e) {
-        fastify.log.warn('Database not accessible, using file data');
+        fastify.log.warn('Database not accessible, using file data:', e.message);
       }
 
       // Fallback to file data if database is empty or unavailable
