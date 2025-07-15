@@ -161,20 +161,40 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
         },
         upcomingOpportunities: [
           {
-            title: 'Youth After Hours Services Expansion',
-            amount: 8000000,
-            closingDate: '2025-03-15',
+            title: 'Gambling Community Benefit Fund - Round 124 (Super Round)',
+            amount: 100000,
+            closingDate: '2025-07-18',
             status: 'Open',
-            description: 'Funding for expanded after-hours youth support services',
-            eligibility: 'Registered youth service providers'
+            description: 'Queensland\'s largest one-off community grants program. Up to $100K for community groups',
+            eligibility: 'Not-for-profit community organizations',
+            source: 'Queensland Department of Justice'
           },
           {
-            title: 'Indigenous Youth Programs Grant',
-            amount: 5000000,
-            closingDate: '2025-04-30', 
+            title: 'Queensland Country Bank Community Grants 2025-26',
+            amount: 30000,
+            closingDate: '2025-08-31',
             status: 'Open',
-            description: 'Culturally appropriate programs for Indigenous youth',
-            eligibility: 'Aboriginal and Torres Strait Islander organizations'
+            description: 'Grants between $5,000-$30,000 for community groups making practical difference',
+            eligibility: 'Eligible community groups and not-for-profit organisations',
+            source: 'Queensland Country Bank'
+          },
+          {
+            title: 'Youth Skills Program - Second Round 2025-26',
+            amount: 3500000,
+            closingDate: '2025-09-15',
+            status: 'Opening Soon',
+            description: 'Up to $3.5M for youth training programs. Supports young people 15-24 engaged with Youth Justice',
+            eligibility: 'Community-based organisations providing youth training',
+            source: 'Queensland Department of Trade, Employment and Training'
+          },
+          {
+            title: 'Community-based Crime Action Grants',
+            amount: 75000,
+            closingDate: '2025-08-15',
+            status: 'Open',
+            description: '$5M available for culturally responsive community projects addressing youth crime',
+            eligibility: 'Community organizations addressing local youth crime needs',
+            source: 'Department of Youth Justice and Victim Support'
           }
         ],
         criticalAlerts: [
@@ -192,6 +212,12 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
           },
           {
             type: 'opportunity',
+            title: 'Current Funding Opportunities',
+            message: 'GCBF Round 124 closes July 18, Queensland Country Bank grants close Aug 31, Youth Skills Program opens Sept',
+            priority: 'high'
+          },
+          {
+            type: 'info',
             title: 'Capacity Expansion',
             message: 'Youth detention capacity doubling by 2027 with new Wacol, Woodford, and Cairns centres',
             priority: 'medium'
