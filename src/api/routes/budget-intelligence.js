@@ -1,8 +1,131 @@
 // Budget Intelligence API Routes
-import QueenslandBudgetTracker from '../../utils/budget-scraper.js';
+// Simplified version for Railway deployment with demo data
 
 export default async function budgetIntelligenceRoutes(fastify, options) {
-  const budgetTracker = new QueenslandBudgetTracker();
+  
+  // Mock budget data for demonstration
+  const getMockBudgetData = () => ({
+    summary: {
+      totalBudget: 770900000,
+      totalSpent: 156780000,
+      utilizationRate: '20.3',
+      remainingBudget: 614120000,
+      contractCount: 247,
+      activeOpportunities: 12,
+      highPriorityAlerts: 3
+    },
+    recentContracts: [
+      {
+        description: 'Staying On Track Rehabilitation Program',
+        supplier: 'Mission Australia',
+        value: 15000000,
+        category: 'Community Programs',
+        awardDate: new Date('2024-11-15')
+      },
+      {
+        description: 'Youth Justice Schools Infrastructure',
+        supplier: 'Department of Education',
+        value: 12000000,
+        category: 'Infrastructure',
+        awardDate: new Date('2024-10-20')
+      },
+      {
+        description: 'Educational Engagement Initiative',
+        supplier: 'Queensland Education Department',
+        value: 8500000,
+        category: 'Education Services',
+        awardDate: new Date('2024-09-15')
+      },
+      {
+        description: 'Indigenous Youth Support Services',
+        supplier: 'Aboriginal Health Council',
+        value: 6200000,
+        category: 'Cultural Services',
+        awardDate: new Date('2024-08-30')
+      },
+      {
+        description: 'Mental Health Crisis Support',
+        supplier: 'Headspace Queensland',
+        value: 5800000,
+        category: 'Health Services',
+        awardDate: new Date('2024-07-22')
+      }
+    ],
+    spendingByCategory: {
+      'Community Programs': 45000000,
+      'Education Services': 38000000,
+      'Infrastructure': 25000000,
+      'Health Services': 18000000,
+      'Cultural Services': 15000000,
+      'Administration': 10000000,
+      'Other': 5780000
+    },
+    spendingByRegion: {
+      'Brisbane': 58000000,
+      'Gold Coast': 25000000,
+      'Townsville': 20000000,
+      'Cairns': 18000000,
+      'Toowoomba': 12000000,
+      'Mackay': 8000000,
+      'Rockhampton': 6000000,
+      'Other': 9780000
+    },
+    monthlyTrends: {
+      '2024-08': 12000000,
+      '2024-09': 18000000,
+      '2024-10': 25000000,
+      '2024-11': 22000000,
+      '2024-12': 28000000,
+      '2025-01': 31000000,
+      '2025-02': 20780000
+    },
+    upcomingOpportunities: [
+      {
+        title: 'Youth After Hours Services Expansion',
+        amount: 8000000,
+        closingDate: new Date('2025-03-15'),
+        status: 'Open',
+        description: 'Funding for expanded after-hours youth support services across Queensland',
+        eligibility: 'Registered youth service providers'
+      },
+      {
+        title: 'Indigenous Youth Programs Grant',
+        amount: 5000000,
+        closingDate: new Date('2025-04-30'),
+        status: 'Open',
+        description: 'Culturally appropriate programs for Indigenous youth',
+        eligibility: 'Aboriginal and Torres Strait Islander organizations'
+      },
+      {
+        title: 'Digital Youth Engagement Platform',
+        amount: 3500000,
+        closingDate: new Date('2025-05-20'),
+        status: 'Open',
+        description: 'Technology solutions for youth engagement and service delivery',
+        eligibility: 'Technology providers and youth organizations'
+      }
+    ],
+    criticalAlerts: [
+      {
+        type: 'warning',
+        title: 'Budget Utilization Above Target',
+        message: 'Q2 spending 15% above projected quarterly allocation',
+        priority: 'high'
+      },
+      {
+        type: 'opportunity',
+        title: 'Major Grant Closing Soon',
+        message: 'Youth After Hours Services grant closes in 28 days',
+        priority: 'high'
+      },
+      {
+        type: 'info',
+        title: 'New Funding Stream Available',
+        message: 'Digital Youth Engagement Platform applications now open',
+        priority: 'medium'
+      }
+    ]
+  });
 
   // Get comprehensive budget intelligence report
   fastify.get('/report', {
@@ -35,13 +158,41 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
     }
   }, async (request, reply) => {
     try {
-      const report = await budgetTracker.generateIntelligenceReport();
+      const mockData = getMockBudgetData();
       
-      if (!report) {
-        return reply.status(500).send({
-          error: 'Failed to generate budget intelligence report'
-        });
-      }
+      const report = {
+        generatedAt: new Date(),
+        summary: mockData.summary,
+        allocations: {
+          '2025-26': {
+            total: 770900000,
+            programs: {
+              'Early Intervention Programs': 215000000,
+              'Staying On Track Rehabilitation': 225000000,
+              'Youth Justice Schools': 40000000,
+              'Youth Detention Support': 50800000,
+              'Educational Engagement': 288200000
+            }
+          }
+        },
+        contracts: {
+          total: mockData.summary.contractCount,
+          totalValue: mockData.summary.totalSpent,
+          byCategory: mockData.spendingByCategory,
+          byRegion: mockData.spendingByRegion,
+          largest: mockData.recentContracts
+        },
+        trends: {
+          spending: mockData.monthlyTrends,
+          predictions: {
+            quarterlySpending: 192725000,
+            budgetUtilizationRate: 20.3,
+            projectedYearEnd: 627120000
+          }
+        },
+        opportunities: mockData.upcomingOpportunities,
+        alerts: mockData.criticalAlerts
+      };
 
       return report;
     } catch (error) {
@@ -84,7 +235,8 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
         offset = 0
       } = request.query;
 
-      let contracts = await budgetTracker.fetchContractData();
+      const mockData = getMockBudgetData();
+      let contracts = mockData.recentContracts;
 
       // Apply filters
       if (category) {
@@ -149,7 +301,18 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
   }, async (request, reply) => {
     try {
       const { year } = request.query;
-      const allocations = await budgetTracker.fetchBudgetAllocations();
+      const allocations = {
+        '2025-26': {
+          total: 770900000,
+          programs: {
+            'Early Intervention Programs': 215000000,
+            'Staying On Track Rehabilitation': 225000000,
+            'Youth Justice Schools': 40000000,
+            'Youth Detention Support': 50800000,
+            'Educational Engagement': 288200000
+          }
+        }
+      };
 
       if (year && allocations[year]) {
         return allocations[year];
@@ -182,18 +345,23 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
     try {
       const { period = 'monthly', category, region } = request.query;
       
-      let contracts = await budgetTracker.fetchContractData();
+      const mockData = getMockBudgetData();
+      let contracts = mockData.recentContracts;
       
       // Apply filters
       if (category) {
         contracts = contracts.filter(c => c.category === category);
       }
-      
-      if (region) {
-        contracts = contracts.filter(c => c.region === region);
-      }
 
-      const analysis = await budgetTracker.analyzeSpendingTrends(contracts);
+      const analysis = {
+        totalSpending: mockData.summary.totalSpent,
+        averageContractValue: mockData.summary.totalSpent / contracts.length,
+        spendingByCategory: mockData.spendingByCategory,
+        spendingByRegion: mockData.spendingByRegion,
+        spendingByMonth: mockData.monthlyTrends,
+        trends: { monthlyGrowth: 15.2 },
+        largestContracts: contracts
+      };
 
       return {
         period,
@@ -234,7 +402,8 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
     try {
       const { status, minAmount, maxAmount } = request.query;
       
-      let opportunities = await budgetTracker.monitorFundingOpportunities();
+      const mockData = getMockBudgetData();
+      let opportunities = mockData.upcomingOpportunities;
 
       // Apply filters
       if (status === 'closing_soon') {
@@ -287,11 +456,8 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
     try {
       const { type, priority } = request.query;
       
-      const contracts = await budgetTracker.fetchContractData();
-      const opportunities = await budgetTracker.monitorFundingOpportunities();
-      const analysis = await budgetTracker.analyzeSpendingTrends(contracts);
-      
-      let alerts = budgetTracker.generateAlerts(analysis, opportunities);
+      const mockData = getMockBudgetData();
+      let alerts = mockData.criticalAlerts;
 
       // Apply filters
       if (type) {
@@ -323,39 +489,16 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
     }
   }, async (request, reply) => {
     try {
-      const [contracts, allocations, opportunities] = await Promise.all([
-        budgetTracker.fetchContractData(),
-        budgetTracker.fetchBudgetAllocations(),
-        budgetTracker.monitorFundingOpportunities()
-      ]);
-
-      const analysis = await budgetTracker.analyzeSpendingTrends(contracts);
-      const alerts = budgetTracker.generateAlerts(analysis, opportunities);
-
-      // Calculate key metrics
-      const totalBudget2025 = allocations['2025-26']?.total || 770900000;
-      const totalSpent = analysis.totalSpending;
-      const utilizationRate = (totalSpent / totalBudget2025) * 100;
-      
-      const activeOpportunities = opportunities.filter(opp => opp.status === 'Open').length;
-      const highPriorityAlerts = alerts.filter(alert => alert.priority === 'high').length;
+      const mockData = getMockBudgetData();
 
       return {
-        summary: {
-          totalBudget: totalBudget2025,
-          totalSpent: totalSpent,
-          utilizationRate: utilizationRate.toFixed(1),
-          remainingBudget: totalBudget2025 - totalSpent,
-          contractCount: contracts.length,
-          activeOpportunities,
-          highPriorityAlerts
-        },
-        recentContracts: analysis.largestContracts.slice(0, 5),
-        spendingByCategory: analysis.spendingByCategory,
-        spendingByRegion: analysis.spendingByRegion,
-        monthlyTrends: analysis.spendingByMonth,
-        upcomingOpportunities: opportunities.slice(0, 3),
-        criticalAlerts: alerts.filter(alert => alert.priority === 'high')
+        summary: mockData.summary,
+        recentContracts: mockData.recentContracts.slice(0, 5),
+        spendingByCategory: mockData.spendingByCategory,
+        spendingByRegion: mockData.spendingByRegion,
+        monthlyTrends: mockData.monthlyTrends,
+        upcomingOpportunities: mockData.upcomingOpportunities.slice(0, 3),
+        criticalAlerts: mockData.criticalAlerts.filter(alert => alert.priority === 'high')
       };
     } catch (error) {
       fastify.log.error('Budget dashboard error:', error);
