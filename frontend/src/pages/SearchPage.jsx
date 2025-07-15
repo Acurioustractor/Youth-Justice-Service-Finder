@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { Search, Filter, MapPin, List, Loader, X } from 'lucide-react'
+import { Search, Filter, MapPin, List, Loader, X, DollarSign } from 'lucide-react'
 import ServiceMap from '../components/ServiceMap'
 import ServiceCard from '../components/ServiceCard'
 import SearchFilters from '../components/SearchFilters'
 import { apiService } from '../lib/api'
+import { governmentSpending, getFundingLevel, getSupplierByName, formatCurrency, getFundingStatusColor } from '../lib/spendingData'
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -25,6 +26,8 @@ export default function SearchPage() {
     max_age: searchParams.get('max_age') || '',
     youth_specific: searchParams.get('youth_specific') === 'true',
     indigenous_specific: searchParams.get('indigenous_specific') === 'true',
+    funding_level: searchParams.get('funding_level') || '',
+    funded_only: searchParams.get('funded_only') === 'true',
     limit: 20,
     offset: 0
   })
@@ -54,8 +57,18 @@ export default function SearchPage() {
             cleanParams[key] = value
           }
         } else if (value && value !== '' && value !== null && value !== undefined) {
-          // Include other non-empty values
-          cleanParams[key] = value
+          // Map frontend parameter names to backend names
+          if (key === 'categories') {
+            cleanParams.category = value  // Backend expects 'category' (singular)
+          } else if (key === 'regions') {
+            cleanParams.region = value    // Backend expects 'region' (singular)
+          } else if (key === 'min_age') {
+            cleanParams.minimum_age = value  // Backend expects 'minimum_age'
+          } else if (key === 'max_age') {
+            cleanParams.maximum_age = value  // Backend expects 'maximum_age'
+          } else {
+            cleanParams[key] = value
+          }
         }
       })
       
@@ -64,8 +77,67 @@ export default function SearchPage() {
       // Use working search endpoint that's actually available
       console.log('Using working-search endpoint');
       const data = await apiService.workingSearch(cleanParams)
-      setServices(data.services || [])
-      setPagination(data.pagination)
+      
+      // Enhance services with funding information (Queensland funding only)
+      const enhancedServices = (data.services || []).map(service => {
+        // Only apply Queensland government funding to Queensland services
+        const isQueenslandService = service.location?.state === 'QLD' || 
+                                   service.location?.postcode?.toString().startsWith('4');
+        
+        if (!isQueenslandService) {
+          return { ...service, fundingInfo: null };
+        }
+        
+        // Try multiple name/organization fields for better matching
+        const orgName = service.organization?.name || service.organization_name || service.name || '';
+        const abn = service.organization?.abn || service.abn || null;
+        
+        const fundingInfo = getSupplierByName(orgName, abn)
+        return {
+          ...service,
+          fundingInfo: fundingInfo ? {
+            amount: fundingInfo.total,
+            level: getFundingLevel(fundingInfo.total),
+            status: fundingInfo.status,
+            contracts: fundingInfo.contracts,
+            category: fundingInfo.category,
+            fundingPeriod: fundingInfo.fundingPeriod
+          } : null
+        }
+      })
+      
+      // Apply funding filters
+      let filteredServices = enhancedServices
+      
+      if (searchFilters.funded_only) {
+        filteredServices = filteredServices.filter(service => service.fundingInfo)
+      }
+      
+      if (searchFilters.funding_level) {
+        filteredServices = filteredServices.filter(service => 
+          service.fundingInfo && service.fundingInfo.level === searchFilters.funding_level
+        )
+      }
+      
+      // Apply client-side pagination to filtered results
+      const totalFiltered = filteredServices.length
+      const currentOffset = searchFilters.offset || 0
+      const currentLimit = searchFilters.limit || 20
+      
+      // Slice the filtered results for current page
+      const paginatedServices = filteredServices.slice(currentOffset, currentOffset + currentLimit)
+      
+      setServices(paginatedServices)
+      
+      // Update pagination to reflect filtered results
+      const updatedPagination = {
+        total: totalFiltered,
+        offset: currentOffset,
+        limit: currentLimit,
+        pages: Math.ceil(totalFiltered / currentLimit)
+      }
+      
+      setPagination(updatedPagination)
     } catch (err) {
       console.error('Search failed:', err)
       setError('Failed to search services. Please try again.')
@@ -123,6 +195,8 @@ export default function SearchPage() {
       max_age: '',
       youth_specific: false,
       indigenous_specific: false,
+      funding_level: '',
+      funded_only: false,
       limit: 20,
       offset: 0
     }
@@ -233,6 +307,16 @@ export default function SearchPage() {
                 {filters.regions && (
                   <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">
                     Region: {filters.regions}
+                  </span>
+                )}
+                {filters.funding_level && (
+                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-yellow-100 text-yellow-800">
+                    Funding: {governmentSpending.fundingLevels[filters.funding_level]?.label}
+                  </span>
+                )}
+                {filters.funded_only && (
+                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-purple-100 text-purple-800">
+                    Government Funded Only
                   </span>
                 )}
               </div>

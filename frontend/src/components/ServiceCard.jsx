@@ -1,14 +1,52 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { MapPin, Phone, Mail, ExternalLink, Clock, Users, Target } from 'lucide-react'
+import { MapPin, Phone, Mail, ExternalLink, Clock, Users, Target, DollarSign } from 'lucide-react'
+import { formatCurrency, getFundingStatusColor } from '../lib/spendingData'
 
 export default function ServiceCard({ service, onSelect }) {
   const formatPhoneNumber = (phone) => {
     if (!phone) return null
+    
+    // Handle array format
     if (Array.isArray(phone) && phone.length > 0) {
       return phone[0].number || phone[0]
     }
-    return phone
+    
+    // Handle object format with multiple phone types
+    if (typeof phone === 'object' && phone !== null) {
+      // Try to get the first available phone number
+      const phoneNumber = phone.primary || phone.mobile || phone.toll_free || phone.crisis_line
+      return phoneNumber || null
+    }
+    
+    // Handle string format
+    if (typeof phone === 'string') {
+      return phone
+    }
+    
+    return null
+  }
+
+  const formatEmailAddress = (email) => {
+    if (!email) return null
+    
+    // Handle string format (could be JSON string)
+    if (typeof email === 'string') {
+      try {
+        const emailObj = JSON.parse(email)
+        return emailObj.primary || emailObj.intake || emailObj.admin || null
+      } catch {
+        // If not JSON, treat as plain email
+        return email
+      }
+    }
+    
+    // Handle object format
+    if (typeof email === 'object' && email !== null) {
+      return email.primary || email.intake || email.admin || null
+    }
+    
+    return null
   }
 
   const getCategoryBadgeColor = (category) => {
@@ -129,6 +167,37 @@ export default function ServiceCard({ service, onSelect }) {
         )}
       </div>
 
+      {/* Government Funding Information */}
+      {service.fundingInfo && (
+        <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <DollarSign className="w-4 h-4 text-green-600" />
+              <span className="text-sm font-medium text-green-900">Government Funded</span>
+              <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getFundingStatusColor(service.fundingInfo.level)}`}>
+                {service.fundingInfo.level === 'major' ? 'Major Funding' :
+                 service.fundingInfo.level === 'significant' ? 'Significant Funding' :
+                 service.fundingInfo.level === 'moderate' ? 'Moderate Funding' :
+                 service.fundingInfo.level === 'limited' ? 'Limited Funding' : 'Minimal Funding'}
+              </span>
+            </div>
+            <div className="text-right">
+              <div className="text-sm font-semibold text-green-900">
+                {formatCurrency(service.fundingInfo.amount)}
+              </div>
+              <div className="text-xs text-green-700">
+                {service.fundingInfo.contracts} contract{service.fundingInfo.contracts !== 1 ? 's' : ''}
+              </div>
+            </div>
+          </div>
+          {service.fundingInfo.fundingPeriod && (
+            <div className="mt-2 text-xs text-green-700">
+              Funding Period: {service.fundingInfo.fundingPeriod}
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Contact & Location */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         {/* Contact Info */}
@@ -145,14 +214,14 @@ export default function ServiceCard({ service, onSelect }) {
             </div>
           )}
 
-          {service.contact?.email && (
+          {formatEmailAddress(service.contact?.email) && (
             <div className="flex items-center text-sm text-gray-600">
               <Mail className="w-4 h-4 mr-2 text-primary-600" />
               <a
-                href={`mailto:${service.contact.email}`}
+                href={`mailto:${formatEmailAddress(service.contact.email)}`}
                 className="text-primary-600 hover:text-primary-700 font-medium"
               >
-                {service.contact.email}
+                {formatEmailAddress(service.contact.email)}
               </a>
             </div>
           )}

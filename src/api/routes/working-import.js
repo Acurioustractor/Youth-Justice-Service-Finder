@@ -2,6 +2,76 @@
 import fs from 'fs';
 import path from 'path';
 
+// Function to determine state from postcode
+function getStateFromPostcode(postcode) {
+  if (!postcode) return 'Unknown';
+  
+  const code = postcode.toString().substring(0, 1);
+  switch (code) {
+    case '1':
+    case '2': return 'NSW';
+    case '3':
+    case '8': return 'VIC';
+    case '4': return 'QLD';
+    case '5': return 'SA';
+    case '6': return 'WA';
+    case '7': return 'TAS';
+    case '0': return postcode.startsWith('02') || postcode.startsWith('08') ? 'ACT' : 'NT';
+    default: return 'Unknown';
+  }
+}
+
+// Function to determine region from location
+function getRegionFromLocation(city, state, postcode) {
+  if (!city && !postcode) return 'unknown';
+  
+  const cityLower = (city || '').toLowerCase();
+  const code = postcode ? postcode.toString() : '';
+  
+  // Queensland regions
+  if (state === 'QLD') {
+    if (cityLower.includes('brisbane')) return 'brisbane_major';
+    if (cityLower.includes('gold coast')) return 'gold coast_regional';
+    if (cityLower.includes('cairns')) return 'cairns_regional';
+    if (cityLower.includes('townsville')) return 'townsville';
+    if (cityLower.includes('toowoomba')) return 'toowoomba_regional';
+    if (cityLower.includes('mackay')) return 'mackay';
+    if (cityLower.includes('ipswich')) return 'ipswich';
+    if (cityLower.includes('logan')) return 'logan';
+    if (cityLower.includes('bundaberg')) return 'bundaberg_rural';
+    if (cityLower.includes('gladstone')) return 'gladstone_central';
+    return 'queensland';
+  }
+  
+  // NSW regions
+  if (state === 'NSW') {
+    if (cityLower.includes('sydney')) return 'sydney_major';
+    if (cityLower.includes('newcastle')) return 'newcastle_regional';
+    if (cityLower.includes('wollongong')) return 'wollongong_regional';
+    if (cityLower.includes('parramatta')) return 'parramatta_regional';
+    if (cityLower.includes('dubbo')) return 'dubbo_rural';
+    return 'sydney_major';
+  }
+  
+  // Victoria regions
+  if (state === 'VIC') {
+    if (cityLower.includes('melbourne')) return 'melbourne_major';
+    if (cityLower.includes('geelong')) return 'geelong_regional';
+    if (cityLower.includes('ballarat')) return 'ballarat_regional';
+    if (cityLower.includes('bendigo')) return 'bendigo_regional';
+    return 'melbourne_major';
+  }
+  
+  // Other states
+  if (state === 'WA') return cityLower.includes('perth') ? 'perth_major' : 'fremantle_regional';
+  if (state === 'SA') return cityLower.includes('adelaide') ? 'adelaide_major' : 'mount gambier_rural';
+  if (state === 'TAS') return cityLower.includes('hobart') ? 'hobart_major' : 'launceston_regional';
+  if (state === 'ACT') return 'canberra_major';
+  if (state === 'NT') return 'darwin_major';
+  
+  return 'unknown';
+}
+
 export default async function workingImportRoutes(fastify) {
   
   fastify.post('/load-603-services', async (request, reply) => {
@@ -104,17 +174,21 @@ export default async function workingImportRoutes(fastify) {
           
           // Add location if available
           if (service.location) {
+            const postcode = service.location.postcode || service.location.postal_code || '0000';
+            const correctState = getStateFromPostcode(postcode);
+            const correctRegion = getRegionFromLocation(service.location.city, correctState, postcode);
+            
             const locationData = {
               service_id: service.id,
               name: service.location.name || 'Primary Location',
               address_1: service.location.address_line_1 || service.location.address || 'Address not available',
               address_2: service.location.address_line_2,
               city: service.location.city || 'Unknown City',
-              state_province: service.location.state || 'QLD',
-              postal_code: service.location.postcode || service.location.postal_code || '0000',
+              state_province: correctState,
+              postal_code: postcode,
               latitude: service.location.coordinates?.latitude,
               longitude: service.location.coordinates?.longitude,
-              region: service.location.region || 'brisbane'
+              region: correctRegion
             };
             
             try {

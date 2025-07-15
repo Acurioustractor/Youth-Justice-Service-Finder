@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { ChevronDown, ChevronUp, X } from 'lucide-react'
+import { ChevronDown, ChevronUp, X, DollarSign } from 'lucide-react'
+import { governmentSpending } from '../lib/spendingData'
 
 export default function SearchFilters({ filters, onFiltersChange, loading }) {
   const [expandedSections, setExpandedSections] = useState({
     categories: true,
     location: true,
     demographics: true,
-    populations: false
+    populations: false,
+    funding: true
   })
 
   const toggleSection = (section) => {
@@ -34,27 +36,49 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
     { value: 'mental_health', label: 'Mental Health' },
     { value: 'housing', label: 'Housing & Accommodation' },
     { value: 'crisis_support', label: 'Crisis Support' },
-    { value: 'education_training', label: 'Education & Training' },
-    { value: 'substance_abuse', label: 'Substance Abuse' },
+    { value: 'education_support', label: 'Education & Training' },
+    { value: 'drug_alcohol', label: 'Drug & Alcohol Support' },
     { value: 'family_support', label: 'Family Support' },
     { value: 'cultural_support', label: 'Cultural Support' },
-    { value: 'advocacy', label: 'Advocacy' },
-    { value: 'court_support', label: 'Court Support' }
+    { value: 'community_service', label: 'Community Services' },
+    { value: 'court_support', label: 'Court Support' },
+    { value: 'mentoring', label: 'Mentoring' },
+    { value: 'health_services', label: 'Health Services' },
+    { value: 'employment', label: 'Employment Support' },
+    { value: 'counselling', label: 'Counselling' },
+    { value: 'psychology', label: 'Psychology' },
+    { value: 'parenting', label: 'Parenting Support' },
+    { value: 'vocational_education', label: 'Vocational Education' },
+    { value: 'youth_development', label: 'Youth Development' }
   ]
 
   const regionOptions = [
-    { value: 'brisbane', label: 'Brisbane' },
-    { value: 'gold_coast', label: 'Gold Coast' },
-    { value: 'cairns', label: 'Cairns' },
+    // Queensland (Primary)
+    { value: 'brisbane_major', label: 'Brisbane' },
+    { value: 'gold coast_regional', label: 'Gold Coast' },
+    { value: 'cairns_regional', label: 'Cairns' },
     { value: 'townsville', label: 'Townsville' },
-    { value: 'toowoomba', label: 'Toowoomba' },
-    { value: 'rockhampton', label: 'Rockhampton' },
+    { value: 'toowoomba_regional', label: 'Toowoomba' },
     { value: 'mackay', label: 'Mackay' },
-    { value: 'bundaberg', label: 'Bundaberg' },
-    { value: 'hervey_bay', label: 'Hervey Bay' },
-    { value: 'gladstone', label: 'Gladstone' },
-    { value: 'mount_isa', label: 'Mount Isa' },
-    { value: 'statewide', label: 'Statewide' }
+    { value: 'ipswich', label: 'Ipswich' },
+    { value: 'logan', label: 'Logan' },
+    { value: 'queensland', label: 'Queensland (Statewide)' },
+    
+    // National Cities
+    { value: 'sydney_major', label: 'Sydney' },
+    { value: 'melbourne_major', label: 'Melbourne' },
+    { value: 'perth_major', label: 'Perth' },
+    { value: 'adelaide_major', label: 'Adelaide' },
+    { value: 'canberra_major', label: 'Canberra' },
+    { value: 'hobart_major', label: 'Hobart' },
+    { value: 'darwin_major', label: 'Darwin' },
+    
+    // Regional Areas
+    { value: 'newcastle_regional', label: 'Newcastle' },
+    { value: 'geelong_regional', label: 'Geelong' },
+    { value: 'fremantle_regional', label: 'Fremantle' },
+    { value: 'launceston_regional', label: 'Launceston' },
+    { value: 'statewide', label: 'Multiple Locations' }
   ]
 
   const FilterSection = ({ title, children, sectionKey }) => (
@@ -91,6 +115,8 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
             max_age: '',
             youth_specific: false,
             indigenous_specific: false,
+            funding_level: '',
+            funded_only: false,
             limit: 20,
             offset: 0
           })}
@@ -104,30 +130,23 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
       <div className="space-y-6">
         {/* Categories */}
         <FilterSection title="Service Categories" sectionKey="categories">
-          <div className="space-y-2">
-            {categoryOptions.map((option) => (
-              <label key={option.value} className="flex items-center">
-                <input
-                  type="checkbox"
-                  checked={filters.categories.split(',').includes(option.value)}
-                  onChange={(e) => {
-                    const currentCategories = filters.categories ? filters.categories.split(',') : []
-                    let newCategories
-                    
-                    if (e.target.checked) {
-                      newCategories = [...currentCategories, option.value]
-                    } else {
-                      newCategories = currentCategories.filter(cat => cat !== option.value)
-                    }
-                    
-                    handleFilterChange('categories', newCategories.join(','))
-                  }}
-                  className="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
-                  disabled={loading}
-                />
-                <span className="ml-2 text-sm text-gray-700">{option.label}</span>
-              </label>
-            ))}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Service Type
+            </label>
+            <select
+              value={filters.categories}
+              onChange={(e) => handleFilterChange('categories', e.target.value)}
+              className="input-field text-sm"
+              disabled={loading}
+            >
+              <option value="">All service types</option>
+              {categoryOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
           </div>
           
           {filters.categories && (
@@ -135,7 +154,7 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
               onClick={() => clearFilter('categories')}
               className="text-xs text-primary-600 hover:text-primary-700"
             >
-              Clear categories
+              Clear category
             </button>
           )}
         </FilterSection>
@@ -258,6 +277,58 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
               className="text-xs text-primary-600 hover:text-primary-700"
             >
               Clear population filters
+            </button>
+          )}
+        </FilterSection>
+
+        {/* Government Funding */}
+        <FilterSection title="Government Funding" sectionKey="funding" icon={DollarSign}>
+          <div className="space-y-3">
+            <label className="flex items-center">
+              <input
+                type="checkbox"
+                checked={filters.funded_only}
+                onChange={(e) => handleFilterChange('funded_only', e.target.checked)}
+                className="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+                disabled={loading}
+              />
+              <span className="ml-2 text-sm text-gray-700">
+                Government funded services only
+              </span>
+            </label>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Funding Level
+              </label>
+              <select
+                value={filters.funding_level}
+                onChange={(e) => handleFilterChange('funding_level', e.target.value)}
+                className="input-field text-sm"
+                disabled={loading}
+              >
+                <option value="">All funding levels</option>
+                {Object.entries(governmentSpending.fundingLevels).map(([key, level]) => (
+                  <option key={key} value={key}>
+                    {level.label} ({key === 'major' ? '$5M+' : 
+                     key === 'significant' ? '$1M+' : 
+                     key === 'moderate' ? '$500K+' : 
+                     key === 'limited' ? '$100K+' : 'Under $100K'})
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {(filters.funded_only || filters.funding_level) && (
+            <button
+              onClick={() => {
+                clearFilter('funded_only')
+                clearFilter('funding_level')
+              }}
+              className="text-xs text-primary-600 hover:text-primary-700"
+            >
+              Clear funding filters
             </button>
           )}
         </FilterSection>

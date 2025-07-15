@@ -10,7 +10,6 @@ export default function Layout({ children }) {
   const navigation = [
     { name: 'Home', href: '/', icon: MapPin },
     { name: 'Search Services', href: '/search', icon: Search },
-    { name: 'Payment Analysis', href: '/analysis', icon: BarChart3 },
     { name: 'Spending Analysis', href: '/spending', icon: DollarSign },
     { name: 'Data Downloads', href: '/data', icon: Download },
     { name: 'About', href: '/about', icon: Info },
@@ -135,7 +134,6 @@ export default function Layout({ children }) {
               <h4 className="font-semibold text-gray-900 mb-4">Quick Links</h4>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li><Link to="/search" className="hover:text-gray-900">Search Services</Link></li>
-                <li><Link to="/analysis" className="hover:text-gray-900">Payment Analysis</Link></li>
                 <li><Link to="/spending" className="hover:text-gray-900">Spending Analysis</Link></li>
                 <li><Link to="/data" className="hover:text-gray-900">Data Downloads</Link></li>
                 <li><Link to="/about" className="hover:text-gray-900">About</Link></li>

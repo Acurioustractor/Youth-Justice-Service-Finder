@@ -37,6 +37,7 @@ export default async function workingSearchRoutes(fastify, options) {
           'o.organization_type',
           'l.address_1',
           'l.city',
+          'l.state_province',
           'l.postal_code',
           'l.region',
           'l.latitude',
@@ -166,7 +167,7 @@ export default async function workingSearchRoutes(fastify, options) {
         location: {
           address: service.address_1 || '',
           city: service.city || '',
-          state: 'QLD',
+          state: service.state_province || 'Unknown',
           postcode: service.postal_code || '',
           region: service.region || '',
           coordinates: {

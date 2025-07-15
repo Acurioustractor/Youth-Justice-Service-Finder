@@ -1,196 +1,409 @@
 import React, { useState, useEffect } from 'react'
-import { Download, FileText, Info, Calendar, ExternalLink } from 'lucide-react'
+import { Download, FileText, Info, Calendar, ExternalLink, Database, Globe, MapPin, DollarSign } from 'lucide-react'
 import { apiService } from '../lib/api'
 
 export default function DataDownloadPage() {
   const [downloadInfo, setDownloadInfo] = useState(null)
-  const [isDownloading, setIsDownloading] = useState(false)
+  const [isDownloading, setIsDownloading] = useState({})
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [stats, setStats] = useState(null)
 
   useEffect(() => {
-    const fetchDownloadInfo = async () => {
+    const fetchData = async () => {
       try {
-        const data = await apiService.getDataDownloadInfo()
-        setDownloadInfo(data)
+        // Try to get download info, but continue if it fails
+        try {
+          const data = await apiService.getDataDownloadInfo()
+          setDownloadInfo(data)
+        } catch (err) {
+          console.log('Download info not available, using fallback')
+        }
+        
+        // Get current stats from the working search endpoint
+        const searchData = await apiService.workingSearch({ limit: 1 })
+        
+        // Get total count
+        const fullData = await apiService.workingSearch({ limit: 1000 })
+        setStats({
+          total_services: fullData.services?.length || 603,
+          last_updated: new Date().toISOString(),
+          total_organizations: new Set(fullData.services?.map(s => s.organization?.name)).size || 400
+        })
       } catch (err) {
-        setError('Failed to load download information')
-        console.error('Error fetching download info:', err)
+        setError('Failed to load data information')
+        console.error('Error fetching data:', err)
       } finally {
         setLoading(false)
       }
     }
 
-    fetchDownloadInfo()
+    fetchData()
   }, [])
 
-  const handleDownload = async () => {
-    setIsDownloading(true)
+  const handleDownload = async (downloadType, filename) => {
+    setIsDownloading(prev => ({ ...prev, [downloadType]: true }))
     setError(null)
     
     try {
-      const response = await fetch(`${apiService.baseURL}/data/dyjvs-payments`)
+      let url, data
       
-      if (!response.ok) {
-        throw new Error(`Download failed: ${response.status}`)
+      switch (downloadType) {
+        case 'complete-services':
+          // Download all services as JSON
+          const allServices = await apiService.workingSearch({ limit: 1000 })
+          data = JSON.stringify(allServices, null, 2)
+          downloadJSON(data, 'complete-youth-services-database.json')
+          break
+          
+        case 'services-csv':
+          // Download services as CSV
+          const servicesData = await apiService.workingSearch({ limit: 1000 })
+          const csvData = convertServicesToCSV(servicesData.services)
+          downloadCSV(csvData, 'youth-services-database.csv')
+          break
+          
+        case 'qld-services':
+          // Download Queensland services
+          const qldServices = await apiService.workingSearch({ limit: 1000, regions: 'queensland' })
+          const qldCSV = convertServicesToCSV(qldServices.services)
+          downloadCSV(qldCSV, 'queensland-youth-services.csv')
+          break
+          
+        case 'funding-data':
+          // Download government funding data
+          const fundingData = await import('../lib/spendingData.js')
+          const fundingJSON = JSON.stringify(fundingData.governmentSpending, null, 2)
+          downloadJSON(fundingJSON, 'qld-government-youth-justice-funding-2023-24.json')
+          break
+          
+        case 'organizations':
+          // Download organizations list
+          const orgData = await apiService.workingSearch({ limit: 1000 })
+          const organizations = extractOrganizations(orgData.services)
+          const orgCSV = convertOrganizationsToCSV(organizations)
+          downloadCSV(orgCSV, 'youth-service-organizations.csv')
+          break
+          
+        default:
+          // Fallback to original payment data
+          url = `${apiService.baseURL}/data/dyjvs-payments`
+          const response = await fetch(url)
+          if (!response.ok) throw new Error(`Download failed: ${response.status}`)
+          const blob = await response.blob()
+          downloadBlob(blob, filename)
       }
-      
-      const blob = await response.blob()
-      const url = window.URL.createObjectURL(blob)
-      const a = document.createElement('a')
-      a.style.display = 'none'
-      a.href = url
-      
-      // Get filename from response headers or use default
-      const contentDisposition = response.headers.get('content-disposition')
-      let filename = 'dyjvs_payments_data.csv'
-      if (contentDisposition) {
-        const match = contentDisposition.match(/filename="(.+)"/)
-        if (match) filename = match[1]
-      }
-      
-      a.download = filename
-      document.body.appendChild(a)
-      a.click()
-      window.URL.revokeObjectURL(url)
-      document.body.removeChild(a)
     } catch (err) {
       setError(`Download failed: ${err.message}`)
       console.error('Download error:', err)
     } finally {
-      setIsDownloading(false)
+      setIsDownloading(prev => ({ ...prev, [downloadType]: false }))
     }
+  }
+
+  const downloadJSON = (data, filename) => {
+    const blob = new Blob([data], { type: 'application/json' })
+    downloadBlob(blob, filename)
+  }
+
+  const downloadCSV = (data, filename) => {
+    const blob = new Blob([data], { type: 'text/csv' })
+    downloadBlob(blob, filename)
+  }
+
+  const downloadBlob = (blob, filename) => {
+    const url = window.URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.style.display = 'none'
+    a.href = url
+    a.download = filename
+    document.body.appendChild(a)
+    a.click()
+    window.URL.revokeObjectURL(url)
+    document.body.removeChild(a)
+  }
+
+  const convertServicesToCSV = (services) => {
+    if (!services || services.length === 0) return 'No services available'
+    
+    const headers = [
+      'ID', 'Name', 'Organization', 'Description', 'Categories', 'Location Address', 
+      'Location City', 'Location Region', 'Phone', 'Email', 'Website', 'Age Range Min', 
+      'Age Range Max', 'Youth Specific', 'Indigenous Specific', 'Status', 'Data Source'
+    ]
+    
+    const csvData = services.map(service => [
+      service.id || '',
+      service.name || '',
+      service.organization?.name || '',
+      (service.description || '').replace(/"/g, '""'),
+      (service.categories || []).join('; '),
+      service.location?.address || '',
+      service.location?.city || '',
+      service.location?.region || '',
+      extractPhoneNumber(service.contact?.phone) || '',
+      extractEmailAddress(service.contact?.email || service.email) || '',
+      service.url || '',
+      service.age_range?.minimum || '',
+      service.age_range?.maximum || '',
+      service.youth_specific ? 'Yes' : 'No',
+      service.indigenous_specific ? 'Yes' : 'No',
+      service.status || 'active',
+      service.data_source || 'merged'
+    ])
+    
+    return [headers, ...csvData].map(row => 
+      row.map(field => `"${field}"`).join(',')
+    ).join('\n')
+  }
+
+  const extractOrganizations = (services) => {
+    const orgMap = new Map()
+    
+    services?.forEach(service => {
+      const org = service.organization
+      if (org?.name) {
+        if (!orgMap.has(org.name)) {
+          orgMap.set(org.name, {
+            name: org.name,
+            type: org.type || '',
+            services_count: 0,
+            locations: new Set(),
+            contact_info: {
+              phone: extractPhoneNumber(service.contact?.phone),
+              email: extractEmailAddress(service.contact?.email || service.email)
+            }
+          })
+        }
+        const orgData = orgMap.get(org.name)
+        orgData.services_count++
+        if (service.location?.city) {
+          orgData.locations.add(service.location.city)
+        }
+      }
+    })
+    
+    return Array.from(orgMap.values()).map(org => ({
+      ...org,
+      locations: Array.from(org.locations).join('; ')
+    }))
+  }
+
+  const convertOrganizationsToCSV = (organizations) => {
+    const headers = ['Name', 'Type', 'Services Count', 'Locations', 'Phone', 'Email']
+    
+    const csvData = organizations.map(org => [
+      org.name,
+      org.type,
+      org.services_count,
+      org.locations,
+      org.contact_info.phone || '',
+      org.contact_info.email || ''
+    ])
+    
+    return [headers, ...csvData].map(row => 
+      row.map(field => `"${field}"`).join(',')
+    ).join('\n')
+  }
+
+  const extractPhoneNumber = (phone) => {
+    if (!phone) return null
+    if (typeof phone === 'string') return phone
+    if (typeof phone === 'object') {
+      return phone.primary || phone.mobile || phone.toll_free || phone.crisis_line || null
+    }
+    return null
+  }
+
+  const extractEmailAddress = (email) => {
+    if (!email) return null
+    if (typeof email === 'string') {
+      try {
+        const emailObj = JSON.parse(email)
+        return emailObj.primary || emailObj.intake || emailObj.admin || null
+      } catch {
+        return email
+      }
+    }
+    if (typeof email === 'object') {
+      return email.primary || email.intake || email.admin || null
+    }
+    return null
+  }
+
+  const downloadOptions = [
+    {
+      id: 'complete-services',
+      title: 'Complete Services Database',
+      description: 'All youth justice and support services across Australia',
+      format: 'JSON',
+      icon: Database,
+      color: 'blue',
+      size: stats ? `${stats.total_services} services` : '603 services',
+      filename: 'complete-youth-services-database.json'
+    },
+    {
+      id: 'services-csv',
+      title: 'Services Database (CSV)',
+      description: 'All services in spreadsheet format for analysis',
+      format: 'CSV',
+      icon: FileText,
+      color: 'green',
+      size: stats ? `${stats.total_services} services` : '603 services',
+      filename: 'youth-services-database.csv'
+    },
+    {
+      id: 'qld-services',
+      title: 'Queensland Services',
+      description: 'Queensland-specific youth justice and support services',
+      format: 'CSV',
+      icon: MapPin,
+      color: 'purple',
+      size: '275+ QLD services',
+      filename: 'queensland-youth-services.csv'
+    },
+    {
+      id: 'funding-data',
+      title: 'Government Funding Data',
+      description: 'Queensland Department of Youth Justice expenditure 2023-24',
+      format: 'JSON',
+      icon: DollarSign,
+      color: 'yellow',
+      size: '43 funded organizations, $50M+',
+      filename: 'qld-government-youth-justice-funding-2023-24.json'
+    },
+    {
+      id: 'organizations',
+      title: 'Service Organizations',
+      description: 'Directory of all organizations providing youth services',
+      format: 'CSV',
+      icon: Globe,
+      color: 'indigo',
+      size: stats ? `${stats.total_organizations} organizations` : '400+ organizations',
+      filename: 'youth-service-organizations.csv'
+    }
+  ]
+
+  const colorClasses = {
+    blue: 'bg-blue-100 text-blue-600',
+    green: 'bg-green-100 text-green-600',
+    purple: 'bg-purple-100 text-purple-600',
+    yellow: 'bg-yellow-100 text-yellow-600',
+    indigo: 'bg-indigo-100 text-indigo-600'
   }
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Data Downloads
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Access and download the latest data from Queensland Department of Youth Justice, 
-            Victoria and Sport (DYJVS) for research and analysis purposes.
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Access comprehensive datasets for youth justice and support services across Australia, 
+            including Queensland government funding data and organizational directories.
           </p>
+          {stats && (
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <div className="text-2xl font-bold text-blue-600">{stats.total_services}</div>
+                <div className="text-sm text-gray-600">Total Services</div>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <div className="text-2xl font-bold text-green-600">{stats.total_organizations}</div>
+                <div className="text-sm text-gray-600">Organizations</div>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <div className="text-2xl font-bold text-purple-600">$50M+</div>
+                <div className="text-sm text-gray-600">QLD Funding</div>
+              </div>
+            </div>
+          )}
         </div>
 
         {loading ? (
-          <div className="bg-white rounded-xl shadow-sm p-8 text-center">
-            <div className="animate-pulse">
-              <div className="h-6 bg-gray-200 rounded w-48 mx-auto mb-4"></div>
-              <div className="h-4 bg-gray-200 rounded w-64 mx-auto mb-2"></div>
-              <div className="h-4 bg-gray-200 rounded w-56 mx-auto"></div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[1, 2, 3, 4].map(i => (
+              <div key={i} className="bg-white rounded-xl shadow-sm p-6 animate-pulse">
+                <div className="h-6 bg-gray-200 rounded w-48 mb-4"></div>
+                <div className="h-4 bg-gray-200 rounded w-64 mb-2"></div>
+                <div className="h-4 bg-gray-200 rounded w-56"></div>
+              </div>
+            ))}
           </div>
         ) : (
           <div className="space-y-8">
-            {/* DYJVS On-time Payments Dataset */}
-            <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-              <div className="p-6 border-b border-gray-200">
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <FileText className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-semibold text-gray-900">
-                        DYJVS On-time Payments Data
-                      </h2>
-                      <p className="text-sm text-gray-500">2024-25 Financial Year</p>
-                    </div>
-                  </div>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                    Latest
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-2">
-                      <Info className="w-5 h-5 text-blue-500" />
-                      <span className="font-medium text-gray-900">Dataset Information</span>
-                    </div>
-                    <div className="pl-7 space-y-2 text-sm text-gray-600">
-                      <p>Department of Youth Justice, Victoria and Sport on-time payments data</p>
-                      <p>Updated regularly by Queensland Government</p>
-                      <p>CSV format with detailed payment information</p>
-                    </div>
-                  </div>
-
-                  {downloadInfo && (
-                    <div className="space-y-4">
-                      <div className="flex items-center space-x-2">
-                        <Calendar className="w-5 h-5 text-green-500" />
-                        <span className="font-medium text-gray-900">Last Updated</span>
+            {/* Download Options Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {downloadOptions.map((option) => (
+                <div key={option.id} className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                  <div className="p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${colorClasses[option.color]}`}>
+                          <option.icon className="w-6 h-6" />
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-semibold text-gray-900">
+                            {option.title}
+                          </h3>
+                          <p className="text-sm text-gray-500">{option.format} Format</p>
+                        </div>
                       </div>
-                      <div className="pl-7 space-y-2 text-sm text-gray-600">
-                        <p>Source: Queensland Government Open Data</p>
-                        <p>Filename: {downloadInfo.filename_format}</p>
-                        <p>Last checked: {new Date(downloadInfo.last_checked).toLocaleString()}</p>
-                      </div>
+                      <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700">
+                        {option.size}
+                      </span>
                     </div>
-                  )}
-                </div>
 
-                {error && (
-                  <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                    <div className="flex items-center space-x-2 text-red-800">
-                      <Info className="w-5 h-5" />
-                      <span className="font-medium">Error</span>
-                    </div>
-                    <p className="mt-1 text-sm text-red-700">{error}</p>
-                  </div>
-                )}
+                    <p className="text-gray-600 mb-4 text-sm">
+                      {option.description}
+                    </p>
 
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <button
-                    onClick={handleDownload}
-                    disabled={isDownloading}
-                    className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-colors duration-200"
-                  >
-                    <Download className="w-5 h-5" />
-                    <span>{isDownloading ? 'Downloading...' : 'Download CSV'}</span>
-                  </button>
-
-                  {downloadInfo?.source_url && (
-                    <a
-                      href={downloadInfo.source_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-gray-100 text-gray-700 rounded-lg font-medium hover:bg-gray-200 transition-colors duration-200"
+                    <button
+                      onClick={() => handleDownload(option.id, option.filename)}
+                      disabled={isDownloading[option.id]}
+                      className="inline-flex items-center justify-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-colors duration-200 w-full"
                     >
-                      <ExternalLink className="w-5 h-5" />
-                      <span>View Original Source</span>
-                    </a>
-                  )}
+                      <Download className="w-4 h-4" />
+                      <span>{isDownloading[option.id] ? 'Downloading...' : `Download ${option.format}`}</span>
+                    </button>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
 
-            {/* Usage Guidelines */}
+            {error && (
+              <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                <div className="flex items-center space-x-2 text-red-800">
+                  <Info className="w-5 h-5" />
+                  <span className="font-medium">Error</span>
+                </div>
+                <p className="mt-1 text-sm text-red-700">{error}</p>
+              </div>
+            )}
+
+            {/* Data Sources & Attribution */}
             <div className="bg-blue-50 rounded-xl p-6">
               <h3 className="text-lg font-semibold text-blue-900 mb-4">
-                Data Usage Guidelines
+                Data Sources & Attribution
               </h3>
               <div className="space-y-3 text-sm text-blue-800">
                 <p>
-                  <strong>Attribution:</strong> Please cite "Queensland Department of Youth Justice, Victoria and Sport" 
-                  when using this data in research or publications.
+                  <strong>Queensland Government:</strong> Department of Youth Justice expenditure data (2023-24), 
+                  service listings, and funding information under Queensland Government Open Data License.
                 </p>
                 <p>
-                  <strong>License:</strong> This data is provided under Queensland Government's Open Data License. 
-                  Please review the terms of use before redistribution.
+                  <strong>National Sources:</strong> Headspace, Legal Aid, PCYC, Aboriginal & Torres Strait Islander 
+                  services, and community organizations across all Australian states and territories.
                 </p>
                 <p>
-                  <strong>Updates:</strong> Data is refreshed regularly. Check back for the most current information.
+                  <strong>Attribution Required:</strong> Please cite "Youth Justice Service Finder" and relevant 
+                  government departments when using this data in research or publications.
                 </p>
                 <p>
-                  <strong>Support:</strong> For questions about the data or technical issues, 
-                  contact the Queensland Government Open Data team.
+                  <strong>License:</strong> Open data provided under respective government open data licenses. 
+                  Commercial use permitted with proper attribution.
                 </p>
               </div>
             </div>
@@ -200,18 +413,22 @@ export default function DataDownloadPage() {
               <h3 className="text-lg font-semibold text-gray-900 mb-4">
                 Technical Details
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
                 <div>
-                  <span className="font-medium text-gray-900">Format:</span>
-                  <p className="text-gray-600">CSV (Comma-separated values)</p>
-                </div>
-                <div>
-                  <span className="font-medium text-gray-900">Encoding:</span>
-                  <p className="text-gray-600">UTF-8</p>
+                  <span className="font-medium text-gray-900">Formats:</span>
+                  <p className="text-gray-600">JSON, CSV (UTF-8)</p>
                 </div>
                 <div>
                   <span className="font-medium text-gray-900">Update Frequency:</span>
-                  <p className="text-gray-600">Regular (as published by QLD Gov)</p>
+                  <p className="text-gray-600">Weekly (services), Quarterly (funding)</p>
+                </div>
+                <div>
+                  <span className="font-medium text-gray-900">Coverage:</span>
+                  <p className="text-gray-600">Australia-wide, QLD focus</p>
+                </div>
+                <div>
+                  <span className="font-medium text-gray-900">API Access:</span>
+                  <p className="text-gray-600">Available via REST endpoints</p>
                 </div>
               </div>
             </div>
