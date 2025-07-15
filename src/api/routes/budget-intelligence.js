@@ -141,7 +141,7 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
           lastUpdated: new Date().toISOString()
         },
         recentContracts: allSpending
-          .sort((a, b) => new Date(b.awardDate) - new Date(a.awardDate))
+          .sort((a, b) => b.value - a.value)  // Sort by value (largest first)
           .slice(0, 8),
         spendingByCategory: spendingByCategory,
         spendingByRegion: spendingByRegion,
