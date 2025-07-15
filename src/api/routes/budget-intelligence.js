@@ -766,58 +766,10 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
     }
   }, async (request, reply) => {
     try {
-      const realData = await getEnhancedRealBudgetData();
+      const enhancedData = await getEnhancedRealBudgetData();
       
-      // Transform real data for dashboard
-      const dashboardData = {
-        summary: {
-          totalBudget: 2256000000, // Full Queensland Youth Justice & Corrective Services budget
-          totalSpent: realData.summary?.totalContractValue || 0,
-          utilizationRate: realData.summary?.totalContractValue ? 
-            ((realData.summary.totalContractValue / 2256000000) * 100).toFixed(1) : '0.0',
-          remainingBudget: 2256000000 - (realData.summary?.totalContractValue || 0),
-          contractCount: realData.summary?.contractsAnalyzed || 0,
-          activeOpportunities: realData.opportunities?.length || 0,
-          highPriorityAlerts: realData.alerts?.filter(a => a.priority === 'high').length || 0,
-          dataSource: 'Real Queensland Government Contract Disclosure Data',
-          lastUpdated: realData.generatedAt
-        },
-        recentContracts: (realData.contracts?.largest || []).slice(0, 5).map(contract => ({
-          description: contract.description,
-          supplier: contract.supplier,
-          value: contract.value,
-          category: contract.category,
-          awardDate: contract.awardDate ? contract.awardDate.toISOString().split('T')[0] : new Date().toISOString().split('T')[0]
-        })),
-        spendingByCategory: realData.contracts?.byCategory || {},
-        spendingByRegion: realData.contracts?.byRegion || {},
-        monthlyTrends: realData.trends?.spending?.spendingByMonth || {},
-        upcomingOpportunities: (realData.opportunities || []).slice(0, 3).map(opp => ({
-          title: opp.title,
-          amount: opp.amount,
-          closingDate: opp.closingDate.toISOString().split('T')[0],
-          status: opp.status,
-          description: opp.description,
-          eligibility: opp.eligibility
-        })),
-        criticalAlerts: [
-          {
-            type: 'info',
-            title: 'Real Data Active',
-            message: `Displaying ${realData.summary?.contractsAnalyzed || 0} real contracts from Queensland government sources`,
-            priority: 'high'
-          },
-          {
-            type: 'warning', 
-            title: 'Contract Disclosure Scope',
-            message: 'Data shows disclosed contracts over $10,000 only - not full budget spending',
-            priority: 'medium'
-          },
-          ...((realData.alerts || []).filter(alert => alert.priority === 'high'))
-        ]
-      };
-
-      return dashboardData;
+      // Use enhanced data directly - it's already in the right format
+      return enhancedData;
     } catch (error) {
       fastify.log.error('Budget dashboard error:', error);
       return reply.status(500).send({
