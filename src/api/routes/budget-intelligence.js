@@ -11,7 +11,7 @@ export default async function budgetIntelligenceRoutes(fastify, options) {
   let dataCache = {
     data: null,
     lastUpdated: null,
-    ttl: 30 * 60 * 1000 // 30 minutes
+    ttl: 5 * 60 * 1000 // 5 minutes for testing
   }
   
   // Get real Queensland budget data
