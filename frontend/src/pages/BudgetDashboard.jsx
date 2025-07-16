@@ -236,65 +236,65 @@ export default function BudgetDashboard() {
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto container-mobile section-mobile">
         {/* Summary Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-lg shadow p-6">
+        <div className="grid-mobile gap-mobile mb-8">
+          <div className="stat-mobile">
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <DollarSign className="h-8 w-8 text-green-600" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-500">Total Budget</p>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="stat-label-mobile">Total Budget</p>
+                <p className="stat-number-mobile">
                   {formatLargeCurrency(summary.totalBudget)}
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="stat-mobile">
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <TrendingUp className="h-8 w-8 text-blue-600" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-500">Total Spent</p>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="stat-label-mobile">Total Spent</p>
+                <p className="stat-number-mobile">
                   {formatLargeCurrency(summary.totalSpent)}
                 </p>
-                <p className="text-sm text-gray-500">
+                <p className="text-mobile-xs text-gray-500">
                   {summary.utilizationRate}% utilized
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="stat-mobile">
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <FileText className="h-8 w-8 text-purple-600" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-500">Active Contracts</p>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="stat-label-mobile">Active Contracts</p>
+                <p className="stat-number-mobile">
                   {summary.contractCount}
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="stat-mobile">
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <Target className="h-8 w-8 text-orange-600" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-500">Opportunities</p>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="stat-label-mobile">Opportunities</p>
+                <p className="stat-number-mobile">
                   {summary.activeOpportunities}
                 </p>
-                <p className="text-sm text-gray-500">Open for applications</p>
+                <p className="text-mobile-xs text-gray-500">Open for applications</p>
               </div>
             </div>
           </div>
@@ -303,7 +303,7 @@ export default function BudgetDashboard() {
         {/* Tabs */}
         <div className="mb-6">
           <div className="border-b border-gray-200">
-            <nav className="-mb-px flex space-x-8">
+            <nav className="-mb-px mobile-scroll flex space-x-2 sm:space-x-8">
               {[
                 { id: 'overview', name: 'Overview', icon: BarChart3 },
                 { id: 'spending', name: 'Spending Analysis', icon: PieChart },
@@ -315,7 +315,7 @@ export default function BudgetDashboard() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex items-center space-x-2 py-2 px-1 border-b-2 font-medium text-sm ${
+                    className={`touch-target flex items-center space-x-2 py-2 px-3 sm:px-1 border-b-2 font-medium text-mobile-sm whitespace-nowrap ${
                       activeTab === tab.id
                         ? 'border-primary-500 text-primary-600'
                         : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
@@ -332,31 +332,31 @@ export default function BudgetDashboard() {
 
         {/* Tab Content */}
         {activeTab === 'overview' && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid-mobile-2 gap-mobile">
             {/* Budget Utilization */}
-            <div className="bg-white rounded-lg shadow p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Budget Utilization</h3>
+            <div className="card-mobile">
+              <h3 className="text-mobile-lg font-semibold text-gray-900 mb-4">Budget Utilization</h3>
               <div className="space-y-4">
                 <div>
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-mobile-sm">
                     <span>Spent</span>
                     <span>{formatLargeCurrency(summary.totalSpent)}</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
+                  <div className="w-full bg-gray-200 rounded-full h-3 sm:h-2 mt-1">
                     <div 
-                      className="bg-blue-600 h-2 rounded-full" 
+                      className="bg-blue-600 h-3 sm:h-2 rounded-full" 
                       style={{ width: `${summary.utilizationRate}%` }}
                     ></div>
                   </div>
                 </div>
                 <div>
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-mobile-sm">
                     <span>Remaining</span>
                     <span>{formatLargeCurrency(summary.remainingBudget)}</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
+                  <div className="w-full bg-gray-200 rounded-full h-3 sm:h-2 mt-1">
                     <div 
-                      className="bg-green-600 h-2 rounded-full" 
+                      className="bg-green-600 h-3 sm:h-2 rounded-full" 
                       style={{ width: `${100 - parseFloat(summary.utilizationRate)}%` }}
                     ></div>
                   </div>

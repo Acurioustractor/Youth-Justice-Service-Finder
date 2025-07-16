@@ -111,6 +111,7 @@ Thumbs.db
 # Temporary files
 tmp/
 temp/
+temp-cleanup/
 *.tmp
 
 # Build outputs
@@ -130,6 +131,10 @@ backups/
 scraping-report-*.json
 *.local.json
 temp-data/
+docs/data-exports/
+*extraction*.json
+*collection*.json
+*database-backup*.json
 
 # SSL certificates and keys
 *.pem
@@ -231,3 +236,4 @@ celerybeat.pid
 .mypy_cache/
 .dmypy.json
 dmypy.json
+.vercel

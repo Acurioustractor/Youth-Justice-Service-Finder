@@ -1,6 +1,11 @@
 import axios from 'axios'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://youth-justice-service-finder-production.up.railway.app'
+const API_BASE_URL = import.meta.env.VITE_API_URL || (
+  // Use current domain for unified deployment, fallback to Railway
+  window.location.origin.includes('vercel.app') || window.location.origin.includes('localhost')
+    ? window.location.origin
+    : 'https://youth-justice-service-finder-production.up.railway.app'
+)
 
 const api = axios.create({
   baseURL: API_BASE_URL,

@@ -1,4 +1,6 @@
 import ScraperMonitor from '../../monitoring/scraper-monitor.js';
+import monitoringService from '../../services/monitoring-service.js';
+import dbPerformanceService from '../../services/database-performance-service.js';
 
 export default async function monitoringRoutes(fastify, options) {
   const monitor = new ScraperMonitor();
@@ -281,5 +283,161 @@ export default async function monitoringRoutes(fastify, options) {
     }
 
     return health;
+  });
+
+  // Frontend error reporting endpoint
+  fastify.post('/error', {
+    schema: {
+      tags: ['Monitoring'],
+      description: 'Report frontend errors',
+      body: {
+        type: 'object',
+        required: ['error'],
+        properties: {
+          error: {
+            type: 'object',
+            properties: {
+              message: { type: 'string' },
+              stack: { type: 'string' },
+              name: { type: 'string' }
+            }
+          },
+          errorInfo: { type: 'object' },
+          context: {
+            type: 'object',
+            properties: {
+              url: { type: 'string' },
+              userAgent: { type: 'string' },
+              timestamp: { type: 'string' }
+            }
+          }
+        }
+      },
+      response: {
+        200: {
+          type: 'object',
+          properties: {
+            success: { type: 'boolean' },
+            errorId: { type: 'string' }
+          }
+        }
+      }
+    }
+  }, async (request, reply) => {
+    const { error, errorInfo, context } = request.body;
+    
+    // Create a proper Error object for tracking
+    const frontendError = new Error(error.message);
+    frontendError.name = error.name || 'FrontendError';
+    frontendError.stack = error.stack;
+    
+    const fullContext = {
+      ...context,
+      type: 'frontend_error',
+      errorInfo,
+      userAgent: request.headers['user-agent'],
+      ip: request.ip
+    };
+    
+    monitoringService.trackError(frontendError, fullContext);
+    
+    const errorId = Date.now().toString(36);
+    
+    return {
+      success: true,
+      errorId
+    };
+  });
+
+  // System metrics endpoint
+  fastify.get('/metrics', {
+    schema: {
+      tags: ['Monitoring'],
+      description: 'Get detailed system metrics',
+      response: {
+        200: { type: 'object' }
+      }
+    }
+  }, async (request, reply) => {
+    return monitoringService.getMetrics();
+  });
+
+  // System health status
+  fastify.get('/system-health', {
+    schema: {
+      tags: ['Monitoring'],
+      description: 'Get system health status',
+      response: {
+        200: {
+          type: 'object',
+          properties: {
+            status: { type: 'string' },
+            issues: { type: 'array', items: { type: 'string' } },
+            metrics: { type: 'object' }
+          }
+        }
+      }
+    }
+  }, async (request, reply) => {
+    return monitoringService.getHealthStatus();
+  });
+
+  // Database performance endpoints
+  fastify.get('/database/performance', {
+    schema: {
+      tags: ['Database Monitoring'],
+      description: 'Get database query performance statistics'
+    }
+  }, async (request, reply) => {
+    return await dbPerformanceService.getPerformanceStats();
+  });
+
+  fastify.get('/database/tables', {
+    schema: {
+      tags: ['Database Monitoring'],
+      description: 'Get database table statistics'
+    }
+  }, async (request, reply) => {
+    return await dbPerformanceService.getTableStats();
+  });
+
+  fastify.get('/database/indexes', {
+    schema: {
+      tags: ['Database Monitoring'],
+      description: 'Analyze database index usage and missing indexes'
+    }
+  }, async (request, reply) => {
+    return await dbPerformanceService.analyzeMissingIndexes();
+  });
+
+  fastify.get('/database/health', {
+    schema: {
+      tags: ['Database Monitoring'],
+      description: 'Get database health metrics'
+    }
+  }, async (request, reply) => {
+    return await dbPerformanceService.getDatabaseHealth();
+  });
+
+  fastify.post('/database/cleanup', {
+    schema: {
+      tags: ['Database Monitoring'],
+      description: 'Clean up old performance logs',
+      body: {
+        type: 'object',
+        properties: {
+          daysToKeep: { type: 'integer', minimum: 1, maximum: 90, default: 7 }
+        }
+      }
+    }
+  }, async (request, reply) => {
+    const { daysToKeep = 7 } = request.body || {};
+    const deletedRows = await dbPerformanceService.cleanupOldLogs(daysToKeep);
+    
+    return {
+      success: true,
+      deletedRows,
+      message: `Cleaned up performance logs older than ${daysToKeep} days`
+    };
   });
 }

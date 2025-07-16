@@ -10,7 +10,9 @@ import { governmentSpending, getFundingLevel, getSupplierByName, formatCurrency,
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [services, setServices] = useState([])
+  const [allServicesForMap, setAllServicesForMap] = useState([])
   const [loading, setLoading] = useState(false)
+  const [mapLoading, setMapLoading] = useState(false)
   const [error, setError] = useState(null)
   const [viewMode, setViewMode] = useState('list') // 'list' or 'map'
   const [showFilters, setShowFilters] = useState(false)
@@ -157,6 +159,84 @@ export default function SearchPage() {
     }
   }
 
+  // Load all services for map view (no pagination)
+  const loadAllServicesForMap = async (query = searchQuery, searchFilters = filters) => {
+    setMapLoading(true)
+    
+    try {
+      // Create map-specific params without pagination limits
+      const mapParams = { ...searchFilters }
+      delete mapParams.limit
+      delete mapParams.offset
+      
+      // Clean params for API
+      const cleanParams = {}
+      if (query && query.trim()) {
+        cleanParams.q = query.trim()
+      }
+      
+      Object.entries(mapParams).forEach(([key, value]) => {
+        if (value !== null && value !== undefined && value !== '' && key !== 'limit' && key !== 'offset') {
+          if (typeof value === 'boolean') {
+            cleanParams[key] = value
+          } else if (value.toString().trim()) {
+            cleanParams[key] = value.toString().trim()
+          }
+        }
+      })
+
+      // Load all services for map (up to 2000 to be safe)
+      cleanParams.limit = 2000
+      
+      const data = await apiService.workingSearch(cleanParams)
+      
+      // Enhance with funding info like the main search
+      const enhancedServices = (data.services || []).map(service => {
+        const isQueenslandService = service.location?.state === 'QLD' || 
+                                   service.location?.postcode?.toString().startsWith('4');
+        
+        if (!isQueenslandService) {
+          return { ...service, fundingInfo: null };
+        }
+        
+        const orgName = service.organization?.name || service.organization_name || service.name || '';
+        const abn = service.organization?.abn || service.abn || null;
+        const fundingInfo = getSupplierByName(orgName, abn)
+        
+        return {
+          ...service,
+          fundingInfo: fundingInfo ? {
+            amount: fundingInfo.total,
+            level: getFundingLevel(fundingInfo.total),
+            status: fundingInfo.status,
+            contracts: fundingInfo.contracts,
+            category: fundingInfo.category,
+            fundingPeriod: fundingInfo.fundingPeriod
+          } : null
+        }
+      })
+      
+      // Apply funding filters if needed
+      let filteredServices = enhancedServices
+      if (searchFilters.funded_only) {
+        filteredServices = filteredServices.filter(service => service.fundingInfo)
+      }
+      if (searchFilters.funding_level) {
+        filteredServices = filteredServices.filter(service => 
+          service.fundingInfo && service.fundingInfo.level === searchFilters.funding_level
+        )
+      }
+      
+      setAllServicesForMap(filteredServices)
+    } catch (err) {
+      console.error('Failed to load map services:', err)
+      // Fallback to using current services if map loading fails
+      setAllServicesForMap(services)
+    } finally {
+      setMapLoading(false)
+    }
+  }
+
   // Update URL with current search params
   const updateURL = (query, searchFilters) => {
     const params = new URLSearchParams()
@@ -178,6 +258,11 @@ export default function SearchPage() {
     setFilters(newFilters)
     updateURL(searchQuery, newFilters)
     performSearch(searchQuery, newFilters)
+    
+    // Reload map data if in map view
+    if (viewMode === 'map') {
+      loadAllServicesForMap(searchQuery, newFilters)
+    }
   }
 
   // Handle filter changes
@@ -186,6 +271,11 @@ export default function SearchPage() {
     setFilters(updatedFilters)
     updateURL(searchQuery, updatedFilters)
     performSearch(searchQuery, updatedFilters)
+    
+    // Reload map data if in map view
+    if (viewMode === 'map') {
+      loadAllServicesForMap(searchQuery, updatedFilters)
+    }
   }
 
   // Handle pagination
@@ -194,6 +284,16 @@ export default function SearchPage() {
     setFilters(newFilters)
     window.scrollTo({ top: 0, behavior: 'smooth' })
     performSearch(searchQuery, newFilters)
+  }
+
+  // Handle view mode change
+  const handleViewModeChange = (newViewMode) => {
+    setViewMode(newViewMode)
+    
+    // Load all services when switching to map view
+    if (newViewMode === 'map' && allServicesForMap.length === 0) {
+      loadAllServicesForMap()
+    }
   }
 
   // Clear all filters
@@ -229,10 +329,10 @@ export default function SearchPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Search Header */}
       <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
+        <div className="max-w-7xl mx-auto container-mobile section-mobile">
+          <div className="mobile-stack">
             {/* Search Form */}
-            <div className="flex-1 max-w-2xl">
+            <div className="search-mobile">
               <form onSubmit={handleSearch} className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
@@ -240,30 +340,31 @@ export default function SearchPage() {
                   placeholder="Search for services..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="input-search"
                 />
                 <button
                   type="submit"
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary-600 hover:bg-primary-700 text-white px-4 py-1.5 rounded font-medium transition-colors duration-200"
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 btn-primary btn-small"
                 >
-                  Search
+                  <span className="hide-mobile">Search</span>
+                  <Search className="show-mobile w-4 h-4" />
                 </button>
               </form>
             </div>
 
             {/* View Controls */}
-            <div className="flex items-center space-x-4">
+            <div className="mobile-stack">
               {/* Filter Toggle */}
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg border transition-colors duration-200 ${
+                className={`touch-target mobile-full-width sm:w-auto flex items-center justify-center space-x-2 px-4 py-2 rounded-lg border transition-colors duration-200 ${
                   showFilters
                     ? 'bg-primary-50 border-primary-200 text-primary-700'
                     : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'
                 }`}
               >
-                <Filter className="w-4 h-4" />
-                <span>Filters</span>
+                <Filter className="w-5 h-5" />
+                <span className="text-mobile-sm">Filters</span>
                 {hasActiveFilters && (
                   <span className="bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                     !
@@ -272,10 +373,10 @@ export default function SearchPage() {
               </button>
 
               {/* View Mode Toggle */}
-              <div className="flex bg-gray-100 rounded-lg p-1">
+              <div className="flex bg-gray-100 rounded-lg p-1 mobile-full-width sm:w-auto">
                 <button
-                  onClick={() => setViewMode('list')}
-                  className={`flex items-center space-x-2 px-3 py-1.5 rounded text-sm font-medium transition-colors duration-200 ${
+                  onClick={() => handleViewModeChange('list')}
+                  className={`touch-target flex-1 sm:flex-none flex items-center justify-center space-x-2 px-3 py-1.5 rounded text-mobile-sm font-medium transition-colors duration-200 ${
                     viewMode === 'list'
                       ? 'bg-white text-gray-900 shadow-sm'
                       : 'text-gray-600 hover:text-gray-900'
@@ -285,14 +386,19 @@ export default function SearchPage() {
                   <span>List</span>
                 </button>
                 <button
-                  onClick={() => setViewMode('map')}
-                  className={`flex items-center space-x-2 px-3 py-1.5 rounded text-sm font-medium transition-colors duration-200 ${
+                  onClick={() => handleViewModeChange('map')}
+                  className={`touch-target flex-1 sm:flex-none flex items-center justify-center space-x-2 px-3 py-1.5 rounded text-mobile-sm font-medium transition-colors duration-200 ${
                     viewMode === 'map'
                       ? 'bg-white text-gray-900 shadow-sm'
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
+                  disabled={mapLoading}
                 >
-                  <MapPin className="w-4 h-4" />
+                  {mapLoading ? (
+                    <Loader className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <MapPin className="w-4 h-4" />
+                  )}
                   <span>Map</span>
                 </button>
               </div>
@@ -363,11 +469,16 @@ export default function SearchPage() {
                 <h2 className="text-lg font-semibold text-gray-900">
                   {loading ? 'Searching...' : `Search Results`}
                 </h2>
-                {pagination && (
+                {viewMode === 'map' ? (
+                  <p className="text-sm text-gray-600">
+                    Showing {allServicesForMap.length} services on map
+                    {pagination && pagination.total && ` (${pagination.total} total available)`}
+                  </p>
+                ) : pagination ? (
                   <p className="text-sm text-gray-600">
                     Showing {pagination.offset + 1}-{Math.min(pagination.offset + pagination.limit, pagination.total)} of {pagination.total} services
                   </p>
-                )}
+                ) : null}
               </div>
             </div>
 
@@ -419,11 +530,20 @@ export default function SearchPage() {
                   </div>
                 ) : (
                   <div className="h-96 lg:h-[600px]">
-                    <ServiceMap
-                      services={services}
-                      onServiceSelect={setSelectedService}
-                      className="h-full"
-                    />
+                    {mapLoading ? (
+                      <div className="flex items-center justify-center h-full bg-gray-50 rounded-lg">
+                        <div className="text-center">
+                          <Loader className="w-8 h-8 animate-spin text-primary-600 mx-auto mb-2" />
+                          <p className="text-gray-600">Loading all services for map...</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <ServiceMap
+                        services={allServicesForMap.length > 0 ? allServicesForMap : services}
+                        onServiceSelect={setSelectedService}
+                        className="h-full"
+                      />
+                    )}
                   </div>
                 )}
 

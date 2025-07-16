@@ -85,18 +85,18 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
     <div className="border-b border-gray-200 pb-4 mb-4 last:border-b-0 last:pb-0 last:mb-0">
       <button
         onClick={() => toggleSection(sectionKey)}
-        className="flex items-center justify-between w-full text-left"
+        className="touch-target flex items-center justify-between w-full text-left"
       >
-        <h3 className="text-sm font-medium text-gray-900">{title}</h3>
+        <h3 className="text-mobile-sm font-medium text-gray-900">{title}</h3>
         {expandedSections[sectionKey] ? (
-          <ChevronUp className="w-4 h-4 text-gray-500" />
+          <ChevronUp className="w-5 h-5 text-gray-500" />
         ) : (
-          <ChevronDown className="w-4 h-4 text-gray-500" />
+          <ChevronDown className="w-5 h-5 text-gray-500" />
         )}
       </button>
       
       {expandedSections[sectionKey] && (
-        <div className="mt-3 space-y-3">
+        <div className="filter-group-mobile">
           {children}
         </div>
       )}
@@ -104,9 +104,9 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
   )
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-lg font-semibold text-gray-900">Filters</h2>
+    <div className="filter-mobile">
+      <div className="mobile-stack mb-6">
+        <h2 className="text-mobile-lg font-semibold text-gray-900">Filters</h2>
         <button
           onClick={() => onFiltersChange({
             categories: '',
@@ -120,24 +120,24 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
             limit: 20,
             offset: 0
           })}
-          className="text-sm text-gray-600 hover:text-gray-900 flex items-center space-x-1"
+          className="touch-target text-mobile-sm text-gray-600 hover:text-gray-900 flex items-center space-x-1"
         >
           <X className="w-4 h-4" />
           <span>Clear all</span>
         </button>
       </div>
 
-      <div className="space-y-6">
+      <div className="form-mobile">
         {/* Categories */}
         <FilterSection title="Service Categories" sectionKey="categories">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+          <div className="form-group-mobile">
+            <label className="block text-mobile-sm font-medium text-gray-700 mb-2">
               Service Type
             </label>
             <select
               value={filters.categories}
               onChange={(e) => handleFilterChange('categories', e.target.value)}
-              className="input-field text-sm"
+              className="input-field"
               disabled={loading}
             >
               <option value="">All service types</option>
@@ -152,7 +152,7 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
           {filters.categories && (
             <button
               onClick={() => clearFilter('categories')}
-              className="text-xs text-primary-600 hover:text-primary-700"
+              className="touch-target text-mobile-xs text-primary-600 hover:text-primary-700"
             >
               Clear category
             </button>
@@ -161,14 +161,14 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
 
         {/* Location */}
         <FilterSection title="Location" sectionKey="location">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+          <div className="form-group-mobile">
+            <label className="block text-mobile-sm font-medium text-gray-700 mb-2">
               Region
             </label>
             <select
               value={filters.regions}
               onChange={(e) => handleFilterChange('regions', e.target.value)}
-              className="input-field text-sm"
+              className="input-field"
               disabled={loading}
             >
               <option value="">All regions</option>
@@ -183,7 +183,7 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
           {filters.regions && (
             <button
               onClick={() => clearFilter('regions')}
-              className="text-xs text-primary-600 hover:text-primary-700"
+              className="touch-target text-mobile-xs text-primary-600 hover:text-primary-700"
             >
               Clear region
             </button>
@@ -192,9 +192,9 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
 
         {/* Demographics */}
         <FilterSection title="Age Range" sectionKey="demographics">
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+          <div className="form-row-mobile">
+            <div className="form-group-mobile">
+              <label className="block text-mobile-sm font-medium text-gray-700 mb-1">
                 Min Age
               </label>
               <input
@@ -204,12 +204,12 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
                 value={filters.min_age}
                 onChange={(e) => handleFilterChange('min_age', e.target.value)}
                 placeholder="10"
-                className="input-field text-sm"
+                className="input-field"
                 disabled={loading}
               />
             </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+            <div className="form-group-mobile">
+              <label className="block text-mobile-sm font-medium text-gray-700 mb-1">
                 Max Age
               </label>
               <input
@@ -219,7 +219,7 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
                 value={filters.max_age}
                 onChange={(e) => handleFilterChange('max_age', e.target.value)}
                 placeholder="25"
-                className="input-field text-sm"
+                className="input-field"
                 disabled={loading}
               />
             </div>
@@ -231,7 +231,7 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
                 clearFilter('min_age')
                 clearFilter('max_age')
               }}
-              className="text-xs text-primary-600 hover:text-primary-700"
+              className="touch-target text-mobile-xs text-primary-600 hover:text-primary-700"
             >
               Clear age range
             </button>
@@ -240,29 +240,29 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
 
         {/* Special Populations */}
         <FilterSection title="Special Populations" sectionKey="populations">
-          <div className="space-y-3">
-            <label className="flex items-center">
+          <div className="filter-group-mobile">
+            <label className="touch-target flex items-center">
               <input
                 type="checkbox"
                 checked={filters.youth_specific}
                 onChange={(e) => handleFilterChange('youth_specific', e.target.checked)}
-                className="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+                className="w-5 h-5 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
                 disabled={loading}
               />
-              <span className="ml-2 text-sm text-gray-700">
+              <span className="ml-3 text-mobile-sm text-gray-700">
                 Youth-specific services only
               </span>
             </label>
 
-            <label className="flex items-center">
+            <label className="touch-target flex items-center">
               <input
                 type="checkbox"
                 checked={filters.indigenous_specific}
                 onChange={(e) => handleFilterChange('indigenous_specific', e.target.checked)}
-                className="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+                className="w-5 h-5 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
                 disabled={loading}
               />
-              <span className="ml-2 text-sm text-gray-700">
+              <span className="ml-3 text-mobile-sm text-gray-700">
                 Indigenous-specific services only
               </span>
             </label>
@@ -274,7 +274,7 @@ export default function SearchFilters({ filters, onFiltersChange, loading }) {
                 clearFilter('youth_specific')
                 clearFilter('indigenous_specific')
               }}
-              className="text-xs text-primary-600 hover:text-primary-700"
+              className="touch-target text-mobile-xs text-primary-600 hover:text-primary-700"
             >
               Clear population filters
             </button>

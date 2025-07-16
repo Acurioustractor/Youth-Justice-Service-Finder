@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
+import MarkerClusterGroup from 'react-leaflet-cluster'
 import L from 'leaflet'
 import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react'
 
@@ -149,19 +150,34 @@ export default function ServiceMap({ services = [], onServiceSelect, className =
         
         <MapBounds services={validServices} />
 
-        {validServices.map((service) => (
-          <Marker
-            key={service.id}
-            position={[service.location.coordinates.lat, service.location.coordinates.lng]}
-            icon={createServiceIcon(service.categories?.[0])}
-            eventHandlers={{
-              click: () => {
-                if (onServiceSelect) {
-                  onServiceSelect(service)
-                }
-              },
-            }}
-          >
+        <MarkerClusterGroup
+          chunkedLoading
+          iconCreateFunction={(cluster) => {
+            const count = cluster.getChildCount()
+            let size = 'small'
+            if (count >= 100) size = 'large'
+            else if (count >= 10) size = 'medium'
+            
+            return L.divIcon({
+              html: `<div><span>${count}</span></div>`,
+              className: `marker-cluster marker-cluster-${size}`,
+              iconSize: L.point(40, 40, true)
+            })
+          }}
+        >
+          {validServices.map((service) => (
+            <Marker
+              key={service.id}
+              position={[service.location.coordinates.lat, service.location.coordinates.lng]}
+              icon={createServiceIcon(service.categories?.[0])}
+              eventHandlers={{
+                click: () => {
+                  if (onServiceSelect) {
+                    onServiceSelect(service)
+                  }
+                },
+              }}
+            >
             <Popup className="service-popup" maxWidth={300}>
               <div className="p-2">
                 <h3 className="font-semibold text-gray-900 mb-2 leading-tight">
@@ -237,6 +253,7 @@ export default function ServiceMap({ services = [], onServiceSelect, className =
             </Popup>
           </Marker>
         ))}
+        </MarkerClusterGroup>
       </MapContainer>
 
       {/* Legend */}

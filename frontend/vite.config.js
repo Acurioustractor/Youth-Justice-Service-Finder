@@ -9,5 +9,17 @@ export default defineConfig({
   },
   define: {
     'process.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL || 'http://127.0.0.1:3001')
+  },
+  build: {
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          leaflet: ['leaflet', 'react-leaflet', 'react-leaflet-cluster'],
+          utils: ['axios', 'clsx', 'tailwind-merge', 'lucide-react']
+        }
+      }
+    }
   }
 })

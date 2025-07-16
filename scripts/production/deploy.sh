@@ -7,8 +7,8 @@ echo "🚀 Youth Justice Service Finder - Production Deployment"
 echo "======================================================="
 
 # Configuration
-COMPOSE_FILE="docker-compose.prod.yml"
-ENV_FILE=".env.prod"
+COMPOSE_FILE="docker-compose.production.yml"
+ENV_FILE=".env.production"
 BACKUP_DIR="./backups/$(date +%Y%m%d_%H%M%S)"
 
 # Colors for output
@@ -54,7 +54,7 @@ check_prerequisites() {
     # Check environment file
     if [ ! -f "$ENV_FILE" ]; then
         log_error "Environment file $ENV_FILE not found"
-        log_info "Please copy .env.production to $ENV_FILE and configure it"
+        log_info "Please create $ENV_FILE with your production configuration"
         exit 1
     fi
     
@@ -65,15 +65,15 @@ check_prerequisites() {
 create_backup() {
     log_info "Creating backup..."
     
-    if docker-compose -f $COMPOSE_FILE ps | grep -q "postgres"; then
+    if docker-compose -f $COMPOSE_FILE ps | grep -q "yjs_postgres"; then
         mkdir -p "$BACKUP_DIR"
         
         # Backup database
-        docker-compose -f $COMPOSE_FILE exec -T postgres pg_dump -U postgres youth_justice_prod > "$BACKUP_DIR/database.sql"
+        docker exec yjs_postgres pg_dump -U yjs_app youth_justice_services > "$BACKUP_DIR/database.sql"
         
         # Backup volumes
-        docker run --rm -v youth-justice-service-finder_postgres_data:/data -v $(pwd)/$BACKUP_DIR:/backup alpine tar czf /backup/postgres_data.tar.gz -C /data .
-        docker run --rm -v youth-justice-service-finder_es_data:/data -v $(pwd)/$BACKUP_DIR:/backup alpine tar czf /backup/es_data.tar.gz -C /data .
+        docker run --rm -v postgres_data:/data -v $(pwd)/$BACKUP_DIR:/backup alpine tar czf /backup/postgres_data.tar.gz -C /data .
+        docker run --rm -v redis_data:/data -v $(pwd)/$BACKUP_DIR:/backup alpine tar czf /backup/redis_data.tar.gz -C /data .
         
         log_success "Backup created in $BACKUP_DIR"
     else
@@ -85,40 +85,44 @@ create_backup() {
 deploy() {
     log_info "Building and deploying application..."
     
-    # Pull latest images
-    docker-compose -f $COMPOSE_FILE --env-file $ENV_FILE pull
+    # Build and start all services
+    log_info "Building services..."
+    docker-compose -f $COMPOSE_FILE --env-file $ENV_FILE build --no-cache
     
-    # Build application
-    docker-compose -f $COMPOSE_FILE --env-file $ENV_FILE build --no-cache app worker
-    
-    # Start infrastructure services first
-    log_info "Starting infrastructure services..."
-    docker-compose -f $COMPOSE_FILE --env-file $ENV_FILE up -d postgres elasticsearch redis temporal
+    log_info "Starting services..."
+    docker-compose -f $COMPOSE_FILE --env-file $ENV_FILE up -d
     
     # Wait for services to be ready
-    log_info "Waiting for infrastructure services to be ready..."
+    log_info "Waiting for services to be ready..."
     sleep 30
     
-    # Check service health
-    log_info "Checking service health..."
-    docker-compose -f $COMPOSE_FILE --env-file $ENV_FILE exec postgres pg_isready -U postgres -d youth_justice_prod
+    # Check PostgreSQL health
+    log_info "Checking PostgreSQL health..."
+    for i in {1..30}; do
+        if docker exec yjs_postgres pg_isready -U yjs_app -d youth_justice_services > /dev/null 2>&1; then
+            log_success "PostgreSQL is ready"
+            break
+        fi
+        if [ $i -eq 30 ]; then
+            log_error "PostgreSQL failed to start"
+            exit 1
+        fi
+        sleep 2
+    done
     
-    # Run database migrations
-    log_info "Running database migrations..."
-    docker-compose -f $COMPOSE_FILE --env-file $ENV_FILE run --rm app npm run migrate up
-    
-    # Set up Elasticsearch
-    log_info "Setting up Elasticsearch..."
-    docker-compose -f $COMPOSE_FILE --env-file $ENV_FILE run --rm app npm run setup-elasticsearch
-    
-    # Start application services
-    log_info "Starting application services..."
-    docker-compose -f $COMPOSE_FILE --env-file $ENV_FILE up -d app worker nginx
-    
-    # Set up Temporal schedules
-    log_info "Setting up Temporal schedules..."
-    sleep 10
-    docker-compose -f $COMPOSE_FILE --env-file $ENV_FILE exec app npm run temporal:scheduler
+    # Check Redis health
+    log_info "Checking Redis health..."
+    for i in {1..10}; do
+        if docker exec yjs_redis redis-cli ping > /dev/null 2>&1; then
+            log_success "Redis is ready"
+            break
+        fi
+        if [ $i -eq 10 ]; then
+            log_error "Redis failed to start"
+            exit 1
+        fi
+        sleep 1
+    done
     
     log_success "Deployment completed successfully!"
 }
@@ -131,23 +135,23 @@ health_check() {
     sleep 15
     
     # Check API health
-    if curl -f http://localhost:3001/health > /dev/null 2>&1; then
+    if curl -f http://localhost:3000/health > /dev/null 2>&1; then
         log_success "API health check passed"
     else
         log_error "API health check failed"
         return 1
     fi
     
-    # Check Elasticsearch
-    if curl -f http://localhost:9200/_cluster/health > /dev/null 2>&1; then
-        log_success "Elasticsearch health check passed"
+    # Check Pipeline Service health
+    if curl -f http://localhost:3002/health > /dev/null 2>&1; then
+        log_success "Pipeline Service health check passed"
     else
-        log_error "Elasticsearch health check failed"
+        log_error "Pipeline Service health check failed"
         return 1
     fi
     
     # Check database
-    if docker-compose -f $COMPOSE_FILE --env-file $ENV_FILE exec postgres pg_isready -U postgres -d youth_justice_prod > /dev/null 2>&1; then
+    if docker exec yjs_postgres pg_isready -U yjs_app -d youth_justice_services > /dev/null 2>&1; then
         log_success "Database health check passed"
     else
         log_error "Database health check failed"
@@ -168,18 +172,19 @@ show_status() {
     echo ""
     log_info "Service URLs:"
     echo "============="
-    echo "🌐 Frontend: http://localhost"
-    echo "🔌 API: http://localhost/api"
-    echo "📚 API Docs: http://localhost/docs"
-    echo "❤️ Health Check: http://localhost/health"
-    echo "🔍 Elasticsearch: http://localhost:9200"
-    echo "⏰ Temporal UI: http://localhost:8080"
+    echo "🔌 API: http://localhost:3000"
+    echo "🔄 Pipeline Service: http://localhost:3002"
+    echo "📊 Grafana: http://localhost:3001"
+    echo "📈 Prometheus: http://localhost:9090"
+    echo "❤️ API Health: http://localhost:3000/health"
+    echo "❤️ Pipeline Health: http://localhost:3002/health"
     echo ""
     
     log_info "Useful Commands:"
     echo "================"
     echo "View logs: docker-compose -f $COMPOSE_FILE logs -f [service]"
-    echo "Scale service: docker-compose -f $COMPOSE_FILE up -d --scale app=3"
+    echo "Trigger pipeline: curl -X POST http://localhost:3002/trigger"
+    echo "View statistics: curl http://localhost:3002/statistics"
     echo "Stop all: docker-compose -f $COMPOSE_FILE down"
     echo "Restart service: docker-compose -f $COMPOSE_FILE restart [service]"
 }

@@ -28,6 +28,8 @@ import bulletproofImportRoutes from './routes/bulletproof-import.js';
 import workingImportRoutes from './routes/working-import.js';
 import budgetIntelligenceRoutes from './routes/budget-intelligence.js';
 import { addSchemas } from './schemas.js';
+import cachePlugin from './plugins/cache-plugin.js';
+import monitoringPlugin from './plugins/monitoring-plugin.js';
 
 const logger = pino({
   level: process.env.LOG_LEVEL || 'info',
@@ -128,6 +130,12 @@ export async function createSimpleServer(options = {}) {
 
   // Add JSON schemas
   addSchemas(fastify);
+
+  // Register cache plugin
+  await fastify.register(cachePlugin);
+
+  // Register monitoring plugin
+  await fastify.register(monitoringPlugin);
 
   // Database connection hook
   fastify.addHook('onRequest', async (request, reply) => {
