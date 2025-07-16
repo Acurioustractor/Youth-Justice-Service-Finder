@@ -186,7 +186,7 @@ export async function createSimpleServer(options = {}) {
   // Register routes
   await fastify.register(healthRoutes, { prefix: '/health' });
   await fastify.register(statsRoutes, { prefix: '/stats' });
-  await fastify.register(monitoringRoutes, { prefix: '/monitoring' });
+  // DISABLED: await fastify.register(monitoringRoutes, { prefix: '/monitoring' }); // Conflicts with monitoring plugin
   await fastify.register(debugRoutes, { prefix: '/debug' });
   await fastify.register(createDataRoutes, { prefix: '/create-data' });
   await fastify.register(dataDownloadRoutes, { prefix: '/data' });
