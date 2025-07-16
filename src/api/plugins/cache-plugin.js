@@ -2,8 +2,15 @@ import fp from 'fastify-plugin';
 import cacheService from '../../services/cache-service.js';
 
 async function cachePlugin(fastify, options) {
-  // Connect to cache service
-  await cacheService.connect();
+  // Connect to cache service (optional - graceful fallback if Redis unavailable)
+  try {
+    await cacheService.connect();
+    fastify.log.info('Cache service connected successfully');
+  } catch (error) {
+    fastify.log.warn('Cache service unavailable, continuing without caching:', error.message);
+    // Return early if cache is not available
+    return;
+  }
 
   // Add cache decorator to fastify instance
   fastify.decorate('cache', cacheService);

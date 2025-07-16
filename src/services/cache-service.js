@@ -14,7 +14,7 @@ class CacheService {
       this.client = createClient({
         url: process.env.REDIS_URL || 'redis://localhost:6379',
         socket: {
-          connectTimeout: 5000,
+          connectTimeout: 3000,
           lazyConnect: true
         }
       });
@@ -29,7 +29,13 @@ class CacheService {
         this.connected = true;
       });
 
-      await this.client.connect();
+      // Add timeout for connection attempt
+      await Promise.race([
+        this.client.connect(),
+        new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Redis connection timeout')), 5000)
+        )
+      ]);
       return true;
     } catch (error) {
       logger.warn('Redis connection failed, cache disabled:', error.message);
