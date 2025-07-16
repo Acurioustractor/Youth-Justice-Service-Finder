@@ -171,8 +171,18 @@ export async function createSimpleServer(options = {}) {
     return reply.status(statusCode).send(response);
   });
 
-  // Not found handler
+  // Not found handler - serves frontend in full-stack mode
   fastify.setNotFoundHandler((request, reply) => {
+    // In full-stack mode, serve index.html for non-API routes
+    if (options.isFullStack && !request.url.startsWith('/api') && 
+        !request.url.startsWith('/health') && !request.url.startsWith('/services') &&
+        !request.url.startsWith('/working-search') && !request.url.startsWith('/stats') &&
+        !request.url.startsWith('/organizations') && !request.url.startsWith('/monitoring') &&
+        !request.url.startsWith('/docs') && !request.url.startsWith('/debug')) {
+      return reply.sendFile('index.html');
+    }
+    
+    // Default API 404 response
     return reply.status(404).send({
       error: {
         message: 'Route not found',

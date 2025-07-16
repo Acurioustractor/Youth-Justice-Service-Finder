@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 async function startFullStackServer() {
   try {
-    const server = await createSimpleServer();
+    const server = await createSimpleServer({ isFullStack: true });
     
     // Serve static files from frontend build
     const frontendPath = path.join(__dirname, '..', '..', 'frontend', 'dist');
@@ -21,32 +21,7 @@ async function startFullStackServer() {
       decorateReply: false
     });
     
-    // SPA routing - serve index.html for non-API routes
-    server.setNotFoundHandler(async (request, reply) => {
-      // Skip API routes - let them return 404
-      if (request.url.startsWith('/api') || 
-          request.url.startsWith('/health') || 
-          request.url.startsWith('/services') ||
-          request.url.startsWith('/working-search') ||
-          request.url.startsWith('/search') ||
-          request.url.startsWith('/stats') ||
-          request.url.startsWith('/organizations') ||
-          request.url.startsWith('/monitoring') ||
-          request.url.startsWith('/budget-intelligence') ||
-          request.url.startsWith('/docs')) {
-        return reply.status(404).send({
-          error: {
-            message: "Route not found",
-            statusCode: 404,
-            url: request.url,
-            method: request.method
-          }
-        });
-      }
-      
-      // For frontend routes, serve index.html
-      return reply.sendFile('index.html');
-    });
+    // Note: SPA routing handled by static file plugin and base server's NotFoundHandler
     
     const port = process.env.PORT || 3010;
     const host = process.env.HOST || '0.0.0.0';
