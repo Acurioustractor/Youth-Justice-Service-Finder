@@ -230,60 +230,8 @@ export default async function monitoringRoutes(fastify, options) {
     }
   });
 
-  // Health check for monitoring system
-  fastify.get('/health', {
-    schema: {
-      tags: ['Monitoring'],
-      description: 'Health check for monitoring system'
-    }
-  }, async (request, reply) => {
-    const health = {
-      status: 'healthy',
-      timestamp: new Date().toISOString(),
-      monitoring: {
-        activeScrapers: 0,
-        dataQualityScore: 0,
-        lastSuccessfulScrape: null
-      }
-    };
-
-    try {
-      // Check recent scraper activity
-      const [recentActivity] = await request.db('scraping_jobs')
-        .where('created_at', '>', request.db.raw("NOW() - INTERVAL '1 hour'"))
-        .count('* as count');
-
-      const [lastSuccess] = await request.db('scraping_jobs')
-        .where('status', 'completed')
-        .where('services_found', '>', 0)
-        .orderBy('completed_at', 'desc')
-        .limit(1)
-        .select('completed_at', 'source_name');
-
-      health.monitoring = {
-        recentActivity: parseInt(recentActivity.count),
-        lastSuccessfulScrape: lastSuccess ? {
-          time: lastSuccess.completed_at,
-          scraper: lastSuccess.source_name
-        } : null
-      };
-
-      // Quick quality check
-      const quality = await monitor.analyzeDataQuality();
-      health.monitoring.dataQualityScore = quality.overallScore;
-
-      if (health.monitoring.recentActivity === 0) {
-        health.status = 'warning';
-        health.message = 'No recent scraper activity detected';
-      }
-
-    } catch (error) {
-      health.status = 'error';
-      health.error = error.message;
-    }
-
-    return health;
-  });
+  // Note: /health route is provided by monitoring plugin at /monitoring/health
+  // This duplicate route has been removed to avoid conflicts
 
   // Frontend error reporting endpoint
   fastify.post('/error', {
