@@ -2,9 +2,9 @@ import axios from 'axios'
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || (
   // Use current domain for unified deployment, fallback to Railway
-  window.location.origin.includes('vercel.app') || window.location.origin.includes('localhost')
+  window.location.origin.includes('vercel.app') || window.location.origin.includes('localhost') || window.location.origin.includes('railway.app')
     ? window.location.origin
-    : 'https://youth-justice-service-finder-production.up.railway.app'
+    : 'https://youth-justice-service-finder-production-v2.up.railway.app'
 )
 
 const api = axios.create({
