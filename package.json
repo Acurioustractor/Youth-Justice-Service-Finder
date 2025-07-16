@@ -6,6 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node src/api/server-simple.js",
+    "start:fullstack": "npm run build:frontend && node src/api/server-fullstack.js",
+    "build:frontend": "cd frontend && npm ci && npm run build",
     "start:pipeline": "node src/pipeline-service.js",
     "dev": "nodemon src/api/server-simple.js",
     "dev:pipeline": "nodemon src/pipeline-service.js",

@@ -1,0 +1,14 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "npm run start:fullstack"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
+
+[environments.production.variables]
+NODE_ENV = "production"
+PORT = "3000"
+
+[environments.production.volumes]
+staticFiles = "/app/frontend/dist"
