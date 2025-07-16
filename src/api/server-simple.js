@@ -230,10 +230,11 @@ export async function createSimpleServer(options = {}) {
   await fastify.register(organizationsRoutes, { prefix: '/organizations' });
   await fastify.register(budgetIntelligenceRoutes, { prefix: '/budget-intelligence' });
 
-  // Root endpoint
-  fastify.get('/', async (request, reply) => {
-    return {
-      name: 'Youth Justice Service Finder API (Free Tier)',
+  // Root endpoint - only for API mode, not full-stack mode
+  if (!options.isFullStack) {
+    fastify.get('/', async (request, reply) => {
+      return {
+        name: 'Youth Justice Service Finder API (Free Tier)',
       version: '1.0.0',
       description: 'Simplified API for finding youth justice and support services',
       documentation: '/docs',
@@ -263,6 +264,7 @@ export async function createSimpleServer(options = {}) {
       }
     };
   });
+  }
 
   return fastify;
 }
