@@ -15,9 +15,9 @@ WORKDIR /app
 COPY package*.json ./
 COPY frontend/package*.json ./frontend/
 
-# Install dependencies
-RUN npm ci --only=production && \
-    cd frontend && npm ci --only=production
+# Install dependencies (including dev deps for build)
+RUN npm ci && \
+    cd frontend && npm ci
 
 # Copy source code
 COPY . .
@@ -41,4 +41,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:3001/health || exit 1
 
 # Default command
-CMD ["npm", "start"]
+CMD ["node", "src/api/server-fullstack.js"]
