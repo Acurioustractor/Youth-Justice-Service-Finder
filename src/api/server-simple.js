@@ -30,6 +30,7 @@ import budgetIntelligenceRoutes from './routes/budget-intelligence.js';
 import debugDbRoutes from './routes/debug-db.js';
 import minimalSearchRoutes from './routes/minimal-search.js';
 import fixedSearchRoutes from './routes/fixed-search.js';
+import emergencySearchRoutes from './routes/emergency-search.js';
 import { addSchemas } from './schemas.js';
 import cachePlugin from './plugins/cache-plugin.js';
 import monitoringPlugin from './plugins/monitoring-plugin.js';
@@ -218,6 +219,9 @@ export async function createSimpleServer(options = {}) {
   
   // FIXED SEARCH - working replacement for broken endpoints
   await fastify.register(fixedSearchRoutes, { prefix: '/fixed-search' });
+  
+  // EMERGENCY SEARCH - ultra simple implementation that definitely works
+  await fastify.register(emergencySearchRoutes, { prefix: '/emergency-search' });
   
   // Register main search routes (handles '/' endpoint) - BROKEN
   // await fastify.register(searchRoutes, { prefix: '/search' });
