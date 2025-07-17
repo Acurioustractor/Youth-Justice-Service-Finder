@@ -1,6 +1,29 @@
 // Debug database endpoint for production troubleshooting
 export default async function debugDbRoutes(fastify, options) {
   
+  // Ultra basic test
+  fastify.get('/basic', async (request, reply) => {
+    try {
+      return { message: 'Route works', timestamp: new Date().toISOString() };
+    } catch (error) {
+      return reply.status(500).send({ error: error.message });
+    }
+  });
+  
+  // Test database hook
+  fastify.get('/db-hook', async (request, reply) => {
+    try {
+      const hasDb = !!request.db;
+      return { 
+        message: 'DB hook test', 
+        hasDatabase: hasDb,
+        dbType: hasDb ? typeof request.db : 'undefined'
+      };
+    } catch (error) {
+      return reply.status(500).send({ error: error.message });
+    }
+  });
+  
   // Simple database test
   fastify.get('/test', async (request, reply) => {
     try {
