@@ -51,16 +51,22 @@ export default async function workingSearchRoutes(fastify, options) {
 
       // Add search if query provided
       if (q && q.trim()) {
+        const searchTerm = q.trim();
         query = query.where(function() {
-          this.where('s.name', 'ilike', `%${q}%`)
-              .orWhere('s.description', 'ilike', `%${q}%`)
-              .orWhere('o.name', 'ilike', `%${q}%`);
+          this.where('s.name', 'ilike', `%${searchTerm}%`)
+              .orWhere('s.description', 'ilike', `%${searchTerm}%`)
+              .orWhere('o.name', 'ilike', `%${searchTerm}%`);
         });
       }
 
-      // Add category filter
+      // Add category filter - handle both array and JSON string formats
       if (category) {
-        query = query.whereRaw('? = ANY(s.categories)', [category]);
+        query = query.where(function() {
+          // Try array format first
+          this.whereRaw('? = ANY(s.categories)', [category])
+              // Fallback to JSON contains for string format
+              .orWhereRaw("s.categories::text ILIKE ?", [`%"${category}"%`]);
+        });
       }
 
       // Add region filter  
@@ -103,15 +109,19 @@ export default async function workingSearchRoutes(fastify, options) {
 
       // Apply same filters for count
       if (q && q.trim()) {
+        const searchTerm = q.trim();
         countQuery = countQuery.where(function() {
-          this.where('s.name', 'ilike', `%${q}%`)
-              .orWhere('s.description', 'ilike', `%${q}%`)
-              .orWhere('o.name', 'ilike', `%${q}%`);
+          this.where('s.name', 'ilike', `%${searchTerm}%`)
+              .orWhere('s.description', 'ilike', `%${searchTerm}%`)
+              .orWhere('o.name', 'ilike', `%${searchTerm}%`);
         });
       }
 
       if (category) {
-        countQuery = countQuery.whereRaw('? = ANY(s.categories)', [category]);
+        countQuery = countQuery.where(function() {
+          this.whereRaw('? = ANY(s.categories)', [category])
+              .orWhereRaw("s.categories::text ILIKE ?", [`%"${category}"%`]);
+        });
       }
 
       if (region) {
