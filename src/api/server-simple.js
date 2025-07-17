@@ -28,6 +28,7 @@ import bulletproofImportRoutes from './routes/bulletproof-import.js';
 import workingImportRoutes from './routes/working-import.js';
 import budgetIntelligenceRoutes from './routes/budget-intelligence.js';
 import debugDbRoutes from './routes/debug-db.js';
+import minimalSearchRoutes from './routes/minimal-search.js';
 import { addSchemas } from './schemas.js';
 import cachePlugin from './plugins/cache-plugin.js';
 import monitoringPlugin from './plugins/monitoring-plugin.js';
@@ -210,6 +211,9 @@ export async function createSimpleServer(options = {}) {
   
   // WORKING SEARCH - bypass broken search routes
   await fastify.register(workingSearchRoutes, { prefix: '/working-search' });
+  
+  // MINIMAL SEARCH - new clean implementation
+  await fastify.register(minimalSearchRoutes, { prefix: '/minimal-search' });
   
   // Register main search routes (handles '/' endpoint) - BROKEN
   // await fastify.register(searchRoutes, { prefix: '/search' });
