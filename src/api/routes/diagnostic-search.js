@@ -48,13 +48,23 @@ export default async function diagnosticSearchRoutes(fastify, options) {
       const testJson = JSON.stringify(fullService);
       fastify.log.info('Step 5 passed: JSON serialization', { length: testJson.length });
 
-      // Step 6: Multiple services
+      // Step 6: Multiple services with parameters
       diagnostics.step = 'multiple_services';
-      const multipleServices = await request.db('services')
-        .select('id', 'name', 'status', 'categories')
+      const { limit = 20, offset = 0, q = '' } = request.query;
+      
+      let query = request.db('services')
+        .select('id', 'name', 'status', 'categories', 'description')
         .where('status', 'active')
-        .limit(3);
-      fastify.log.info('Step 6 passed: Multiple services');
+        .limit(Math.min(parseInt(limit), 100))
+        .offset(Math.max(parseInt(offset), 0));
+      
+      // Add search if provided
+      if (q && q.trim()) {
+        query = query.where('name', 'ilike', `%${q.trim()}%`);
+      }
+      
+      const multipleServices = await query;
+      fastify.log.info('Step 6 passed: Multiple services with parameters');
 
       // Step 7: Build response object
       diagnostics.step = 'response_building';
@@ -63,8 +73,19 @@ export default async function diagnosticSearchRoutes(fastify, options) {
           id: s.id,
           name: s.name,
           status: s.status,
-          categories: s.categories || []
+          categories: s.categories || [],
+          description: s.description ? s.description.substring(0, 200) + '...' : 'No description',
+          youth_specific: Boolean(s.youth_specific)
         })),
+        pagination: {
+          limit: parseInt(limit),
+          offset: parseInt(offset),
+          total: parseInt(countResult.count),
+          pages: Math.ceil(parseInt(countResult.count) / parseInt(limit)),
+          current_page: Math.floor(parseInt(offset) / parseInt(limit)) + 1,
+          has_next: parseInt(offset) + parseInt(limit) < parseInt(countResult.count),
+          has_prev: parseInt(offset) > 0
+        },
         total: parseInt(countResult.count),
         debug: true
       };
