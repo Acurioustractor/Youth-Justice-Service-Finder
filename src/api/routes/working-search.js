@@ -81,8 +81,28 @@ export default async function workingSearchRoutes(fastify, options) {
 
       const total = await countQuery.count('id as count').first();
 
-      // Return services directly from database - they're already in correct format
-      const formattedServices = services;
+      // Format services safely to avoid serialization issues
+      const formattedServices = services.map(service => {
+        // Basic safe service object
+        return {
+          id: service.id,
+          name: service.name || '',
+          description: service.description ? 
+            (service.description.length > 300 ? service.description.substring(0, 300) + '...' : service.description) : 
+            '',
+          status: service.status || 'active',
+          categories: Array.isArray(service.categories) ? service.categories : [],
+          youth_specific: Boolean(service.youth_specific),
+          indigenous_specific: Boolean(service.indigenous_specific),
+          minimum_age: service.minimum_age,
+          maximum_age: service.maximum_age,
+          url: service.url,
+          email: service.email,
+          data_source: service.data_source,
+          created_at: service.created_at,
+          updated_at: service.updated_at
+        };
+      });
 
       return {
         services: formattedServices,

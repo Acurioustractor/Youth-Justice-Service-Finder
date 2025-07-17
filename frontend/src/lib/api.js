@@ -60,8 +60,8 @@ export const apiService = {
   // Search services
   async searchServices(params = {}) {
     try {
-      // Try minimal-search first (new clean implementation)
-      const response = await api.get('/minimal-search', { params })
+      // Use working-search (now fixed with safe serialization)
+      const response = await api.get('/working-search', { params })
       return response.data
     } catch (error) {
       // Return demo search results if API unavailable
@@ -170,13 +170,13 @@ export const apiService = {
       console.log('Individual service endpoint failed, falling back to services list search')
       
       try {
-        // Use minimal-search endpoint which has all services
+        // Use working-search endpoint which has all services
         const limit = 100 // Get services in chunks of 100
         let offset = 0
         let totalServices = 987 // We know we have 987 services
         
         while (offset < totalServices) {
-          const pageResponse = await api.get('/minimal-search', {
+          const pageResponse = await api.get('/working-search', {
             params: { limit, offset }
           })
           
@@ -276,8 +276,8 @@ export const apiService = {
   // Working search endpoint that actually works
   async workingSearch(params = {}) {
     try {
-      // Use minimal-search which is the new working implementation
-      const response = await api.get('/minimal-search', { params })
+      // Use working-search with fixed serialization
+      const response = await api.get('/working-search', { params })
       return response.data
     } catch (error) {
       // Return demo search results if API unavailable
