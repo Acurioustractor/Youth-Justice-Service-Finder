@@ -60,9 +60,9 @@ export const apiService = {
   // Search services
   async searchServices(params = {}) {
     try {
-      // Use working-search (now fixed with safe serialization)
-      const response = await api.get('/working-search', { params })
-      return response.data
+      // Use diagnostic-search which works reliably
+      const response = await api.get('/diagnostic-search', { params })
+      return response.data.result
     } catch (error) {
       // Return demo search results if API unavailable
       console.log('Using demo search data')
@@ -170,17 +170,17 @@ export const apiService = {
       console.log('Individual service endpoint failed, falling back to services list search')
       
       try {
-        // Use working-search endpoint which has all services
+        // Use diagnostic-search endpoint which works
         const limit = 100 // Get services in chunks of 100
         let offset = 0
         let totalServices = 987 // We know we have 987 services
         
         while (offset < totalServices) {
-          const pageResponse = await api.get('/working-search', {
+          const pageResponse = await api.get('/diagnostic-search', {
             params: { limit, offset }
           })
           
-          const foundService = pageResponse.data.services.find(s => s.id === id)
+          const foundService = pageResponse.data.result.services.find(s => s.id === id)
           if (foundService) {
             console.log(`Service found via working-search fallback at offset ${offset}`)
             return foundService
@@ -276,9 +276,9 @@ export const apiService = {
   // Working search endpoint that actually works
   async workingSearch(params = {}) {
     try {
-      // Use working-search with fixed serialization
-      const response = await api.get('/working-search', { params })
-      return response.data
+      // Use diagnostic-search which is proven to work
+      const response = await api.get('/diagnostic-search', { params })
+      return response.data.result
     } catch (error) {
       // Return demo search results if API unavailable
       console.log('Using demo search data')
