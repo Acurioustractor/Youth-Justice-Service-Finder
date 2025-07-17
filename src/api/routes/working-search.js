@@ -4,6 +4,12 @@ export default async function workingSearchRoutes(fastify, options) {
   // Simple working search
   fastify.get('/', async (request, reply) => {
     try {
+      fastify.log.info('Working search request:', { 
+        url: request.url, 
+        query: request.query,
+        method: request.method 
+      });
+
       const { 
         q = '', 
         limit = 20, 
@@ -93,11 +99,29 @@ export default async function workingSearchRoutes(fastify, options) {
       };
 
     } catch (error) {
-      fastify.log.error('Working search failed:', error);
+      fastify.log.error('Working search failed:', {
+        error: error.message,
+        stack: error.stack,
+        query: request.query,
+        url: request.url
+      });
+      
+      // Check if it's a database connection error
+      if (error.message.includes('connect') || error.message.includes('timeout')) {
+        return reply.status(503).send({
+          error: {
+            message: 'Database temporarily unavailable',
+            details: 'Please try again in a moment',
+            type: 'database_connection_error'
+          }
+        });
+      }
+      
       return reply.status(500).send({
         error: {
           message: 'Search failed',
-          details: error.message
+          details: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error',
+          type: 'search_error'
         }
       });
     }

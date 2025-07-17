@@ -23,7 +23,7 @@ async function startFullStackServer() {
     
     // Note: SPA routing handled by static file plugin and base server's NotFoundHandler
     
-    const port = process.env.PORT || 3010;
+    const port = process.env.PORT || 3000;
     const host = process.env.HOST || '0.0.0.0';
     
     await server.listen({ port, host });

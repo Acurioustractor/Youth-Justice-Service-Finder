@@ -13,8 +13,13 @@ const config = {
     password: process.env.DATABASE_PASSWORD
   },
   pool: {
-    min: 2,
-    max: 10
+    min: parseInt(process.env.DB_POOL_MIN) || 2,
+    max: parseInt(process.env.DB_POOL_MAX) || 20,
+    acquireTimeoutMillis: 60000,
+    createTimeoutMillis: 30000,
+    destroyTimeoutMillis: 5000,
+    idleTimeoutMillis: 900000,
+    createRetryIntervalMillis: 200
   },
   migrations: {
     directory: './database/migrations',
@@ -22,17 +27,29 @@ const config = {
   },
   seeds: {
     directory: './database/seeds'
-  }
+  },
+  debug: process.env.NODE_ENV === 'development'
 };
 
 const db = knex(config);
 
-// Test connection
+// Test connection with better error handling
 db.raw('SELECT 1')
-  .then(() => console.log('Database connected successfully'))
+  .then(() => {
+    console.log('✅ Database connected successfully');
+    console.log(`📊 Pool config: min=${config.pool.min}, max=${config.pool.max}`);
+  })
   .catch(err => {
-    console.error('Database connection failed:', err.message);
-    process.exit(1);
+    console.error('❌ Database connection failed:', err.message);
+    console.error('🔧 Connection config:', {
+      url: process.env.DATABASE_URL ? 'Set from DATABASE_URL' : 'Using individual params',
+      host: process.env.DATABASE_HOST || 'localhost',
+      database: process.env.DATABASE_NAME || 'youth_justice_services'
+    });
+    // Don't exit in production - let server start with error handling
+    if (process.env.NODE_ENV !== 'production') {
+      process.exit(1);
+    }
   });
 
 export default db;
