@@ -27,6 +27,7 @@ import import603ServicesRoutes from './routes/import-603-services.js';
 import bulletproofImportRoutes from './routes/bulletproof-import.js';
 import workingImportRoutes from './routes/working-import.js';
 import budgetIntelligenceRoutes from './routes/budget-intelligence.js';
+import debugDbRoutes from './routes/debug-db.js';
 import { addSchemas } from './schemas.js';
 import cachePlugin from './plugins/cache-plugin.js';
 import monitoringPlugin from './plugins/monitoring-plugin.js';
@@ -229,6 +230,9 @@ export async function createSimpleServer(options = {}) {
   await fastify.register(servicesRoutes, { prefix: '/services' });
   await fastify.register(organizationsRoutes, { prefix: '/organizations' });
   await fastify.register(budgetIntelligenceRoutes, { prefix: '/budget-intelligence' });
+  
+  // Debug database routes (temporary for troubleshooting)
+  await fastify.register(debugDbRoutes, { prefix: '/debug-db' });
 
   // Root endpoint - only for API mode, not full-stack mode
   if (!options.isFullStack) {
