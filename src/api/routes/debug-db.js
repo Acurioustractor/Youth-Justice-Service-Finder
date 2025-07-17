@@ -57,6 +57,26 @@ export default async function debugDbRoutes(fastify, options) {
     }
   });
   
+  // Test ultra simple search
+  fastify.get('/ultra-search', async (request, reply) => {
+    try {
+      const services = await request.db('services')
+        .select('id', 'name')
+        .where('status', 'active')
+        .limit(3);
+      
+      return {
+        count: services.length,
+        services: services.map(s => ({ id: s.id, name: s.name }))
+      };
+      
+    } catch (error) {
+      return reply.status(500).send({
+        error: 'Ultra search failed: ' + error.message
+      });
+    }
+  });
+  
   // Simple database test
   fastify.get('/test', async (request, reply) => {
     try {

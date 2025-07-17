@@ -31,6 +31,8 @@ import debugDbRoutes from './routes/debug-db.js';
 import minimalSearchRoutes from './routes/minimal-search.js';
 import fixedSearchRoutes from './routes/fixed-search.js';
 import emergencySearchRoutes from './routes/emergency-search.js';
+import diagnosticSearchRoutes from './routes/diagnostic-search.js';
+import v1SearchRoutes from './routes/v1-search.js';
 import { addSchemas } from './schemas.js';
 import cachePlugin from './plugins/cache-plugin.js';
 import monitoringPlugin from './plugins/monitoring-plugin.js';
@@ -222,6 +224,12 @@ export async function createSimpleServer(options = {}) {
   
   // EMERGENCY SEARCH - ultra simple implementation that definitely works
   await fastify.register(emergencySearchRoutes, { prefix: '/emergency-search' });
+  
+  // DIAGNOSTIC SEARCH - step-by-step debugging
+  await fastify.register(diagnosticSearchRoutes, { prefix: '/diagnostic-search' });
+  
+  // API V1 - Production-grade search with DTO pattern
+  await fastify.register(v1SearchRoutes, { prefix: '/api/v1/search' });
   
   // Register main search routes (handles '/' endpoint) - BROKEN
   // await fastify.register(searchRoutes, { prefix: '/search' });
