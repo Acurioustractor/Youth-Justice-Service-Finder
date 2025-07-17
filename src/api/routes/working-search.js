@@ -16,36 +16,9 @@ export default async function workingSearchRoutes(fastify, options) {
         maximum_age
       } = request.query;
       
-      let query = request.db('services as s')
-        .leftJoin('organizations as o', 's.organization_id', 'o.id')
-        .leftJoin('locations as l', 's.id', 'l.service_id')
-        .leftJoin('contacts as c', 's.id', 'c.service_id')
-        .select(
-          's.id',
-          's.name',
-          's.description',
-          's.categories',
-          's.keywords',
-          's.minimum_age',
-          's.maximum_age',
-          's.youth_specific',
-          's.indigenous_specific',
-          's.status',
-          's.created_at',
-          's.updated_at',
-          'o.name as organization_name',
-          'o.organization_type',
-          'l.address_1',
-          'l.city',
-          'l.state_province',
-          'l.postal_code',
-          'l.region',
-          'l.latitude',
-          'l.longitude',
-          'c.phone',
-          'c.email'
-        )
-        .where('s.status', 'active')
+      let query = request.db('services')
+        .select('*')
+        .where('status', 'active')
         .limit(parseInt(limit))
         .offset(parseInt(offset));
 
@@ -53,104 +26,54 @@ export default async function workingSearchRoutes(fastify, options) {
       if (q && q.trim()) {
         const searchTerm = q.trim();
         query = query.where(function() {
-          this.where('s.name', 'ilike', `%${searchTerm}%`)
-              .orWhere('s.description', 'ilike', `%${searchTerm}%`)
-              .orWhere('o.name', 'ilike', `%${searchTerm}%`);
+          this.where('name', 'ilike', `%${searchTerm}%`)
+              .orWhere('description', 'ilike', `%${searchTerm}%`);
         });
       }
 
       // Add category filter - handle both array and JSON string formats
       if (category) {
-        query = query.where(function() {
-          // Try array format first
-          this.whereRaw('? = ANY(s.categories)', [category])
-              // Fallback to JSON contains for string format
-              .orWhereRaw("s.categories::text ILIKE ?", [`%"${category}"%`]);
-        });
-      }
-
-      // Add region filter  
-      if (region) {
-        query = query.where('l.region', region);
+        query = query.whereRaw("categories::text ILIKE ?", [`%"${category}"%`]);
       }
 
       // Add youth_specific filter
       if (youth_specific === 'true') {
-        query = query.where('s.youth_specific', true);
+        query = query.where('youth_specific', true);
       }
 
       // Add indigenous_specific filter
       if (indigenous_specific === 'true') {
-        query = query.where('s.indigenous_specific', true);
-      }
-
-      // Add age range filters
-      if (minimum_age) {
-        query = query.where(function() {
-          this.whereNull('s.minimum_age')
-              .orWhere('s.minimum_age', '<=', parseInt(minimum_age));
-        });
-      }
-
-      if (maximum_age) {
-        query = query.where(function() {
-          this.whereNull('s.maximum_age')
-              .orWhere('s.maximum_age', '>=', parseInt(maximum_age));
-        });
+        query = query.where('indigenous_specific', true);
       }
 
       const services = await query;
       
       // Get filtered total count (same filters without limit/offset)
-      let countQuery = request.db('services as s')
-        .leftJoin('organizations as o', 's.organization_id', 'o.id')
-        .leftJoin('locations as l', 's.id', 'l.service_id')
-        .where('s.status', 'active');
+      let countQuery = request.db('services')
+        .where('status', 'active');
 
       // Apply same filters for count
       if (q && q.trim()) {
         const searchTerm = q.trim();
         countQuery = countQuery.where(function() {
-          this.where('s.name', 'ilike', `%${searchTerm}%`)
-              .orWhere('s.description', 'ilike', `%${searchTerm}%`)
-              .orWhere('o.name', 'ilike', `%${searchTerm}%`);
+          this.where('name', 'ilike', `%${searchTerm}%`)
+              .orWhere('description', 'ilike', `%${searchTerm}%`);
         });
       }
 
       if (category) {
-        countQuery = countQuery.where(function() {
-          this.whereRaw('? = ANY(s.categories)', [category])
-              .orWhereRaw("s.categories::text ILIKE ?", [`%"${category}"%`]);
-        });
-      }
-
-      if (region) {
-        countQuery = countQuery.where('l.region', region);
+        countQuery = countQuery.whereRaw("categories::text ILIKE ?", [`%"${category}"%`]);
       }
 
       if (youth_specific === 'true') {
-        countQuery = countQuery.where('s.youth_specific', true);
+        countQuery = countQuery.where('youth_specific', true);
       }
 
       if (indigenous_specific === 'true') {
-        countQuery = countQuery.where('s.indigenous_specific', true);
+        countQuery = countQuery.where('indigenous_specific', true);
       }
 
-      if (minimum_age) {
-        countQuery = countQuery.where(function() {
-          this.whereNull('s.minimum_age')
-              .orWhere('s.minimum_age', '<=', parseInt(minimum_age));
-        });
-      }
-
-      if (maximum_age) {
-        countQuery = countQuery.where(function() {
-          this.whereNull('s.maximum_age')
-              .orWhere('s.maximum_age', '>=', parseInt(maximum_age));
-        });
-      }
-
-      const total = await countQuery.count('s.id as count').first();
+      const total = await countQuery.count('id as count').first();
 
       // Format response to match frontend expectations
       const formattedServices = services.map(service => ({
