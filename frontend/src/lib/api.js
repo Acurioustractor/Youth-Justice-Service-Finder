@@ -60,7 +60,7 @@ export const apiService = {
   // Search services
   async searchServices(params = {}) {
     try {
-      const response = await api.get('/search', { params })
+      const response = await api.get('/working-search', { params })
       return response.data
     } catch (error) {
       // Return demo search results if API unavailable
