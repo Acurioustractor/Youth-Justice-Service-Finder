@@ -29,6 +29,7 @@ import workingImportRoutes from './routes/working-import.js';
 import budgetIntelligenceRoutes from './routes/budget-intelligence.js';
 import debugDbRoutes from './routes/debug-db.js';
 import minimalSearchRoutes from './routes/minimal-search.js';
+import fixedSearchRoutes from './routes/fixed-search.js';
 import { addSchemas } from './schemas.js';
 import cachePlugin from './plugins/cache-plugin.js';
 import monitoringPlugin from './plugins/monitoring-plugin.js';
@@ -214,6 +215,9 @@ export async function createSimpleServer(options = {}) {
   
   // MINIMAL SEARCH - new clean implementation
   await fastify.register(minimalSearchRoutes, { prefix: '/minimal-search' });
+  
+  // FIXED SEARCH - working replacement for broken endpoints
+  await fastify.register(fixedSearchRoutes, { prefix: '/fixed-search' });
   
   // Register main search routes (handles '/' endpoint) - BROKEN
   // await fastify.register(searchRoutes, { prefix: '/search' });
