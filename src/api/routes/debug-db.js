@@ -49,6 +49,60 @@ export default async function debugDbRoutes(fastify, options) {
     }
   });
   
+  // Test simplified working-search logic
+  fastify.get('/test-search', async (request, reply) => {
+    try {
+      const { limit = 20, offset = 0 } = request.query;
+      
+      fastify.log.info('Testing simplified search logic...', { query: request.query });
+      
+      // Test the exact services query
+      const services = await request.db('services')
+        .select('*')
+        .where('status', 'active')
+        .limit(parseInt(limit))
+        .offset(parseInt(offset));
+      
+      // Test count query
+      const total = await request.db('services')
+        .where('status', 'active')
+        .count('id as count')
+        .first();
+      
+      // Build response exactly like working-search does
+      const response = {
+        services: services,
+        pagination: {
+          limit: parseInt(limit),
+          offset: parseInt(offset),
+          total: parseInt(total.count),
+          pages: Math.ceil(parseInt(total.count) / parseInt(limit)),
+          current_page: Math.floor(parseInt(offset) / parseInt(limit)) + 1,
+          has_next: parseInt(offset) + parseInt(limit) < parseInt(total.count),
+          has_prev: parseInt(offset) > 0
+        },
+        total: parseInt(total.count)
+      };
+      
+      fastify.log.info('Search test successful', { 
+        servicesCount: services.length, 
+        total: total.count 
+      });
+      
+      return response;
+      
+    } catch (error) {
+      fastify.log.error('Search test failed:', error);
+      return reply.status(500).send({
+        error: {
+          message: 'Search test failed',
+          details: error.message,
+          stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+        }
+      });
+    }
+  });
+
   // Test services query specifically
   fastify.get('/services-query', async (request, reply) => {
     try {
