@@ -24,6 +24,39 @@ export default async function debugDbRoutes(fastify, options) {
     }
   });
   
+  // Test returning actual service data step by step
+  fastify.get('/service-data', async (request, reply) => {
+    try {
+      // Get one service with minimal fields
+      const service = await request.db('services')
+        .select('id', 'name', 'status')
+        .where('status', 'active')
+        .first();
+      
+      if (!service) {
+        return { error: 'No services found' };
+      }
+      
+      return {
+        test: 'single service',
+        service: {
+          id: service.id,
+          name: service.name,
+          status: service.status
+        }
+      };
+      
+    } catch (error) {
+      fastify.log.error('Service data test failed:', error);
+      return reply.status(500).send({
+        error: {
+          message: 'Service data test failed',
+          details: error.message
+        }
+      });
+    }
+  });
+  
   // Simple database test
   fastify.get('/test', async (request, reply) => {
     try {
