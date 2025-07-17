@@ -52,52 +52,81 @@ export default async function debugDbRoutes(fastify, options) {
   // Test simplified working-search logic
   fastify.get('/test-search', async (request, reply) => {
     try {
-      const { limit = 20, offset = 0 } = request.query;
+      const { limit = 2, offset = 0 } = request.query;
       
       fastify.log.info('Testing simplified search logic...', { query: request.query });
       
-      // Test the exact services query
-      const services = await request.db('services')
-        .select('*')
-        .where('status', 'active')
-        .limit(parseInt(limit))
-        .offset(parseInt(offset));
-      
-      // Test count query
+      // Test count first
       const total = await request.db('services')
         .where('status', 'active')
         .count('id as count')
         .first();
       
-      // Build response exactly like working-search does
+      fastify.log.info('Count query successful', { total: total.count });
+      
+      // Test services query with limited fields first
+      const services = await request.db('services')
+        .select('id', 'name', 'status', 'description')
+        .where('status', 'active')
+        .limit(parseInt(limit))
+        .offset(parseInt(offset));
+      
+      fastify.log.info('Services query successful', { count: services.length });
+      
+      // Try to serialize each service individually to find problematic ones
+      const safeServices = [];
+      for (const service of services) {
+        try {
+          JSON.stringify(service);
+          safeServices.push({
+            id: service.id,
+            name: service.name,
+            status: service.status,
+            description: service.description ? service.description.substring(0, 100) + '...' : null
+          });
+        } catch (serializeError) {
+          fastify.log.error('Service serialization failed:', { 
+            serviceId: service.id, 
+            error: serializeError.message 
+          });
+          safeServices.push({
+            id: service.id,
+            name: 'Serialization Error',
+            status: service.status,
+            description: 'This service has data that cannot be serialized'
+          });
+        }
+      }
+      
+      // Build minimal response
       const response = {
-        services: services,
+        services: safeServices,
         pagination: {
           limit: parseInt(limit),
           offset: parseInt(offset),
-          total: parseInt(total.count),
-          pages: Math.ceil(parseInt(total.count) / parseInt(limit)),
-          current_page: Math.floor(parseInt(offset) / parseInt(limit)) + 1,
-          has_next: parseInt(offset) + parseInt(limit) < parseInt(total.count),
-          has_prev: parseInt(offset) > 0
+          total: parseInt(total.count)
         },
-        total: parseInt(total.count)
+        total: parseInt(total.count),
+        debug: true
       };
       
-      fastify.log.info('Search test successful', { 
-        servicesCount: services.length, 
+      fastify.log.info('Search test building response...', { 
+        servicesCount: safeServices.length, 
         total: total.count 
       });
       
       return response;
       
     } catch (error) {
-      fastify.log.error('Search test failed:', error);
+      fastify.log.error('Search test failed:', {
+        error: error.message,
+        stack: error.stack
+      });
       return reply.status(500).send({
         error: {
           message: 'Search test failed',
           details: error.message,
-          stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+          type: error.constructor.name
         }
       });
     }
