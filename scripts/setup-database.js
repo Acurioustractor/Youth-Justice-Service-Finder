@@ -27,9 +27,15 @@ async function setupDatabase() {
     database: 'postgres' // Connect to default database first
   };
   
-  // Only add password if it's actually set
-  if (process.env.DATABASE_PASSWORD && process.env.DATABASE_PASSWORD.trim() !== '') {
-    clientConfig.password = process.env.DATABASE_PASSWORD;
+  // Only add password if it's actually set and not empty
+  const password = process.env.DATABASE_PASSWORD;
+  if (password && typeof password === 'string' && password.trim() !== '') {
+    clientConfig.password = password;
+  }
+  
+  // Remove any undefined password field to prevent SCRAM issues
+  if ('password' in clientConfig && !clientConfig.password) {
+    delete clientConfig.password;
   }
   
   const client = new Client(clientConfig);
@@ -63,9 +69,15 @@ async function setupDatabase() {
       database: dbName
     };
     
-    // Only add password if it's actually set
-    if (process.env.DATABASE_PASSWORD && process.env.DATABASE_PASSWORD.trim() !== '') {
-      dbClientConfig.password = process.env.DATABASE_PASSWORD;
+    // Only add password if it's actually set and not empty
+    const dbPassword = process.env.DATABASE_PASSWORD;
+    if (dbPassword && typeof dbPassword === 'string' && dbPassword.trim() !== '') {
+      dbClientConfig.password = dbPassword;
+    }
+    
+    // Remove any undefined password field to prevent SCRAM issues
+    if ('password' in dbClientConfig && !dbClientConfig.password) {
+      delete dbClientConfig.password;
     }
     
     const dbClient = new Client(dbClientConfig);
