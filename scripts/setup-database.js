@@ -10,7 +10,9 @@ import pg from 'pg';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-dotenv.config();
+// Load environment variables in order: .env.local overrides .env
+dotenv.config({ path: '.env' });
+dotenv.config({ path: '.env.local', override: true });
 
 const { Client } = pg;
 
@@ -21,8 +23,8 @@ async function setupDatabase() {
   const client = new Client({
     host: process.env.DATABASE_HOST || 'localhost',
     port: process.env.DATABASE_PORT || 5432,
-    user: process.env.DATABASE_USER || 'postgres',
-    password: process.env.DATABASE_PASSWORD,
+    user: process.env.DATABASE_USER || 'benknight',
+    password: process.env.DATABASE_PASSWORD || undefined,
     database: 'postgres' // Connect to default database first
   });
 
@@ -51,8 +53,8 @@ async function setupDatabase() {
     const dbClient = new Client({
       host: process.env.DATABASE_HOST || 'localhost',
       port: process.env.DATABASE_PORT || 5432,
-      user: process.env.DATABASE_USER || 'postgres',
-      password: process.env.DATABASE_PASSWORD,
+      user: process.env.DATABASE_USER || 'benknight',
+      password: process.env.DATABASE_PASSWORD || undefined,
       database: dbName
     });
 
@@ -60,33 +62,42 @@ async function setupDatabase() {
 
     // Enable extensions
     console.log('\nEnabling PostgreSQL extensions...');
-    await dbClient.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
-    await dbClient.query('CREATE EXTENSION IF NOT EXISTS "postgis"');
-    await dbClient.query('CREATE EXTENSION IF NOT EXISTS "pg_trgm"');
-    console.log('Extensions enabled');
+    
+    try {
+      await dbClient.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
+      console.log('✅ uuid-ossp extension enabled');
+    } catch (error) {
+      console.log('⚠️ uuid-ossp extension not available');
+    }
+    
+    try {
+      await dbClient.query('CREATE EXTENSION IF NOT EXISTS "postgis"');
+      console.log('✅ PostGIS extension enabled');
+    } catch (error) {
+      console.log('⚠️ PostGIS extension not available (geographic features will be limited)');
+    }
+    
+    try {
+      await dbClient.query('CREATE EXTENSION IF NOT EXISTS "pg_trgm"');
+      console.log('✅ pg_trgm extension enabled');
+    } catch (error) {
+      console.log('⚠️ pg_trgm extension not available (fuzzy search will be limited)');
+    }
+    
+    console.log('Extensions setup complete');
 
     // Run schema
     console.log('\nCreating database schema...');
-    const schemaPath = path.join(__dirname, '..', 'database', 'schema.sql');
+    const schemaPath = path.join(__dirname, '..', 'database', 'schema-clean.sql');
     const schema = readFileSync(schemaPath, 'utf8');
     
-    // Split by semicolons but ignore those in function definitions
-    const statements = schema
-      .split(/;(?=(?:[^']*'[^']*')*[^']*$)/)
-      .filter(s => s.trim().length > 0);
-
-    for (const statement of statements) {
-      try {
-        await dbClient.query(statement);
-      } catch (error) {
-        if (!error.message.includes('already exists')) {
-          console.error(`Error executing statement: ${error.message}`);
-          console.error(`Statement: ${statement.substring(0, 100)}...`);
-        }
-      }
+    // Execute schema as one block to avoid parsing issues with functions
+    try {
+      await dbClient.query(schema);
+      console.log('Schema created successfully');
+    } catch (error) {
+      console.error('Error creating schema:', error.message);
     }
-
-    console.log('Schema created successfully');
 
     // Create initial taxonomy entries
     console.log('\nCreating initial taxonomy...');
