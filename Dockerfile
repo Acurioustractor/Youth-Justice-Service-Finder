@@ -36,9 +36,17 @@ USER nodejs
 # Expose ports
 EXPOSE 3001
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+# Environment variables
+ENV PORT=3001
+ENV NODE_ENV=production
+ENV DATABASE_HOST=localhost
+ENV DATABASE_PORT=5432
+ENV DATABASE_NAME=youth_justice_services
+ENV DATABASE_USER=postgres
+
+# Health check - increased start period for database connection
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
     CMD curl -f http://localhost:3001/health || exit 1
 
 # Default command
-CMD ["node", "src/api/server-fullstack.js"]
+CMD ["node", "src/api/server-simple.js"]
