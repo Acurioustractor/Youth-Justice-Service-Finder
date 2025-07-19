@@ -87,6 +87,13 @@ jobs:
         cd frontend
         npm run build
 
+    - name: Upload frontend build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: frontend-build-${{ github.sha }}
+        path: frontend/dist/
+        retention-days: 7
+
     - name: Setup database
       run: |
         npm run setup:db
@@ -108,6 +115,17 @@ jobs:
     - name: Test data scraping
       run: |
         npm run scrape:test || echo "Scraping test skipped"
+
+    - name: Upload test logs
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-logs-${{ github.sha }}
+        path: |
+          logs/
+          *.log
+        if-no-files-found: ignore
+        retention-days: 3
 
   security:
     runs-on: ubuntu-latest
@@ -178,6 +196,18 @@ jobs:
         docker stop test-container || true
         docker rm test-container || true
 
+    - name: Save Docker image
+      run: |
+        docker save youth-justice-finder:test | gzip > docker-image.tar.gz
+
+    - name: Upload Docker image artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: docker-image-${{ github.sha }}
+        path: docker-image.tar.gz
+        retention-days: 1
+        compression-level: 0
+
   deploy-staging:
     runs-on: ubuntu-latest
     needs: [test, security, docker]
@@ -186,6 +216,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
+    - name: Download frontend build
+      uses: actions/download-artifact@v4
+      with:
+        name: frontend-build-${{ github.sha }}
+        path: frontend/dist/
 
     - name: Deploy to staging
       run: |
@@ -201,6 +237,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
+    - name: Download frontend build
+      uses: actions/download-artifact@v4
+      with:
+        name: frontend-build-${{ github.sha }}
+        path: frontend/dist/
 
     - name: Deploy to production
       run: |
