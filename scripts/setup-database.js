@@ -5,7 +5,7 @@ import { readFileSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
-import pg from 'pg';
+import { createDbClient } from '../src/utils/database-connection.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,31 +14,11 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: '.env' });
 dotenv.config({ path: '.env.local', override: true });
 
-const { Client } = pg;
-
 async function setupDatabase() {
   console.log('Setting up database...\n');
 
   // Create database if it doesn't exist
-  const clientConfig = {
-    host: process.env.DATABASE_HOST || 'localhost',
-    port: process.env.DATABASE_PORT || 5432,
-    user: process.env.DATABASE_USER || 'benknight',
-    database: 'postgres' // Connect to default database first
-  };
-  
-  // Only add password if it's actually set and not empty
-  const password = process.env.DATABASE_PASSWORD;
-  if (password && typeof password === 'string' && password.trim() !== '') {
-    clientConfig.password = password;
-  }
-  
-  // Remove any undefined password field to prevent SCRAM issues
-  if ('password' in clientConfig && !clientConfig.password) {
-    delete clientConfig.password;
-  }
-  
-  const client = new Client(clientConfig);
+  const client = createDbClient({ database: 'postgres' });
 
   try {
     await client.connect();
@@ -62,25 +42,7 @@ async function setupDatabase() {
     await client.end();
 
     // Now connect to the new database
-    const dbClientConfig = {
-      host: process.env.DATABASE_HOST || 'localhost',
-      port: process.env.DATABASE_PORT || 5432,
-      user: process.env.DATABASE_USER || 'benknight',
-      database: dbName
-    };
-    
-    // Only add password if it's actually set and not empty
-    const dbPassword = process.env.DATABASE_PASSWORD;
-    if (dbPassword && typeof dbPassword === 'string' && dbPassword.trim() !== '') {
-      dbClientConfig.password = dbPassword;
-    }
-    
-    // Remove any undefined password field to prevent SCRAM issues
-    if ('password' in dbClientConfig && !dbClientConfig.password) {
-      delete dbClientConfig.password;
-    }
-    
-    const dbClient = new Client(dbClientConfig);
+    const dbClient = createDbClient({ database: dbName });
 
     await dbClient.connect();
 

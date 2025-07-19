@@ -10,7 +10,9 @@ const config = {
     port: process.env.DATABASE_PORT || 5432,
     database: process.env.DATABASE_NAME || 'youth_justice_services',
     user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD
+    password: process.env.DATABASE_PASSWORD,
+    ssl: process.env.DATABASE_SSL === 'false' ? false : 
+         process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
   },
   pool: {
     min: parseInt(process.env.DB_POOL_MIN) || 2,

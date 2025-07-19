@@ -114,7 +114,7 @@ FIRECRAWL_API_KEY=your_key_here_override_in_local
 DATABASE_URL=postgresql://benknight@localhost:5432/youth_justice_services
 
 # Your real API keys
-FIRECRAWL_API_KEY=fc-ab5f175f47e545afb3151e9c3fd94ab8
+FIRECRAWL_API_KEY=your-firecrawl-api-key-here
 JWT_SECRET=your_generated_jwt_secret_here
 
 # Personal preferences

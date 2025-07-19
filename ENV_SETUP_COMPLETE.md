@@ -65,7 +65,7 @@ npm start
 ```bash
 # Set production secrets in Railway dashboard
 railway env set JWT_SECRET="$(openssl rand -base64 32)"
-railway env set FIRECRAWL_API_KEY="fc-ab5f175f47e545afb3151e9c3fd94ab8"
+railway env set FIRECRAWL_API_KEY="your-firecrawl-api-key"
 railway env set NODE_ENV="production"
 ```
 
