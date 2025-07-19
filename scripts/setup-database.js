@@ -20,13 +20,19 @@ async function setupDatabase() {
   console.log('Setting up database...\n');
 
   // Create database if it doesn't exist
-  const client = new Client({
+  const clientConfig = {
     host: process.env.DATABASE_HOST || 'localhost',
     port: process.env.DATABASE_PORT || 5432,
     user: process.env.DATABASE_USER || 'benknight',
-    password: process.env.DATABASE_PASSWORD || undefined,
     database: 'postgres' // Connect to default database first
-  });
+  };
+  
+  // Only add password if it's actually set
+  if (process.env.DATABASE_PASSWORD && process.env.DATABASE_PASSWORD.trim() !== '') {
+    clientConfig.password = process.env.DATABASE_PASSWORD;
+  }
+  
+  const client = new Client(clientConfig);
 
   try {
     await client.connect();
@@ -50,13 +56,19 @@ async function setupDatabase() {
     await client.end();
 
     // Now connect to the new database
-    const dbClient = new Client({
+    const dbClientConfig = {
       host: process.env.DATABASE_HOST || 'localhost',
       port: process.env.DATABASE_PORT || 5432,
       user: process.env.DATABASE_USER || 'benknight',
-      password: process.env.DATABASE_PASSWORD || undefined,
       database: dbName
-    });
+    };
+    
+    // Only add password if it's actually set
+    if (process.env.DATABASE_PASSWORD && process.env.DATABASE_PASSWORD.trim() !== '') {
+      dbClientConfig.password = process.env.DATABASE_PASSWORD;
+    }
+    
+    const dbClient = new Client(dbClientConfig);
 
     await dbClient.connect();
 
