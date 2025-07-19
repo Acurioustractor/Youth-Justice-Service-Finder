@@ -21,12 +21,12 @@ async function setupDatabase() {
   let clientConfig;
   
   if (isGitHubActions || isCI) {
-    // GitHub Actions environment - use postgres service
+    // GitHub Actions environment - use postgres service with CI password
     clientConfig = {
       host: 'localhost',
       port: 5432,
       user: 'postgres',
-      password: 'postgres',
+      password: 'test_password',
       database: 'postgres'
     };
     console.log('🔄 GitHub Actions environment detected');
@@ -50,7 +50,8 @@ async function setupDatabase() {
     await client.connect();
     console.log('✅ Connected to postgres database');
     
-    const dbName = 'youth_justice_services';
+    // Determine target database name based on environment
+    const dbName = (isGitHubActions || isCI) ? 'youth_justice_test' : 'youth_justice_services';
     
     // Check if database exists
     const result = await client.query(
@@ -76,7 +77,7 @@ async function setupDatabase() {
         host: 'localhost',
         port: 5432,
         user: 'postgres',
-        password: 'postgres',
+        password: 'test_password',
         database: dbName
       };
     } else {
