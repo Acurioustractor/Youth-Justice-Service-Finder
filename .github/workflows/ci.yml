@@ -99,7 +99,7 @@ jobs:
 
     - name: Test API health
       run: |
-        npm run api &
+        npm run start &
         API_PID=$!
         sleep 15
         curl -f http://localhost:3001/health || exit 1
