@@ -24,7 +24,7 @@
     "production:backup": "bash scripts/production/backup.sh",
     "production:monitor": "bash scripts/production/monitor.sh",
     "health-check": "node scripts/health-check.js",
-    "setup:db": "node scripts/setup-database.js",
+    "setup:db": "node scripts/setup-database-direct.js",
     "migrate": "node-pg-migrate",
     "seed": "node database/seeds/index.js",
     "scrape:production": "node scripts/run-all-scrapers-production.js",
