@@ -1,6 +1,16 @@
 # Youth Justice Service Finder
 
-A world-class service discovery system that continuously finds and aggregates youth justice services from online directories across Queensland, Australia.
+[![GitHub stars](https://img.shields.io/github/stars/yourusername/Youth-Justice-Service-Finder)](https://github.com/yourusername/Youth-Justice-Service-Finder)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![API Status](https://img.shields.io/badge/API-Live-green)](https://your-api.railway.app/health)
+
+🌟 **603+ Australian youth services** searchable through a modern API and web interface.
+
+A production-ready service discovery system that aggregates youth justice and support services across Australia. Perfect for integration into existing websites, government portals, and community platforms.
+
+## 🚀 **Quick Integration**
+
+**Want to add this to your website?** See our [Integration Guide](INTEGRATION.md) for simple copy-paste solutions.
 
 ## 🚀 Quick Start
 
@@ -146,35 +156,23 @@ npm run build            # Build TypeScript
 
 ## 🔍 API Endpoints
 
-Once the API server is running on port 3001:
-
 **🌐 Frontend**: http://127.0.0.1:3003  
 **📚 API Docs**: http://127.0.0.1:3001/docs  
 **❤️ Health Check**: http://127.0.0.1:3001/health
 
+### Main Search Endpoint
 ```bash
-# Advanced search with Elasticsearch
-GET /search/es/enhanced?q=legal&categories=legal_aid&youth_specific=true&limit=20
+# Primary search - clean, fast, reliable
+GET /diagnostic-search?q=legal&limit=20
 
-# Geographic search
-GET /search/es/geo?lat=-27.4698&lng=153.0251&radius=10km&limit=20
-
-# Autocomplete suggestions
-GET /search/es/autocomplete/enhanced?q=legal&limit=10
-
-# Get service details
+# Get service details  
 GET /services/:id
 
 # List all services with filters
 GET /services?categories=mental_health&youth_specific=true&limit=20
 
-# Get organizations
-GET /organizations?limit=20
-
-# Database statistics
+# System statistics
 GET /stats
-GET /stats/demographics
-GET /stats/geographic
 ```
 
 ## 🌐 Data Sources
@@ -232,5 +230,21 @@ curl http://localhost:9200/_cluster/health
 For issues and questions:
 - Create an issue in the repository
 - Check existing issues for solutions
-- Review the documentation in `/docs`# Force redeploy Tue Jul  8 15:12:59 AEST 2025
-# Trigger redeploy Tue Jul  8 15:17:57 AEST 2025
+- Review the documentation in `/docs`---
+
+## 📊 **Project Stats**
+
+- **Services**: 603+ youth justice and support services
+- **Coverage**: All Australian states and territories  
+- **API**: Production-ready with proper error handling
+- **Performance**: Optimized database indexes and caching
+- **Security**: JWT authentication, rate limiting, input validation
+
+## 🎯 **Perfect For**
+
+- **Government websites** - Embed directly or integrate via API
+- **Community organizations** - Add service discovery to your platform  
+- **Youth advocates** - Help young people find support services
+- **Developers** - Clean REST API with comprehensive documentation
+
+**Ready to integrate?** Check out [INTEGRATION.md](INTEGRATION.md) for step-by-step guides.

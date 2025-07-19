@@ -50,7 +50,7 @@ export default async function servicesRoutes(fastify, options) {
 
       // Apply filters
       if (category) {
-        query = query.whereRaw('s.categories @> ?', [JSON.stringify([category])]);
+        query = query.where('s.categories', '@>', JSON.stringify([category]));
       }
 
       if (region) {
@@ -210,7 +210,7 @@ export default async function servicesRoutes(fastify, options) {
         .leftJoin('locations as l', 'l.service_id', 's.id')
         .leftJoin('contacts as c', 'c.service_id', 's.id')
         .where('s.status', 'active')
-        .whereRaw('s.categories @> ?', [JSON.stringify([category])])
+        .where('s.categories', '@>', JSON.stringify([category]))
         .select(
           's.*',
           'o.name as organization_name',

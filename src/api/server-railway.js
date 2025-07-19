@@ -49,8 +49,9 @@ async function startRailwayServer() {
     }
 
     if (!process.env.JWT_SECRET) {
-      logger.warn('JWT_SECRET not set, using default (not secure for production)')
-      process.env.JWT_SECRET = 'default_jwt_secret_for_development_only'
+      logger.error('JWT_SECRET environment variable is required for security!')
+      logger.error('Please set JWT_SECRET in your environment variables')
+      process.exit(1)
     }
 
     // Setup database and run scrapers in background (don't block startup)

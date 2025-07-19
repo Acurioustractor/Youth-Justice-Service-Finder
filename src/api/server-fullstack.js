@@ -31,7 +31,7 @@ async function startFullStackServer() {
     console.log(`🚀 Youth Justice Service Finder (Full-Stack) running on http://${host}:${port}`);
     console.log(`📚 API Documentation: http://${host}:${port}/docs`);
     console.log(`🌐 Frontend Application: http://${host}:${port}/`);
-    console.log(`🔍 Search API: http://${host}:${port}/working-search`);
+    console.log(`🔍 Search API: http://${host}:${port}/diagnostic-search`);
     console.log(`❤️ Health Check: http://${host}:${port}/health`);
     
   } catch (err) {

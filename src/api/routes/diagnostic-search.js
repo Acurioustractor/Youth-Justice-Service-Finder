@@ -58,9 +58,13 @@ export default async function diagnosticSearchRoutes(fastify, options) {
         .limit(Math.min(parseInt(limit), 100))
         .offset(Math.max(parseInt(offset), 0));
       
-      // Add search if provided
+      // Add search if provided - use full-text search for better performance
       if (q && q.trim()) {
-        query = query.where('name', 'ilike', `%${q.trim()}%`);
+        const searchTerm = q.trim();
+        query = query.whereRaw(
+          "to_tsvector('english', name || ' ' || coalesce(description, '')) @@ plainto_tsquery('english', ?)",
+          [searchTerm]
+        );
       }
       
       const multipleServices = await query;

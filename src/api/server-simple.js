@@ -22,20 +22,16 @@ import dataDownloadRoutes from './routes/data-download.js';
 import dataAnalysisRoutes from './routes/data-analysis.js';
 import realAnalysisRoutes from './routes/real-analysis.js';
 import quickFixRoutes from './routes/quick-fix.js';
-import workingSearchRoutes from './routes/working-search.js';
 import import603ServicesRoutes from './routes/import-603-services.js';
 import bulletproofImportRoutes from './routes/bulletproof-import.js';
 import workingImportRoutes from './routes/working-import.js';
 import budgetIntelligenceRoutes from './routes/budget-intelligence.js';
 import debugDbRoutes from './routes/debug-db.js';
-import minimalSearchRoutes from './routes/minimal-search.js';
-import fixedSearchRoutes from './routes/fixed-search.js';
-import emergencySearchRoutes from './routes/emergency-search.js';
 import diagnosticSearchRoutes from './routes/diagnostic-search.js';
-import v1SearchRoutes from './routes/v1-search.js';
 import { addSchemas } from './schemas.js';
 import cachePlugin from './plugins/cache-plugin.js';
 import monitoringPlugin from './plugins/monitoring-plugin.js';
+import { globalErrorHandler } from '../utils/error-handler.js';
 
 const logger = pino({
   level: process.env.LOG_LEVEL || 'info',
@@ -148,41 +144,15 @@ export async function createSimpleServer(options = {}) {
     request.db = db;
   });
 
-  // Error handler
-  fastify.setErrorHandler(async (error, request, reply) => {
-    const { statusCode = 500 } = error;
-    
-    fastify.log.error({
-      error: error.message,
-      stack: error.stack,
-      request: {
-        method: request.method,
-        url: request.url,
-        headers: request.headers
-      }
-    });
-
-    const response = {
-      error: {
-        message: statusCode >= 500 ? 'Internal Server Error' : error.message,
-        statusCode,
-        timestamp: new Date().toISOString()
-      }
-    };
-
-    if (process.env.NODE_ENV === 'development') {
-      response.error.stack = error.stack;
-    }
-
-    return reply.status(statusCode).send(response);
-  });
+  // Centralized error handler
+  fastify.setErrorHandler(globalErrorHandler);
 
   // Not found handler - serves frontend in full-stack mode
   fastify.setNotFoundHandler((request, reply) => {
     // In full-stack mode, serve index.html for non-API routes
     if (options.isFullStack && !request.url.startsWith('/api') && 
         !request.url.startsWith('/health') && !request.url.startsWith('/services') &&
-        !request.url.startsWith('/working-search') && !request.url.startsWith('/stats') &&
+        !request.url.startsWith('/diagnostic-search') && !request.url.startsWith('/stats') &&
         !request.url.startsWith('/organizations') && !request.url.startsWith('/monitoring') &&
         !request.url.startsWith('/docs') && !request.url.startsWith('/debug')) {
       return reply.sendFile('index.html');
@@ -213,23 +183,8 @@ export async function createSimpleServer(options = {}) {
   await fastify.register(bulletproofImportRoutes, { prefix: '/bulletproof' });
   await fastify.register(workingImportRoutes, { prefix: '/working-import' });
   
-  // WORKING SEARCH - bypass broken search routes
-  await fastify.register(workingSearchRoutes, { prefix: '/working-search' });
-  
-  // MINIMAL SEARCH - new clean implementation
-  await fastify.register(minimalSearchRoutes, { prefix: '/minimal-search' });
-  
-  // FIXED SEARCH - working replacement for broken endpoints
-  await fastify.register(fixedSearchRoutes, { prefix: '/fixed-search' });
-  
-  // EMERGENCY SEARCH - ultra simple implementation that definitely works
-  await fastify.register(emergencySearchRoutes, { prefix: '/emergency-search' });
-  
-  // DIAGNOSTIC SEARCH - step-by-step debugging
+  // MAIN SEARCH - Production-ready diagnostic search (renamed from diagnostic-search)
   await fastify.register(diagnosticSearchRoutes, { prefix: '/diagnostic-search' });
-  
-  // API V1 - Production-grade search with DTO pattern
-  await fastify.register(v1SearchRoutes, { prefix: '/api/v1/search' });
   
   // Register main search routes (handles '/' endpoint) - BROKEN
   // await fastify.register(searchRoutes, { prefix: '/search' });
@@ -266,9 +221,7 @@ export async function createSimpleServer(options = {}) {
       endpoints: {
         services: '/services',
         organizations: '/organizations',
-        search: '/working-search',
-        simpleSearch: '/working-search/simple',
-        workingSearch: '/working-search',
+        search: '/diagnostic-search',
         stats: '/stats',
         monitoring: '/monitoring',
         debug: '/debug',

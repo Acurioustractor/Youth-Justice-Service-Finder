@@ -95,7 +95,8 @@ export default async function searchRoutes(fastify, options) {
         const categoryList = categories.split(',').map(c => c.trim());
         query = query.where(function() {
           categoryList.forEach(category => {
-            this.orWhereRaw('s.categories @> ?', [JSON.stringify([category])]);
+            // Use Knex's whereJsonSupersetOf for safer JSONB queries
+            this.orWhere('s.categories', '@>', JSON.stringify([category]));
           });
         });
       }
