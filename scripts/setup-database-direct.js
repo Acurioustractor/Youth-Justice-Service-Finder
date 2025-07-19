@@ -14,16 +14,35 @@ const { Client } = pg;
 async function setupDatabase() {
   console.log('Setting up database with DIRECT approach...\n');
 
-  // SIMPLE, DIRECT CONNECTION - NO ENVIRONMENT VARIABLES BULLSHIT
-  const clientConfig = {
-    host: 'localhost',
-    port: 5432,
-    user: 'benknight',
-    database: 'postgres'
-    // NO PASSWORD FIELD AT ALL - LET POSTGRES USE PEER AUTH
-  };
+  // Detect environment and configure accordingly
+  const isGitHubActions = process.env.GITHUB_ACTIONS === 'true';
+  const isCI = process.env.CI === 'true';
+  
+  let clientConfig;
+  
+  if (isGitHubActions || isCI) {
+    // GitHub Actions environment - use postgres service
+    clientConfig = {
+      host: 'localhost',
+      port: 5432,
+      user: 'postgres',
+      password: 'postgres',
+      database: 'postgres'
+    };
+    console.log('🔄 GitHub Actions environment detected');
+  } else {
+    // Local development - use peer auth
+    clientConfig = {
+      host: 'localhost',
+      port: 5432,
+      user: 'benknight',
+      database: 'postgres'
+      // NO PASSWORD FIELD FOR LOCAL
+    };
+    console.log('🏠 Local development environment detected');
+  }
 
-  console.log('Connection config:', clientConfig);
+  console.log('Connection config:', { ...clientConfig, password: clientConfig.password ? '[HIDDEN]' : undefined });
 
   const client = new Client(clientConfig);
 
@@ -50,13 +69,25 @@ async function setupDatabase() {
     await client.end();
 
     // Connect to the target database
-    const dbClientConfig = {
-      host: 'localhost',
-      port: 5432,
-      user: 'benknight',
-      database: dbName
-      // NO PASSWORD FIELD AT ALL
-    };
+    let dbClientConfig;
+    
+    if (isGitHubActions || isCI) {
+      dbClientConfig = {
+        host: 'localhost',
+        port: 5432,
+        user: 'postgres',
+        password: 'postgres',
+        database: dbName
+      };
+    } else {
+      dbClientConfig = {
+        host: 'localhost',
+        port: 5432,
+        user: 'benknight',
+        database: dbName
+        // NO PASSWORD FIELD FOR LOCAL
+      };
+    }
 
     const dbClient = new Client(dbClientConfig);
     await dbClient.connect();
