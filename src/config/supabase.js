@@ -30,7 +30,8 @@ export const supabaseHelpers = {
         organizations(*),
         locations(*),
         contacts(*)
-      `);
+      `)
+      .eq('project', 'youth-justice-service-finder'); // Filter for this app only
 
     // Apply filters
     if (filters.search) {
@@ -72,6 +73,7 @@ export const supabaseHelpers = {
         locations(*),
         contacts(*)
       `)
+      .eq('project', 'youth-justice-service-finder') // Filter for this app only
       .or(`name.ilike.%${searchTerm}%,description.ilike.%${searchTerm}%,keywords.ilike.%${searchTerm}%`)
       .limit(limit);
 
@@ -93,6 +95,7 @@ export const supabaseHelpers = {
         locations(*),
         contacts(*)
       `)
+      .eq('project', 'youth-justice-service-finder') // Filter for this app only
       .eq('id', id)
       .single();
 
@@ -107,10 +110,10 @@ export const supabaseHelpers = {
   // Get database stats
   async getStats() {
     const [servicesCount, orgsCount, locationsCount, contactsCount] = await Promise.all([
-      supabase.from(TABLES.SERVICES).select('id', { count: 'exact', head: true }),
-      supabase.from(TABLES.ORGANIZATIONS).select('id', { count: 'exact', head: true }),
-      supabase.from(TABLES.LOCATIONS).select('id', { count: 'exact', head: true }),
-      supabase.from(TABLES.CONTACTS).select('id', { count: 'exact', head: true })
+      supabase.from(TABLES.SERVICES).select('id', { count: 'exact', head: true }).eq('project', 'youth-justice-service-finder'),
+      supabase.from(TABLES.ORGANIZATIONS).select('id', { count: 'exact', head: true }).eq('project', 'youth-justice-service-finder'),
+      supabase.from(TABLES.LOCATIONS).select('id', { count: 'exact', head: true }).eq('project', 'youth-justice-service-finder'),
+      supabase.from(TABLES.CONTACTS).select('id', { count: 'exact', head: true }).eq('project', 'youth-justice-service-finder')
     ]);
 
     return {

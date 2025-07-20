@@ -70,7 +70,10 @@ async function processBatch(services) {
         type: service.organization_type || 'Non-profit',
         website: service.website || service.url,
         abn: service.abn,
-        description: service.organization_description
+        description: service.organization_description,
+        project: 'youth-justice-service-finder',
+        source: 'ultra-extraction-2025-07-16',
+        app_type: 'service-directory'
       };
       
       // Extract location data
@@ -81,14 +84,18 @@ async function processBatch(services) {
         state: service.state || 'QLD',
         latitude: parseFloat(service.latitude) || null,
         longitude: parseFloat(service.longitude) || null,
-        region: service.region
+        region: service.region,
+        project: 'youth-justice-service-finder',
+        app_type: 'service-directory'
       };
       
       // Extract contact data
       const contact = {
         phone: (service.phone || service.contact_phone || '').substring(0, 50),
         email: service.email || service.contact_email,
-        website: service.website || service.url
+        website: service.website || service.url,
+        project: 'youth-justice-service-finder',
+        app_type: 'service-directory'
       };
       
       // Extract service data
@@ -102,6 +109,10 @@ async function processBatch(services) {
         eligibility: service.eligibility,
         cost: service.cost || service.fees,
         availability: service.availability || service.hours,
+        project: 'youth-justice-service-finder',
+        source: 'ultra-extraction-2025-07-16',
+        app_type: 'service-directory',
+        import_date: new Date().toISOString(),
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
         organization,
@@ -162,6 +173,10 @@ async function importBatch(services) {
       eligibility: service.eligibility,
       cost: service.cost,
       availability: service.availability,
+      project: service.project,
+      source: service.source,
+      app_type: service.app_type,
+      import_date: service.import_date,
       created_at: service.created_at,
       updated_at: service.updated_at
     });

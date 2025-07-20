@@ -12,28 +12,19 @@
 - ✅ **Web dashboard** - Easy database management
 - ✅ **Automatic backups** - Never lose your data
 - ✅ **Fast deployment** - Works with Vercel, Railway, etc.
+- ✅ **Multi-project support** - Tagged data for different apps
 
 ---
 
 ## 🎯 Quick Setup (5 Minutes)
 
-### 1. Create Supabase Project
+### 1. Create Supabase Project (or use existing)
 
-1. Go to [supabase.com](https://supabase.com)
-2. Click **"Start your project"** (it's free!)
-3. Sign in with GitHub
-4. Click **"New Project"**
-5. Fill in:
-   - **Name**: `youth-justice-finder`
-   - **Database Password**: (create a strong password)
-   - **Region**: Choose closest to you
-6. Click **"Create new project"**
-
-⏱️ Wait 2-3 minutes for project setup...
+If you already have a Supabase project with stories and other data, perfect! We'll add the Youth Justice Service Finder tables alongside your existing data.
 
 ### 2. Get Your Connection Details
 
-Once your project is ready:
+From your Supabase dashboard:
 
 1. Go to **Settings** → **API**
 2. Copy these two values:
@@ -44,27 +35,30 @@ SUPABASE_URL=https://your-project-id.supabase.co
 SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
-### 3. Create Database Tables
+### 3. Create Database Tables (with Project Tagging)
 
 1. Go to **SQL Editor** in your Supabase dashboard
 2. Copy and paste this SQL:
 
 ```sql
--- Organizations table
-CREATE TABLE organizations (
-  id TEXT PRIMARY KEY,
+-- Organizations table (with project tagging)
+CREATE TABLE IF NOT EXISTS organizations (
+  id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
   name TEXT NOT NULL,
   type TEXT,
   website TEXT,
   abn TEXT,
   description TEXT,
+  project TEXT DEFAULT 'youth-justice-service-finder',
+  source TEXT,
+  app_type TEXT DEFAULT 'service-directory',
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- Locations table  
-CREATE TABLE locations (
-  id TEXT PRIMARY KEY,
+-- Locations table (with project tagging)
+CREATE TABLE IF NOT EXISTS locations (
+  id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
   address TEXT,
   suburb TEXT,
   postcode TEXT,
@@ -72,23 +66,27 @@ CREATE TABLE locations (
   latitude DECIMAL(10,8),
   longitude DECIMAL(11,8),
   region TEXT,
+  project TEXT DEFAULT 'youth-justice-service-finder',
+  app_type TEXT DEFAULT 'service-directory',
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- Contacts table
-CREATE TABLE contacts (
-  id TEXT PRIMARY KEY,
+-- Contacts table (with project tagging)
+CREATE TABLE IF NOT EXISTS contacts (
+  id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
   phone TEXT,
   email TEXT,
   website TEXT,
+  project TEXT DEFAULT 'youth-justice-service-finder',
+  app_type TEXT DEFAULT 'service-directory',
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- Services table (main table)
-CREATE TABLE services (
-  id TEXT PRIMARY KEY,
+-- Services table (main table with project tagging)
+CREATE TABLE IF NOT EXISTS services (
+  id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
   organization_id TEXT REFERENCES organizations(id),
   location_id TEXT REFERENCES locations(id),
   contact_id TEXT REFERENCES contacts(id),
@@ -101,16 +99,24 @@ CREATE TABLE services (
   eligibility TEXT,
   cost TEXT,
   availability TEXT,
+  project TEXT DEFAULT 'youth-justice-service-finder',
+  source TEXT,
+  app_type TEXT DEFAULT 'service-directory',
+  import_date TIMESTAMPTZ,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
 -- Create indexes for better performance
-CREATE INDEX idx_services_name ON services(name);
-CREATE INDEX idx_services_keywords ON services(keywords);
-CREATE INDEX idx_services_type ON services(service_type);
-CREATE INDEX idx_locations_suburb ON locations(suburb);
-CREATE INDEX idx_locations_postcode ON locations(postcode);
+CREATE INDEX IF NOT EXISTS idx_services_name ON services(name);
+CREATE INDEX IF NOT EXISTS idx_services_keywords ON services(keywords);
+CREATE INDEX IF NOT EXISTS idx_services_type ON services(service_type);
+CREATE INDEX IF NOT EXISTS idx_services_project ON services(project);
+CREATE INDEX IF NOT EXISTS idx_locations_suburb ON locations(suburb);
+CREATE INDEX IF NOT EXISTS idx_locations_postcode ON locations(postcode);
+CREATE INDEX IF NOT EXISTS idx_locations_project ON locations(project);
+CREATE INDEX IF NOT EXISTS idx_organizations_project ON organizations(project);
+CREATE INDEX IF NOT EXISTS idx_contacts_project ON contacts(project);
 ```
 
 3. Click **"Run"**
@@ -127,6 +133,23 @@ SUPABASE_ANON_KEY=your_supabase_anon_key_here
 
 ---
 
+## 🏷️ **Multi-Project Support**
+
+**Perfect for shared databases!** All Youth Justice Service Finder data is tagged with:
+
+- **`project: 'youth-justice-service-finder'`** - Identifies this app's data
+- **`app_type: 'service-directory'`** - Categories the data type
+- **`source: 'ultra-extraction-2025-07-16'`** - Tracks data origin
+- **`import_date`** - When data was imported
+
+This means:
+- ✅ **Your stories stay separate** from services
+- ✅ **Multiple apps can share one database** safely
+- ✅ **Easy to query specific project data**
+- ✅ **No data conflicts or mixing**
+
+---
+
 ## 🚀 Import Your 1,075 Services
 
 Now import all your services to Supabase:
@@ -138,6 +161,7 @@ npm run import:supabase
 This will:
 - ✅ Read your `ultra-extraction-2025-07-16.json` file
 - ✅ Process all 1,075 services
+- ✅ **Tag everything with `project: 'youth-justice-service-finder'`**
 - ✅ Upload to Supabase in optimized batches
 - ✅ Show real-time progress
 
@@ -156,6 +180,8 @@ Your app will be available at:
 - ❤️ **Health Check**: http://localhost:3000/health
 - 🔍 **Search**: http://localhost:3000/search?q=counselling
 
+**Only Youth Justice Service Finder data will be shown** - your other projects stay separate!
+
 ---
 
 ## 📊 Database Management
@@ -167,15 +193,29 @@ Your app will be available at:
 - **Auth**: User management (for future features)
 - **Storage**: File uploads (for future features)
 
+### Query Specific Project Data
+```sql
+-- Get only Youth Justice Service Finder services
+SELECT * FROM services WHERE project = 'youth-justice-service-finder';
+
+-- Get only stories (your other project)
+SELECT * FROM stories;
+
+-- Get all projects in your database
+SELECT DISTINCT project FROM services 
+UNION 
+SELECT 'stories' as project;
+```
+
 ### Check Your Data
 ```bash
-# Get database stats
+# Get database stats (Youth Justice Service Finder only)
 curl http://localhost:3000/stats
 
-# Search services
+# Search services (filtered to this app)
 curl "http://localhost:3000/search?q=mental health"
 
-# Get all services (paginated)
+# Get all services (paginated, filtered)
 curl "http://localhost:3000/services?page=1&limit=10"
 ```
 
@@ -222,6 +262,10 @@ NODE_ENV=production
 2. Check Supabase dashboard for any database issues
 3. Look at the server logs for detailed error messages
 
+### Data from other projects showing up?
+- This shouldn't happen! All queries are filtered by `project = 'youth-justice-service-finder'`
+- Check the database tags in Supabase dashboard to verify data is properly tagged
+
 ---
 
 ## 🎯 Next Steps
@@ -234,8 +278,9 @@ With Supabase set up, you can:
 4. **Add user accounts** - Built-in authentication system
 5. **Add file uploads** - Service photos, documents, etc.
 6. **API analytics** - Built-in usage tracking
+7. **Multiple apps** - Share the database with other projects safely
 
-**This is SO much better than local PostgreSQL!** 🎉
+**This is SO much better than local PostgreSQL AND keeps your projects organized!** 🎉
 
 ---
 
@@ -245,4 +290,4 @@ With Supabase set up, you can:
 2. **Community**: https://github.com/supabase/supabase/discussions
 3. **Discord**: https://discord.supabase.com
 
-Your Youth Justice Service Finder is now powered by enterprise-grade infrastructure! 🚀 
+Your Youth Justice Service Finder is now powered by enterprise-grade infrastructure with perfect project isolation! 🚀 
