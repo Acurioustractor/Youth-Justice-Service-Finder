@@ -1,8 +1,8 @@
 # Youth Justice Service Finder
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/Youth-Justice-Service-Finder)](https://github.com/yourusername/Youth-Justice-Service-Finder)
+[![GitHub stars](https://img.shields.io/github/stars/Acurioustractor/Youth-Justice-Service-Finder)](https://github.com/Acurioustractor/Youth-Justice-Service-Finder)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![API Status](https://img.shields.io/badge/API-Live-green)](https://your-api.railway.app/health)
+[![CI/CD Pipeline](https://github.com/Acurioustractor/Youth-Justice-Service-Finder/actions/workflows/ci.yml/badge.svg)](https://github.com/Acurioustractor/Youth-Justice-Service-Finder/actions/workflows/ci.yml)
 
 🌟 **603+ Australian youth services** searchable through a modern API and web interface.
 
