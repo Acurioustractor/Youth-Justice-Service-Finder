@@ -1,51 +1,39 @@
-/**
- * Vercel Serverless Function - Health Check Endpoint
- * 
- * Basic health check for the Youth Justice Service Finder
- */
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_ANON_KEY
+);
 
 export default async function handler(req, res) {
-    try {
-        const healthData = {
-            status: 'healthy',
-            timestamp: new Date().toISOString(),
-            service: 'Youth Justice Service Finder',
-            version: '2.0.0',
-            environment: process.env.VERCEL_ENV || 'development',
-            region: process.env.VERCEL_REGION || 'unknown',
-            uptime: process.uptime(),
-            memory: process.memoryUsage(),
-            endpoints: {
-                health: '/api/health',
-                database: '/api/health/database',
-                analytics: '/api/health/analytics',
-                insights: '/api/services/insights',
-                dashboard: '/dashboard'
-            }
-        };
+  try {
+    // Test Supabase connection
+    const { count, error } = await supabase
+      .from('services')
+      .select('id', { count: 'exact', head: true })
+      .eq('project', 'youth-justice-service-finder');
 
-        // Check if we're in production
-        if (process.env.VERCEL_ENV === 'production') {
-            healthData.deployment = {
-                url: process.env.VERCEL_URL,
-                git: {
-                    sha: process.env.VERCEL_GIT_COMMIT_SHA,
-                    ref: process.env.VERCEL_GIT_COMMIT_REF,
-                    repo: process.env.VERCEL_GIT_REPO_SLUG
-                }
-            };
-        }
-
-        res.status(200).json(healthData);
-        
-    } catch (error) {
-        console.error('Health check error:', error);
-        
-        res.status(500).json({
-            status: 'unhealthy',
-            timestamp: new Date().toISOString(),
-            error: error.message,
-            service: 'Youth Justice Service Finder'
-        });
+    if (error) {
+      return res.status(503).json({
+        status: 'unhealthy',
+        error: error.message,
+        timestamp: new Date().toISOString()
+      });
     }
+
+    return res.status(200).json({
+      status: 'healthy',
+      timestamp: new Date().toISOString(),
+      database: 'supabase',
+      services_count: count || 0,
+      project: 'youth-justice-service-finder'
+    });
+
+  } catch (error) {
+    return res.status(503).json({
+      status: 'unhealthy',
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
 }
