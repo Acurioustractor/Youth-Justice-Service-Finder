@@ -7,6 +7,8 @@
   "scripts": {
     "start": "node src/api/server-simple.js",
     "start:fullstack": "npm run build:frontend && node src/api/server-fullstack.js",
+    "start:supabase": "npm run build:frontend && node src/api/server-supabase.js",
+    "import:supabase": "node scripts/import-to-supabase.js",
     "build": "npm run build:frontend",
     "build:frontend": "cd frontend && npm ci && npm run build",
     "start:pipeline": "node src/pipeline-service.js",
@@ -49,6 +51,7 @@
     "@fastify/static": "^7.0.4",
     "@fastify/swagger": "^8.14.0",
     "@fastify/swagger-ui": "^4.0.1",
+    "@supabase/supabase-js": "^2.52.0",
     "@temporalio/activity": "^1.12.1",
     "@temporalio/client": "^1.12.1",
     "@temporalio/worker": "^1.12.1",

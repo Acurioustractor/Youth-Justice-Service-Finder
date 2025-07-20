@@ -15,22 +15,22 @@
     "cache_hit_rate": 0
   },
   "system": {
-    "uptime": 1752702795058,
+    "uptime": 1752985614981,
     "errors": [],
     "warnings": [],
-    "uptime_ms": 279518101,
-    "uptime_human": "3d 5h 38m",
+    "uptime_ms": 599997,
+    "uptime_human": "9m 59s",
     "memory_usage": {
-      "rss": 21856256,
-      "heapTotal": 27951104,
-      "heapUsed": 25827528,
-      "external": 3917415,
-      "arrayBuffers": 8603731
+      "rss": 52412416,
+      "heapTotal": 28475392,
+      "heapUsed": 25515776,
+      "external": 3925415,
+      "arrayBuffers": 8611731
     },
     "cpu_usage": {
-      "user": 49220943,
-      "system": 23038811
+      "user": 687514,
+      "system": 212428
     }
   },
-  "timestamp": "2025-07-20T03:31:53.159Z"
+  "timestamp": "2025-07-20T04:36:54.978Z"
 }
